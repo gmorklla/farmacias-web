@@ -1,0 +1,15 @@
+{"ads" : [
+		{
+			"titulo" : "Piojitos",
+			"img" : "piojitos",
+			"hashtag" : ["oferta", "piojitos"],
+			"key" : 1
+		},
+		{
+			"titulo" : "El Buen Lunes",
+			"img" : "el_buen_lunes",
+			"hashtag" : ["oferta", "buenLunes"],
+			"key" : 2
+		}
+	]
+}

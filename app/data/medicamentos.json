@@ -1,0 +1,184 @@
+{"medicamentos" : [
+		{
+			"medicamentoId" : "ENJUAGUE BUCAL ANTISEPTICO MENTA",
+			"clave": 2063,
+			"presentacion" : "12 sobres",
+			"img" : "p1",
+			"precio" : 39,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Nuevo"
+		},
+		{
+			"medicamentoId" : "ENJUAGUE BUCAL",
+			"clave": 1927,
+			"presentacion" : "300 ML",
+			"img" : "p2",
+			"precio" : 24.5,
+			"calificacion" : 4,
+			"etiqueta" : true,
+			"etiquetaOferta": true,
+			"claseEtiqueta" : "Oferta",
+			"oferta" : "3 x $63.50"
+		},
+		{
+			"medicamentoId" : "DESODORANTE UNISEX PARA DIABETICOS",
+			"clave": 2250,
+			"presentacion" : "60 ML",			
+			"img" : "p3",
+			"precio" : 21,
+			"calificacion" : 4,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Combo"
+		},
+		{
+			"medicamentoId" : "DESODORANTE ROLL ON CABALLERO",
+			"clave": 960,
+			"presentacion" : "90 ML",			
+			"img" : "p4",
+			"precio" : 18,
+			"calificacion" : 4,
+			"etiqueta" : true,
+			"etiquetaOferta": true,
+			"claseEtiqueta" : "Oferta",
+			"oferta" : "4 x $62.00"
+		},
+		{
+			"medicamentoId" : "CEPILLO DE DIENTES INFANTIL",
+			"clave": 946,
+			"presentacion" : "1 PIEZA",			
+			"img" : "p5",
+			"precio" : 9,
+			"calificacion" : 4,
+			"etiqueta" : true,
+			"etiquetaOferta": true,
+			"claseEtiqueta" : "Oferta",
+			"oferta" : "5 x $36.00"
+		},
+		{
+			"medicamentoId" : "PALILLO DENTAL",
+			"clave": 1600,
+			"presentacion" : "40 PIEZAS",			
+			"img" : "p6",
+			"precio" : 23,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Nuevo"
+		},
+		{
+			"medicamentoId" : "GEL REDUCTIVO SIMIFIT",
+			"clave": 858,
+			"presentacion" : "200 GR",			
+			"img" : "p7",
+			"precio" : 61,
+			"calificacion" : 4,
+			"etiqueta" : false
+		},
+		{
+			"medicamentoId" : "CREMA ANTIOXIDANTE ETERNAL SECRET",
+			"clave": 2100,
+			"presentacion" : "50 GR",			
+			"img" : "p8",
+			"precio" : 138,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Nuevo"
+		},
+		{
+			"medicamentoId" : "CREMA ANTIARRUGAS 40+ ETERNAL SECRET",
+			"clave": 2183,
+			"presentacion" : "50 GR",			
+			"img" : "p9",
+			"precio" : 178,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Nuevo"
+		},
+		{
+			"medicamentoId" : "EXFOLIANTE FACIAL ETERNAL SECRET",
+			"clave": 2292,
+			"presentacion" : "60 GR",			
+			"img" : "p10",
+			"precio" : 59,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Nuevo"
+		},
+		{
+			"medicamentoId" : "GEL FACIAL HIDRATANTE PARA CABALLERO ETERNAL SECRET FOR MEN",
+			"clave": 2254,
+			"presentacion" : "60 GR",			
+			"img" : "p11",
+			"precio" : 79,
+			"calificacion" : 5,
+			"etiqueta" : false
+		},
+		{
+			"medicamentoId" : "ACEITE SUAVIZANTE DE VITAMINA E ETERNAL SECRET",
+			"clave": 2190,
+			"presentacion" : "32 ML",			
+			"img" : "p12",
+			"precio" : 79,
+			"calificacion" : 5,
+			"etiqueta" : false
+		},
+		{
+			"medicamentoId" : "CREMA CONTORNO OJOS ETERNAL SECRET",
+			"clave": 2313,
+			"presentacion" : "8.5 GR",			
+			"img" : "p13",
+			"precio" : 69,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Nuevo"
+		},
+		{
+			"medicamentoId" : "RASTRILLO PARA CABALLERO TRIPLE HOJA CABEZA MOVIL",
+			"clave": 1520,
+			"presentacion" : "1 PIEZA",			
+			"img" : "p14",
+			"precio" : 13,
+			"calificacion" : 5,
+			"etiqueta" : false
+		},
+		{
+			"medicamentoId" : "GEL PARA CABELLO",
+			"clave": 750,
+			"presentacion" : "250 GR",			
+			"img" : "p15",
+			"precio" : 11,
+			"calificacion" : 5,
+			"etiqueta" : false
+		},
+		{
+			"medicamentoId" : "GEL MODELADOR DE CABELLO REPELENTE DE PIOJOS Y LIENDRES AROMA A CHICLE",
+			"clave": 2358,
+			"presentacion" : "240 GR",			
+			"img" : "p16",
+			"precio" : 59,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Nuevo"
+		},
+		{
+			"medicamentoId" : "JABON AVENA CON MIEL",
+			"clave": 1244,
+			"presentacion" : "100 GR",			
+			"img" : "p17",
+			"precio" : 11,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Combo"
+		},
+		{
+			"medicamentoId" : "LOCION VINAGRE DE QUASSIA",
+			"clave": 2033,
+			"presentacion" : "120 ML",			
+			"img" : "p18",
+			"precio" : 65,
+			"calificacion" : 5,
+			"etiqueta" : true,
+			"claseEtiqueta" : "Combo"
+		}
+	]
+}
