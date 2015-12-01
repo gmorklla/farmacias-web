@@ -14,7 +14,7 @@ angular.module('farmaciasWebApp')
 		var fuente = source;
 		var indices = [];
 		var str = "";
-		for (i = 0; i < fuente.length; ++i) {
+		for (var i = 0; i < fuente.length; ++i) {
 			if ( fuente.substring(i, i + find.length) == find ) {
 				indices.push(i+2);
 				str += ("-" );
@@ -28,4 +28,23 @@ angular.module('farmaciasWebApp')
 		}
 		return str.toLowerCase();
 	}
+	this.deconfig =  function (source) {
+		var find = "-";
+		var fuente = source;
+		var indices = [];
+		var str = "";
+		for (i = 0; i < fuente.length; ++i) {
+			if ( fuente.substring(i, i + find.length) == find ) {
+				indices.push(i+2);
+				str += (" " );
+				str += (fuente[i+1]);
+				//str.push(fuente[i+1]);
+				i++;
+			} else {
+				str += fuente[i];
+				//str.push(fuente[i]);
+			}
+		}
+		return str;	
+	};	
   });

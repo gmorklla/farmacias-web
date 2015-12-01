@@ -1,5 +1,5 @@
 <div class="row show-grid notasFrame">
-	<div class="col-md-12 col-xs-12 notas" ng-controller="SiminotasControl">
+	<div class="col-md-12 col-xs-12 notas">
     	<div class="col-md-6 col-sm-6 col-xs-12" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
 	    	<h1>SIMINOTAS</h1>
 	    	<dir-pagination-controls class="paginacion" pagination-id="siminotasPag" max-size="5" boundary-links="false"></dir-pagination-controls>
@@ -9,23 +9,28 @@
 	    </div>
 	    <div class="col-md-6 col-sm-6 col-xs-12 videos">
 	    	<div class="row rowNoMargin">
-	    		<div class="col-md-12 col-sm-12 col-xs-12">
+	    		<div class="col-md-12 col-sm-12 col-xs-12 labelVid">
 			    	<img src="images/simicanal_label.png" alt="">
 			    	<youtube-video video-id="theBestVideo" player-width="'100%'" player-height="'100%'"></youtube-video>
 			    </div>
-			    <div class="col-md-12 col-sm-12 col-xs-12">
+			    <div class="col-md-12 col-sm-12 col-xs-12 thumbs">
 			    	<div class="row rowNoMargin">
-			    		<div class="col-md-3 col-sm-6 col-xs-6 vidList" dir-paginate="(key, item) in listaVideos | itemsPerPage: 4" pagination-id="youTubePag">
-			    			<a ng-click="cambiaVid(item.id)"><img ng-src="{{item.thumb}}" alt="{{item.titulo}}"></a>
-			    			<a ng-click="cambiaVid(item.id)"><p>{{item.titulo}}</p></a>
-			    		</div>
+
+						<div class="col-md-3 col-sm-6 col-xs-6" dir-paginate="(key, item) in listaVideos | itemsPerPage: 2" pagination-id="youTubePag">
+							<div class="thumbnail">
+							  <img ng-click="cambiaVid(item.id)" ng-src="{{item.thumb}}" alt="{{item.titulo}}">
+							  <div class="caption">
+							    <p>{{item.titulo}}</p>
+							  </div>
+							</div>
+						</div>
+		    		
 			    	</div>
 			    	<div class="row rowNoMargin">
-			    		<dir-pagination-controls class="paginacion vidPag" pagination-id="youTubePag"  boundary-links="false"></dir-pagination-controls>			    		
+			    		<dir-pagination-controls class="paginacion vidPag" pagination-id="youTubePag"  boundary-links="false" max-size="7"></dir-pagination-controls>			    		
 			    	</div>			    	
 			    </div>
 		    </div>
 	    </div>
 	</div>
 </div>
-<script id="youtube" src="js/youtube.js"></script>

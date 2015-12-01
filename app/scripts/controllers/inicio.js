@@ -14,7 +14,6 @@ angular.module('farmaciasWebApp')
   	loadImg.loadImgs($('.loadImg'), imagenesInicio);
 
   	var imgMain = ['principal_1.jpg', 'principal_3.jpg'];
-  	var imagenesBarra = ['analisis_icon.png', 'consultorios_icon.png', 'opticas_icon.png'];
 
 	function coinFlip() {
 		var imagen = imgMain[Math.round(Math.random())];

@@ -385,6 +385,10 @@ input {
   margin: 0 50%;
 }
 
+.barraCirculo div img {
+  margin-left: 5px !important;
+}
+
 .descargaApp {
   margin-top: 5px;
 }
@@ -506,7 +510,7 @@ input {
   background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(191,191,191,1) 100%); /* IE10+ */
   background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(191,191,191,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#bfbfbf',GradientType=0 ); /* IE6-8 */
-  min-height: 1250px;
+  min-height: 1150px;
   overflow:hidden;
 }
 
@@ -547,11 +551,13 @@ input {
   float:left;
   margin: 20px 0px;
   margin-top: -2px;
-  padding-left: 15px !important;
 }
 
 .videos img {
   margin-top: 20px;
+}
+
+.labelVid img {
   float:right;
 }
 
@@ -578,6 +584,11 @@ input {
   width:98%;
   border-radius: 4px;
   cursor:pointer;
+}
+
+.vidList p{
+  overflow:hidden;
+  max-height: 150px;
 }
 
 footer {
@@ -1841,6 +1852,35 @@ footer li:nth-child(3) {
     left: 0%;
     opacity: 0.9;
     z-index: 9999999999999;
+}
+
+.rowNoMargin {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.thumbnail p {
+  font-size: 0.8em;
+  text-align: left;
+  height:30px;
+  overflow:hidden;
+}
+
+.thumbs {
+  margin-top: 10px;
+}
+
+.thumbs .row div {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.thumbnail {
+  background-color: #BEBEBE;
+}
+
+.thumbnail .caption {
+  margin:5px 16px;
 }
 
 @media (max-width: 767px) {

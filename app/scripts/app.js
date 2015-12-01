@@ -20,6 +20,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'angularUtils.directives.dirPagination',
+    'youtube-embed'
   ])
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
     $locationProvider.hashPrefix('!');
@@ -47,7 +48,9 @@ angular
           controllerAs: 'barra'
           },
           'siminotas': {
-          templateUrl: 'views/siminotas.html'
+          templateUrl: 'views/siminotas.html',
+          controller: 'SiminotasCtrl',
+          controllerAs: 'siminotas'
           },        
           'footer': {
           templateUrl: 'views/footer.html'
@@ -65,7 +68,9 @@ angular
         templateUrl: 'views/nav.html'
         },          
         'home@': {
-        templateUrl: 'views/medicamentos.html'
+        templateUrl: 'views/medicamentos.html',
+        controller: 'MedicamentosCtrl',
+        controllerAs: 'medicamentos'
         },
         'barra@': {
           template: '',
@@ -105,5 +110,48 @@ angular
       ncyBreadcrumb: {
                 label: '{{$stateParams.medicamentoId}}'
             }
-    })      
+    })
+    .state('localiza', {
+        url: "/localiza",
+        'views': {
+          'nav': {
+        templateUrl: 'partials/nav.html'
+        },            
+        'home@': {
+        templateUrl: 'partials/localiza.html'
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraControl',
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+        templateUrl: 'partials/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: 'Localiza tu unidad'
+            }
+    });    
+  }])
+  .run(['$rootScope', function($rootScope) {
+
+    $rootScope.$on('$stateChangeStart', 
+      function(event, toState, toParams, fromState, fromParams){
+        var scriptTag = document.getElementById("youtubeTag");
+        console.log(scriptTag);
+        if (!scriptTag) {
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/iframe_api";
+          tag.id = "youtubeTag"
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+          console.log('Youtube!!!');
+        }
+
+    });
+
   }]);

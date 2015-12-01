@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('NavControl', ['$scope', '$http', '$state', '$location', 'prettyUrlSpc', 'loadData', function ($scope, $http, $state, $location, prettyUrlSpc, loadData) {
+  .controller('NavControl', ['$scope', '$location', 'prettyUrlSpc', 'loadData', function ($scope, $location, prettyUrlSpc, loadData) {
 
     var datos = loadData.httpReq( 'data/medicamentos.json' );
     
