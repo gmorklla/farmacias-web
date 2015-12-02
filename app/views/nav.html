@@ -57,7 +57,7 @@
                   <div class="col-md-3 col-sm-3 col-xs-3"><p><b>Precio</b></p></div>
                 </div>
                 <div class="row" dir-paginate="item in meds | filter: termino | itemsPerPage: 3" pagination-id="buscaPag">
-                  <div class="col-md-9 col-sm-9 col-xs-9"><a ng-click="noInput()" ui-sref="medicamentos.detalle({ medicamentoId: prettyUrlSpc.prettyUrl(item.medicamentoId) })" hreflang="es">{{item.medicamentoId}}</a></div>
+                  <div class="col-md-9 col-sm-9 col-xs-9"><a ng-click="noInput()" ui-sref="medicamentos.detalle({ medicamentoId: prettyFn(item.medicamentoId) })" hreflang="es" ng-click="sendProduct(item)">{{item.medicamentoId}}</a></div>
                   <div class="col-md-3 col-sm-3 col-xs-3"><p>{{item.precio | currency}}</p></div>
                 </div>
               </div>
@@ -93,7 +93,7 @@
                   <div class="col-sm-3 col-xs-3"><p><b>Precio</b></p></div>
                 </div>
                 <div class="row" dir-paginate="item in meds | filter: termino | itemsPerPage: 3" pagination-id="buscaPag">
-                  <div class="col-sm-9 col-xs-9"><a ng-click="noInput()" ui-sref="medicamentos.detalle({ medicamentoId: prettyUrlSpc.prettyUrl(item.medicamentoId) })" hreflang="es">{{item.medicamentoId}}</a></div>
+                  <div class="col-sm-9 col-xs-9"><a ng-click="noInput()" ui-sref="medicamentos.detalle({ medicamentoId: prettyFn(item.medicamentoId) })" hreflang="es" ng-click="sendProduct(item)">{{item.medicamentoId}}</a></div>
                   <div class="col-sm-3 col-xs-3"><p>{{item.precio | currency}}</p></div>
                 </div>
               </div>

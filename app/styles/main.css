@@ -1883,6 +1883,10 @@ footer li:nth-child(3) {
   margin:5px 16px;
 }
 
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #337ab7;
+}
+
 @media (max-width: 767px) {
 
   .navbar-default .navbar-collapse {

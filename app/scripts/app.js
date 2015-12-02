@@ -20,6 +20,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'angularUtils.directives.dirPagination',
+    'angularUtils.directives.uiBreadcrumbs',
     'youtube-embed'
   ])
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
@@ -65,12 +66,14 @@ angular
         url: "/medicamentos",
         'views': {
           'nav': {
-        templateUrl: 'views/nav.html'
+          templateUrl: 'views/nav.html',
+          controller: 'NavControl',
+          controllerAs: 'nav'         
         },          
         'home@': {
-        templateUrl: 'views/medicamentos.html',
-        controller: 'MedicamentosCtrl',
-        controllerAs: 'medicamentos'
+          templateUrl: 'views/medicamentos.html',
+          controller: 'MedicamentosCtrl',
+          controllerAs: 'medicamentos'
         },
         'barra@': {
           template: '',
@@ -91,10 +94,14 @@ angular
         url: "/:medicamentoId",
         'views': {
           'nav': {
-        templateUrl: 'views/nav.html'
+          templateUrl: 'views/nav.html',
+          controller: 'NavControl',
+          controllerAs: 'nav'         
         },          
         'home@': {
-        templateUrl: 'views/detalle.html',
+          templateUrl: 'views/detalle.html',
+          controller: 'DetalleCtrl',
+          controllerAs: 'detalle'        
         },
         'barra@': {
           template: '',
@@ -115,10 +122,12 @@ angular
         url: "/localiza",
         'views': {
           'nav': {
-        templateUrl: 'partials/nav.html'
+          templateUrl: 'views/nav.html',
+          controller: 'NavControl',
+          controllerAs: 'nav'
         },            
         'home@': {
-        templateUrl: 'partials/localiza.html'
+          templateUrl: 'views/localiza.html'
         },
         'barra@': {
           template: '',
@@ -128,30 +137,130 @@ angular
           template: ''
         },        
         'footer': {
-        templateUrl: 'partials/footer.html'
+          templateUrl: 'views/footer.html'
         }
           },
       ncyBreadcrumb: {
                 label: 'Localiza tu unidad'
             }
-    });    
+    })
+    .state('nota', {
+        url: "/siminotas/:notaId",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavControl',
+          controllerAs: 'nav'
+        },          
+        'home@': {
+          templateUrl: 'views/nota.html',
+          controller: 'NotaCtrl',
+          controllerAs: 'nota'          
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraControl',
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+        templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: '{{$stateParams.notaId}}'
+            }
+    })
+    .state('calidad', {
+        url: "/calidad",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavControl',
+          controllerAs: 'nav'        
+        },          
+        'home@': {
+        templateUrl: 'views/controlCalidad.html'
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraControl',
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+        templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: 'Control de Calidad'
+            }
+    })
+    .state('contacto', {
+        url: "/contacto",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavControl',
+          controllerAs: 'nav'        
+        },          
+        'home@': {
+        templateUrl: 'views/contacto.html'
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraControl',
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+        templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: 'Contacto'
+            }
+    })    
   }])
-  .run(['$rootScope', function($rootScope) {
+  .run(['$rootScope', '$window', 'youTubeList', function($rootScope, $window, youTubeList) {
 
     $rootScope.$on('$stateChangeStart', 
       function(event, toState, toParams, fromState, fromParams){
-        var scriptTag = document.getElementById("youtubeTag");
-        console.log(scriptTag);
-        if (!scriptTag) {
-          // Load the IFrame Player API code asynchronously.
-          var tag = document.createElement('script');
-          tag.src = "https://www.youtube.com/iframe_api";
-          tag.id = "youtubeTag"
-          var firstScriptTag = document.getElementsByTagName('script')[0];
-          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-          console.log('Youtube!!!');
-        }
+
+        $window.scrollTo(0, 0);        
+
+        if(toState.name != "inicio"){
+          $rootScope.ocultarBarra = true;
+        } else {
+          $rootScope.ocultarBarra = false;
+          var scriptTag = document.getElementById("youtubeTag");
+          if (!scriptTag) {
+            youTubeList.insertTag();
+          }          
+        }        
 
     });
+
+    $(window).scroll(function() {
+
+        var navegacion = $('#navegacion'),
+            targetScroll = $('#contenido').position().top,
+            currentScroll = $('html').scrollTop() || $('body').scrollTop();
+
+        navegacion.toggleClass('fixedPos', currentScroll >= targetScroll);
+        if(currentScroll >= targetScroll){
+        $('.navbar-default').css({
+          'width':'100%',
+          'left':'0',
+          'borderRadius':'0'
+        });
+        }
+        else {
+        $('.navbar-default').css('borderTopLeftRadius','15px').css('borderTopRightRadius','15px');
+        }
+    });    
 
   }]);

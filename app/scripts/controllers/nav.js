@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('NavControl', ['$scope', '$location', 'prettyUrlSpc', 'loadData', function ($scope, $location, prettyUrlSpc, loadData) {
+  .controller('NavControl', ['$scope', 'prettyUrlSpc', 'loadData', 'productoSrv', function ($scope, prettyUrlSpc, loadData, productoSrv) {
 
     var datos = loadData.httpReq( 'data/medicamentos.json' );
     
@@ -19,7 +19,7 @@ angular.module('farmaciasWebApp')
     });
 
 	$scope.prettyFn = function (args) {
-		prettyUrlSpc.prettyUrl(args);
+		return prettyUrlSpc.prettyUrl(args);
 	}
 
 	$scope.viewSearch = false;
@@ -42,6 +42,10 @@ angular.module('farmaciasWebApp')
 		if( !$('.navbar-toggle').hasClass('collapsed') ){
 			cierraMenu();
 		}
-	});	
+	});
+
+    $scope.sendProduct = function (pro) {
+    	productoSrv.addProduct(pro);
+    }	
 
   }]);

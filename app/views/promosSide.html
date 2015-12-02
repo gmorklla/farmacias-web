@@ -1,0 +1,15 @@
+<div class="historico" ng-controller="PromosCtrl">
+	<h1 class="popDisplayTitle adsTitle">Promociones</h1>
+	<div class="col-md-12 col-sm-12 col-xs-12 hidden-sm panel panel-default ads">
+		<div class="panel-body col-md-12 col-sm-12 col-xs-12" dir-paginate="(key, item) in ads | orderBy:'key':'true' | itemsPerPage: 2" pagination-id="siminotasPag">
+			<p><a ui-sref="inicio.nota({ adId: '{{item.titulo}}' })"><img ng-src="images/ads/{{::item.img}}.jpg" alt=""></a></p>
+			<!-- <p>{{::item.entrada}}</p> -->
+		</div>
+    </div>
+	<div class="col-md-12 col-sm-6 col-xs-12 visible-sm panel panel-default ads" dir-paginate="(key, item) in ads | orderBy:'key':'true' | itemsPerPage: 2" pagination-id="siminotasPag">
+		<div class="panel-body col-md-12 col-sm-12 col-xs-12">
+			<p><a ui-sref="inicio.nota({ adId: '{{item.titulo}}' })"><img ng-src="images/ads/{{::item.img}}.jpg" alt=""></a></p>
+			<!-- <p>{{::item.entrada}}</p> -->
+		</div>
+    </div>    
+</div>

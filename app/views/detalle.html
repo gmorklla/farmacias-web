@@ -1,4 +1,4 @@
-<div class="row show-grid productos" ng-controller="DetalleControl">
+<div class="row show-grid productos">
 	<div class="col-md-12 bread">
 		<ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
 	</div>
@@ -13,21 +13,21 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-4 col-xs-12">
 						<div class="col-md-12 col-xs-12">
-							<p class="well"><a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual[0].clave}}.jpg" alt="{{medActual[0].medicamentoId}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual[0].medicamentoId}}"></a></p>
+							<p class="well"><a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.clave}}.jpg" alt="{{medActual.medicamentoId}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.medicamentoId}}"></a></p>
 						</div>
 				</div>
 				<div class="col-md-6 col-sm-8 col-xs-12">
 					<div class="col-md-12 col-xs-12 panel panel-default">
-						<div class="panel-heading">{{medActual[0].medicamentoId}}</div>
+						<div class="panel-heading">{{medActual.medicamentoId}}</div>
 						<div class="panel-body">
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
-								Precio: {{medActual[0].precio | currency}}
+								Precio: {{medActual.precio | currency}}
 							</div>
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-info">
-								Clave: {{medActual[0].clave}}
+								Clave: {{medActual.clave}}
 							</div>
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-info">
-								Presentación: {{medActual[0].presentacion}}
+								Presentación: {{medActual.presentacion}}
 							</div>
 							<div class="col-md-12 col-sm-6 col-xs-12 calificacion">
 								<p>
@@ -47,11 +47,11 @@
 										socialshare-provider="facebook"
 										socialshare-type="feed"
 										socialshare-caption="Farmacias Similares es la cadena farmacéutica líder en ventas y distribución en México y América Latina. Aquí encontrarás genéricos de calidad a los mejores precios. ¡Compruébalo!"
-										socialshare-text="Checa este {{medActual[0].medicamentoId}} a sólo {{medActual[0].precio | currency}}"
+										socialshare-text="Checa este {{medActual.medicamentoId}} a sólo {{medActual.precio | currency}}"
 										socialshare-url="{{url}}"
 										socialshare-via="398798393664417"
 										socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx"
-										socialshare-media="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual[0].clave}}.jpg"
+										socialshare-media="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.clave}}.jpg"
 										socialshare-popup-height="300"
 										socialshare-popup-width="540">
 											<div class="resp-sharing-button__icon">
@@ -63,7 +63,7 @@
 									    socialshare-provider="twitter"
 									    socialshare-hashtags="{{hashtag}}, loMismoPeroMasBarato"
 									    socialshare-via="fsimilares"
-									    socialshare-text="{{medActual[0].medicamentoId}} | {{medActual[0].precio | currency}}"
+									    socialshare-text="{{medActual.medicamentoId}} | {{medActual.precio | currency}}"
 									    socialshare-url="{{url}}"
 									    socialshare-popup-height="400"
 									    socialshare-popup-width="500">
@@ -73,9 +73,9 @@
 									</a>
 									<button type="button" class="btn btn-danger"
 										socialshare
-										socialshare-media="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual[0].clave}}.jpg"
+										socialshare-media="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.clave}}.jpg"
 										socialshare-provider="pinterest"
-										socialshare-text="{{medActual[0].medicamentoId}} | {{medActual[0].precio | currency}}"
+										socialshare-text="{{medActual.medicamentoId}} | {{medActual.precio | currency}}"
 										socialshare-url="{{url}}"
 										socialshare-popup-height="300"
 										socialshare-popup-width="400">
@@ -95,7 +95,7 @@
 		</div>
 
 		<div class="col-md-4 col-xs-12 sugeridos">
-			<div ng-include="'partials/oferta.html'"></div>
+			<div ng-include="'views/oferta.html'"></div>
 		</div>
 
 		<div class="banner hidden-lg hidden-md hidden-sm visible-xs">
@@ -110,17 +110,17 @@
 	            <div class="modal-content">
 	              <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title" id="exampleModalLabel">{{medActual[0].medicamentoId}}</h4>
+	                <h4 class="modal-title" id="exampleModalLabel">{{medActual.medicamentoId}}</h4>
 	              </div>
 	              <div class="modal-body">
-					<p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual[0].clave}}.jpg" title="{{medActual[0].medicamentoId}}"></p>
+					<p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.clave}}.jpg" title="{{medActual.medicamentoId}}"></p>
 	              </div>
 	              <div class="modal-footer">
 					<div class="col-md-4 col-sm-5 col-xs-12 label label-warning">
-								Precio: {{medActual[0].precio | currency}}
+								Precio: {{medActual.precio | currency}}
 					</div>
 					<div class="col-md-4 col-sm-5 col-xs-12 label label-info">
-								Presentación: {{medActual[0].presentacion}}
+								Presentación: {{medActual.presentacion}}
 					</div>	              	
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 	              </div>

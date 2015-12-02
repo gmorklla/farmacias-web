@@ -18,17 +18,21 @@ angular.module('farmaciasWebApp')
     	console.log(e);
     });
 
+    $scope.prettyFn = function (args) {
+        return prettyUrlSpc.prettyUrl(args);
+    }    
+
     var videos = youTubeList.getVids();
     videos.then(function (datos) {
-    	console.log(datos);
         $scope.theBestVideo = datos[0].id;
         $scope.listaVideos = datos;
+        $scope.$apply();
     }, function (e) {
     	console.log(e);
     });
 
     $scope.cambiaVid = function(id){
         $scope.theBestVideo = id;
-    }    
+    }
 
   }]);
