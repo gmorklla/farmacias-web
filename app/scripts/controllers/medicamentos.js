@@ -12,7 +12,7 @@ angular.module('farmaciasWebApp')
 	
   	$scope.transUrl = function (args) {
   		return prettyUrlSpc.prettyUrl(args);
-  	}
+  	};
 
 	$scope.etiqueta = $stateParams.promo;
 	$scope.sortType     = 'item.medicamentoId'; // set the default sort type
@@ -28,6 +28,6 @@ angular.module('farmaciasWebApp')
 
     $scope.sendProduct = function (pro) {
     	productoSrv.addProduct(pro);
-    }
+    };
 
   }]);

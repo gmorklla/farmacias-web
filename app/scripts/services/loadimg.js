@@ -18,5 +18,5 @@ angular.module('farmaciasWebApp')
 			downloadingImage.src = "images/" + imagenes[i];
 			$(ele).css('marginLeft', 0);
 		});
-	}
+	};
   });

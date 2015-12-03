@@ -20,7 +20,7 @@ angular.module('farmaciasWebApp')
 
     $scope.prettyFn = function (args) {
         return prettyUrlSpc.prettyUrl(args);
-    }    
+    };
 
     var videos = youTubeList.getVids();
     videos.then(function (datos) {
@@ -33,6 +33,14 @@ angular.module('farmaciasWebApp')
 
     $scope.cambiaVid = function(id){
         $scope.theBestVideo = id;
+    };
+
+    var w = window.innerWidth;
+
+    if(w>=414){
+        $scope.mostrados = 4;
+    } else {
+        $scope.mostrados = 2;
     }
 
   }]);

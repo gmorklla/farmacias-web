@@ -127,7 +127,9 @@ angular
           controllerAs: 'nav'
         },            
         'home@': {
-          templateUrl: 'views/localiza.html'
+          templateUrl: 'views/localiza.html',
+          controller: 'localizaCtrl',
+          controllerAs: 'localiza'          
         },
         'barra@': {
           template: '',
@@ -223,7 +225,7 @@ angular
       ncyBreadcrumb: {
                 label: 'Contacto'
             }
-    })    
+    });    
   }])
   .run(['$rootScope', '$window', 'youTubeList', function($rootScope, $window, youTubeList) {
 
@@ -232,15 +234,19 @@ angular
 
         $window.scrollTo(0, 0);        
 
-        if(toState.name != "inicio"){
-          $rootScope.ocultarBarra = true;
-        } else {
+        if(toState.name === "inicio"){
           $rootScope.ocultarBarra = false;
           var scriptTag = document.getElementById("youtubeTag");
           if (!scriptTag) {
             youTubeList.insertTag();
           }          
-        }        
+        } else {
+          $rootScope.ocultarBarra = true;
+        }
+
+        if(toState.name === "localiza"){
+          console.log('Localiza');
+        }
 
     });
 

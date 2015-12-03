@@ -20,7 +20,7 @@ angular.module('farmaciasWebApp')
 
 	$scope.prettyFn = function (args) {
 		return prettyUrlSpc.prettyUrl(args);
-	}
+	};
 
 	$scope.viewSearch = false;
 
@@ -35,8 +35,8 @@ angular.module('farmaciasWebApp')
 
 	var cierraMenu = function () {
 		$(".btn-navbar").click(); //bootstrap 2.x
-		$(".navbar-toggle").click() //bootstrap 3.x by Richard    
-	}
+		$(".navbar-toggle").click(); //bootstrap 3.x by Richard    
+	};
 
 	$scope.$on('$locationChangeStart', function(event, next, current) {
 		if( !$('.navbar-toggle').hasClass('collapsed') ){
@@ -46,6 +46,6 @@ angular.module('farmaciasWebApp')
 
     $scope.sendProduct = function (pro) {
     	productoSrv.addProduct(pro);
-    }	
+    };	
 
   }]);

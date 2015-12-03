@@ -16,7 +16,7 @@
 			    <div class="col-md-12 col-sm-12 col-xs-12 thumbs">
 			    	<div class="row rowNoMargin">
 
-						<div class="col-md-3 col-sm-6 col-xs-6" dir-paginate="(key, item) in listaVideos | itemsPerPage: 2" pagination-id="youTubePag">
+						<div class="col-md-3 col-sm-3 col-xs-6" dir-paginate="(key, item) in listaVideos | itemsPerPage: mostrados" pagination-id="youTubePag">
 							<div class="thumbnail">
 							  <img ng-click="cambiaVid(item.id)" ng-src="{{item.thumb}}" alt="{{item.titulo}}">
 							  <div class="caption">

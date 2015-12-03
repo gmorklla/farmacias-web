@@ -14,6 +14,6 @@ angular.module('farmaciasWebApp')
       httpReq: function(url) {
          return $http.get(url);
       }
-    }
+    };
 
   }]);

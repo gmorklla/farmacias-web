@@ -8,11 +8,15 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="styles/tablets.css">
+    <link rel="stylesheet" href="styles/transiciones.css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
     <!-- endbuild -->
   </head>
   <body ng-app="farmaciasWebApp">
@@ -89,6 +93,9 @@
         <script src="scripts/services/producto.js"></script>
         <script src="scripts/controllers/promos.js"></script>
         <script src="scripts/controllers/nota.js"></script>
+        <script src="scripts/controllers/localiza.js"></script>
+        <script src="scripts/services/map.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places"></script>        
         <!-- endbuild -->
 </body>
 </html>
