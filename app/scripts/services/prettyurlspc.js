@@ -11,11 +11,12 @@ angular.module('farmaciasWebApp')
   .service('prettyUrlSpc', function () {
 	this.prettyUrl = function(source) {
 		var find = " ";
+		var find2 = "/";
 		var fuente = source;
 		var indices = [];
 		var str = "";
 		for (var i = 0; i < fuente.length; ++i) {
-			if ( fuente.substring(i, i + find.length) === find ) {
+			if ( fuente.substring(i, i + find.length) === find || fuente.substring(i, i + find2.length) === find2 ) {
 				indices.push(i+2);
 				str += ("-" );
 				str += (fuente[i+1].toUpperCase() );

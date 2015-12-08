@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('InicioControl', ['loadImg', function (loadImg) {
+  .controller('InicioCtrl', ['loadImg', function (loadImg) {
 
 	var imagenesInicio = ['banner.jpg', 'descarga_app.jpg'];	
   	loadImg.loadImgs($('.loadImg'), imagenesInicio);

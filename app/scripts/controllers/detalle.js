@@ -13,16 +13,7 @@ angular.module('farmaciasWebApp')
 	//$scope.url = "http://www.farmaciasdesimilares.com.mx/propuesta/#!" + $location.url();
 
     if(!productoSrv.getProduct()) {
-		var original = prettyUrlSpc.deconfig($stateParams.medicamentoId).toUpperCase();
-
-	    var datos = loadData.httpReq( 'data/medicamentos.json' );
-	    
-	    datos.then(function (datos) {
-	    	$scope.medActual = _.findWhere(datos.data.medicamentos, {medicamentoId: original});
-	    }, function (e) {
-	    	console.log(e);
-	    });
-
+    	console.log('Viene directo');
     } else {
     	$scope.medActual = productoSrv.getProduct();
     }

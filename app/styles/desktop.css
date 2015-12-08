@@ -106,8 +106,12 @@
 	.videos img {
 		margin-top: 2px;
 	}
+	.thumbnail {
+		margin-bottom: 0;
+	}
 	.thumbnail .caption {
 	    margin: 0 16px;
+	    padding: 0;
 	}
 	.thumbnail p {
 	    font-size: 0.8em;
@@ -157,6 +161,7 @@
 		padding-top: 0px;
 		height: 45px;
 		overflow: hidden;
+		max-width: 160px;
 	}
 
 	.proGrid p {
@@ -211,7 +216,8 @@
 		max-width: none;
 	}
 	.meds:nth-child(3n) .proGrid {
-		border-right: none;	
+		border-right: none;
+		max-width: 220px;
 	}	
 	.pop {
 		width:60px;

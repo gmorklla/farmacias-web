@@ -21,7 +21,8 @@ angular
     'ngTouch',
     'angularUtils.directives.dirPagination',
     'angularUtils.directives.uiBreadcrumbs',
-    'youtube-embed'
+    'youtube-embed',
+    'ngStorage'
   ])
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
     $locationProvider.hashPrefix('!');
@@ -35,17 +36,17 @@ angular
           'views': {
             'nav': {
           templateUrl: 'views/nav.html',
-          controller: 'NavControl',
+          controller: 'NavCtrl',
           controllerAs: 'nav'          
           },
           'home': {
           templateUrl: 'views/inicio.html',
-          controller: 'InicioControl',
+          controller: 'InicioCtrl',
           controllerAs: 'inicio'
           },
           'barra': {
           templateUrl: 'views/barra.html',
-          controller: 'BarraControl',
+          controller: 'BarraCtrl',
           controllerAs: 'barra'
           },
           'siminotas': {
@@ -67,7 +68,7 @@ angular
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
-          controller: 'NavControl',
+          controller: 'NavCtrl',
           controllerAs: 'nav'         
         },          
         'home@': {
@@ -77,7 +78,8 @@ angular
         },
         'barra@': {
           template: '',
-          controller: 'BarraControl',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
         },
         'siminotas@': {
           template: ''
@@ -95,7 +97,7 @@ angular
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
-          controller: 'NavControl',
+          controller: 'NavCtrl',
           controllerAs: 'nav'         
         },          
         'home@': {
@@ -105,7 +107,8 @@ angular
         },
         'barra@': {
           template: '',
-          controller: 'BarraControl',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
         },
         'siminotas@': {
           template: ''
@@ -123,7 +126,7 @@ angular
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
-          controller: 'NavControl',
+          controller: 'NavCtrl',
           controllerAs: 'nav'
         },            
         'home@': {
@@ -133,7 +136,8 @@ angular
         },
         'barra@': {
           template: '',
-          controller: 'BarraControl',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
         },
         'siminotas@': {
           template: ''
@@ -151,7 +155,7 @@ angular
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
-          controller: 'NavControl',
+          controller: 'NavCtrl',
           controllerAs: 'nav'
         },          
         'home@': {
@@ -161,7 +165,8 @@ angular
         },
         'barra@': {
           template: '',
-          controller: 'BarraControl',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
         },
         'siminotas@': {
           template: ''
@@ -179,7 +184,7 @@ angular
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
-          controller: 'NavControl',
+          controller: 'NavCtrl',
           controllerAs: 'nav'        
         },          
         'home@': {
@@ -187,7 +192,8 @@ angular
         },
         'barra@': {
           template: '',
-          controller: 'BarraControl',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
         },
         'siminotas@': {
           template: ''
@@ -205,7 +211,7 @@ angular
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
-          controller: 'NavControl',
+          controller: 'NavCtrl',
           controllerAs: 'nav'        
         },          
         'home@': {
@@ -213,7 +219,8 @@ angular
         },
         'barra@': {
           template: '',
-          controller: 'BarraControl',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
         },
         'siminotas@': {
           template: ''
@@ -225,9 +232,44 @@ angular
       ncyBreadcrumb: {
                 label: 'Contacto'
             }
+    })
+    .state('carrito', {
+        url: "/carrito",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'        
+        },          
+        'home@': {
+          templateUrl: 'views/carrito.html',
+          controller: 'CarritoCtrl',
+          controllerAs: 'carrito'          
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+          templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: 'Carrito de compra'
+            }
     });    
   }])
   .run(['$rootScope', '$window', 'youTubeList', function($rootScope, $window, youTubeList) {
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    var elemento = document.getElementById('loading');
+    elemento.setAttribute("style","width:" + w + "px");
+    elemento.setAttribute("style","height:" + h + "px");
 
     $rootScope.$on('$stateChangeStart', 
       function(event, toState, toParams, fromState, fromParams){
@@ -249,6 +291,11 @@ angular
         }
 
     });
+
+    $rootScope.$on('$viewContentLoaded', 
+      function(){
+        $( "#loading" ).fadeOut( "slow" );
+    });    
 
     $(window).scroll(function() {
 

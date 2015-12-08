@@ -25,6 +25,11 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <div id="loading" class="loading">
+        <img src="images/logo.png" alt="">
+        <div class='aCssSpinner'><img src="images/loader.gif" alt=""></div>
+    </div>
+
     <section class="contenidoUp">
       <header>
         <nav class="container-fluid" ui-view="nav" autoscroll="true"></nav>
@@ -73,6 +78,7 @@
     <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -95,7 +101,11 @@
         <script src="scripts/controllers/nota.js"></script>
         <script src="scripts/controllers/localiza.js"></script>
         <script src="scripts/services/map.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places"></script>        
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places"></script>
+        <script src="scripts/services/carritosrv.js"></script>
+        <script src="scripts/controllers/carrito.js"></script>
+        <script src="scripts/directives/bspopover.js"></script>
+        <script src="scripts/services/loadmedssrv.js"></script>
         <!-- endbuild -->
 </body>
 </html>

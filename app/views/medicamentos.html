@@ -4,49 +4,41 @@
 	</div>
 	<div class="col-md-12 banner hidden-xs">
 		<img src="images/nuevos_genericos.jpg" alt="">
-	</div>	
+	</div>
 	<div class="col-md-8 proFrame">
 		<div class="row filtros">
 			<div class="col-md-12">
 				<div class="col-md-12 btn-group" role="group" aria-label="...">
-					<dir-pagination-controls class="paginacion col-md-6 col-xs-12" max-size="5" boundary-links="false"></dir-pagination-controls>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'medicamentoId'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Orden Alfabético [a-z]">
+					<dir-pagination-controls on-page-change="getMeds(cuantos, newPageNumber)" class="paginacion col-md-9 col-xs-12" max-size="7" boundary-links="true"></dir-pagination-controls>
+					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'NombreProducto'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Orden Alfabético [a-z]">
 					  <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span>
 					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'medicamentoId'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Orden Alfabético [z-a]">
+					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'NombreProducto'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Orden Alfabético [z-a]">
 					  <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true"></span>
 					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'precio'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Menor a mayor precio">
+					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'PrecioVenta'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Menor a mayor precio">
 					  <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
 					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'precio'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Mayor a menor precio">
+					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'PrecioVenta'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Mayor a menor precio">
 					  <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="etiqueta = 'Nuevo'" data-toggle="tooltip" data-placement="top" title="Nuevos productos">
-					  <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
-					</button>					
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="etiqueta = 'Oferta'" data-toggle="tooltip" data-placement="top" title="Ofertas">
-					  <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="etiqueta = 'Combo'" data-toggle="tooltip" data-placement="top" title="Productos con combo">
-					  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="etiqueta = {}" data-toggle="tooltip" data-placement="top" title="Quitar filtros">
-					  <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-					</button>									
+					</button>								
 				</div>
 			</div>
 		</div>		
 		<div class="row">
 
-			<div class="col-md-4 col-sm-4 meds" dir-paginate="item in meds | orderBy:sortType:sortReverse | filter: etiqueta | itemsPerPage: 9" bs-popover>
+		    <div id="loadingMeds" class="loadingMeds col-md-4 col-sm-4">
+		        <div class='aCssSpinner2'><img src="images/loader.gif" alt=""></div>
+		    </div>			
+
+			<div class="col-md-4 col-sm-4 meds" dir-paginate="item in meds | orderBy:sortType:sortReverse | filter: etiqueta | itemsPerPage: cuantos" total-items="totalMeds" current-page="pagina"  bs-popover>
 
 		            <div class="col-md-4 col-sm-12 proGrid col-lg-height">
 
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
 								<div class="col-md-12 well hvr-shadow">									
-									<a ui-sref="medicamentos.detalle({ medicamentoId: transUrl(item.medicamentoId) })" title="{{item.medicamentoId}}" ng-click="sendProduct(item)"><p><img ng-src="images/productos/{{item.img}}.jpg" alt=""></p></a>
+									<a ui-sref="medicamentos.detalle({ medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)"><p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p></a>
 									<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item);">
 									  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Agregar a carrito
 									</button>									
@@ -54,7 +46,7 @@
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
 								<div class="col-md-12">
-									<h1>{{item.medicamentoId}}</h1>
+									<h1>{{item.NombreProducto}}</h1>
 								</div>					
 								<div class="col-md-12">
 									<p>
@@ -66,27 +58,32 @@
 									</p>
 								</div>
 								<div class="col-md-12">
-									<h2>{{item.precio | currency}}</h2>
+									<h2>{{item.PrecioVenta | currency}}</h2>
 								</div>
 							</div>
 						</div>
 
-						<div ng-show="{{item.etiqueta}}" class="etiqueta-nuevo {{item.claseEtiqueta}}">
+						<div ng-show="{{item.Oferta === 'OFERTA'}}" class="etiqueta-nuevo {{item.Oferta.toLowerCase()}}">
 							<p>
 								<span class="glyphicon" aria-hidden="true" ng-class="{
-                                                  'glyphicon-usd': item.claseEtiqueta == 'Oferta',
-                                                  'glyphicon-plus': item.claseEtiqueta == 'Combo',
-                                                  'glyphicon-flag': item.claseEtiqueta == 'Nuevo'
+                                                  'glyphicon-usd': item.Oferta == 'OFERTA',
+                                                  'glyphicon-plus': item.Oferta == 'Combo',
+                                                  'glyphicon-flag': item.Oferta == 'Nuevo'
                                                 }"></span>
 							</p>
 						</div>
 		            </div>
 
-		            <div ng-show="{{item.etiqueta}}" class="pop" rel="popover" ng-attr-data-content="{{ item.etiquetaOferta ? item.oferta : '<h5>Presentación: <span>' + item.presentacion + '</span></h5>' }}" data-original-title="{{item.claseEtiqueta}}" ng-class="{
-                                                  'popCombo': item.claseEtiqueta == 'Combo',
-                                                  'popNuevo': item.claseEtiqueta == 'Nuevo'
+		            <div ng-show="{{item.Oferta === 'OFERTA'}}" class="pop" rel="popover" ng-attr-data-content="{{'<h5>Presentación: <span>' + item.Presentacion + '</span></h5>' }}" data-original-title="{{item.Oferta}}" ng-class="{
+                                                  'popCombo': item.Oferta == 'Combo',
+                                                  'popNuevo': item.Oferta == 'Nuevo'
                                                 }"></div>            
 
+	        </div>
+	        <div class="col-md-12 col-sm-12">
+	        	<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="muestraMas();">
+	        		<span class="badge">Mostrar &nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;9</span>
+	        	</button>
 	        </div>
         </div>
 	</div>
@@ -120,5 +117,6 @@
 <script>
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip();
+	  $('[data-toggle="popover"]').popover();
 	})
 </script>

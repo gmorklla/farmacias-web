@@ -58,6 +58,24 @@ input {
 
 .loading img { margin-bottom: 20px; max-width: 80%;}
 
+.loadingMeds {
+  min-width:100%;
+  min-height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center; color:#fff; padding-top: 55%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index: 999999;
+}
+
+.aCssSpinner2 {
+  position:absolute;
+  top: 100%;
+  left: 33.5%;
+  margin-top: 2%;  
+}
+
 .container-fluid {
   padding:0;
 }
@@ -675,7 +693,7 @@ footer li:nth-child(3) {
 }
 
 #navegacion {
-  z-index: 9999;
+  z-index: 99999999;
 }
 
 .dropdown-menu {
@@ -738,6 +756,8 @@ footer li:nth-child(3) {
   border-radius: 10px;
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
   border:1px solid #EEEEEE;
+  max-width: 100%;
+  max-height: 110px;
 }
 
 .sugeridos {
@@ -835,7 +855,7 @@ footer li:nth-child(3) {
   font-family: 'Roboto', sans-serif;
 }
 
-.Oferta {
+.oferta {
   border-right:60px solid #CD2441;
 }
 
@@ -852,7 +872,7 @@ footer li:nth-child(3) {
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
 
-.Oferta p {
+.oferta p {
   color:#fff;
   position:relative;
   top:-15px;
