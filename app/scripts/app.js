@@ -507,10 +507,12 @@ angular
     $(window).scroll(function() {
 
         var navegacion = $('#navegacion'),
+            infoPromo = $('#infoPromo'),
             targetScroll = $('#contenido').position().top,
             currentScroll = $('html').scrollTop() || $('body').scrollTop();
 
         navegacion.toggleClass('fixedPos', currentScroll >= targetScroll);
+        infoPromo.toggleClass('fixedPos2', currentScroll >= targetScroll);
         if(currentScroll >= targetScroll){
         $('.navbar-default').css({
           'width':'100%',

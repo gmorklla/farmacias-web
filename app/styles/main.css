@@ -693,6 +693,12 @@ footer li:nth-child(3) {
    z-index: 9999;
 }
 
+.fixedPos2 {
+   position: fixed;
+   top: 50px;
+   z-index: 9998;
+}
+
 .carritoNav {
   width:30px !important;
 }
