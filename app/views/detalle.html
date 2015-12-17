@@ -23,22 +23,25 @@
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
 								Precio: {{medActual.PrecioVenta | currency}}
 							</div>
-							<div class="col-md-12 col-sm-5 col-xs-12 label label-info">
+							<div class="col-md-12 col-sm-5 col-xs-12 label label-success">
 								Clave: {{medActual.IdProducto}}
 							</div>
-							<div class="col-md-12 col-sm-5 col-xs-12 label label-info">
+							<div class="col-md-12 col-sm-5 col-xs-12 label label-success">
 								Presentación: {{medActual.Presentacion}}
+							</div>
+							<div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual);" ng-model="agregaAlert">
+								<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 							</div>
 							<div class="col-md-12 col-sm-6 col-xs-12 calificacion">
 								<p>
 									Calificación
-									<span class="star"><img src="images/star.png" alt=""></span>
-									<span class="star"><img src="images/star.png" alt=""></span>
-									<span class="star"><img src="images/star.png" alt=""></span>
-									<span class="star"><img src="images/star.png" alt=""></span>
-									<span class="star"><img src="images/star.png" alt=""></span>
+										<span ng-hide="{{!medActual.Calificacion}}" ng-show="{{medActual.Calificacion > 0}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.Calificacion > 1}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.Calificacion > 2}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.Calificacion > 3}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.Calificacion > 4}}" class="star"><img src="images/star.png" alt=""></span>
 								</p>
-							</div>
+							</div>														
 							<div class="col-md-12 col-sm-12 col-xs-12">
 								<div class="btn-group" role="group">
 									<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#estrellas"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
@@ -103,6 +106,42 @@
 		</div>
 
 	</div>
+
+	<div ng-if="$storage.array.length && muestraCarrito" class="row detalleF mensajesFrame" bs-popover>
+
+		<div class="col-md-12 col-xs-12 mensajes" id="carritoShow">
+			<div class="alert alert-info row">
+				<div class="col-md-12 col-xs-12">
+					<a ui-sref="carrito" hreflang="es">
+	                    <button class="btn btn-info btn-sm" type="button">
+	                      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Carrito &nbsp;<span class="badge">{{$storage.array.length}}</span>
+	                    </button>
+	                </a>	                
+					<a ng-click="ocultaCarrito()" hreflang="es">
+	                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                </a>	                
+				</div>
+				<div class="col-md-12 col-xs-12 listaProductosAgregados">
+					<div>
+						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.IdProducto.trim()}}.jpg" alt="{{producto.NombreProducto}}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row detalleF mensajesFrame">
+
+		<div class="col-md-12 col-xs-12 mensajes alertaAdd">
+			<div class="alertaProAdded" ng-messages="agregaAlert" ng-if="showAddedProduct">
+				<p class="alert alert-success">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;¡Producto agregado!
+				</p>
+			</div>
+		</div>
+
+	</div>	
 
 	<div class="modal fade" id="productoBG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="vertical-alignment-helper">

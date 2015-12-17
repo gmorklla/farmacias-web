@@ -1,3 +1,4 @@
+
 'use strict';
 
 /**
@@ -8,7 +9,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('NavCtrl', ['$scope', 'prettyUrlSpc', 'loadData', 'productoSrv', function ($scope, prettyUrlSpc, loadData, productoSrv) {
+  .controller('NavCtrl', ['$scope', '$rootScope', 'prettyUrlSpc', 'loadData', 'productoSrv', function ($scope, $rootScope, prettyUrlSpc, loadData, productoSrv) {
 
     var datos = loadData.httpReq( 'data/medicamentos.json' );
     
@@ -46,6 +47,33 @@ angular.module('farmaciasWebApp')
 
     $scope.sendProduct = function (pro) {
     	productoSrv.addProduct(pro);
-    };	
+    };
+
+    $( '#carritoNav' ).hover( function () {
+    	$rootScope.intervalo = setInterval(function(){
+    		colocaCarritoPreview();
+			$('.carritoPreviewNav').fadeIn( "slow" );
+    	}, 500);
+    }, function () {
+    	clearInterval($rootScope.intervalo);
+    	$('.carritoPreviewNav').fadeOut( "slow" );
+    });
+
+    function colocaCarritoPreview () {
+		var element = document.getElementById('carritoNav'); //replace elementId with your element's Id.
+		var rect = element.getBoundingClientRect();
+		var elementLeft,elementTop; //x and y
+		var scrollTop = document.documentElement.scrollTop?
+		                document.documentElement.scrollTop:document.body.scrollTop;
+		var scrollLeft = document.documentElement.scrollLeft?                   
+		                 document.documentElement.scrollLeft:document.body.scrollLeft;
+		elementTop = rect.top + scrollTop + 50;
+		elementLeft = rect.left + scrollLeft - 261;
+
+		$('.carritoPreviewNav').css({
+		   'top' : elementTop,
+		   'left' : elementLeft
+		});    	
+    }
 
   }]);

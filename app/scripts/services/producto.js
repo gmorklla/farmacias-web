@@ -8,19 +8,19 @@
  * Service in the farmaciasWebApp.
  */
 angular.module('farmaciasWebApp')
-  .service('productoSrv', function () {
-	var productoAct;
+  .service('productoSrv',['$rootScope', function ($rootScope) {
+	$rootScope.productoAct;
 
 	var addProduct = function(newObj) {
-		productoAct = newObj;
+		$rootScope.productoAct = newObj;
 	};
 
 	var getProduct = function(){
-		return productoAct;
+		return $rootScope.productoAct;
 	};
 
 	return {
 		addProduct: addProduct,
 		getProduct: getProduct
 	};
-  });
+  }]);

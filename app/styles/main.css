@@ -1,3 +1,4 @@
+
 html {
   position: relative;
   max-width:100%;
@@ -72,7 +73,7 @@ input {
 .aCssSpinner2 {
   position:absolute;
   top: 100%;
-  left: 33.5%;
+  left: 17%;
   margin-top: 2%;  
 }
 
@@ -692,6 +693,10 @@ footer li:nth-child(3) {
    z-index: 9999;
 }
 
+.carritoNav {
+  width:30px !important;
+}
+
 #navegacion {
   z-index: 99999999;
 }
@@ -718,14 +723,15 @@ footer li:nth-child(3) {
 
 .proGrid h1 {
   font-family: 'Roboto', sans-serif !important;
-  font-size: 1em;
+  font-size: 0.9em;
   text-align: center;
   font-weight: 400;
   color:#02405B;
-  min-height:30px;
-  margin-bottom: 0;
+  min-height:40px;
+  margin-bottom: 10px;
   margin-top: 10px;
   padding-top: 30px;
+  overflow:hidden;
 }
 
 .proGrid p {
@@ -974,11 +980,15 @@ footer li:nth-child(3) {
 }
 
 .panel-body .label-info {
-  color:#31708f !important;
 }
 
 .panel-body .label-info span {
   color:#fff !important;
+}
+
+.label-carrito {
+  text-align: center !important;
+  padding:20px 15px !important;
 }
 
 .meds {
@@ -1796,12 +1806,12 @@ footer li:nth-child(3) {
 }
 
 .mensajes {
-  width:66%;
-  position:fixed;
-  bottom:0px;
-  left:17%;
-  opacity:0.9;
-  z-index: 9999999999999;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    opacity: 0.9;
+    z-index: 2147483647;
 }
 
 .alert {
@@ -1843,6 +1853,7 @@ footer li:nth-child(3) {
 
 .carritoListaTxt {
   overflow:hidden;
+  text-align: left;
 }
 
 .carritoTotalPlus {
@@ -1852,6 +1863,28 @@ footer li:nth-child(3) {
 .listaProductosAgregados {
   margin-top: 15px;
 }
+  .contacto .col-md-6 {
+    margin:5px 0;
+  }
+
+  .contacto .col-md-6:nth-child(1) {
+    padding-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .contacto .col-md-6:nth-child(2) {
+    padding-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;    
+  }    
+
+  .cuenta {
+        margin:0;
+        padding:10px;
+        background-color: #5bc0de !important;
+        text-align: center;
+  }
 
 .productosAgregados {
   border-radius: 10px;
@@ -1859,19 +1892,20 @@ footer li:nth-child(3) {
   height:50px;
   margin-right: 5px;
   border:1px solid #5A7A91;
+  margin-bottom: 5px;
+}
+
+.alert-info, .alertaProAdded {
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .alert-info .btn-sm {
-  width:20%;
+  width:auto;
 }
 
-.mensajesCarrito {
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
-    left: 0%;
-    opacity: 0.9;
-    z-index: 9999999999999;
+.alert-info .btn-danger {
+  width:auto;
 }
 
 .rowNoMargin {

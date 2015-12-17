@@ -1,8 +1,17 @@
+
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
 	.dropdown-menu {
 		border:1px solid #ccc;
 		border-radius: 4px;
+	}
+	.carritoPreviewNav{
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    z-index: 999;
+	    max-width: 300px;
+	    display:none;
 	}
 	.rowHead {
 		margin: 20px 0 0px;
@@ -226,6 +235,19 @@
 		bottom:0;
 		right:0;
 		z-index: 9999;
+	}
+	.promoTxt {
+		position:relative;
+		top:0;
+		left:0;
+	}
+	.promoTxt p {
+		background-color: white;
+		color:#333;
+		font-size: 1em;
+	}
+	.promoTxt {
+		display:none;
 	}
 	.popover-title {
 		font-family: 'Oswald', sans-serif;
@@ -542,6 +564,23 @@
 	margin-left: 0;
 	margin-right: 0;
 }
+
+.mensajes {
+  width:100%;
+  position:fixed;
+  bottom:0;
+  left:0;
+  opacity:0.9;
+  z-index: 9999999999999;
+}
+
+.aCssSpinner2 {
+  position:absolute;
+  top: 100%;
+  left: 33.5%;
+  margin-top: 2%;  
+}
+
 }
 
 

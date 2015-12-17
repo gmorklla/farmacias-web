@@ -18,8 +18,15 @@ angular.module('farmaciasWebApp')
 
 		$rootScope.productoAgregado = item;
 
+        if($rootScope.muestraCarrito) {
+            var margen = $('#carritoShow').css('height');
+            $('.alertaAdd').css('bottom', margen);            
+        } else {
+            $('.alertaAdd').css('bottom', 0);            
+        }
+
 		var producto = $.grep($rootScope.$storage.array, function(pro) {
-			return pro.clave === item.clave;
+			return pro.IdProducto === item.IdProducto;
 		});
 
 		if(producto.length !== 0){
@@ -31,6 +38,13 @@ angular.module('farmaciasWebApp')
 			$rootScope.$storage.array.push(item);
 			$rootScope.muestraTotal();
 		}
+
+        $rootScope.showAddedProduct = true;
+
+        setTimeout(function(){ 
+            $rootScope.showAddedProduct = false;
+            $rootScope.$digest();
+        }, 1000);
 
     };
 
@@ -54,7 +68,7 @@ angular.module('farmaciasWebApp')
     $rootScope.muestraTotal = function () {
     	$rootScope.total = 0;
     	for (var i = 0; i < $rootScope.$storage.array.length; i++) {
-    		$rootScope.total += ($rootScope.$storage.array[i].precio * $rootScope.$storage.array[i].cantidad);
+    		$rootScope.total += ($rootScope.$storage.array[i].PrecioVenta * $rootScope.$storage.array[i].cantidad);
     	}
     };
 

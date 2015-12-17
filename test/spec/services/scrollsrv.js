@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: getGoogle', function () {
+describe('Service: ScrollSrv', function () {
 
   // load the service's module
   beforeEach(module('farmaciasWebApp'));
 
   // instantiate service
-  var getGoogle;
-  beforeEach(inject(function (_getGoogle_) {
-    getGoogle = _getGoogle_;
+  var ScrollSrv;
+  beforeEach(inject(function (_ScrollSrv_) {
+    ScrollSrv = _ScrollSrv_;
   }));
 
   it('should do something', function () {
-    expect(!!getGoogle).toBe(true);
+    expect(!!ScrollSrv).toBe(true);
   });
 
 });

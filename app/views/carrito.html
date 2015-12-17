@@ -1,5 +1,5 @@
 <div class="row show-grid productos">
-	<div class="col-md-12 bread hidden-xs">
+	<div class="col-md-12 bread">
 		<ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
 	</div>
 
@@ -13,14 +13,14 @@
 			<div class="row" ng-repeat="producto in $storage.array track by $index">
 				<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="col-md-12 col-xs-12">
-							<p class="well"><a ui-sref="medicamentos.detalle({ medicamentoId: transUrl(producto.medicamentoId) })"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.clave}}.jpg" alt="{{producto.medicamentoId}}" data-toggle="tooltip" data-placement="bottom" title="{{producto.medicamentoId}}"></a></p>
+							<p class="well"><a ui-sref="medicamentos.detalle({ medicamentoId: transUrl(producto.NombreProducto) })" ng-click="sendProduct(producto)"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.IdProducto.trim()}}.jpg" alt="{{producto.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{producto.NombreProducto}}"></a></p>
 						</div>
 				</div>
 				<div class="col-md-8 col-sm-8 col-xs-12">
 					<div class="col-md-12 col-xs-12 panel panel-default">
 						<div class="panel-heading carritoTitulo row">
 							<div class="col-md-11 col-xs-11">
-								{{producto.medicamentoId}}
+								{{producto.NombreProducto}}
 							</div>
 							<button type="button" class="btn btn-danger btn-xs pull-right" aria-label="Left Align" ng-click="quitaDeCarrito($index);">
 							  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
@@ -28,10 +28,10 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
-								Precio: {{producto.precio | currency}}
+								Precio: {{producto.PrecioVenta | currency}}
 							</div>
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-info">
-								Cantidad: {{producto.cantidad}}
+								<div class="pull-left">Cantidad: {{producto.cantidad}}</div>
 								<div class="btn-group pull-right" role="group" aria-label="...">
 									<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="sumaPro($index)">
 									  <span class="glyphicon glyphicon-plus carritoIcons" aria-hidden="true"></span>
@@ -58,6 +58,11 @@
 
 		<div class="col-md-4 col-xs-12 sugeridos">
 			<div ng-include="'views/carritoTotal.html'"></div>
+			<a ui-sref="carrito.detalle({ detalleId: 'compra' })">
+				<button class="btn btn-danger btn-sm btn-carrito" type="button" style="text-transform:none;">
+					<span class="hidden-xs">Finalizar compra</span>
+				</button>
+			</a>			
 		</div>
 
 		<div class="banner hidden-lg hidden-md hidden-sm visible-xs">

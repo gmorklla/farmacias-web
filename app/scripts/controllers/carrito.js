@@ -8,8 +8,12 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('CarritoCtrl',['prettyUrlSpc', 'CarritoSrv', '$scope', function (prettyUrlSpc, CarritoSrv, $scope) {
-  	$scope.transUrl = function (args) {
-  		return prettyUrlSpc.prettyUrl(args);
-  	};
-  }]);
+	.controller('CarritoCtrl', ['prettyUrlSpc', 'CarritoSrv', 'productoSrv', '$scope', function(prettyUrlSpc, CarritoSrv, productoSrv, $scope) {
+		$scope.transUrl = function(args) {
+			return prettyUrlSpc.prettyUrl(args);
+		};
+
+		$scope.sendProduct = function(pro) {
+			productoSrv.addProduct(pro);
+		};
+	}]);

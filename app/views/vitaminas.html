@@ -1,3 +1,4 @@
+
 <div class="row show-grid productos">
 	<div class="col-md-12 bread">
 		<ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
@@ -38,7 +39,7 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
 								<div class="col-md-12 well hvr-shadow">									
-									<a ui-sref="medicamentos.detalle({ medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)"><p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p></a>
+									<a ui-sref="vitaminas.detalle({ medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)"><p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p></a>
 									<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item);" ng-model="agregaAlert">
 									  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 									</button>									
@@ -47,7 +48,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
 								<div class="col-md-12">
 									<h1>{{item.NombreProducto}}</h1>
-								</div>
+								</div>					
 								<div class="col-md-12">
 									<p>
 										<span ng-show="{{item.Calificacion > 0}}" class="star"><img src="images/star.png" alt=""></span>
@@ -56,7 +57,7 @@
 										<span ng-show="{{item.Calificacion > 3}}" class="star"><img src="images/star.png" alt=""></span>
 										<span ng-show="{{item.Calificacion > 4}}" class="star"><img src="images/star.png" alt=""></span>
 									</p>
-								</div>													
+								</div>
 								<div class="col-md-12">
 									<h2>{{item.PrecioVenta | currency}}</h2>
 								</div>
@@ -74,10 +75,10 @@
 						</div>
 		            </div>
 
-		            <div ng-mouseover="getPromo(item, item.IdProducto)" ng-show="{{item.Oferta === 'OFERTA'}}" class="pop" rel="popover" ng-attr-data-content="{{'<h5>Promoción: <span>' + viewData + '</span></h5>' }}" data-original-title="{{item.Oferta}}" ng-class="{
+		            <div ng-show="{{item.Oferta === 'OFERTA'}}" class="pop" rel="popover" ng-attr-data-content="{{'<h5>Presentación: <span>' + item.Presentacion + '</span></h5>' }}" data-original-title="{{item.Oferta}}" ng-class="{
                                                   'popCombo': item.Oferta == 'Combo',
                                                   'popNuevo': item.Oferta == 'Nuevo'
-                                                }"></div>
+                                                }"></div>            
 
 	        </div>
 	        <div class="col-md-12 col-sm-12">
@@ -87,7 +88,7 @@
 	        </div>
         </div>
 	</div>
-	<div class="col-md-4 sugeridos">
+	<div class="col-md-4">
 		<div ng-include="'views/promosSide.html'"></div>
 	</div>
 
@@ -107,7 +108,7 @@
 				</div>
 				<div class="col-md-12 col-xs-12 listaProductosAgregados">
 					<div>
-						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.IdProducto.trim()}}.jpg" alt="{{producto.NombreProducto}}">
+						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.IdProducto.trim()}}.jpg" alt="{{producto.NombreProducto}}" width="110" height="110">
 					</div>
 				</div>
 			</div>

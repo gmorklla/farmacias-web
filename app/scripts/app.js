@@ -1,3 +1,4 @@
+
 'use strict';
 
 /**
@@ -27,7 +28,9 @@ angular
   .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
     $locationProvider.hashPrefix('!');
     $httpProvider.defaults.useXDomain = true;
+    $httpProvider.useApplyAsync(true);
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
     $urlRouterProvider.otherwise("/");   
 
     $stateProvider
@@ -259,9 +262,212 @@ angular
         }
           },
       ncyBreadcrumb: {
-                label: 'Carrito de compra'
+                label: 'Carrito'
             }
-    });    
+    })
+    .state('carrito.detalle', {
+        url: "/:detalleId",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'        
+        },          
+        'home@': {
+          templateUrl: 'views/carritoDetalle.html',
+          controller: 'CarritoDetalleCtrl',
+          controllerAs: 'carritoDetalle'          
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+          templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: '{{$stateParams.detalleId}}'
+            }
+    })    
+    .state('vitaminas', {
+        url: "/vitaminas",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'        
+        },          
+        'home@': {
+          templateUrl: 'views/vitaminas.html',
+          controller: 'VitaminasCtrl',
+          controllerAs: 'vitaminas'
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+          templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: 'Vitaminas y suplementos'
+            }
+    })
+    .state('vitaminas.detalle', {
+        url: "/:medicamentoId",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'         
+        },          
+        'home@': {
+          templateUrl: 'views/detalle.html',
+          controller: 'DetalleCtrl',
+          controllerAs: 'detalle'        
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+        templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: '{{$stateParams.medicamentoId}}'
+            }
+    })
+    .state('higiene', {
+        url: "/higiene",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'        
+        },          
+        'home@': {
+          templateUrl: 'views/higiene.html',
+          controller: 'HigieneCtrl',
+          controllerAs: 'higiene'
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+          templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: 'Higiene y perfumería'
+            }
+    })
+    .state('higiene.detalle', {
+        url: "/:medicamentoId",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'         
+        },          
+        'home@': {
+          templateUrl: 'views/detalle.html',
+          controller: 'DetalleCtrl',
+          controllerAs: 'detalle'        
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+        templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: '{{$stateParams.medicamentoId}}'
+            }
+    })
+    .state('curacion', {
+        url: "/curacion",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'        
+        },          
+        'home@': {
+          templateUrl: 'views/curacion.html',
+          controller: 'CuracionCtrl',
+          controllerAs: 'curacion'
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+          templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: 'Material de Curación'
+            }
+    })
+    .state('curacion.detalle', {
+        url: "/:medicamentoId",
+        'views': {
+          'nav': {
+          templateUrl: 'views/nav.html',
+          controller: 'NavCtrl',
+          controllerAs: 'nav'         
+        },          
+        'home@': {
+          templateUrl: 'views/detalle.html',
+          controller: 'DetalleCtrl',
+          controllerAs: 'detalle'        
+        },
+        'barra@': {
+          template: '',
+          controller: 'BarraCtrl',
+          controllerAs: 'barra'
+        },
+        'siminotas@': {
+          template: ''
+        },        
+        'footer': {
+        templateUrl: 'views/footer.html'
+        }
+          },
+      ncyBreadcrumb: {
+                label: '{{$stateParams.medicamentoId}}'
+            }
+    });           
   }])
   .run(['$rootScope', '$window', 'youTubeList', function($rootScope, $window, youTubeList) {
 
@@ -273,7 +479,8 @@ angular
 
     $rootScope.$on('$stateChangeStart', 
       function(event, toState, toParams, fromState, fromParams){
-
+        clearInterval($rootScope.intervalo);
+        $('.carritoPreviewNav').fadeOut( "slow" );
         $window.scrollTo(0, 0);        
 
         if(toState.name === "inicio"){
@@ -314,6 +521,6 @@ angular
         else {
         $('.navbar-default').css('borderTopLeftRadius','15px').css('borderTopRightRadius','15px');
         }
-    });    
+    });
 
   }]);

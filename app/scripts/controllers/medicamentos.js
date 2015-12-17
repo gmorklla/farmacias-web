@@ -8,15 +8,17 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('MedicamentosCtrl', ['loadData', 'LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', '$scope', '$stateParams', '$http', function (loadData, LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, $scope, $stateParams, $http) {
+  .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadPromoSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', function (LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, LoadPromoSrv, $scope, $rootScope, $stateParams, $log, $timeout) {
 	
-  	$scope.transUrl = function (args) {
-  		return prettyUrlSpc.prettyUrl(args);
-  	};
+    $rootScope.muestraCarrito = true;
 
-  	$scope.etiqueta = $stateParams.promo;
-  	$scope.sortType     = 'item.NombreProducto'; // set the default sort type
-  	$scope.sortReverse  = false;  // set the default sort order
+    $scope.transUrl = function (args) {
+      return prettyUrlSpc.prettyUrl(args);
+    };
+
+    $scope.etiqueta = $stateParams.promo;
+    $scope.sortType     = 'item.NombreProducto'; // set the default sort type
+    $scope.sortReverse  = false;  // set the default sort order
 
     //console.log(LoadMedsSrv.httpReq());
     $scope.meds = [];
@@ -40,12 +42,53 @@ angular.module('farmaciasWebApp')
     $scope.getMeds($scope.cuantos, 1);
 
     $scope.sendProduct = function (pro) {
-    	productoSrv.addProduct(pro);
+      productoSrv.addProduct(pro);
     };
 
     $scope.muestraMas = function () {
       $scope.cuantos = $scope.cuantos + 9;
       $scope.getMeds($scope.cuantos, 1);
-    }
+    };
+
+    $scope.ocultaCarrito = function () {
+      $('#carritoPreview').fadeOut( "slow", function () {
+        $rootScope.muestraCarrito = false;
+      });
+    };
+
+    $scope.getPromo = function (producto, id) {
+      console.clear();
+
+      $scope.promocion = LoadPromoSrv.httpReq(id);
+
+      $scope.promocion.then(function (datos) {
+        $scope.oferta = JSON.parse(datos.data.d);
+        if(producto.Oferta === 'OFERTA'){        
+            for (var i = 0; i < $scope.oferta[0].oferta.length; i++) {              
+                $scope.ofertaTxtF = $scope.oferta[0].oferta[i].DESCRIPCIONBASE + ' ' + $scope.oferta[0].oferta[i].PRODUCTOS + ' x ' + $scope.oferta[0].oferta[i].PRECIOOFERTASINIVA;                
+            }
+            
+            $timeout(function(){
+                $scope.viewData = $scope.ofertaTxtF;
+                $scope.$digest();//any code in here will automatically have an apply run afterwards
+            });
+        } else if(producto.Oferta === 'COMBO'){
+            var combo = '';
+            for (var j = 0; j < $scope.oferta[0].oferta.length; j++) {
+                if(j === 0){
+                    combo += $scope.oferta[0].oferta[j].DESCRIPCIONBASE + ' + ';
+                } else {
+                    combo += $scope.oferta[0].oferta[j].DESCRIPCIONBASE + ' x ';
+                    combo += $scope.oferta[0].oferta[j].PREVTAOFERTACONIVA;
+                }
+            }
+            $log.log(combo);
+            $scope.viewData = combo;
+        }
+      }, function (e) {
+        console.log(e);
+      });
+
+    };
 
   }]);

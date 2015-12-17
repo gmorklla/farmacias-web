@@ -30,6 +30,10 @@
         <div class='aCssSpinner'><img src="images/loader.gif" alt=""></div>
     </div>
 
+    <div class="col-md-4 col-xs-12 sugeridos carritoPreviewNav">
+      <div ng-include="'views/carritoTotal.html'"></div>
+    </div>    
+
     <section class="contenidoUp">
       <header>
         <nav class="container-fluid" ui-view="nav" autoscroll="true"></nav>
@@ -106,6 +110,14 @@
         <script src="scripts/controllers/carrito.js"></script>
         <script src="scripts/directives/bspopover.js"></script>
         <script src="scripts/services/loadmedssrv.js"></script>
+        <script src="scripts/controllers/vitaminas.js"></script>
+        <script src="scripts/services/loadvitssrv.js"></script>
+        <script src="scripts/controllers/higiene.js"></script>
+        <script src="scripts/services/loadhigienesrv.js"></script>
+        <script src="scripts/controllers/curacion.js"></script>
+        <script src="scripts/services/loadcurasrv.js"></script>
+        <script src="scripts/controllers/carritodetalle.js"></script>
+        <script src="scripts/services/loadpromo.js"></script>
         <!-- endbuild -->
 </body>
 </html>

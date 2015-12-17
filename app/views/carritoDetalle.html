@@ -1,0 +1,83 @@
+<div class="row show-grid productos">
+  <div class="col-md-12 bread">
+    <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+  </div>
+
+  <div class="col-md-12 banner hidden-xs">
+    <img src="images/nuevos_genericos.jpg" alt="">
+  </div>
+
+  <div class="row detalleF">
+
+    <div class="col-md-8 col-xs-12 detalle">
+      <div class="row">
+        <form name="contactForm" class="contacto" method="post" novalidate>
+
+          <div class="col-md-6 col-xs-6">
+              <h1 class="popDisplayTitle cuenta">Iniciar sesión</h1>
+          </div> 
+          <div class="col-md-6 col-xs-6">
+              <h1 class="popDisplayTitle cuenta">Crear cuenta</h1>
+          </div>                   
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group" ng-class="{ 
+                                                'has-error': contactForm.email.$touched && contactForm.email.$invalid,
+                                                'has-success': contactForm.email.$touched && !contactForm.email.$invalid
+                                              }">
+              <label class="control-label requiredField" for="email">
+               Email
+               <span class="asteriskField">
+                *
+               </span>
+              </label>
+              <input class="form-control" id="email" name="email" type="email" placeholder="Email"
+                ng-model="email"
+                ng-minlength="5"
+                ng-maxlength="20"
+                required
+              />
+              <span ng-show="contactForm.email.$touched && !contactForm.email.$invalid" class="glyphicon glyphicon-ok form-control-feedback feedMail" aria-hidden="true"></span>
+              <span ng-show="contactForm.email.$touched && contactForm.email.$invalid" class="glyphicon glyphicon-remove form-control-feedback feedMail" aria-hidden="true"></span>              
+            </div>
+          </div> 
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+             <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': contactForm.name.$touched && contactForm.name.$invalid,
+                                                  'has-success': contactForm.name.$touched && !contactForm.name.$invalid
+                                                }">
+              <label class="control-label requiredField" for="name">
+               Contraseña
+               <span class="asteriskField">
+                *
+               </span>
+              </label>
+              <input class="form-control" id="name" name="name" type="text" aria-describedby="inputSuccess5Status" placeholder="Nombre"
+                ng-model="username" 
+                ng-minlength="3" 
+                ng-maxlength="15"
+                required
+              />
+              <span ng-show="contactForm.name.$touched && !contactForm.name.$invalid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+              <span ng-show="contactForm.name.$touched && contactForm.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+             </div>
+          </div>      
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+              <p><button class="btn btn-primary form-control" name="submit" type="submit" ng-disabled="contactForm.$invalid">
+                  Enviar
+              </button></p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-xs-12 sugeridos">
+      <div ng-include="'views/carritoTotal.html'"></div>     
+    </div>
+
+  </div>
+
+</div>
