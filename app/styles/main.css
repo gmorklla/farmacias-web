@@ -1033,7 +1033,7 @@ footer li:nth-child(3) {
   border:1px solid #ddd;
 }
 .combo {
-  background-color: #E28500;
+  border-right: 60px solid #E28500;
 }
 .nuevo {
   background-color: #00527F;

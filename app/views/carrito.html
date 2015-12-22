@@ -13,14 +13,14 @@
 			<div class="row" ng-repeat="producto in $storage.array track by $index">
 				<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="col-md-12 col-xs-12">
-							<p class="well"><a ui-sref="medicamentos.detalle({ medicamentoId: transUrl(producto.NombreProducto) })" ng-click="sendProduct(producto)"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.IdProducto.trim()}}.jpg" alt="{{producto.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{producto.NombreProducto}}"></a></p>
+							<p class="well"><a ui-sref="medicamentos.detalle({ idProducto:(producto.id.trim()), medicamentoId: transUrl(producto.nombre) })" ng-click="sendProduct(producto)"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg" alt="{{producto.nombre}}" data-toggle="tooltip" data-placement="bottom" title="{{producto.nombre}}"></a></p>
 						</div>
 				</div>
 				<div class="col-md-8 col-sm-8 col-xs-12">
 					<div class="col-md-12 col-xs-12 panel panel-default">
 						<div class="panel-heading carritoTitulo row">
 							<div class="col-md-11 col-xs-11">
-								{{producto.NombreProducto}}
+								{{producto.nombre}}
 							</div>
 							<button type="button" class="btn btn-danger btn-xs pull-right" aria-label="Left Align" ng-click="quitaDeCarrito($index);">
 							  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
@@ -28,7 +28,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
-								Precio: {{producto.PrecioVenta | currency}}
+								Precio: {{producto.precio | currency}}
 							</div>
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-info">
 								<div class="pull-left">Cantidad: {{producto.cantidad}}</div>

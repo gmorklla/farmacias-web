@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('HigieneCtrl', ['LoadHigieneSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', '$scope', '$rootScope', '$stateParams', function (LoadHigieneSrv, prettyUrlSpc, productoSrv, CarritoSrv, $scope, $rootScope, $stateParams) {
+  .controller('HigieneCtrl', ['LoadHigieneSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadPromoSrv', 'PromoOrComboSrv', '$scope', '$rootScope', '$stateParams', '$log', function (LoadHigieneSrv, prettyUrlSpc, productoSrv, CarritoSrv, LoadPromoSrv, PromoOrComboSrv, $scope, $rootScope, $stateParams, $log) {
 
     $rootScope.muestraCarrito = true;
 
@@ -55,5 +55,47 @@ angular.module('farmaciasWebApp')
         $rootScope.muestraCarrito = false;
       });
     }
+
+    $scope.getPromo = function (id) {
+      console.clear();
+
+      var datos = LoadPromoSrv.httpReq(id);
+
+      datos.then(function (info) {
+        var promoCombo = PromoOrComboSrv.getPromoCombo(info);
+        $rootScope.ofertas = promoCombo.ofertas;
+
+        $log.info($rootScope.ofertas);
+
+        colocaPromoView();
+        $('.promoView').fadeIn( "slow" );
+        
+      }, function (e) {
+        $log.error(e);
+      });
+
+    };
+
+    $scope.hidePromo = function () {
+      $rootScope.viewData = '';
+      $('.promoView').fadeOut( "slow" );
+    };
+
+    function colocaPromoView () {
+      var element = document.getElementById('carritoNav'); //replace elementId with your element's Id.
+      var rect = element.getBoundingClientRect();
+      var elementLeft,elementTop; //x and y
+      var scrollTop = document.documentElement.scrollTop?
+                      document.documentElement.scrollTop:document.body.scrollTop;
+      var scrollLeft = document.documentElement.scrollLeft?                   
+                       document.documentElement.scrollLeft:document.body.scrollLeft;
+      elementTop = rect.top + scrollTop + 50;
+      elementLeft = rect.left + scrollLeft - 261;
+
+      $('.promoView').css({
+         'top' : elementTop,
+         'left' : elementLeft
+      });
+    }    
 
   }]);

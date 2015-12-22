@@ -8,7 +8,7 @@
  * Service in the farmaciasWebApp.
  */
 angular.module('farmaciasWebApp')
-	.service('LoadPromoSrv', ['$http', '$log', function($http, $log) {
+	.service('LoadMedByIdSrv', ['$http', function($http) {
 		return {
 			httpReq: function(id) {
 				return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductosPorID', "{'id':'" + id + "'}");

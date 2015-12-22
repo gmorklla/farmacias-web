@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -32,7 +33,11 @@
 
     <div class="col-md-4 col-xs-12 sugeridos carritoPreviewNav">
       <div ng-include="'views/carritoTotal.html'"></div>
-    </div>    
+    </div>
+
+    <div class="col-md-4 col-xs-12 sugeridos promoView">
+      <div ng-include="'views/promocion.html'"></div>
+    </div>        
 
     <section class="contenidoUp">
       <header>
@@ -118,6 +123,8 @@
         <script src="scripts/services/loadcurasrv.js"></script>
         <script src="scripts/controllers/carritodetalle.js"></script>
         <script src="scripts/services/loadpromo.js"></script>
+        <script src="scripts/services/promoorcombo.js"></script>
+        <script src="scripts/services/loadmedbyid.js"></script>
         <!-- endbuild -->
 </body>
 </html>

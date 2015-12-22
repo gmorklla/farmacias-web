@@ -10,15 +10,15 @@
 					<div class="col-md-12 col-sm-12 col-xs-12 col-centered carritoLista">
 		            	<button class="btn btn-info btn-sm" type="button">
 		            		<div class="row">
-		              			<span class="col-md-10 col-sm-10 col-xs-10 pull-left carritoListaTxt">{{producto.NombreProducto}}</span>
+		              			<span class="col-md-10 col-sm-10 col-xs-10 pull-left carritoListaTxt">{{producto.nombre}}</span>
 		              			<span class="badge pull-right">{{producto.cantidad}}</span>
 		              		</div>
 		            	</button>
 		            </div>
 		            <div class="col-md-12 col-sm-12 col-xs-12 col-centered">		
-						<p class="col-md-5 col-sm-5 col-xs-5">{{producto.PrecioVenta | currency}} x {{producto.cantidad}}</p>
+						<p class="col-md-5 col-sm-5 col-xs-5">{{producto.precio | currency}} x {{producto.cantidad}}</p>
 						<p class="col-md-2 col-sm-2 col-xs-1"> | </p>
-						<p class="col-md-5 col-sm-5 col-xs-5">{{(producto.PrecioVenta)*(producto.cantidad) | currency}}</p>
+						<p class="col-md-5 col-sm-5 col-xs-5">{{(producto.precio)*(producto.cantidad) | currency}}</p>
 					</div>
 				</div>
 			</div>

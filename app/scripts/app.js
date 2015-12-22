@@ -96,7 +96,7 @@ angular
         }
     })    
     .state('medicamentos.detalle', {
-        url: "/:medicamentoId",
+        url: "/:idProducto/:medicamentoId",
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
@@ -324,7 +324,7 @@ angular
             }
     })
     .state('vitaminas.detalle', {
-        url: "/:medicamentoId",
+        url: "/:idProducto/:medicamentoId",
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
@@ -382,7 +382,7 @@ angular
             }
     })
     .state('higiene.detalle', {
-        url: "/:medicamentoId",
+        url: "/:idProducto/:medicamentoId",
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',
@@ -440,7 +440,7 @@ angular
             }
     })
     .state('curacion.detalle', {
-        url: "/:medicamentoId",
+        url: "/:idProducto/:medicamentoId",
         'views': {
           'nav': {
           templateUrl: 'views/nav.html',

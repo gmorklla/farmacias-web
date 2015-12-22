@@ -13,23 +13,22 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-4 col-xs-12">
 						<div class="col-md-12 col-xs-12">
-							<p class="well"><a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto}}"></a></p>
+							<p class="well"><a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim() || medActual.ID.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}"></a></p>
 						</div>
 				</div>
 				<div class="col-md-6 col-sm-8 col-xs-12">
 					<div class="col-md-12 col-xs-12 panel panel-default">
-						<div class="panel-heading">{{medActual.NombreProducto}}</div>
+						<div class="panel-heading">{{medActual.NombreProducto || medActual.DESCRIPCION}}</div>
 						<div class="panel-body">
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
-								Precio: {{medActual.PrecioVenta | currency}}
+								Precio: {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}
 							</div>
-							<div class="col-md-12 col-sm-5 col-xs-12 label label-success">
-								Clave: {{medActual.IdProducto}}
-							</div>
-							<div class="col-md-12 col-sm-5 col-xs-12 label label-success">
-								Presentación: {{medActual.Presentacion}}
-							</div>
-							<div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual);" ng-model="agregaAlert">
+							<div class="col-md-12 col-sm-5 col-xs-12 label label-default">
+								Clave: {{medActual.IdProducto || medActual.ID.trim()}} <hr><br>
+								Presentación: {{medActual.Presentacion || medActual.PRESENTACION}} <hr><br>
+								Concentración: {{medActual.CONCENTRACION}}
+							</div>						
+							<div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual.ID.trim(), medActual.PRECIO_VENTA, medActual.DESCRIPCION);" ng-model="agregaAlert">
 								<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 							</div>
 							<div class="col-md-12 col-sm-6 col-xs-12 calificacion">
@@ -98,7 +97,8 @@
 		</div>
 
 		<div class="col-md-4 col-xs-12 sugeridos">
-			<div ng-include="'views/oferta.html'"></div>
+			<div ng-if="tipoDeOferta !== ''" ng-include="'views/oferta.html'"></div>
+			<div ng-if="tipoDeOferta == ''"  ng-include="'views/promosSide.html'"></div>
 		</div>
 
 		<div class="banner hidden-lg hidden-md hidden-sm visible-xs">
@@ -123,7 +123,7 @@
 				</div>
 				<div class="col-md-12 col-xs-12 listaProductosAgregados">
 					<div>
-						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.IdProducto.trim()}}.jpg" alt="{{producto.NombreProducto}}">
+						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg" >
 					</div>
 				</div>
 			</div>
@@ -149,17 +149,17 @@
 	            <div class="modal-content">
 	              <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title" id="exampleModalLabel">{{medActual.NombreProducto}}</h4>
+	                <h4 class="modal-title" id="exampleModalLabel">{{medActual.NombreProducto || medActual.DESCRIPCION}}</h4>
 	              </div>
 	              <div class="modal-body">
-					<p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.IdProducto.trim()}}.jpg" title="{{medActual.NombreProducto}}"></p>
+					<p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.IdProducto.trim() || medActual.ID.trim()}}.jpg" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}"></p>
 	              </div>
 	              <div class="modal-footer">
 					<div class="col-md-4 col-sm-5 col-xs-12 label label-warning">
-								Precio: {{medActual.PrecioVenta | currency}}
+								Precio: {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}
 					</div>
 					<div class="col-md-4 col-sm-5 col-xs-12 label label-info">
-								Presentación: {{medActual.Presentacion}}
+								Presentación: {{medActual.Presentacion || medActual.PRESENTACION}}
 					</div>	              	
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 	              </div>

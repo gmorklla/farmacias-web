@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadPromoSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', function (LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, LoadPromoSrv, $scope, $rootScope, $stateParams, $log, $timeout) {
+  .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadPromoSrv', 'PromoOrComboSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', function (LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, LoadPromoSrv, PromoOrComboSrv, $scope, $rootScope, $stateParams, $log, $timeout) {
 	
     $rootScope.muestraCarrito = true;
 
@@ -56,39 +56,46 @@ angular.module('farmaciasWebApp')
       });
     };
 
-    $scope.getPromo = function (producto, id) {
+    $scope.getPromo = function (id) {
       console.clear();
 
-      $scope.promocion = LoadPromoSrv.httpReq(id);
+      var datos = LoadPromoSrv.httpReq(id);
 
-      $scope.promocion.then(function (datos) {
-        $scope.oferta = JSON.parse(datos.data.d);
-        if(producto.Oferta === 'OFERTA'){        
-            for (var i = 0; i < $scope.oferta[0].oferta.length; i++) {              
-                $scope.ofertaTxtF = $scope.oferta[0].oferta[i].DESCRIPCIONBASE + ' ' + $scope.oferta[0].oferta[i].PRODUCTOS + ' x ' + $scope.oferta[0].oferta[i].PRECIOOFERTASINIVA;                
-            }
-            
-            $timeout(function(){
-                $scope.viewData = $scope.ofertaTxtF;
-                $scope.$digest();//any code in here will automatically have an apply run afterwards
-            });
-        } else if(producto.Oferta === 'COMBO'){
-            var combo = '';
-            for (var j = 0; j < $scope.oferta[0].oferta.length; j++) {
-                if(j === 0){
-                    combo += $scope.oferta[0].oferta[j].DESCRIPCIONBASE + ' + ';
-                } else {
-                    combo += $scope.oferta[0].oferta[j].DESCRIPCIONBASE + ' x ';
-                    combo += $scope.oferta[0].oferta[j].PREVTAOFERTACONIVA;
-                }
-            }
-            $log.log(combo);
-            $scope.viewData = combo;
-        }
+      datos.then(function (info) {
+        var promoCombo = PromoOrComboSrv.getPromoCombo(info);
+        $rootScope.ofertas = promoCombo.ofertas;
+
+        $log.info($rootScope.ofertas);
+
+        colocaPromoView();
+        $('.promoView').fadeIn( "slow" );
+        
       }, function (e) {
-        console.log(e);
+        $log.error(e);
       });
 
     };
+
+    $scope.hidePromo = function () {
+      $rootScope.viewData = '';
+      $('.promoView').fadeOut( "slow" );
+    };
+
+    function colocaPromoView () {
+      var element = document.getElementById('carritoNav'); //replace elementId with your element's Id.
+      var rect = element.getBoundingClientRect();
+      var elementLeft,elementTop; //x and y
+      var scrollTop = document.documentElement.scrollTop?
+                      document.documentElement.scrollTop:document.body.scrollTop;
+      var scrollLeft = document.documentElement.scrollLeft?                   
+                       document.documentElement.scrollLeft:document.body.scrollLeft;
+      elementTop = rect.top + scrollTop + 50;
+      elementLeft = rect.left + scrollLeft - 261;
+
+      $('.promoView').css({
+         'top' : elementTop,
+         'left' : elementLeft
+      });
+    }
 
   }]);

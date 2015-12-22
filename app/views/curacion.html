@@ -38,8 +38,8 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
 								<div class="col-md-12 well hvr-shadow">									
-									<a ui-sref="curacion.detalle({ medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)"><p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p></a>
-									<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item);" ng-model="agregaAlert">
+									<a ui-sref="curacion.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)"><p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p></a>
+									<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim(), item.PrecioVenta, item.NombreProducto);" ng-model="agregaAlert">
 									  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 									</button>									
 								</div>								
@@ -63,18 +63,18 @@
 							</div>
 						</div>
 
-						<div ng-show="{{item.Oferta === 'OFERTA'}}" class="etiqueta-nuevo {{item.Oferta.toLowerCase()}}">
+						<div ng-show="{{item.Oferta === 'OFERTA' || item.Oferta === 'COMBO'}}" class="etiqueta-nuevo {{item.Oferta.toLowerCase()}}">
 							<p>
 								<span class="glyphicon" aria-hidden="true" ng-class="{
                                                   'glyphicon-usd': item.Oferta == 'OFERTA',
-                                                  'glyphicon-plus': item.Oferta == 'Combo',
+                                                  'glyphicon-plus': item.Oferta == 'COMBO',
                                                   'glyphicon-flag': item.Oferta == 'Nuevo'
                                                 }"></span>
 							</p>
 						</div>
 		            </div>
 
-		            <div ng-show="{{item.Oferta === 'OFERTA'}}" class="pop" rel="popover" ng-attr-data-content="{{'<h5>Presentación: <span>' + item.Presentacion + '</span></h5>' }}" data-original-title="{{item.Oferta}}" ng-class="{
+		            <div ng-mouseover="getPromo(item.IdProducto)" ng-mouseleave="hidePromo()" ng-show="{{item.Oferta === 'OFERTA' || item.Oferta === 'COMBO'}}" class="pop" ng-class="{
                                                   'popCombo': item.Oferta == 'Combo',
                                                   'popNuevo': item.Oferta == 'Nuevo'
                                                 }"></div>            
@@ -107,7 +107,7 @@
 				</div>
 				<div class="col-md-12 col-xs-12 listaProductosAgregados">
 					<div>
-						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.IdProducto.trim()}}.jpg" alt="{{producto.NombreProducto}}" width="110" height="110">
+						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg"  width="110" height="110">
 					</div>
 				</div>
 			</div>

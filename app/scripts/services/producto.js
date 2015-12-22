@@ -9,9 +9,10 @@
  */
 angular.module('farmaciasWebApp')
   .service('productoSrv',['$rootScope', function ($rootScope) {
-	$rootScope.productoAct;
+	$rootScope.productoAct = {};
 
 	var addProduct = function(newObj) {
+		console.log(newObj);
 		$rootScope.productoAct = newObj;
 	};
 
