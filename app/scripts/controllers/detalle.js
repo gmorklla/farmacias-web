@@ -10,6 +10,10 @@
 angular.module('farmaciasWebApp')
   .controller('DetalleCtrl', ['loadData', '_', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadMedByIdSrv', 'LoadPromoSrv', 'PromoOrComboSrv', '$stateParams', '$scope', '$rootScope', '$log', function(loadData, _, prettyUrlSpc, productoSrv, CarritoSrv, LoadMedByIdSrv, LoadPromoSrv, PromoOrComboSrv, $stateParams, $scope, $rootScope, $log) {
 
+    $scope.transUrl = function (args) {
+      return prettyUrlSpc.prettyUrl(args);
+    };
+
     $rootScope.tipoDeOferta = '';
     $rootScope.ofertas = [];
 

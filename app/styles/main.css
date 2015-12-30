@@ -1294,6 +1294,7 @@ footer li:nth-child(3) {
 
 .mapaF {
   padding: 0;
+  opacity:0;
 }
 
 .mapControles {
@@ -1301,10 +1302,10 @@ footer li:nth-child(3) {
   bottom:0 !important;
   z-index: 9999999 !important;
   padding: 8px 15px;
-    background-color: rgba(255,255,255,0.8);
-    border-radius: 4px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.6em;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6em;
 }
 
   .controls {
@@ -1377,8 +1378,6 @@ footer li:nth-child(3) {
   }
 
   .localizaInput {
-        margin-left:7% !important;
-        width:85% !important;
         float:left;
   }
 
@@ -1424,7 +1423,8 @@ footer li:nth-child(3) {
   }
 
   .localizaM {
-        padding:0;
+    padding:0;
+    overflow:hidden;
   }
 
   .detalle .nota .col-xs-12 {
@@ -1945,6 +1945,109 @@ footer li:nth-child(3) {
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
     background-color: #337ab7;
+}
+
+.ofertaViewPanel .label {
+  font-size: 1.2em !important;
+}
+
+.sustancia {
+  font-size: 0.8em;
+  white-space: normal;
+  line-height: 1.2em;
+}
+
+#right-panel {
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#right-panel select, #right-panel input {
+  font-size: 15px;
+}
+
+#right-panel select {
+  width: 100%;
+}
+
+#right-panel i {
+  font-size: 12px;
+}
+
+#right-panel {
+  min-height: 500px;
+  height: 100%;
+  float: right;
+  width: 390px;
+  overflow: auto;
+  background-color: aliceblue;
+  margin-left: 5px;
+  padding: 0 5px;
+  border-radius: 10px;
+  border: 5px solid white;
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  display:none;
+}
+
+#mapLoader {
+  width: 100%;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  position: relative;
+  top: -510px;
+  opacity: 0.95;
+}
+
+#mapLoader img {
+  margin-left: 37%;
+  margin-top: 23%;
+}
+
+.adp-text {
+  padding: 0 5px;
+}
+
+.adp-placemark {
+  background: #fff !important;
+  border:none !important;
+  border-radius: 10px;
+}
+
+.instruccionesLabel {
+  font-weight: bold;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6em;
+  text-align: center
+}
+
+.adp, .adp table {
+    font-family: 'Oswald', sans-serif !important;
+    font-weight: 400 !important;
+    color: darkslategrey !important;
+}
+
+.pt-page-moveFromTopFade {
+  -webkit-animation: moveFromTopFade 1s ease both;
+  animation: moveFromTopFade 1s ease both;
+}
+
+@-webkit-keyframes moveFromTopFade {
+  from { opacity: 0.3; -webkit-transform: translateY(100%); }
+}
+@keyframes moveFromTopFade {
+  from { opacity: 0.3; -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
+
+.phone-enter {
+  opacity:0;
+  -webkit-transition-property: all;
+  -webkit-transition-timing-function: ease-out-cubic;
+  -webkit-transition-duration: 400ms;
+}
+.phone-enter.phone-enter-active {
+  opacity: 1;
 }
 
 @media (max-width: 767px) {

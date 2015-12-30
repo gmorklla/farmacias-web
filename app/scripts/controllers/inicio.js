@@ -10,7 +10,7 @@
 angular.module('farmaciasWebApp')
   .controller('InicioCtrl', ['loadImg', function (loadImg) {
 
-	var imagenesInicio = ['banner.jpg', 'descarga_app.jpg'];	
+	var imagenesInicio = ['banner.jpg', 'banner-simi-aventuras.jpg'];	
   	loadImg.loadImgs($('.loadImg'), imagenesInicio);
 
   	var imgMain = ['principal_1.jpg', 'principal_3.jpg'];

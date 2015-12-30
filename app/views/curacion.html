@@ -39,7 +39,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
 								<div class="col-md-12 well hvr-shadow">									
 									<a ui-sref="curacion.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)"><p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p></a>
-									<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim(), item.PrecioVenta, item.NombreProducto);" ng-model="agregaAlert">
+									<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
 									  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 									</button>									
 								</div>								

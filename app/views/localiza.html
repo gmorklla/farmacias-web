@@ -2,24 +2,30 @@
 	<div class="col-md-12 bread hidden-xs">
 		<ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
 	</div>
-	<div class="col-md-12 col-sm-12 col-xs-12 mapaF">
+	<div id="mapaFinal" class="col-md-12 col-sm-12 col-xs-12 mapaF">
 
 	    <div class="alert alert-danger text-center" role="alert" ng-show="apiError">
 	        <b>API Error : </b>
 	        <span>{{ apiStatus }}</span>
 	    </div>
 
+		<div id="right-panel"><div class="instruccionesLabel">INSTRUCCIONES</div></div>
 	    <div id="map"></div>
 	    <input id="searchId" name="place" placeholder="Busca tu unidad" type="text" class="controls col-xs-12" />
+
 
 		<div class="mapControles" id="opcionesMapa">
 
 			<form class="form-inline row">
-				<div class="form-group col-md-5 col-sm-5 col-xs-12 hidden-xs">
-					<label class="col-md-7 col-sm-8 col-xs-8 uni" for="inputAmount">UNIDADES MOSTRADAS</label>
-					<input type="number" class="form-control localizaInput col-md-4 col-sm-4 col-xs-4" min="5" max="40" step="5" name="numUnidades" ng-model="inputUnidades" id="inputAmount">
+				<div class="form-group col-md-12 col-sm-12 col-xs-12 hidden-xs">
+					<label class="uni" for="inputAmount">UNIDADES MOSTRADAS</label>
+					<input type="number" class="form-control localizaInput" min="5" max="40" step="5" name="numUnidades" ng-model="inputUnidades" id="inputAmount">
+					<select id="mode" ng-model="selectedMode" ng-change="ruta(puntoDeInteres)">
+					  <option value="DRIVING">Manejando</option>
+					  <option value="WALKING">Caminando</option>
+					  <option value="TRANSIT">En transporte público</option>
+					</select>
 				</div>
-				<input type="range" class="form-control localizaInput col-xs-4 visible-xs" min="5" max="40" step="5" value="5" ng-model="inputUnidades">
 			</form>
 
 		</div>

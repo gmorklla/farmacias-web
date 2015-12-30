@@ -8,20 +8,20 @@
  * Service in the farmaciasWebApp.
  */
 angular.module('farmaciasWebApp')
-    .service('CarritoSrv', ['$rootScope', '$localStorage', function($rootScope, $localStorage) {
+    .service('CarritoSrv', ['$rootScope', '$localStorage', '$log', 'LoadMedByIdSrv', function($rootScope, $localStorage, $log, LoadMedByIdSrv) {
 
         $rootScope.$storage = $localStorage.$default({
             array: []
         });
 
-        $rootScope.guardaEnCarrito = function(id, precio, nombre) {
+        $rootScope.guardaEnCarrito = function(id) {
+
+            console.clear();
 
             $rootScope.productoAgregado = id;
 
             var productoAdd = {
-                id: id,
-                precio: precio,
-                nombre: nombre
+                id: id
             };
 
             if ($rootScope.muestraCarrito) {
@@ -40,9 +40,28 @@ angular.module('farmaciasWebApp')
                 $rootScope.$storage.array[indice].cantidad += 1;
                 $rootScope.muestraTotal();
             } else {
-                productoAdd.cantidad = 1;
-                $rootScope.$storage.array.push(productoAdd);
-                $rootScope.muestraTotal();
+
+                var medDetalle = LoadMedByIdSrv.httpReq(productoAdd.id.trim());
+                medDetalle.then(function (info) {
+                    var medWannaBe = JSON.parse(info.data.d)[0];
+
+                    if(medWannaBe.oferta.length >= 1) {
+                        productoAdd.promocion = medWannaBe.oferta[0].TIPOPROMOCION;
+                    }
+
+                    $log.info(productoAdd.promocion);
+
+                    productoAdd.cantidad = 1;
+                    productoAdd.nombre = medWannaBe.DESCRIPCION;  
+                    productoAdd.precio = medWannaBe.PRECIO_VENTA;
+
+                    $rootScope.$storage.array.push(productoAdd);
+                    $rootScope.muestraTotal();
+
+                }, function (e) {
+                  $log.error(e);
+                });
+
             }
 
             $rootScope.showAddedProduct = true;
@@ -52,6 +71,11 @@ angular.module('farmaciasWebApp')
                 $rootScope.$digest();
             }, 1000);
 
+        };
+
+        $rootScope.guardarCombo = function(id1, id2) {
+            $rootScope.guardaEnCarrito(id1);
+            $rootScope.guardaEnCarrito(id2);
         };
 
         $rootScope.quitaDeCarrito = function(item) {

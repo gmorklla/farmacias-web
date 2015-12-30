@@ -15,10 +15,13 @@
 		              		</div>
 		            	</button>
 		            </div>
-		            <div class="col-md-12 col-sm-12 col-xs-12 col-centered">		
+		            <div class="col-md-12 col-sm-12 col-xs-12 col-centered">
 						<p class="col-md-5 col-sm-5 col-xs-5">{{producto.precio | currency}} x {{producto.cantidad}}</p>
 						<p class="col-md-2 col-sm-2 col-xs-1"> | </p>
 						<p class="col-md-5 col-sm-5 col-xs-5">{{(producto.precio)*(producto.cantidad) | currency}}</p>
+					</div>
+					<div ng-if="producto.promocion" ng-init="getPromo(producto.id)" class="col-md-12 col-sm-12 col-xs-12 col-centered">
+						<p>{{producto.promocion}}</p>
 					</div>
 				</div>
 			</div>

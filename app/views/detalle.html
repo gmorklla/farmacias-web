@@ -18,7 +18,7 @@
 				</div>
 				<div class="col-md-6 col-sm-8 col-xs-12">
 					<div class="col-md-12 col-xs-12 panel panel-default">
-						<div class="panel-heading">{{medActual.NombreProducto || medActual.DESCRIPCION}}</div>
+						<div class="panel-heading">{{medActual.NombreProducto || medActual.SUSTANCIA}}</div>
 						<div class="panel-body">
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
 								Precio: {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}
@@ -26,19 +26,19 @@
 							<div class="col-md-12 col-sm-5 col-xs-12 label label-default">
 								Clave: {{medActual.IdProducto || medActual.ID.trim()}} <hr><br>
 								Presentación: {{medActual.Presentacion || medActual.PRESENTACION}} <hr><br>
-								Concentración: {{medActual.CONCENTRACION}}
-							</div>						
-							<div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual.ID.trim(), medActual.PRECIO_VENTA, medActual.DESCRIPCION);" ng-model="agregaAlert">
+								<span ng-if="medActual.CONCENTRACION">Concentración: {{medActual.CONCENTRACION}}</span>
+							</div>													
+							<div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual.ID.trim());" ng-model="agregaAlert">
 								<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 							</div>
 							<div class="col-md-12 col-sm-6 col-xs-12 calificacion">
 								<p>
 									Calificación
-										<span ng-hide="{{!medActual.Calificacion}}" ng-show="{{medActual.Calificacion > 0}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{medActual.Calificacion > 1}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{medActual.Calificacion > 2}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{medActual.Calificacion > 3}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{medActual.Calificacion > 4}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-hide="{{!medActual.VOTACION}}" ng-show="{{medActual.VOTACION > 0}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.VOTACION > 1}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.VOTACION > 2}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.VOTACION > 3}}" class="star"><img src="images/star.png" alt=""></span>
+										<span ng-show="{{medActual.VOTACION > 4}}" class="star"><img src="images/star.png" alt=""></span>
 								</p>
 							</div>														
 							<div class="col-md-12 col-sm-12 col-xs-12">
