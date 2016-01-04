@@ -371,6 +371,7 @@
 	  border-radius: 10px;
 	  border:5px solid #fff;
 	  height: 500px;
+	  width:auto;
 	}
 
 	.mapControles .form-group {
@@ -628,6 +629,38 @@
 		border-radius: 0;
 		box-shadow: none;
 	}
+
+	#right-panel {
+	  font-family: 'Roboto','sans-serif';
+	  line-height: 30px;
+	  padding-left: 10px;
+	}
+
+	#right-panel select, #right-panel input {
+	  font-size: 15px;
+	}
+
+	#right-panel select {
+	  width: 100%;
+	}
+
+	#right-panel i {
+	  font-size: 12px;
+	}
+
+	#right-panel {
+	  min-height: 500px;
+	  height: 100%;
+	  width: 390px;
+	  overflow: auto;
+	  background-color: aliceblue;
+	  margin-left: 5px;
+	  padding: 0 5px;
+	  border-radius: 10px;
+	  border: 5px solid white;
+	  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+	  display:none;
+	}	
 
 }
 

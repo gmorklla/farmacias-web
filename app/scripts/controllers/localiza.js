@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-	.controller('localizaCtrl', ['MapSrv', 'loadData', '$scope', '$filter', function(MapSrv, loadData, $scope, $filter) {
+	.controller('localizaCtrl', ['MapSrv', 'loadData', '$scope', '$filter', '$timeout', function(MapSrv, loadData, $scope, $filter, $timeout) {
 
 		var directionsDisplay;
 		var directionsService = new google.maps.DirectionsService();
@@ -18,6 +18,7 @@ angular.module('farmaciasWebApp')
 		var markers = [];
 		var usuario;
 		var geocoder = new google.maps.Geocoder();
+		var infoBubble2;
 
 		$scope.init = function(lat, lng, zoom) {
 
@@ -39,6 +40,8 @@ angular.module('farmaciasWebApp')
 			datos.then(function(datos) {
 				$scope.datosUbicacion = datos.data;
 				$scope.obtenDistancias(datosGeo.latitude, datosGeo.longitude, $scope.datosUbicacion);
+				var farmaciaMasCercana = new google.maps.LatLng($scope.distancias[0].Latitud, $scope.distancias[0].Longitud);
+				$scope.ruta(farmaciaMasCercana);				
 			}, function(e) {
 				console.log(e);
 			});
@@ -129,7 +132,11 @@ angular.module('farmaciasWebApp')
 			});
 
 			directionsDisplay.setMap(map);
-			directionsDisplay.setPanel(document.getElementById('right-panel'));
+			if($('#right-panel').css('display') == 'none'){
+				directionsDisplay.setPanel(document.getElementById('right-panel2'));
+			} else {
+				directionsDisplay.setPanel(document.getElementById('right-panel'));
+			}
 			var input = (document.getElementById('searchId'));
 			var opcionesMapa = (document.getElementById('opcionesMapa'));
 			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -164,7 +171,11 @@ angular.module('farmaciasWebApp')
 					markers.push(marker);
 
 					$scope.obtenDistancias(map.getCenter().lat(), map.getCenter().lng(), $scope.datosUbicacion);
-					$scope.$digest();
+					var farmaciaMasCercana = new google.maps.LatLng($scope.distancias[0].Latitud, $scope.distancias[0].Longitud);
+					$scope.ruta(farmaciaMasCercana);
+					$timeout(function() {
+						$scope.$digest();
+					});
 
 				} else {
 					markers = [];
@@ -184,7 +195,11 @@ angular.module('farmaciasWebApp')
 							markers.push(marker);
 
 							$scope.obtenDistancias(map.getCenter().lat(), map.getCenter().lng(), $scope.datosUbicacion);
-							$scope.$digest();
+							var farmaciaMasCercana = new google.maps.LatLng($scope.distancias[0].Latitud, $scope.distancias[0].Longitud);
+							$scope.ruta(farmaciaMasCercana);
+							$timeout(function() {
+								$scope.$digest();
+							});
 
 						} else {
 							alert('Geocode was not successful for the following reason: ' + status);
@@ -207,10 +222,10 @@ angular.module('farmaciasWebApp')
 			marker.addListener('click', toggleBounce);
 			markers.push(marker);
 
-					var infowindow = new google.maps.InfoWindow({
-						content: '<div class="prueba">Usted está aquí</div>'
-					});
-					infowindow.open(map, marker);			
+			var infowindow = new google.maps.InfoWindow({
+				content: '<div class="prueba">Usted está aquí</div>'
+			});
+			infowindow.open(map, marker);
 
 			google.maps.event.addListener(marker, 'dragend', function(event) {
 				$scope.obtenDistancias(event.latLng.lat(), event.latLng.lng(), $scope.datosUbicacion);
@@ -226,7 +241,7 @@ angular.module('farmaciasWebApp')
 					marker.setAnimation(null);
 				} else {
 					marker.setAnimation(google.maps.Animation.BOUNCE);
-				}				
+				}
 			}
 
 			$('#mapaFinal').css('opacity', 1);
@@ -253,8 +268,14 @@ angular.module('farmaciasWebApp')
 						preserveViewport: true
 					});
 					directionsDisplay.setDirections(response);
-					$('#right-panel').css('display', 'block');
-					$('#right-panel').addClass('pt-page-moveFromTopFade');
+
+					if($('#right-panel').css('display') == 'none'){
+						$('#right-panel2').css('display', 'block');
+						$('#right-panel2').addClass('pt-page-moveFromTopFade');						
+					} else {
+						$('#right-panel').css('display', 'block');
+						$('#right-panel').addClass('pt-page-moveFromTopFade');
+					}					
 				}
 			});
 
@@ -313,6 +334,10 @@ angular.module('farmaciasWebApp')
 				});
 				markers.push(marker);
 			}
+			$timeout(function() {
+				$scope.$digest();
+			});
+
 		};
 
 		$scope.codeLatLng = function(latlng, info) {

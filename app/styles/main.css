@@ -1,4 +1,3 @@
-
 html {
   position: relative;
   max-width:100%;
@@ -284,6 +283,14 @@ input {
 
 .navbar-default .navbar-nav>li:nth-child(10) {
   background: url("../images/siminotas_icon.png") no-repeat 20px 0px;
+}
+
+.navbar-default .navbar-nav>li:nth-child(11) {
+  background: url("../images/carrito_icon.png") no-repeat 20px 0px;
+}
+
+.navbar-default .navbar-nav>li:nth-child(12) {
+  background: url("../images/localiza_icon.png") no-repeat 20px 0px;
 }
 
 .navbar-default .navbar-nav>li:last-child {
@@ -1285,6 +1292,7 @@ footer li:nth-child(3) {
 
 #map {
   height: 300px;
+  width:100%;
   margin-bottom: 10px;
   border:5px solid #fff;
   border-right: none;
@@ -1957,21 +1965,21 @@ footer li:nth-child(3) {
   line-height: 1.2em;
 }
 
-#right-panel {
+#right-panel, #right-panel2 {
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
   padding-left: 10px;
 }
 
-#right-panel select, #right-panel input {
+#right-panel select, #right-panel input, #right-panel2 select, #right-panel2 input {
   font-size: 15px;
 }
 
-#right-panel select {
+#right-panel select, #right-panel2 select {
   width: 100%;
 }
 
-#right-panel i {
+#right-panel i, #right-panel2 i {
   font-size: 12px;
 }
 
@@ -1979,12 +1987,27 @@ footer li:nth-child(3) {
   min-height: 500px;
   height: 100%;
   float: right;
-  width: 390px;
+  width: 100%;
   overflow: auto;
   background-color: aliceblue;
   margin-left: 5px;
   padding: 0 5px;
-  border-radius: 10px;
+  border-radius: 0;
+  border: 5px solid white;
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  display:none;
+}
+
+#right-panel2 {
+  min-height: 500px;
+  height: 100%;
+  float: right;
+  width: 100%;
+  overflow: auto;
+  background-color: aliceblue;
+  margin-left: 5px;
+  padding: 0 5px;
+  border-radius: 0;
   border: 5px solid white;
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
   display:none;
@@ -2048,6 +2071,14 @@ footer li:nth-child(3) {
 }
 .phone-enter.phone-enter-active {
   opacity: 1;
+}
+
+.carritoPreviewNav{
+    display:none;
+}
+
+.promoView {
+    display:none;
 }
 
 @media (max-width: 767px) {

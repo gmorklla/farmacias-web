@@ -8,25 +8,25 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('InicioCtrl', ['loadImg', function (loadImg) {
+	.controller('InicioCtrl', ['loadImg', function(loadImg) {
 
-	var imagenesInicio = ['banner.jpg', 'banner-simi-aventuras.jpg'];	
-  	loadImg.loadImgs($('.loadImg'), imagenesInicio);
+		var imagenesInicio = ['banner.jpg', 'banner-simi-aventuras.jpg'];
+		loadImg.loadImgs($('.loadImg'), imagenesInicio);
 
-  	var imgMain = ['principal_1.jpg', 'principal_3.jpg'];
+		var imgMain = ['principal_1.jpg', 'principal_3.jpg'];
 
-	function coinFlip() {
-		var imagen = imgMain[Math.round(Math.random())];
-		var url = 'images/' + imagen;
-		document.getElementById('mainImg').style.backgroundImage = 'url(' + url + ')';
+		function coinFlip() {
+			var imagen = imgMain[Math.round(Math.random())];
+			var url = 'images/' + imagen;
+			document.getElementById('mainImg').style.backgroundImage = 'url(' + url + ')';
 
-		setInterval( function () {
-			var imagen2 = imgMain[Math.round(Math.random())];
-			var url2 = 'images/' + imagen2;
-			document.getElementById('mainImg').style.backgroundImage = 'url(' + url2 + ')';
-		}, 15000);	
-	}
+			setInterval(function() {
+				var imagen2 = imgMain[Math.round(Math.random())];
+				var url2 = 'images/' + imagen2;
+				document.getElementById('mainImg').style.backgroundImage = 'url(' + url2 + ')';
+			}, 15000);
+		}
 
-	coinFlip();
+		coinFlip();
 
-  }]);
+	}]);
