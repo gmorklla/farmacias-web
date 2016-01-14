@@ -1,217 +1,182 @@
 <div class="row show-grid productos">
-  <div class="col-md-12 bread">
-    <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
-  </div>
-
-  <div class="col-md-12 banner hidden-xs">
-    <img src="images/nuevos_genericos.jpg" alt="">
-  </div>
-
-  <div class="row detalleF">
-
-    <div class="col-md-8 col-xs-12 detalle">
-      <div class="row">
-        <form name="contactForm" class="contacto" method="post" novalidate>
-
-          <div class="col-md-12 col-xs-12">
-              <h1 class="popDisplayTitle notaTitulo">Contacto</h1>
-          </div>
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-             <div class="form-group" ng-class="{
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <img src="images/nuevos_genericos.jpg" alt="">
+    </div>
+    <div class="row detalleF">
+        <div class="col-md-8 col-xs-12 detalle">
+            <div class="row">
+                <div class="contacto" ng-hide="enviado == 0">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h1 class="popDisplayTitle notaTitulo">¡Gracias!</h1>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <p>Nos pondremos en contacto contigo a la brevedad.</p>
+                    </div>
+                </div>
+                <form name="contactForm" class="contacto" novalidate ng-hide="enviado == 1">
+                    <div class="col-md-12 col-xs-12">
+                        <h1 class="popDisplayTitle notaTitulo">Contacto</h1>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" ng-class="{
                                                   'has-error': contactForm.asunto.$touched && contactForm.asunto.$invalid,
                                                   'has-success': contactForm.asunto.$touched && !contactForm.asunto.$invalid
                                                 }">
-                <label class="control-label requiredField" for="asunto">
-                 Selecciona un asunto
-                 <span class="asteriskField">
-                  *
-                 </span>
-                </label>
-                <select class="select form-control" id="asunto" name="asunto"
-                  ng-model="asunto"
-                  required
-                >
-                 <option value="Franquicias">
-                  Franquicias
-                 </option>
-                 <option value="Quejas">
-                  Quejas
-                 </option>
-                 <option value="Productos (Proveedor)">
-                  Productos (Proveedor)
-                 </option>
-                 <option value="Productos (Farmacias)">
-                  Productos (Farmacias)
-                 </option>
-                 <option value="Sugerencias">
-                  Sugerencias
-                 </option>
-                 <option value="Otros">
-                  Otros
-                 </option>
-                </select>
-             </div>
-          </div>
-
-          <div ng-messages="contactForm.asunto.$error" ng-if="contactForm.asunto.$touched">
-            <p ng-message="required">Debes seleccionar un asunto.</p>
-          </div>          
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-             <div class="form-group has-feedback" ng-class="{
+                            <label class="control-label requiredField" for="asunto">
+                                Selecciona un asunto
+                                <span class="asteriskField">*</span>
+                            </label>
+                            <select class="select form-control" id="asunto" name="asunto" ng-model="asunto" required>
+                                <option value="">Escoge una opción</option>
+                                <option value="Franquicias">Franquicias</option>
+                                <option value="Quejas">Quejas</option>
+                                <option value="Productos (Proveedor)">Productos (Proveedor)</option>
+                                <option value="Productos (Farmacias)">Productos (Farmacias)</option>
+                                <option value="Sugerencias">Sugerencias</option>
+                                <option value="Otros">Otros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div ng-messages="contactForm.asunto.$error" ng-if="contactForm.asunto.$touched">
+                        <p ng-message="required">Debes seleccionar un asunto.</p>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group has-feedback" ng-class="{
                                                   'has-error': contactForm.name.$touched && contactForm.name.$invalid,
                                                   'has-success': contactForm.name.$touched && !contactForm.name.$invalid
                                                 }">
-              <label class="control-label requiredField" for="name">
-               Nombre
-               <span class="asteriskField">
-                *
-               </span>
-              </label>
-              <input class="form-control" id="name" name="name" type="text" aria-describedby="inputSuccess5Status" placeholder="Nombre"
-                ng-model="username" 
-                ng-minlength="3" 
-                ng-maxlength="15"
-                required
-              />
-              <span ng-show="contactForm.name.$touched && !contactForm.name.$invalid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-              <span ng-show="contactForm.name.$touched && contactForm.name.$invalid" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-             </div>
-          </div>
-
-          <div ng-messages="contactForm.name.$error" ng-if="contactForm.name.$touched">
-            <p ng-message="minlength">Tu nombre es muy corto (Mínimo 3 letras).</p>
-            <p ng-message="maxlength">Tu nombre es muy largo (Máximo 15 letras).</p>
-            <p ng-message="required">Tu nombres es requerido.</p>
-          </div>
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group" ng-class="{ 
+                            <label class="control-label requiredField" for="name">
+                                Nombre
+                                <span class="asteriskField">*</span>
+                            </label>
+                            <input class="form-control" id="name" name="name" type="text" aria-describedby="inputSuccess5Status" placeholder="Nombre" ng-model="username" ng-minlength="3" ng-maxlength="150" required />
+                        </div>
+                    </div>
+                    <div ng-messages="contactForm.name.$error" ng-if="contactForm.name.$touched">
+                        <p ng-message="minlength">Tu nombre es muy corto (Mínimo 3 letras).</p>
+                        <p ng-message="maxlength">Tu nombre es muy largo (Máximo 150 letras).</p>
+                        <p ng-message="required">Tu nombres es requerido.</p>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" ng-class="{ 
                                                 'has-error': contactForm.email.$touched && contactForm.email.$invalid,
                                                 'has-success': contactForm.email.$touched && !contactForm.email.$invalid
                                               }">
-              <label class="control-label requiredField" for="email">
-               Email
-               <span class="asteriskField">
-                *
-               </span>
-              </label>
-              <input class="form-control" id="email" name="email" type="email" placeholder="Email"
-                ng-model="email"
-                ng-minlength="5"
-                ng-maxlength="20"
-                required
-              />
-              <span ng-show="contactForm.email.$touched && !contactForm.email.$invalid" class="glyphicon glyphicon-ok form-control-feedback feedMail" aria-hidden="true"></span>
-              <span ng-show="contactForm.email.$touched && contactForm.email.$invalid" class="glyphicon glyphicon-remove form-control-feedback feedMail" aria-hidden="true"></span>              
-            </div>
-          </div>
-
-          <div ng-messages="contactForm.email.$error" ng-if="contactForm.email.$touched">
-            <p ng-message="minlength">Tu email es muy corto (Mínimo 5 caracteres).</p>
-            <p ng-message="maxlength">Tu email es muy largo (Máximo 20 caracteres).</p>
-            <p ng-message="required">Tu email es requerido.</p>
-            <p ng-message="email">Parece que escribiste mal tu email.</p>
-          </div>          
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group" ng-class="{ 
+                            <label class="control-label requiredField" for="email">
+                                Email
+                                <span class="asteriskField">*</span>
+                            </label>
+                            <input class="form-control" id="email" name="email" type="email" placeholder="Email" ng-model="email" ng-minlength="5" ng-maxlength="200" required />
+                        </div>
+                    </div>
+                    <div ng-messages="contactForm.email.$error" ng-if="contactForm.email.$touched">
+                        <p ng-message="minlength">Tu email es muy corto (Mínimo 5 caracteres).</p>
+                        <p ng-message="maxlength">Tu email es muy largo (Máximo 200 caracteres).</p>
+                        <p ng-message="required">Tu email es requerido.</p>
+                        <p ng-message="email">Parece que escribiste mal tu email.</p>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" ng-class="{ 
                                                 'has-error': contactForm.tel.$touched && contactForm.tel.$invalid,
                                                 'has-success': contactForm.tel.$touched && !contactForm.tel.$invalid
                                               }">
-              <label class="control-label requiredField" for="tel">
-               Teléfono
-               <span class="asteriskField">
-                *
-               </span>
-              </label>
-              <input class="form-control" id="tel" name="tel" type="tel" placeholder="Teléfono"
-                ng-model="tel"
-                ng-minlength="10"
-                ng-maxlength="10"
-                required/>
-              <span ng-show="contactForm.tel.$touched && !contactForm.tel.$invalid" class="glyphicon glyphicon-ok form-control-feedback feedMail" aria-hidden="true"></span>
-              <span ng-show="contactForm.tel.$touched && contactForm.tel.$invalid" class="glyphicon glyphicon-remove form-control-feedback feedMail" aria-hidden="true"></span>                 
-            </div>
-          </div>
-
-          <div ng-messages="contactForm.tel.$error" ng-if="contactForm.tel.$touched">
-            <p ng-message="minlength">Número de teléfono muy corto (Mínimo 10 números).</p>
-            <p ng-message="maxlength">Número de teléfono muy largo (Máximo 10 números).</p>
-            <p ng-message="required">Tu número de teléfono es requerido.</p>
-            <p ng-message="tel">Parece que escribiste mal tu número de teléfono.</p>
-          </div>          
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group" ng-class="{
+                            <label class="control-label requiredField" for="tel">
+                                Teléfono
+                                <span class="asteriskField">*</span>
+                            </label>
+                            <input class="form-control" id="tel" name="tel" type="tel" placeholder="Teléfono" ng-model="tel" ng-minlength="10" ng-maxlength="10" required/>
+                        </div>
+                    </div>
+                    <div ng-messages="contactForm.tel.$error" ng-if="contactForm.tel.$touched">
+                        <p ng-message="minlength">Número de teléfono muy corto (Mínimo 10 números).</p>
+                        <p ng-message="maxlength">Número de teléfono muy largo (Máximo 10 números).</p>
+                        <p ng-message="required">Tu número de teléfono es requerido.</p>
+                        <p ng-message="tel">Parece que escribiste mal tu número de teléfono.</p>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" ng-class="{
                                                   'has-error': contactForm.estado.$touched && contactForm.estado.$invalid,
                                                   'has-success': contactForm.estado.$touched && !contactForm.estado.$invalid
                                                 }">
-              <label class="control-label requiredField" for="estado">
-               Selecciona un Estado
-               <span class="asteriskField">
-                *
-               </span>
-              </label>
-              <select class="select form-control" id="estado" name="estado"
-                ng-model="estado"
-                required>
-               <option value="Aguascalientes">
-                Aguascalientes
-               </option>
-               <option value="Baja California Nte">
-                Baja California Nte
-               </option>
-               <option value="Baja California Sur">
-                Baja California Sur
-               </option>
-              </select>
-            </div>
-          </div>
-
-          <div ng-messages="contactForm.estado.$error" ng-if="contactForm.estado.$touched">
-            <p ng-message="required">Debes seleccionar un estado.</p>
-          </div>          
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group" ng-class="{ 
+                            <label class="control-label requiredField" for="estado">
+                                Selecciona un Estado
+                                <span class="asteriskField">*</span>
+                            </label>
+                            <select class="select form-control" id="estado" name="estado" ng-model="estado" required>
+                                <option value="">Escoge una opción</option>
+                                <option value="1">Aguascalientes</option>
+                                <option value="2">Baja California</option>
+                                <option value="3">Baja California Sur</option>
+                                <option value="4">Campeche</option>
+                                <option value="5">Coahuila de Zaragoza</option>
+                                <option value="6">Colima</option>
+                                <option value="7">Chiapas</option>
+                                <option value="8">Chihuahua</option>
+                                <option value="9">Distrito Federal</option>
+                                <option value="10">Durango</option>
+                                <option value="11">Guanajuato</option>
+                                <option value="12">Guerrero</option>
+                                <option value="13">Hidalgo</option>
+                                <option value="14">Jalisco</option>
+                                <option value="15">México</option>
+                                <option value="16">Michoacán de Ocampo</option>
+                                <option value="17">Morelos</option>
+                                <option value="18">Nayarit</option>
+                                <option value="19">Nuevo León</option>
+                                <option value="20">Oaxaca</option>
+                                <option value="21">Puebla</option>
+                                <option value="22">Querétaro</option>
+                                <option value="23">Quintana Roo</option>
+                                <option value="24">San Luis Potosí</option>
+                                <option value="25">Sinaloa</option>
+                                <option value="26">Sonora</option>
+                                <option value="27">Tabasco</option>
+                                <option value="28">Tamaulipas</option>
+                                <option value="29">Tlaxcala</option>
+                                <option value="30">Veracruz de Ignacio de la Llave</option>
+                                <option value="31">Yucatán</option>
+                                <option value="32">Zacatecas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div ng-messages="contactForm.estado.$error" ng-if="contactForm.estado.$touched">
+                        <p ng-message="required">Debes seleccionar un estado.</p>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group" ng-class="{ 
                                                 'has-error': contactForm.mensaje.$touched && contactForm.mensaje.$invalid,
                                                 'has-success': contactForm.mensaje.$touched && !contactForm.mensaje.$invalid
                                               }">
-              <label class="control-label requiredField" for="mensaje">
-               Mensaje
-               <span class="asteriskField">
-                *
-               </span>
-              </label>
-              <textarea class="form-control" cols="40" id="mensaje" name="mensaje" rows="10"
-                ng-model="mensaje"
-                ng-minlength="20"
-                ng-maxlength="200"
-                required></textarea>
+                            <label class="control-label requiredField" for="mensaje">
+                                Mensaje
+                                <span class="asteriskField">*</span>
+                            </label>
+                            <textarea class="form-control" cols="40" id="mensaje" name="mensaje" rows="10" ng-model="mensaje" ng-minlength="20" ng-maxlength="200" required></textarea>
+                        </div>
+                        <div ng-messages="contactForm.mensaje.$error" ng-if="contactForm.mensaje.$touched">
+                            <p ng-message="minlength">Tu mensaje es muy corto (Mínimo 20 caracteres).</p>
+                            <p ng-message="maxlength">Tu mensaje es muy largo (Máximo 200 caracteres).</p>
+                            <p ng-message="required">Tu mensaje es requerido.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <p>
+                            <button class="btn btn-primary form-control" name="submit" ng-disabled="contactForm.$invalid" ng-click="postContactInfo()">
+                                Enviar
+                            </button>
+                        </p>
+                    </div>
+                </form>
             </div>
-            <div ng-messages="contactForm.mensaje.$error" ng-if="contactForm.mensaje.$touched">
-              <p ng-message="minlength">Tu mensaje es muy corto (Mínimo 20 caracteres).</p>
-              <p ng-message="maxlength">Tu mensaje es muy largo (Máximo 200 caracteres).</p>
-              <p ng-message="required">Tu mensaje es requerido.</p>
-            </div>            
-          </div>
-
-          <div class="col-md-12 col-sm-12 col-xs-12">
-              <p><button class="btn btn-primary form-control" name="submit" type="submit" ng-disabled="contactForm.$invalid">
-                  Enviar
-              </button></p>
-          </div>
-
-        </form>
-      </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div ng-include="'views/promosSide.html'"></div>
+        </div>
+        <div class="banner hidden-lg hidden-md hidden-sm visible-xs">
+            <img src="images/nuevos_genericos_xs.jpg" alt="">
+        </div>
     </div>
-
-    <div class="banner hidden-lg hidden-md hidden-sm visible-xs">
-      <img src="images/nuevos_genericos_xs.jpg" alt="">
-    </div>
-
-  </div>
-
 </div>

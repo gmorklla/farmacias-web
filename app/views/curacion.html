@@ -1,137 +1,112 @@
 <div class="row show-grid productos">
-	<div class="col-md-12 bread">
-		<ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
-	</div>
-	<div class="col-md-12 banner hidden-xs">
-		<img src="images/nuevos_genericos.jpg" alt="">
-	</div>
-	<div class="col-md-8 proFrame">
-		<div class="row filtros">
-			<div class="col-md-12">
-				<div class="col-md-12 btn-group" role="group" aria-label="...">
-					<dir-pagination-controls on-page-change="getMeds(cuantos, newPageNumber)" class="paginacion col-md-9 col-xs-12" max-size="7" boundary-links="true"></dir-pagination-controls>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'NombreProducto'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Orden Alfabético [a-z]">
-					  <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'NombreProducto'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Orden Alfabético [z-a]">
-					  <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'PrecioVenta'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Menor a mayor precio">
-					  <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
-					</button>
-					<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="sortType = 'PrecioVenta'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Mayor a menor precio">
-					  <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>
-					</button>								
-				</div>
-			</div>
-		</div>		
-		<div class="row">
-
-		    <div id="loadingMeds" class="loadingMeds col-md-4 col-sm-4">
-		        <div class='aCssSpinner2'><img src="images/loader.gif" alt=""></div>
-		    </div>			
-
-			<div class="col-md-4 col-sm-4 meds" dir-paginate="item in meds | orderBy:sortType:sortReverse | filter: etiqueta | itemsPerPage: cuantos" total-items="totalMeds" current-page="pagina"  bs-popover>
-
-		            <div class="col-md-4 col-sm-12 proGrid col-lg-height">
-
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
-								<div class="col-md-12 well hvr-shadow">									
-									<a ui-sref="curacion.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)"><p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p></a>
-									<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
-									  <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
-									</button>									
-								</div>								
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-								<div class="col-md-12">
-									<h1>{{item.NombreProducto}}</h1>
-								</div>					
-								<div class="col-md-12">
-									<p>
-										<span ng-show="{{item.Calificacion > 0}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{item.Calificacion > 1}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{item.Calificacion > 2}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{item.Calificacion > 3}}" class="star"><img src="images/star.png" alt=""></span>
-										<span ng-show="{{item.Calificacion > 4}}" class="star"><img src="images/star.png" alt=""></span>
-									</p>
-								</div>
-								<div class="col-md-12">
-									<h2>{{item.PrecioVenta | currency}}</h2>
-								</div>
-							</div>
-						</div>
-
-						<div ng-show="{{item.Oferta === 'OFERTA' || item.Oferta === 'COMBO'}}" class="etiqueta-nuevo {{item.Oferta.toLowerCase()}}">
-							<p>
-								<span class="glyphicon" aria-hidden="true" ng-class="{
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <img src="images/nuevos_genericos.jpg" alt="">
+    </div>
+    <div class="col-md-8 proFrame">
+        <div class="row filtros">
+            <div class="col-md-12">
+                <div class="col-md-12 btn-group" role="group" aria-label="...">
+                    <dir-pagination-controls on-page-change="getMeds(cuantos, newPageNumber)" class="paginacion col-md-9 col-xs-12" max-size="5" boundary-links="true"></dir-pagination-controls>
+                    <button type="button" class="btn btn-default leyendas leyendaOferta" aria-label="Left Align" data-toggle="tooltip" data-placement="top" title="Oferta">
+                        <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default leyendas leyendaCombo" aria-label="Left Align" data-toggle="tooltip" data-placement="top" title="Combo">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default leyendas leyendaNuevo" aria-label="Left Align" data-toggle="tooltip" data-placement="top" title="Nuevo">
+                        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="loadingMeds" class="loadingMeds col-md-4 col-sm-4">
+                <div class='aCssSpinner2'><img src="images/loader.gif" alt=""></div>
+            </div>
+            <div class="col-md-4 col-sm-4 meds" dir-paginate="item in meds | orderBy:sortType:sortReverse | filter: etiqueta | itemsPerPage: cuantos" total-items="totalMeds" current-page="pagina" bs-popover>
+                <div class="col-md-4 col-sm-12 proGrid col-lg-height">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
+                            <div class="col-md-12 well hvr-shadow">
+                                <a ui-sref="curacion.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
+                                    <p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}"></p>
+                                </a>
+                                <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
+                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                            <div class="col-md-12">
+                                <h1>{{item.NombreProducto}}</h1>
+                            </div>
+                            <div class="col-md-12">
+                                <h2>{{item.PrecioVenta | currency}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="{{item.Oferta === 'OFERTA' || item.Oferta === 'COMBO'}}" class="etiqueta-nuevo {{item.Oferta.toLowerCase()}}">
+                        <p>
+                            <span class="glyphicon" aria-hidden="true" ng-class="{
                                                   'glyphicon-usd': item.Oferta == 'OFERTA',
                                                   'glyphicon-plus': item.Oferta == 'COMBO',
                                                   'glyphicon-flag': item.Oferta == 'Nuevo'
                                                 }"></span>
-							</p>
-						</div>
-		            </div>
-
-		            <div ng-mouseover="getPromo(item.IdProducto)" ng-mouseleave="hidePromo()" ng-show="{{item.Oferta === 'OFERTA' || item.Oferta === 'COMBO'}}" class="pop" ng-class="{
+                        </p>
+                    </div>
+                </div>
+                <div ng-mouseover="getPromo(item.IdProducto)" ng-mouseleave="hidePromo()" ng-show="{{item.Oferta === 'OFERTA' || item.Oferta === 'COMBO'}}" class="pop" ng-class="{
                                                   'popCombo': item.Oferta == 'Combo',
                                                   'popNuevo': item.Oferta == 'Nuevo'
-                                                }"></div>            
-
-	        </div>
-	        <div class="col-md-12 col-sm-12">
-	        	<button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="muestraMas();">
-	        		<span class="badge">Mostrar 9&nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></span>
-	        	</button>
-	        </div>
+                                                }"></div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="muestraMas();">
+                    <span class="badge">Mostrar 9&nbsp;<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></span>
+                </button>
+            </div>
         </div>
-	</div>
-	<div class="col-md-4">
-		<div ng-include="'views/promosSide.html'"></div>
-	</div>
-
-	<div id="carritoPreview" ng-if="$storage.array.length && muestraCarrito" class="row detalleF mensajesFrame" bs-popover>
-
-		<div class="col-md-12 col-xs-12 mensajes" id="carritoShow">
-			<div class="alert alert-info row">
-				<div class="col-md-12 col-xs-12">
-					<a ui-sref="carrito" hreflang="es">
-	                    <button class="btn btn-info btn-sm" type="button">
-	                      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Carrito &nbsp;<span class="badge">{{$storage.array.length}}</span>
-	                    </button>
-	                </a>	                
-					<a ng-click="ocultaCarrito()" hreflang="es">
-	                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                </a>	                
-				</div>
-				<div class="col-md-12 col-xs-12 listaProductosAgregados">
-					<div>
-						<img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg"  width="110" height="110">
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-	<div class="row detalleF mensajesFrame">
-
-		<div class="col-md-12 col-xs-12 mensajes alertaAdd">
-			<div class="alertaProAdded" ng-messages="agregaAlert" ng-if="showAddedProduct">
-				<p class="alert alert-success">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;¡Producto agregado!
-				</p>
-			</div>
-		</div>
-
-	</div>	
-
+    </div>
+    <div class="col-md-4">
+        <div ng-include="'views/promosSide.html'"></div>
+    </div>
+    <div id="carritoPreview" ng-if="$storage.array.length && muestraCarrito" class="row detalleF mensajesFrame" bs-popover>
+        <div class="col-md-12 col-xs-12 mensajes" id="carritoShow">
+            <div class="alert alert-info row">
+                <div class="col-md-12 col-xs-12">
+                    <a ui-sref="carrito" hreflang="es">
+                        <button class="btn btn-info btn-sm" type="button">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Carrito &nbsp;<span class="badge">{{$storage.array.length}}</span>
+                        </button>
+                    </a>
+                    <a ng-click="ocultaCarrito()" hreflang="es">
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </a>
+                </div>
+                <div class="col-md-12 col-xs-12 listaProductosAgregados">
+                    <div>
+                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg" width="110" height="110">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row detalleF mensajesFrame">
+        <div class="col-md-12 col-xs-12 mensajes alertaAdd">
+            <div class="alertaProAdded" ng-messages="agregaAlert" ng-if="showAddedProduct">
+                <p class="alert alert-success">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;¡Producto agregado!
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-
 <script>
-	$(function () {
-	  $('[data-toggle="tooltip"]').tooltip();
-	  $('[data-toggle="popover"]').popover();
-	})
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="popover"]').popover();
+})
 </script>

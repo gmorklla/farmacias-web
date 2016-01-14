@@ -28,7 +28,7 @@ hr {
   margin-bottom: 0;
 }
 
-input {
+.busca {
   text-align: center;
 }
 
@@ -745,6 +745,8 @@ footer li:nth-child(3) {
   margin-top: 10px;
   padding-top: 30px;
   overflow:hidden;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #ccc;
 }
 
 .proGrid p {
@@ -1519,7 +1521,7 @@ footer li:nth-child(3) {
   }
 
   .historico .panel {
-    padding-left: 15px;
+    padding: 15px;
   }
 
   .historico .panel-heading a {
@@ -1956,7 +1958,8 @@ footer li:nth-child(3) {
 }
 
 .ofertaViewPanel .label {
-  font-size: 1.2em !important;
+  font-size: 2.5em !important;
+  margin: 5px 0;
 }
 
 .sustancia {
@@ -2079,6 +2082,114 @@ footer li:nth-child(3) {
 
 .promoView {
     display:none;
+}
+
+.calificaTextarea {
+  width:100% !important;
+}
+
+.calificado {
+  margin-bottom: 10px;
+}
+
+.modal-body {
+  min-height: 50px;
+}
+
+.datosDetalle {
+  background-color: #78ACB3 !important;
+}
+
+.notasAlternas {
+  position:fixed;
+  bottom:0;
+  width:100%;
+  z-index: 999;
+  display:none;
+}
+
+#comentariosTitle {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.comentarios {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 10px;
+}
+
+.notasAlternas .btn-group {
+  width:100%;
+}
+
+.notasAlternas .btn-group button {
+  width:50%;
+}
+
+.pagination > li > a, .pagination > li > span {
+  padding: 5px 10px;
+}
+
+.titleOferta {
+  background-color: #CD2441 !important;
+}
+
+.titleCombo {
+  background-color: #E28500 !important;
+}
+
+.ofertaInfo {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.ofertaViewPanel {
+  padding:1px 0;
+}
+
+.ofertaViewPanel p {
+  padding:0;
+}
+
+.ofertaViewPic {
+  margin-bottom: 1px;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.ofertaViewPic .well {
+  border-radius: 0;
+  box-shadow: none;
+  margin:0;
+}
+
+.ofertaViewPic p {
+  text-align: center;
+}
+
+.ofertaContainer {
+  padding:10px;
+}
+
+.starrr {
+  z-index: 99999;
+  padding-right: 0;
+  padding-left: 0;
+  margin: 40px 0 0 !important;
+}
+
+label span {
+  color:#005B6F;
+}
+
+.leyendas {
+  padding: 10px 15px;
+  color:#337AB7;
+}
+
+.leyendas:hover {
+  color:#337AB7;
 }
 
 @media (max-width: 767px) {

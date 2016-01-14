@@ -1,8 +1,7 @@
-
-
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -20,57 +19,63 @@
     <link rel="stylesheet" href="styles/transiciones.css">
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
     <!-- endbuild -->
-  </head>
-  <body ng-app="farmaciasWebApp">
+</head>
+
+<body ng-app="farmaciasWebApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Add your site or application content here -->
     <div id="loading" class="loading">
         <img src="images/logo.png" alt="">
         <div class='aCssSpinner'><img src="images/loader.gif" alt=""></div>
     </div>
-
     <div class="col-md-4 col-xs-12 sugeridos carritoPreviewNav">
-      <div ng-include="'views/carritoTotal.html'"></div>
+        <div ng-include="'views/carritoTotal.html'"></div>
     </div>
-
     <div class="col-md-4 col-xs-12 sugeridos promoView">
-      <div ng-include="'views/promocion.html'"></div>
-    </div>        
-
+        <div ng-include="'views/promocion.html'"></div>
+    </div>
+    <div class="notasAlternas">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default btn-lg" ng-click="otraNota('next')"><span class="badge"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></span> Anterior</button>
+            <button type="button" class="btn btn-default btn-lg" ng-click="otraNota('prev')">Siguiente <span class="badge"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></span>
+            </button>
+        </div>
+    </div>
     <section class="contenidoUp">
-      <header>
-        <nav class="container-fluid" ui-view="nav" autoscroll="true"></nav>
-      </header> <!-- HEADER -->
-      <div id="contenido" class="container-fluid" ui-view="home" autoscroll="false"></div> <!-- MAIN FRAME -->
-    </section> <!-- MAIN -->
-
+        <header>
+            <nav class="container-fluid" ui-view="nav" autoscroll="true"></nav>
+        </header>
+        <!-- HEADER -->
+        <div id="contenido" class="container-fluid" ui-view="home" autoscroll="false"></div>
+        <!-- MAIN FRAME -->
+    </section>
+    <!-- MAIN -->
     <section ng-hide="ocultarBarra">
-      <div class="container-fluid barra" ui-view="barra" autoscroll="false"></div>
-    </section> <!-- BARRA -->
-
+        <div class="container-fluid barra" ui-view="barra" autoscroll="false"></div>
+    </section>
+    <!-- BARRA -->
     <section ng-hide="ocultarBarra">
-      <div class="container-fluid siminotasVideos" ui-view="siminotas" autoscroll="false"></div>
-    </section> <!-- SIMINOTAS -->
-
+        <div class="container-fluid siminotasVideos" ui-view="siminotas" autoscroll="false"></div>
+    </section>
+    <!-- SIMINOTAS -->
     <footer class="footer">
-      <div class="container-fluid" ui-view="footer" autoscroll="false"></div>
-    </footer> <!-- FOOTER -->
-
-
+        <div class="container-fluid" ui-view="footer" autoscroll="false"></div>
+    </footer>
+    <!-- FOOTER -->
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
     </script>
-
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -91,42 +96,47 @@
     <script src="bower_components/ngstorage/ngStorage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/inicio.js"></script>
-        <script src="scripts/controllers/barra.js"></script>
-        <script src="scripts/controllers/nav.js"></script>
-        <script src="scripts/services/prettyurlspc.js"></script>
-        <script src="scripts/services/loadimg.js"></script>
-        <script src="scripts/services/loaddata.js"></script>
-        <script src="scripts/controllers/siminotas.js"></script>
-        <script src="scripts/services/youtubelist.js"></script>
-        <script src="bower_components/angular-youtube-embed/dist/angular-youtube-embed.min.js"></script>
-        <script src="scripts/controllers/medicamentos.js"></script>
-        <script src="scripts/controllers/detalle.js"></script>
-        <script src="scripts/services/_.js"></script>
-        <script src="scripts/services/producto.js"></script>
-        <script src="scripts/controllers/promos.js"></script>
-        <script src="scripts/controllers/nota.js"></script>
-        <script src="scripts/controllers/localiza.js"></script>
-        <script src="scripts/services/map.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places&language=es"></script>
-        <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
-        <script src="scripts/services/carritosrv.js"></script>
-        <script src="scripts/controllers/carrito.js"></script>
-        <script src="scripts/directives/bspopover.js"></script>
-        <script src="scripts/services/loadmedssrv.js"></script>
-        <script src="scripts/controllers/vitaminas.js"></script>
-        <script src="scripts/services/loadvitssrv.js"></script>
-        <script src="scripts/controllers/higiene.js"></script>
-        <script src="scripts/services/loadhigienesrv.js"></script>
-        <script src="scripts/controllers/curacion.js"></script>
-        <script src="scripts/services/loadcurasrv.js"></script>
-        <script src="scripts/controllers/carritodetalle.js"></script>
-        <script src="scripts/services/loadpromo.js"></script>
-        <script src="scripts/services/promoorcombo.js"></script>
-        <script src="scripts/services/loadmedbyid.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/inicio.js"></script>
+    <script src="scripts/controllers/barra.js"></script>
+    <script src="scripts/controllers/nav.js"></script>
+    <script src="scripts/services/prettyurlspc.js"></script>
+    <script src="scripts/services/loadimg.js"></script>
+    <script src="scripts/services/loaddata.js"></script>
+    <script src="scripts/controllers/siminotas.js"></script>
+    <script src="scripts/services/youtubelist.js"></script>
+    <script src="bower_components/angular-youtube-embed/dist/angular-youtube-embed.min.js"></script>
+    <script src="scripts/controllers/medicamentos.js"></script>
+    <script src="scripts/controllers/detalle.js"></script>
+    <script src="scripts/services/_.js"></script>
+    <script src="scripts/services/producto.js"></script>
+    <script src="scripts/controllers/promos.js"></script>
+    <script src="scripts/controllers/nota.js"></script>
+    <script src="scripts/controllers/localiza.js"></script>
+    <script src="scripts/services/map.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places&language=es"></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
+    <script src="scripts/services/carritosrv.js"></script>
+    <script src="scripts/controllers/carrito.js"></script>
+    <script src="scripts/directives/bspopover.js"></script>
+    <script src="scripts/services/loadmedssrv.js"></script>
+    <script src="scripts/controllers/vitaminas.js"></script>
+    <script src="scripts/services/loadvitssrv.js"></script>
+    <script src="scripts/controllers/higiene.js"></script>
+    <script src="scripts/services/loadhigienesrv.js"></script>
+    <script src="scripts/controllers/curacion.js"></script>
+    <script src="scripts/services/loadcurasrv.js"></script>
+    <script src="scripts/controllers/carritodetalle.js"></script>
+    <script src="scripts/services/loadpromo.js"></script>
+    <script src="scripts/services/promoorcombo.js"></script>
+    <script src="scripts/services/loadmedbyid.js"></script>
+    <script src="scripts/controllers/comentarios.js"></script>
+    <script src="scripts/services/loadcomments.js"></script>
+    <script src="scripts/services/califica.js"></script>
+    <script src="scripts/controllers/contacto.js"></script>
+    <script src="scripts/services/contactsrv.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>
