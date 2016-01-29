@@ -1,5 +1,5 @@
-<div class="row show-grid productos localizaM">
-    <div class="col-md-12 bread hidden-xs">
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
         <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
     </div>
     <div id="mapaFinal" class="col-md-12 col-sm-12 col-xs-12 mapaF">
@@ -8,11 +8,15 @@
             <span>{{ apiStatus }}</span>
         </div>
         <div class="hidden-sm hidden-xs visible-md visible-lg" id="right-panel">
-            <div class="instruccionesLabel">INSTRUCCIONES</div>
+            <div class="col-md-12 unidadesTitle">
+                <div class="instruccionesLabel"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> INSTRUCCIONES</div>
+            </div>            
         </div>
         <div id="map"></div>
         <div class="hidden-lg hidden-md" id="right-panel2">
-            <div class="instruccionesLabel">INSTRUCCIONES</div>
+            <div class="col-xs-12 visible-xs unidadesTitle">
+                <div class="instruccionesLabel"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> INSTRUCCIONES</div>
+            </div>
         </div>
         <input id="searchId" name="place" placeholder="Busca tu unidad" type="text" class="controls col-xs-12" />
         <div class="mapControles" id="opcionesMapa">
@@ -28,6 +32,9 @@
                 </div>
             </form>
         </div>
+    </div>
+    <div class="col-xs-12 visible-xs unidadesTitle">
+        <div class="instruccionesLabel"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> UNIDADES CERCANAS</div>
     </div>
     <div class="visible-xs listaUnidades" ng-repeat="item in distancias">
         <div class="col-xs-12">

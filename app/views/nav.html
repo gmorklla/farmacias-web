@@ -9,37 +9,40 @@
                 <div class="row show-grid">
                     <div class="col-md-6">
                         <ol class="list-unstyled">
-                            <li class="dropdown">
-                                <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    Proveedores y Franquiciatarios
-                    <span class="caret"></span>
-                  </a>
-                                <ul class="dropdown-menu proveedores">
-                                    <li class="hidden-xs hidden-sm">Proveedores y Franquiciatarios</li>
-                                    <li role="separator" class="divider hidden-xs hidden-sm"></li>
-                                    <li><a class="hvr-sweep-to-right" ui-sref="calidad" hreflang="es"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp; Registro de nuevos proveedores</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Proveedores de vienes y servicios</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Acceso a franquiciatarios</a></li>
-                                    <li class="hidden-xs hidden-sm" role="separator" class="divider"></li>
-                                </ul>
-                            </li>
+                            <li><a ui-sref="#" hreflang="es">Registro de nuevos proveedores</a></li>
+<!--                             <li class="dropdown">
+    <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proveedores y Franquiciatarios<span class="caret"></span></a>
+    <ul class="dropdown-menu proveedores">
+        <li class="hidden-xs hidden-sm">Proveedores y Franquiciatarios</li>
+        <li role="separator" class="divider hidden-xs hidden-sm"></li>
+        <li><a class="hvr-sweep-to-right" ui-sref="calidad" hreflang="es"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp; Registro de nuevos proveedores</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Proveedores de vienes y servicios</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Acceso a franquiciatarios</a></li>
+        <li class="hidden-xs hidden-sm" role="separator" class="divider"></li>
+    </ul>
+</li> -->
+                            <li><a ui-sref="#" hreflang="es">Proveedores de vienes y servicios</a></li>
+                        </ol>
+                    </div>
+                    <div class="col-md-4">
+                        <ol class="list-unstyled">
+                            <li><a ui-sref="#" hreflang="es">Acceso a franquiciatarios</a></li>
                             <li><a ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
-                            <li><a ui-sref="bolsa" hreflang="es">Bolsa de Trabajo</a></li>
                         </ol>
-                    </div>
-                    <div class="col-md-5">
-                        <ol class="list-unstyled pull-left">
-                            <li class="shopping-car-icon">
-                                <a ui-sref="carrito" hreflang="es">
-                                    <button class="btn btn-info btn-sm" type="button">
-                                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Carrito &nbsp;<span class="badge">{{$storage.array.length}}</span>
-                                    </button>
-                                </a>
-                            </li>
-                        </ol>
-                    </div>
+                    </div>                                           
+<!--                     <div class="col-md-5">
+    <ol class="list-unstyled pull-left">
+        <li class="shopping-car-icon">
+            <a ui-sref="carrito" hreflang="es">
+                <button class="btn btn-info btn-sm" type="button">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Carrito &nbsp;<span class="badge">{{$storage.array.length}}</span>
+                </button>
+            </a>
+        </li>
+    </ol>
+</div> -->
                 </div>
                 <!-- Header Top Right | Lista tools -->
             </div>
@@ -47,28 +50,36 @@
                 <div>
                     <form>
                         <div class="form-group">
-                            <input type="text" placeholder="Busca un medicamento" class="form-control busca" ng-model="termino" ng-change="change()">
+                            <input type="text" placeholder="Busca un medicamento" class="form-control busca" ng-model="termino" ng-model-options='{ debounce: 700 }' ng-change="doSearch('barra')" my-enter="enterF()">
+                            <!-- ng-model="doSearchInput" ng-model-options='{ debounce: 500 }' ng-change="doSearch()" -->
                         </div>
                     </form>
                     <a class="cierraBusqueda" ng-click="noInput()" ng-show="viewSearch"><span style="font-size:2em; float:right; cursor:pointer; color:#BE2126" class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                     <div class="table-responsive" ng-show="viewSearch" style="overflow:hidden;">
                         <div class="row bPag">
-                            <dir-pagination-controls pagination-id="buscaPag"></dir-pagination-controls>
+                            <dir-pagination-controls pagination-id="buscaPag" max-size="5"></dir-pagination-controls>
+                            <p class="palabraBuscada">Palabra buscada: {{terminoBuscado}}</p>
                         </div>
                         <div class="row">
-                            <div class="col-md-9 col-sm-9 col-xs-9">
-                                <p><b>Medicamento</b></p>
+                            <div class="col-sm-12 col-xs-12" ng-show="searchLoader">
+                                <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <p><b>Precio</b></p>
-                            </div>
-                        </div>
-                        <div class="row" dir-paginate="item in meds | filter: termino | itemsPerPage: 3" pagination-id="buscaPag">
-                            <div class="col-md-9 col-sm-9 col-xs-9"><a ng-click="noInput()" ui-sref="medicamentos.detalle({ medicamentoId: prettyFn(item.medicamentoId) })" hreflang="es" ng-click="sendProduct(item)">{{item.medicamentoId}}</a></div>
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <p>{{item.precio | currency}}</p>
+                            <div class="col-sm-12 col-xs-12">
+                                <p class="searchResult"><b class="searchB">Medicamentos</b></p>
                             </div>
                         </div>
+                        <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
+                            <div class="col-sm-12 col-xs-12">
+                                <a ng-click="noInput()" ui-sref="busqueda({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
+                                    <p class="searchResults">{{item.NombreProducto}}</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row bPag">
+                            <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
+                                                  'disabled': searchLoader === true
+                                                }">Ver todos los resultados</a></p>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -87,29 +98,36 @@
                             <div class="form-group">
                                 <form>
                                     <div class="form-group">
-                                        <input type="text" placeholder="Busca un medicamento" class="form-control busca" ng-model="termino" ng-change="change()">
+                                        <input type="text" placeholder="Busca un medicamento" class="form-control busca" ng-model="termino" ng-model-options='{ debounce: 500 }' ng-change="doSearch('barra')" my-enter="enterF()">
                                     </div>
                                 </form>
                             </div>
                             <a class="cierraBusqueda" ng-click="noInput()" ng-show="viewSearch"><span style="font-size:2em; float:right; cursor:pointer; color:#BE2126" class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                             <div class="table-responsive" ng-show="viewSearch" style="overflow:hidden;">
                                 <div class="row bPag">
-                                    <dir-pagination-controls pagination-id="buscaPag"></dir-pagination-controls>
+                                    <p style="text-align:center"><dir-pagination-controls pagination-id="buscaPag" max-size="5"></dir-pagination-controls></p>
+                                    <p class="palabraBuscada">Palabra buscada: {{terminoBuscado}}</p>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-9 col-xs-9">
-                                        <p><b>Medicamento</b></p>
+                                    <div class="col-sm-12 col-xs-12" ng-show="searchLoader">
+                                        <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                                     </div>
-                                    <div class="col-sm-3 col-xs-3">
-                                        <p><b>Precio</b></p>
-                                    </div>
-                                </div>
-                                <div class="row" dir-paginate="item in meds | filter: termino | itemsPerPage: 3" pagination-id="buscaPag">
-                                    <div class="col-sm-9 col-xs-9"><a ng-click="noInput()" ui-sref="medicamentos.detalle({ medicamentoId: prettyFn(item.medicamentoId) })" hreflang="es" ng-click="sendProduct(item)">{{item.medicamentoId}}</a></div>
-                                    <div class="col-sm-3 col-xs-3">
-                                        <p>{{item.precio | currency}}</p>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <p class="searchResult"><b class="searchB">Medicamento</b></p>
                                     </div>
                                 </div>
+                                <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <a ng-click="noInput()" ui-sref="busqueda({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
+                                            <p class="searchResults">{{item.NombreProducto}}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row bPag">
+                                    <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
+                                                          'disabled': searchLoader === true
+                                                        }">Ver todos los resultados</a></p>
+                                </div>                                
                             </div>
                         </div>
                     </div>
@@ -126,9 +144,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li role="presentation" class="dropdown">
-                    <a class="dropdown-toggle navUnaLinea" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          Empresa <span class="caret"></span>
-        </a>
+                    <a class="dropdown-toggle navUnaLinea" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Empresa <span class="caret"></span></a>
                     <ul class="dropdown-menu dropSmallDevs">
                         <li class="hidden-xs hidden-sm">Empresa</li>
                         <li role="separator" class="divider hidden-xs hidden-sm"></li>
@@ -138,34 +154,77 @@
                         <li class="hidden-xs hidden-sm" role="separator" class="divider"></li>
                     </ul>
                 </li>
-                <li ui-sref-active="activo" class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
-                <li class="hvr-underline-from-center"><a ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
-                <li class="hvr-underline-from-center"><a ui-sref="curacion" hreflang="es">Material de Curación</a></li>
-                <li class="hvr-underline-from-center"><a ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
-                <li class="hvr-underline-from-center"><a class="navUnaLinea" href="http://www.farmaciasdesimilares.com.mx/catalogo/nov-dic/" target="_blank" hreflang="es">Catálogo</a></li>
-                <li role="presentation" class="dropdown">
-                    <a id="drop4" class="dropdown-toggle navUnaLinea" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          Promociones
-          <span class="caret"></span>
-        </a>
-                    <ul id="menu1" class="dropdown-menu dropSmallDevs" aria-labelledby="drop4">
-                        <li class="hidden-xs hidden-sm">Promociones</li>
-                        <li role="separator" class="divider hidden-xs hidden-sm"></li>
-                        <li><a class="hvr-sweep-to-right" ui-sref="promociones({ promo: 'Oferta' })" hreflang="es"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span>&nbsp;&nbsp; Ofertas</a></li>
+                <li role="presentation" class="dropdown hidden-md hidden-lg">
+                    <a class="dropdown-toggle navUnaLinea" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
+                    <ul class="dropdown-menu dropSmallDevs">
+                        <li class="hidden-xs hidden-sm">Productos</li>
+                        <li role="separator" class="divider hidden-xs hidden-sm"></li>                        
+                        <li ui-sref-active="activo" class="hvr-underline-from-center medIcon"><a class="navUnaLinea" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a class="hvr-sweep-to-right" ui-sref="promociones({ promo: 'Combo' })" hreflang="es"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;&nbsp; Combos</a></li>
-                        <li class="hidden-xs hidden-sm" role="separator" class="divider"></li>
+                        <li class="hvr-underline-from-center higieneIcon"><a class="navUnaLinea" ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="hvr-underline-from-center curacionIcon"><a ui-sref="curacion" hreflang="es">Material de Curación</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="hvr-underline-from-center vitaminasIcon"><a ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
                     </ul>
-                </li>
+                </li>                
+                <li ui-sref-active="activo" class="hvr-underline-from-center hidden-xs hidden-sm"><a class="navUnaLinea" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
+                <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
+                <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="curacion" hreflang="es">Material de Curación</a></li>
+                <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
+                <li class="hvr-underline-from-center"><a class="navUnaLinea" href="http://www.farmaciasdesimilares.com.mx/catalogo/nov-dic/" target="_blank" hreflang="es">Catálogo</a></li>
+                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="promociones" hreflang="es">Entérate</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="bienestar" hreflang="es">Bienestar</a></li>
-                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="promociones({ promo: 'Nuevo' })" hreflang="es">Nuevos</a></li>
+                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nuevos" hreflang="es">Nuevos</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nota({ notaId: notaFinal })" hreflang="es">Siminotas</a></li>
-                <li class="hvr-underline-from-center visible-xs"><a class="navUnaLinea" ui-sref="carrito" hreflang="es">Carrito</a></li>
+<!--                 <li class="hvr-underline-from-center visible-xs"><a class="navUnaLinea" ui-sref="carrito" hreflang="es">Carrito</a></li> -->
                 <li class="hvr-underline-from-center visible-xs"><a class="navUnaLinea" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
-                <li id="carritoNav" class="hvr-underline-from-center carritoNav hidden-xs"><a id="carritoNav" class="navUnaLinea" ui-sref="carrito" hreflang="es"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+                <li id="carritoNav" class="hvr-underline-from-center carritoNav hidden-xs"><a id="carritoNav" class="navUnaLinea" data-toggle="modal" data-target="#buscaModal" hreflang="es"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
     </div>
     <!--/.container-fluid -->
 </nav>
+<div data-backdrop="true" class="modal fade" id="buscaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="well">
+                        <input id="modalInput" type="text" placeholder="Busca un medicamento" ng-model="doSearchInput" ng-model-options='{ debounce: 500 }' ng-change="doSearch('modal')" my-enter="enterF()">
+                    </p>
+                    <div class="well" style="overflow:hidden;" ng-show="viewSearchModal">
+                        <div class="row bPag">
+                            <dir-pagination-controls pagination-id="buscaPag" max-size="5"></dir-pagination-controls>
+                            <p class="palabraBuscada">Palabra buscada: {{terminoBuscado}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12" ng-show="searchLoader">
+                                <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <p class="searchResults"><b>Medicamentos</b></p>
+                            </div>
+                        </div>
+                        <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <a ng-click="noInput()" ui-sref="busqueda({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
+                                    <p class="searchResults">{{item.NombreProducto}}</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row bPag">
+                            <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
+                                                  'disabled': searchLoader === true
+                                                }">Ver todos los resultados</a></p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

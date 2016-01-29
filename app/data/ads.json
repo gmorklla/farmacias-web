@@ -1,6 +1,6 @@
 {"ads" : [
 		{
-			"titulo" : "Piojitos",
+			"titulo" : "¿Piojos?",
 			"img" : "piojitos",
 			"hashtag" : ["oferta", "piojitos"],
 			"key" : 1
@@ -10,6 +10,24 @@
 			"img" : "el_buen_lunes",
 			"hashtag" : ["oferta", "buenLunes"],
 			"key" : 2
+		},
+		{
+			"titulo" : "Tu vida sin dolor",
+			"img" : "analgesia",
+			"hashtag" : ["oferta", "vidaSinDolor"],
+			"key" : 3
+		},
+		{
+			"titulo" : "La panchita hay que cuidar",
+			"img" : "panchita",
+			"hashtag" : ["oferta", "panchita"],
+			"key" : 4
+		},
+		{
+			"titulo" : "Descarga la nueva App",
+			"img" : "app",
+			"hashtag" : ["oferta", "app"],
+			"key" : 5
 		}
 	]
 }

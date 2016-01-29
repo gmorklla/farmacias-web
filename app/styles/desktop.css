@@ -60,13 +60,14 @@
 		border-bottom: none;
 		margin: 0;
 	}
-	.navbar-default .navbar-nav>li>a {
+	.navbar-default .navbar-nav>li>a {	
 		font-family: Helvetica;
 		font-size: 11px;
 		color:#fff;
 		line-height: 14px;
 		text-align: center;
 		margin-left: 0px;
+		padding:0;
 	}
 	.navUnaLinea {
 		margin-top: 9px;
@@ -125,6 +126,7 @@
 	}
 	.thumbnail {
 		margin-bottom: 0;
+		border-radius: 10px;
 	}
 	.thumbnail .caption {
 	    margin: 0 16px;
@@ -168,7 +170,7 @@
 	}
 	.productos {
 		background-color:#E2E2E2;
-		padding:25px 15px 70px;
+		padding:25px 15px 40px;
 	}
 	.proGrid {
 		border-right: 1px dashed #E7F9FF;
@@ -245,7 +247,7 @@
 		bottom:0;
 		right:0;
 		z-index: 9999;
-		cursor:pointer;
+		cursor:help;
 	}
 	.promoTxt {
 		position:relative;
@@ -362,7 +364,7 @@
 	.form-control {
 		border-radius: 10px;
 		margin-left: 30px;
-		width: 70%;
+		width: 80%;
 	}
 
 	.form-group {
@@ -387,8 +389,8 @@
 	}
 
 	.cierraBusqueda {
-		top:100px;
-		left:96.5%;
+		top: 13px;
+    	left: 77%;
 		z-index:100;
 	}
 
@@ -439,7 +441,7 @@
 	}
 
 	.notas p {
-		margin: 0 10px 10px 0;
+		margin: 0 12px 10px 0;
 	}
 
 	.btnNota {
@@ -475,7 +477,8 @@
 	}
 
 	.adsTitle {
-		margin:0 0 10px 0;
+		margin: 0 0 9px;
+    	padding: 12px 0 13px;
 	}
 
 	.historico .panel {
@@ -585,11 +588,8 @@
 	  z-index: 9999999999999;
 	}
 
-	.aCssSpinner2 {
-	  position:absolute;
-	  top: 100%;
-	  left: 33.5%;
-	  margin-top: 2%;  
+	.loadingMeds {
+		display:none;
 	}
 
 	#infoPromo {
@@ -653,6 +653,9 @@
 		margin-top: 18px;
 		border-radius: 0;
 	}
+	#comentariosTitle h4 {
+		padding-top: 13px;
+	}
 
 	.productoNoStars {
 		border-bottom: 1px solid #ccc;
@@ -676,6 +679,22 @@
 	.calificaTextarea {
 	  margin: 0 10% !important;
 	  width:80% !important;
+	}
+	.ofertaDetalle {
+	  margin-left: 0;
+	  margin-top: 0;
+	}
+	.nuevos .paginacion {
+	    margin-left: 0 !important;
+	    padding-left: 0 !important;
+	    margin-right: 0;
+	    padding-right: 0;  
+	}
+	.nuevos .pagination > li > a, .pagination > li > span {
+	  padding: 10px 12px;
+	}
+	.promocionesTitulo {
+	  font-size: 2.8em !important;
 	}	
 
 }

@@ -1,11 +1,19 @@
 <!doctype html>
-<html>
+<html ng-app="farmaciasWebApp">
 
 <head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta property="fb:app_id" content="398798393664417" />
+    <meta content="farmacias,farmacias similares,similares, farmacias de similares, farmacia de similares, farmacias dr simi, similares farmacias, farmacias similares mexico, farmaciasdesimilares.com.mx, simi, dr simi, dr. simi, doctor simi, laboratorios simi,laboratorios similares, medicamentos, medicamentos similares, genéricos intercambiables, generico, genericos, antibioticos, antigripales, analisis clinicos, medicinas, simicarrera" name="Keywords"></meta>
+    <meta content="Somos la cadena farmacéutica líder en ventas y distribución en México y América Latina. Aquí encontrarás genéricos de calidad a los mejores precios. ¡Compruébalo!" name="Description"></meta>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.farmaciasdesimilares.com.mx/propuesta/#!/" />
+    <meta property="og:title" content="Farmacias de Similares" />
+    <meta property="og:image" content="http://www.farmaciasdesimilares.com.mx/propuesta/images/siminotas/entidad_certificadora.jpg" />
+    <meta property="og:description" content="Somos la cadena farmacéutica líder en ventas y distribución en México y América Latina. Aquí encontrarás genéricos de calidad a los mejores precios. ¡Compruébalo!"/>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -18,10 +26,11 @@
     <link rel="stylesheet" href="styles/tablets.css">
     <link rel="stylesheet" href="styles/transiciones.css">
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <!-- endbuild -->
 </head>
 
-<body ng-app="farmaciasWebApp">
+<body>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -38,11 +47,12 @@
     </div>
     <div class="notasAlternas">
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default btn-lg" ng-click="otraNota('next')"><span class="badge"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></span> Anterior</button>
-            <button type="button" class="btn btn-default btn-lg" ng-click="otraNota('prev')">Siguiente <span class="badge"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></span>
+            <button type="button" class="btn btn-default btn-lg" ng-click="otraNota('next')" data-toggle="tooltip" data-placement="top" data-original-title="{{notaNext.titulo}} {{notaNext.subtitulo | lowercase}}"><span class="badge"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></span> Anterior</button>
+            <button type="button" class="btn btn-default btn-lg" ng-click="otraNota('prev')" data-toggle="tooltip" data-placement="top" data-original-title="{{notaPrev.titulo}} {{notaPrev.subtitulo | lowercase}}">Siguiente <span class="badge"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></span>
             </button>
         </div>
     </div>
+    <div id="fb-root"></div>
     <section class="contenidoUp">
         <header>
             <nav class="container-fluid" ui-view="nav" autoscroll="true"></nav>
@@ -94,6 +104,7 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-socialshare/dist/angular-socialshare.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -136,6 +147,15 @@
     <script src="scripts/services/califica.js"></script>
     <script src="scripts/controllers/contacto.js"></script>
     <script src="scripts/services/contactsrv.js"></script>
+    <script src="scripts/directives/fallbacksrc.js"></script>
+    <script src="scripts/services/runstatechange.js"></script>
+    <script src="scripts/services/busqueda.js"></script>
+    <script src="scripts/controllers/promociones.js"></script>
+    <script src="scripts/controllers/nuevos.js"></script>
+    <script src="scripts/controllers/nuevosSide.js"></script>
+    <script src="scripts/directives/pressEnter.js"></script>
+    <script src="scripts/controllers/busquedagrupo.js"></script>
+    <script src="scripts/controllers/bienestar.js"></script>
     <!-- endbuild -->
 </body>
 

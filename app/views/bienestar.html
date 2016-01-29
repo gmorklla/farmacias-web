@@ -1,0 +1,29 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <img src="images/nuevos_genericos.jpg" alt="">
+    </div>
+    <div class="col-md-8 proFrame">
+        <div class="row filtros promocionesFiltro">
+            <h1 class="popDisplayTitle notaTitulo promocionesTitulo">Bienestar</h1>
+        </div>
+        <div class="row promocionesRow">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <video id="bienestar" width="100%" controls>
+                    <source src="http://www.siminforma.com.mx/fla/BIENESTAR-ADICCIONES.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3 promocionesThumb vidsT" ng-repeat="item in vids" style="transition-delay: {{$index * 500}}ms">
+                <a ng-click="changeVid(item.url)" class="thumbnail promoThumb"> <img alt="{{item.titulo}}" ng-src="images/bienestar/{{::item.img}}.jpg" data-holder-rendered="true" style="width: 100%; display: block;" fallback-src="images/bienestar/bienestar.jpg"> </a>
+                <p>{{item.titulo}}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div ng-include="'views/nuevosSide.html'"></div>
+    </div>
+</div>

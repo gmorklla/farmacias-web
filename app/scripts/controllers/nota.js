@@ -10,7 +10,14 @@
 angular.module('farmaciasWebApp')
     .controller('NotaCtrl', ['prettyUrlSpc', 'loadData', '_', '$stateParams', '$scope', '$rootScope', '$state', '$log', function(prettyUrlSpc, loadData, _, $stateParams, $scope, $rootScope, $state, $log) {
         //$scope.url = "http://www.farmaciasdesimilares.com.mx/propuesta/#!" + $location.url();
+
+        $('[data-toggle="tooltip"]').tooltip({
+            html: 'true',
+            container: 'body'
+        });
         var original = prettyUrlSpc.deconfig($stateParams.notaId);
+
+        $scope.urlShare = 'http://www.farmaciasdesimilares.com.mx/propuesta/#!/siminotas/' + $stateParams.notaId;
 
         var datos = loadData.httpReq('data/siminotas.json');
 

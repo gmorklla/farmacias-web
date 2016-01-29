@@ -8,71 +8,159 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-	.controller('NavCtrl', ['$scope', '$rootScope', 'prettyUrlSpc', 'loadData', 'productoSrv', function($scope, $rootScope, prettyUrlSpc, loadData, productoSrv) {
+    .controller('NavCtrl', ['$scope', '$rootScope', '$log', '$state', 'prettyUrlSpc', 'loadData', 'productoSrv', 'busqueda', function($scope, $rootScope, $log, $state, prettyUrlSpc, loadData, productoSrv, busqueda) {
 
-		var datos = loadData.httpReq('data/medicamentos.json');
+        $scope.viewSearchModal = false;
 
-		datos.then(function(datos) {
-			$scope.meds = datos.data.medicamentos;
-		}, function(e) {
-			console.log(e);
-		});
+        var datos = loadData.httpReq('data/medicamentos.json');
 
-		$scope.prettyFn = function(args) {
-			return prettyUrlSpc.prettyUrl(args);
-		};
+        datos.then(function(datos) {
+            $scope.meds = datos.data.medicamentos;
+        }, function(e) {
+            console.log(e);
+        });
 
-		$scope.viewSearch = false;
+        $scope.doSearch = function(modo) {
 
-		$scope.change = function() {
-			$scope.viewSearch = true;
-		};
+            $log.info('Buscando...');
 
-		$scope.noInput = function() {
-			$scope.viewSearch = false;
-			$('#busca').val('');
-		};
+            var search;
 
-		var cierraMenu = function() {
-			$(".btn-navbar").click(); //bootstrap 2.x
-			$(".navbar-toggle").click(); //bootstrap 3.x by Richard    
-		};
+            if (modo === 'modal') {
 
-		$scope.$on('$locationChangeStart', function(event, next, current) {
-			if (!$('.navbar-toggle').hasClass('collapsed')) {
-				cierraMenu();
-			}
-		});
+                if ($scope.doSearchInput.length < 3) {
+                    $scope.viewSearchModal = false;
+                } else {
+                    $scope.viewSearchModal = true;
+                    $scope.searchLoader = true;
+                    var cuantos = busqueda.buscaPredictiva($scope.doSearchInput, 1);
+                    cuantos.then(function(datos) {
+                        var itemP = JSON.parse(datos.data.d);
+                        var cantidad = itemP[0].TotalProductos;
+                        search = busqueda.buscaPredictiva($scope.doSearchInput, cantidad);
+                        $scope.terminoBuscado = $scope.doSearchInput;
+                        search.then(function(datos) {
+                            $scope.searchResult = JSON.parse(datos.data.d);
+                            $log.info($scope.searchResult);
+                            $scope.searchLoader = false;
+                        }, function(e) {
+                            $log.error(e);
+                        });
+                    }, function(e) {
+                        $log.error(e);
+                    });
+                }
 
-		$scope.sendProduct = function(pro) {
-			productoSrv.addProduct(pro);
-		};
+            } else {
 
-		$('#carritoNav').hover(function() {
-			$rootScope.intervalo = setInterval(function() {
-				colocaCarritoPreview();
-				$('.carritoPreviewNav').fadeIn("slow");
-			}, 500);
-		}, function() {
-			clearInterval($rootScope.intervalo);
-			$('.carritoPreviewNav').fadeOut("slow");
-		});
+                if ($scope.termino.length < 3) {
+                    $scope.viewSearch = false;
+                } else {
+                    $scope.viewSearch = true;
+                    $scope.searchLoader = true;
+                    var cuantos = busqueda.buscaPredictiva($scope.termino, 1);
+                    cuantos.then(function(datos) {
+                        var itemP = JSON.parse(datos.data.d);
+                        var cantidad = itemP[0].TotalProductos;
+                        search = busqueda.buscaPredictiva($scope.termino, cantidad);
+                        $scope.terminoBuscado = $scope.termino;
+                        search.then(function(datos) {
+                            $scope.searchResult = JSON.parse(datos.data.d);
+                            $log.info($scope.searchResult);
+                            $scope.searchLoader = false;
+                        }, function(e) {
+                            $log.error(e);
+                        });
+                    }, function(e) {
+                        $log.error(e);
+                    });
+                }
 
-		function colocaCarritoPreview() {
-			var element = document.getElementById('carritoNav'); //replace elementId with your element's Id.
-			var rect = element.getBoundingClientRect();
-			var elementLeft, elementTop; //x and y
-			var scrollTop = document.documentElement.scrollTop ?
-				document.documentElement.scrollTop : document.body.scrollTop;
-			var scrollLeft = document.documentElement.scrollLeft ?
-				document.documentElement.scrollLeft : document.body.scrollLeft;
-			elementTop = rect.top + scrollTop + 50;
-			elementLeft = rect.left + scrollLeft - 261;
+            }
 
-			$('.carritoPreviewNav').css({
-				'top': elementTop,
-				'left': elementLeft
-			});
-		}
+        };
 
-	}]);
+        $scope.prettyFn = function(args) {
+            return prettyUrlSpc.prettyUrl(args);
+        };
+
+        $scope.viewSearch = false;
+
+        $scope.change = function() {
+            $scope.viewSearch = true;
+        };
+
+        $scope.noInput = function() {
+            $('#buscaModal').modal('hide');
+            $('.modal-backdrop').remove();
+            $scope.viewSearch = false;
+            $('#busca').val('');
+        };
+
+        var cierraMenu = function() {
+            $(".btn-navbar").click(); //bootstrap 2.x
+            $(".navbar-toggle").click(); //bootstrap 3.x by Richard    
+        };
+
+        $scope.$on('$locationChangeStart', function(event, next, current) {
+            $scope.doSearchInput = '';
+            $scope.termino = '';
+            $scope.viewSearchModal = false;
+            if (!$('.navbar-toggle').hasClass('collapsed')) {
+                cierraMenu();
+            }
+        });
+
+        $scope.sendProduct = function() {
+            //productoSrv.addProduct(pro);
+        };
+
+        $scope.enterF = function() {
+            $log.info($scope.termino);
+            $scope.noInput();
+            $rootScope.busqueda = true;
+            $state.go('busquedaGrupo', {
+                termino: $scope.prettyFn($scope.termino || $scope.doSearchInput)
+            });
+        };
+
+        /*      $('#carritoNav').hover(function() {
+                    $rootScope.intervalo = setInterval(function() {
+                        colocaCarritoPreview();
+                        $('.carritoPreviewNav').fadeIn("slow");
+                    }, 500);
+                }, function() {
+                    clearInterval($rootScope.intervalo);
+                    $('.carritoPreviewNav').fadeOut("slow");
+                });*/
+
+        function colocaCarritoPreview() {
+            var element = document.getElementById('carritoNav'); //replace elementId with your element's Id.
+            var rect = element.getBoundingClientRect();
+            var elementLeft, elementTop; //x and y
+            var scrollTop = document.documentElement.scrollTop ?
+                document.documentElement.scrollTop : document.body.scrollTop;
+            var scrollLeft = document.documentElement.scrollLeft ?
+                document.documentElement.scrollLeft : document.body.scrollLeft;
+            elementTop = rect.top + scrollTop + 50;
+            elementLeft = rect.left + scrollLeft - 261;
+
+            $('.carritoPreviewNav').css({
+                'top': elementTop,
+                'left': elementLeft
+            });
+        };
+
+        $("body").on("click", ".modal-dialog", function(e) {
+            if ($(e.target).hasClass('modal-dialog')) {
+                var hidePopup = $(e.target.parentElement.parentElement).attr('id');
+                $('#' + hidePopup).modal('hide');
+            }
+        });
+
+        $('#buscaModal').on('shown.bs.modal', function(e) {
+            $log.info('Abierto');
+            $('#modalInput').focus();
+        })
+
+    }]);

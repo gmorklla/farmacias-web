@@ -1,0 +1,17 @@
+<div class="historico" ng-controller="NuevosSideCtrl">
+    <h1 class="popDisplayTitle adsTitle">Nuevos</h1>
+    <div class="col-md-12 col-sm-12 col-xs-12 hidden-sm panel panel-default ads nuevos">
+        <div dir-paginate="item in searchResult | itemsPerPage: 2" pagination-id="nuevosPag">
+            <div class="panel-body col-md-12 col-sm-12 col-xs-12">
+                <p>
+                    <a ui-sref="nuevos.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
+                        <p class="well nuevosWell"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg"></p>
+                    </a>
+                </p>
+                <!-- <p>{{::item.entrada}}</p> -->
+            </div>
+            <div class="panel-footer">{{item.NombreProducto}}</div>
+        </div>
+        <p><dir-pagination-controls pagination-id="nuevosPag" class="paginacion col-md-12 col-xs-12" max-size="5" boundary-links="false"></dir-pagination-controls></p>
+    </div>   
+</div>

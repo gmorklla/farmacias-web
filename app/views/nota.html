@@ -6,7 +6,7 @@
         <img src="images/nuevos_genericos.jpg" alt="">
     </div>
     <div class="row detalleF">
-        <div class="col-md-8 col-xs-12 detalle">
+        <div class="col-md-8 col-xs-12 detalle detalleD">
             <div class="row nota">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-12 col-xs-12">
@@ -24,12 +24,10 @@
                                 <ng-include src="notaActual.cuerpo"></ng-include>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="btn-group" role="group">
-                                    <button id="share" type="button" class="btn btn-primary share" socialshare socialshare-provider="facebook" socialshare-type="feed" socialshare-caption="{{notaActual.entrada}}" socialshare-text="{{notaActual.url}}" socialshare-url="{{url}}" socialshare-via="398798393664417" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx" socialshare-media="http://www.farmaciasdesimilares.com.mx/propuesta/images/siminotas/{{notaActual.img}}.jpg" socialshare-popup-height="300" socialshare-popup-width="540">
+                                <div class="btn-group" role="group" style="margin-top:10px;">
+                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="Siminotas" socialshare-text="{{notaActual.titulo}} {{notaActual.subtitulo}}" socialshare-media="http://farmaciasdesimilares.com.mx/propuesta/images/siminotas/{{notaActual.img}}.jpg" socialshare-type="feed" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx/propuesta/gracias.html" socialshare-description="{{notaActual.shareTxt}}" socialshare-popup-height="350" socialshare-popup-width="540">
                                         <div class="resp-sharing-button__icon">
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32">
-                                                <path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path>
-                                            </svg>
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32"><path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path></svg>
                                         </div>
                                     </button>
                                     <a class="btn btn-info" socialshare socialshare-provider="twitter" socialshare-hashtags="{{notaActual.hashtag}}, {{notaActual.hashtag[1]}}, siminotas" socialshare-via="fsimilares" socialshare-text="{{notaActual.url}}" socialshare-url="{{url}}" socialshare-popup-height="400" socialshare-popup-width="500">

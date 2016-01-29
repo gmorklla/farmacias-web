@@ -22,9 +22,10 @@ angular
         'angularUtils.directives.dirPagination',
         'angularUtils.directives.uiBreadcrumbs',
         'youtube-embed',
-        'ngStorage'
+        'ngStorage',
+        '720kb.socialshare'
     ])
-    .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
+    .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', '$sceDelegateProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, $sceDelegateProvider) {
         $locationProvider.hashPrefix('!');
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.useApplyAsync(true);
@@ -470,9 +471,212 @@ angular
                 ncyBreadcrumb: {
                     label: '{{$stateParams.medicamentoId}}'
                 }
+            })
+            .state('busqueda', {
+                url: "/:idProducto/:medicamentoId",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{$stateParams.medicamentoId}}'
+                }
+            })
+            .state('promociones', {
+                url: "/promociones",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/promociones.html',
+                        controller: 'PromocionesCtrl',
+                        controllerAs: 'promociones'                        
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Promociones'
+                }
+            })
+            .state('bienestar', {
+                url: "/bienestar",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/bienestar.html',
+                        controller: 'BienestarCtrl',
+                        controllerAs: 'bienestar'                        
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Bienestar'
+                }
+            })
+            .state('nuevos', {
+                url: "/nuevos",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/nuevos.html',
+                        controller: 'NuevosCtrl',
+                        controllerAs: 'nuevos'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Nuevos'
+                }
+            })
+            .state('nuevos.detalle', {
+                url: "/:idProducto/:medicamentoId",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{$stateParams.medicamentoId}}'
+                }
+            })            
+            .state('busquedaGrupo', {
+                url: "/:termino",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/busquedaGrupo.html',
+                        controller: 'BusquedaCtrl',
+                        controllerAs: 'busqueda'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Búsqueda'
+                }
+            })
+            .state('busquedaGrupo.busqueda', {
+                url: "/:idProducto/:medicamentoId",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{$stateParams.medicamentoId}}'
+                }
             });
     }])
-    .run(['$rootScope', '$window', '$state', 'youTubeList', function($rootScope, $window, $state, youTubeList) {
+    .run(['$rootScope', '$window', '$state', 'youTubeList', 'runstatechange', function($rootScope, $window, $state, youTubeList, runstatechange) {
 
         var w = window.innerWidth;
         var h = window.innerHeight;
@@ -482,24 +686,9 @@ angular
 
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams) {
-                clearInterval($rootScope.intervalo);
-                $('.carritoPreviewNav').fadeOut("slow");
-                $('.notasAlternas').fadeOut("slow");
-                $window.scrollTo(0, 0);
-
-                if (toState.name === "inicio") {
-                    $rootScope.ocultarBarra = false;
-                    var scriptTag = document.getElementById("youtubeTag");
-                    if (!scriptTag) {
-                        youTubeList.insertTag();
-                    }
-                } else {
-                    $rootScope.ocultarBarra = true;
-                }
-
-                if (toState.name === "localiza") {
-                    console.log('Localiza');
-                }
+                //clearInterval($rootScope.intervalo);
+                //$('.carritoPreviewNav').fadeOut("slow");
+                runstatechange.onStateChange(toState, fromState);
 
             });
 
@@ -509,29 +698,7 @@ angular
             });
 
         $(window).scroll(function() {
-
-            var navegacion = $('#navegacion'),
-                infoPromo = $('#infoPromo'),
-                targetScroll = $('#contenido').position().top,
-                currentScroll = $('html').scrollTop() || $('body').scrollTop();
-
-            navegacion.toggleClass('fixedPos', currentScroll >= targetScroll);
-            infoPromo.toggleClass('fixedPos2', currentScroll >= targetScroll);
-            if (currentScroll >= targetScroll) {
-                $('.navbar-default').css({
-                    'width': '100%',
-                    'left': '0',
-                    'borderRadius': '0'
-                });
-                if ($state.$current.name === 'nota') {
-                    $('.notasAlternas').fadeIn("slow");
-                }
-            } else {
-                $('.navbar-default').css('borderTopLeftRadius', '15px').css('borderTopRightRadius', '15px');
-                if ($state.$current.name === 'nota') {
-                    $('.notasAlternas').fadeOut("slow");
-                }
-            }
+            runstatechange.onScroll();
         });
 
     }]);

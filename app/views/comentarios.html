@@ -1,94 +1,97 @@
 <div ng-controller="CommentCtrl">
-  <div id="comentariosTitle" class="row">
-    <div class="col-xs-12 col-md-3">
-      <h3>Comentarios</h3>
-    </div><!-- /col-sm-8 -->
-    <div class="col-xs-12 col-md-4">
-      <button type="button" class="btn btn-primary btn-sm" ng-click="openModal()">Dejar un comentario</button>
+    <div id="comentariosTitle" class="row">
+        <div class="col-xs-12" ng-class="{'col-md-3': comentarios.length > 0, 'col-md-7': comentarios.length === 0}">
+            <h3 ng-if="comentarios.length > 0">Comentarios</h3>
+            <h4 ng-if="comentarios.length === 0">¡Sé el primero en comentar esta nota!</h4>
+        </div>
+        <!-- /col-sm-8 -->
+        <div class="col-xs-12 col-md-4">
+            <button type="button" class="btn btn-primary btn-sm" ng-click="openModal()">Dejar un comentario</button>
+        </div>
     </div>
-  </div><!-- /row -->
-  <div class="row comentarios">
-    <div class="comment" dir-paginate="item in comentarios | itemsPerPage: 10" pagination-id="comentarios" ng-class="{
+    <!-- /row -->
+    <div class="row comentarios">
+        <div class="comment" dir-paginate="item in comentarios | itemsPerPage: 10" pagination-id="comentarios" ng-class="{
                                                     'col-xs-offset-1': item.clave != item.clavePadre
                                                   }">
-      <div class="col-sm-1 hidden-xs">
-        <div class="thumbnail">
-          <img class="img-responsive user-photo" src="images/avatar_2x.png">
-        </div><!-- /thumbnail -->
-      </div><!-- /col-sm-1 -->
-
-      <div class="col-md-11 col-sm-5">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <strong>{{item.nombre}}</strong> <span class="text-muted">{{getDate(item.fecha)}}</span>
-          </div>
-          <div class="panel-body">
-            {{item.texto}}
-          </div><!-- /panel-body -->
-          <div class="panel-footer">
-            <button type="button" class="btn btn-primary btn-xs" ng-click="openModal(item.clave)">Comentar</button>
-            <button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="postLike(item)">
-              <span class="badge">{{item.C_like}}</span> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-            </button>
-            <button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="postDislike(item)">
-              <span class="badge">{{item.C_dislike}}</span> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-            </button>                    
-          </div><!-- /panel-footer -->
-        </div><!-- /panel panel-default -->
-      </div><!-- /col-sm-5 -->
-    </div>
-    <div class="col-md-12 col-sm-12">
-      <dir-pagination-controls pagination-id="comentarios" class="comentarios-paginacion" on-page-change="scrollToTop()"></dir-pagination-controls>
-    </div>
-  </div><!-- /row -->
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-      <div class="vertical-alignment-helper">
-          <div class="modal-dialog vertical-align-center">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" aria-label="Close" ng-click="closeModal()"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="exampleModalLabel">Comentario</h4>
+            <div class="col-sm-1 hidden-xs">
+                <div class="thumbnail">
+                    <img class="img-responsive user-photo" src="images/avatar_2x.png">
                 </div>
-                <div class="modal-body">
-                  <form name="commentForm" class="contacto" method="post" novalidate>
-
-                    <div class="form-group has-feedback" ng-class="{
+                <!-- /thumbnail -->
+            </div>
+            <!-- /col-sm-1 -->
+            <div class="col-md-11 col-sm-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>{{item.nombre}}</strong> <span class="text-muted">{{getDate(item.fecha)}}</span>
+                    </div>
+                    <div class="panel-body">
+                        {{item.texto}}
+                    </div>
+                    <!-- /panel-body -->
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-primary btn-xs" ng-click="openModal(item.clave)">Comentar</button>
+                        <button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="postLike(item)">
+                            <span class="badge">{{item.C_like}}</span> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="postDislike(item)">
+                            <span class="badge">{{item.C_dislike}}</span> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <!-- /panel-footer -->
+                </div>
+                <!-- /panel panel-default -->
+            </div>
+            <!-- /col-sm-5 -->
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <dir-pagination-controls pagination-id="comentarios" class="comentarios-paginacion" on-page-change="scrollToTop()"></dir-pagination-controls>
+        </div>
+    </div>
+    <!-- /row -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-label="Close" ng-click="closeModal()"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Comentario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="commentForm" class="contacto" method="post" novalidate>
+                            <div class="form-group has-feedback" ng-class="{
                                                   'has-error': commentForm.commentName.$touched && commentForm.commentName.$invalid,
                                                   'has-success': commentForm.commentName.$touched && !commentForm.commentName.$invalid
                                                 }">
-                      <label for="recipient-name" class="control-label">Nombre:</label>
-                      <input type="text" class="form-control" id="commentName" name="commentName" ng-model="commentName" ng-minlength="3" ng-maxlength="20" required>
-                    </div>
-                    <div ng-messages="commentForm.commentName.$error" ng-if="commentForm.commentName.$touched">
-                      <p ng-message="minlength">Tu nombre es muy corto (Mínimo 3 caracteres).</p>
-                      <p ng-message="maxlength">Tu nombre es muy largo (Máximo 20 caracteres).</p>
-                      <p ng-message="required">Tu nombre es requerido.</p>
-                    </div>
-
-                    <div class="form-group has-feedback" ng-class="{
+                                <label for="recipient-name" class="control-label">Nombre:</label>
+                                <input type="text" class="form-control" id="commentName" name="commentName" ng-model="commentName" ng-minlength="3" ng-maxlength="20" required>
+                            </div>
+                            <div ng-messages="commentForm.commentName.$error" ng-if="commentForm.commentName.$touched">
+                                <p ng-message="minlength">Tu nombre es muy corto (Mínimo 3 caracteres).</p>
+                                <p ng-message="maxlength">Tu nombre es muy largo (Máximo 20 caracteres).</p>
+                                <p ng-message="required">Tu nombre es requerido.</p>
+                            </div>
+                            <div class="form-group has-feedback" ng-class="{
                                                   'has-error': commentForm.commentText.$touched && commentForm.commentText.$invalid,
                                                   'has-success': commentForm.commentText.$touched && !commentForm.commentText.$invalid
                                                 }">
-                      <label for="message-text" class="control-label">Mensaje:</label>
-                      <textarea class="form-control" id="commentText" name="commentText" ng-model="commentText" ng-minlength="10" ng-maxlength="2000" required></textarea>
+                                <label for="message-text" class="control-label">Mensaje:</label>
+                                <textarea class="form-control" id="commentText" name="commentText" ng-model="commentText" ng-minlength="10" ng-maxlength="2000" required></textarea>
+                            </div>
+                            <div ng-messages="commentForm.commentText.$error" ng-if="commentForm.commentText.$touched">
+                                <p ng-message="minlength">Tu mensaje es muy corto (Mínimo 10 caracteres).</p>
+                                <p ng-message="maxlength">Tu mensaje es muy largo (Máximo 2000 caracteres).</p>
+                                <p ng-message="required">Tu mensaje es requerido.</p>
+                            </div>
+                        </form>
                     </div>
-                    <div ng-messages="commentForm.commentText.$error" ng-if="commentForm.commentText.$touched">
-                      <p ng-message="minlength">Tu mensaje es muy corto (Mínimo 10 caracteres).</p>
-                      <p ng-message="maxlength">Tu mensaje es muy largo (Máximo 2000 caracteres).</p>
-                      <p ng-message="required">Tu mensaje es requerido.</p>
-                    </div>                    
-
-                  </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="closeModal()">Cerrar</button>
+                        <button type="button" class="btn btn-primary" ng-click="postComment()" ng-disabled="commentForm.$invalid">Mandar comentario</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" ng-click="closeModal()">Cerrar</button>
-                  <button type="button" class="btn btn-primary" ng-click="postComment()" ng-disabled="commentForm.$invalid">Mandar comentario</button>
-                </div>
-              </div>
-          </div>
-      </div>
-
-  </div>
+            </div>
+        </div>
+    </div>
 </div>

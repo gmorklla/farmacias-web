@@ -1,0 +1,44 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <img src="images/nuevos_genericos.jpg" alt="">
+    </div>
+    <div class="row detalleF">
+        <div class="col-md-8 col-xs-12 detalle detalleD">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <h1 class="popDisplayTitle notaTitulo promocionesTitulo">Entérate</h1>
+                </div>
+            </div>
+            <div class="row promocionesRow">
+                <div class="col-xs-12 col-sm-4 col-md-4 promocionesThumb" ng-repeat="item in ads" style="transition-delay: {{$index * 500}}ms">
+                    <a data-toggle="modal" data-target="#{{item.img}}" class="thumbnail promoThumb"> <img alt="{{item.titulo}}" ng-src="images/ads/{{::item.img}}.jpg" data-holder-rendered="true" style="width: 100%; display: block;"> </a>
+                    <p>{{item.titulo}}</p>
+                    <div class="modal fade" id="{{item.img}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="vertical-alignment-helper">
+                            <div class="modal-dialog vertical-align-center">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="exampleModalLabel">{{item.titulo}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="well imgPromo"><img alt="{{item.titulo}}" ng-src="images/ads/{{::item.img}}.jpg"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <div class="ofertaDetalle" ng-include="'views/nuevosSide.html'"></div>
+        </div>
+    </div>
+</div>

@@ -6,9 +6,9 @@
         <img src="images/nuevos_genericos.jpg" alt="">
     </div>
     <div class="row detalleF">
-        <div class="col-md-8 col-xs-12 detalle">
+        <div class="col-md-8 col-xs-12 detalle detalleD">
             <div class="row">
-                <div class="contacto" ng-hide="enviado == 0">
+                <div class="contacto col-md-6 col-sm-4 col-xs-12" ng-hide="enviado == 0">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1 class="popDisplayTitle notaTitulo">¡Gracias!</h1>
                     </div>
@@ -173,10 +173,12 @@
             </div>
         </div>
         <div class="col-md-4 col-xs-12">
-            <div ng-include="'views/promosSide.html'"></div>
+            <div class="ofertaDetalle" ng-include="'views/promosSide.html'"></div>
         </div>
-        <div class="banner hidden-lg hidden-md hidden-sm visible-xs">
-            <img src="images/nuevos_genericos_xs.jpg" alt="">
+        <div class="col-md-4 col-xs-12 hidden-lg hidden-md hidden-sm visible-xs">
+            <div class="banner">
+                <img src="images/nuevos_genericos_xs.jpg" alt="">
+            </div>
         </div>
     </div>
 </div>

@@ -23,7 +23,9 @@ angular.module('farmaciasWebApp')
 			setInterval(function() {
 				var imagen2 = imgMain[Math.round(Math.random())];
 				var url2 = 'images/' + imagen2;
-				document.getElementById('mainImg').style.backgroundImage = 'url(' + url2 + ')';
+				if(document.getElementById('mainImg')){
+					document.getElementById('mainImg').style.backgroundImage = 'url(' + url2 + ')';
+				}
 			}, 15000);
 		}
 

@@ -1,0 +1,171 @@
+{"vids" : [
+		{
+			"titulo" : "Adicciones",
+			"img" : "adicciones",
+			"hashtag" : ["adicciones", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-ADICCIONES.mp4"
+		},
+		{
+			"titulo" : "Resumen anual",
+			"img" : "resumen_anual",
+			"hashtag" : ["bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-RESUMEN-ANUAL-F-BEST.mp4"
+		},
+		{
+			"titulo" : "8° Aniversario CNDEE",
+			"img" : "aniversario_cndee",
+			"hashtag" : ["aniversario", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-OCTAVO-ANIV-DEL-CNDEE.mp4"
+		},
+		{
+			"titulo" : "Aprender a vivir bien, la diabetes no es un límite",
+			"img" : "la_diabetes_no_es_un_limite",
+			"hashtag" : ["aprendeAVivirBien", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-APRENDE-A-VIVIR-BIEN-LA-DIABETES-NO-ES-UN-LIMITE.mp4"
+		},
+		{
+			"titulo" : "Estudios cardiovasculares",
+			"img" : "estudios_cardiovasculares",
+			"hashtag" : ["estudiosCardiovasculares", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-ESTUDIOS-CARDIOVASCULARES.mp4"
+		},
+		{
+			"titulo" : "Osteoporosis",
+			"img" : "osteoporosis",
+			"hashtag" : ["osteoporosis", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-OSTEOPOROSIS.mp4"
+		},
+		{
+			"titulo" : "CNDEE",
+			"img" : "cndee",
+			"hashtag" : ["cndee", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-CNDEE.mp4"
+		},
+		{
+			"titulo" : "Epilepsia",
+			"img" : "epilepsia",
+			"hashtag" : ["epilepsia", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-EPILEPSIA.mp4"
+		},
+		{
+			"titulo" : "Servicio odontológico",
+			"img" : "servicio_odoltologico",
+			"hashtag" : ["servicioOdontologico", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-SERVICIO-ODONTOLOGICO.mp4"
+		},
+		{
+			"titulo" : "Fundación Best: 2da fuerza de consulta externa en México",
+			"img" : "fundacion_best",
+			"hashtag" : ["fundacionBest", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-FUNDACIONBEST-LA-2DA-FUERZA-DE-CONSULTA-EXTERNA-EN-MEX.mp4"
+		},
+		{
+			"titulo" : "CEPRIS",
+			"img" : "cepris",
+			"hashtag" : ["cepris", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-CEPRIS-1-04-15.mp4"
+		},
+		{
+			"titulo" : "Asma",
+			"img" : "asma",
+			"hashtag" : ["asma", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-ASMA-4-03-15.mp4"
+		},
+		{
+			"titulo" : "Atención integral de la diabetes",
+			"img" : "atencion_integral_diabetes",
+			"hashtag" : ["diabetes", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-ATENCION-INTEGRALDELA-DIABETES-26-11-14.mp4"
+		},
+		{
+			"titulo" : "Cultivo de piel",
+			"img" : "cultivo_de_piel",
+			"hashtag" : ["cultivoDePiel", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-CULTIVO-DE-PIEL12-11-14.mp4"
+		},
+		{
+			"titulo" : "Influenza H1N1",
+			"img" : "influenza",
+			"hashtag" : ["influenza", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-INFLUENZA-H1N1-6-11-13.mp4"
+		},
+		{
+			"titulo" : "Cáncer de mama",
+			"img" : "cancer_de_mama",
+			"hashtag" : ["cancerDeMama", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-CANCERdeMAMA-18-06-14.mp4"
+		},
+		{
+			"titulo" : "Fundación Best: Balance anual",
+			"img" : "fundacion_best_balance_anual",
+			"hashtag" : ["fundacionBest", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-BALANCE-ANUAL-FUNDACIONBEST-18-12-13.mp4"
+		},
+		{
+			"titulo" : "Sistema Integral de Salud",
+			"img" : "sistema_integral_de_salud",
+			"hashtag" : ["fundacionBest", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-FBEST-UN-SISTEMA-INTEGRAL-DE-SALUD15-10-14.mp4"
+		},
+		{
+			"titulo" : "Cuando el corazón se rompe",
+			"img" : "cuando_el_corazon_se_rompe",
+			"hashtag" : ["corazonRoto", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-CUANDO-EL-CORAZON-SE-ROMPE-2-09-13.mp4"
+		},
+		{
+			"titulo" : "Un buen dentista",
+			"img" : "un_buen_dentista",
+			"hashtag" : ["saludDental", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-UN-BUEN-DENTISTA-CLAVEENLASALUDDENTAL-25-09-13_1.mp4"
+		},
+		{
+			"titulo" : "Importancia de los análisis clínicos",
+			"img" : "importancia_de_analisis_clinicos",
+			"hashtag" : ["analisisClinicos", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-LA-IMPORTANCIA-D-LOSANALISIS-CLINICOS-ENEL-DIAGNOSTICO-11-09-13.mp4"
+		},
+		{
+			"titulo" : "Nuestro dolor de cada día",
+			"img" : "nuestro_dolor_de_cada_dia",
+			"hashtag" : ["nuestroDolor", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-NUESTRO-DOLOR-DE-CADADIA21-05-14.mp4"
+		},
+		{
+			"titulo" : "Fundación Best: Un sistema de salud paralelo",
+			"img" : "un_sistema_de_salud_paralelo",
+			"hashtag" : ["fundacionBest", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-F-BEST-UN-SISTEMADESALUD-PARALELO-21-08-13_h264.mp4"
+		},
+		{
+			"titulo" : "Automonitoreo vital en el paciente diabético",
+			"img" : "autmonitoreo_vital_paciente_diabetico",
+			"hashtag" : ["diabetes", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-EL-AUTOMONITOREO-VITAL-ENEL-PACIENTE-DIABETICO-27-08-14.mp4"
+		},
+		{
+			"titulo" : "Correcta alimentación en el paciente diabético",
+			"img" : "correcta_alimentacion_paciente_diabetico",
+			"hashtag" : ["diabetes", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-LA-CORRECTA-ALIMENTACION-enel-PACIENTEDIABETICO-11-06-14.mp4"
+		},
+		{
+			"titulo" : "Análisis Clínicos del Dr. Simi: servicio de calidad",
+			"img" : "analisis_clinicos_servicio_de_calidad",
+			"hashtag" : ["analisisClinicos", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-ANALisis-CLIN-DR-SIMI-UN-SERVICIO-DE-CALIDAD-14-08-13_h264.mp4"
+		},
+		{
+			"titulo" : "Hipertensión arterial, el asesino silencioso",
+			"img" : "hipertension_arterial_asesino_silencioso",
+			"hashtag" : ["hipertensionArterial", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-HIPERTENSION-ART-EL-ASESINO-SILENCIOSO-19-03-14.mp4"
+		},
+		{
+			"titulo" : "LX Aniversario Laboratorios Best",
+			"img" : "lx_aniversario_laboratorios_best",
+			"hashtag" : ["laboratoriosBest", "bienestar"],
+			"url": "http://www.siminforma.com.mx/fla/BIENESTAR-LX-ANIVERSARIOLABORATORIOSBEST-10-07-13_h264.mp4"
+		}
+	]
+}
