@@ -13,7 +13,7 @@
 	    max-width: 300px;
 	    display:none;
 	}
-	.promoView {
+	.promoView, .preView {
 		position: absolute;
 	    top: 0;
 	    right: 0;
@@ -517,6 +517,10 @@
 	.filtros .paginacion ul {
 		margin: 2px 15px 0 0;
 	}
+	.filtros .col-md-12 {
+		text-align: right;
+    	padding:0;
+	}	
 
 	.tooltip.bottom {
 	    margin-top: 20px;
@@ -597,13 +601,35 @@
 	}
 
 	.ofertaTxt {
-		font-size: 2.2em !important;
+		font-size: 1.5em !important;
 		font-weight: bold !important;
+		color:white;
 	}
 
 	.ofertaContainer {
 		padding:10px !important;
 		margin-bottom: 1px;
+	}
+
+	.ofertaContainer span {
+		white-space: normal;
+		line-height: normal;
+	}
+
+	.ofertaContainer hr {
+		margin: 5px 0;
+		background-color:#ccc;
+		height:1px;
+	}
+
+	.ofertaViewPanel .label-default {
+		background-color: #F5F5F5;
+		border: 1px solid #E3E3E3;
+	}
+
+	.ofertaContainer .badge {
+		background-color: white;
+		color:#333;
 	}
 
 	#right-panel {
@@ -675,6 +701,7 @@
 
 	.ofertaViewPanel .label {
 		font-size: 1.2em !important;
+		border-radius: 10px;
 	}
 	.calificaTextarea {
 	  margin: 0 10% !important;
@@ -695,7 +722,78 @@
 	}
 	.promocionesTitulo {
 	  font-size: 2.8em !important;
-	}	
+	}
+	#productPreview {
+		background-color: transparent !important;
+		max-width: 220px;
+		max-height: 150px !important;
+		overflow:hidden;
+	}
+	#productPreview .panel {
+		border-radius: 4px;
+		box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.5);
+		background-color: rgba(2, 64, 91, 0.8) !important;
+		min-height: 150px;		
+	}
+	#productPreview .ofertaTxt {
+		font-size: 1em !important;
+		white-space: normal;
+		line-height: normal;
+	}
+	#productPreview .label-default {
+		background-color: transparent !important;
+		border:0;
+		margin-top: 20px;
+	}
+	.filtros .col-md-12 input {
+	  margin-bottom: 0;
+	  width:100%;
+	}
+	.leyendas {
+  		padding: 10px 15px;
+  	}
+	.farmaciasOp {
+	  background-color: #5bc0de;
+	  border:5px solid white;
+	  border-right: none;
+	  border-top-left-radius: 10px;
+	  border-bottom-left-radius: 10px;
+	}
+
+	.analisisOp {
+	  border-top:5px solid white;
+	  border-bottom:5px solid white;
+	  background-color: #0798E8;
+	  border-left: 1px solid white;
+	}
+
+	.consultoriosOp {
+	  border-top:5px solid white;
+	  border-bottom:5px solid white;  
+	  background-color: #087fc1;
+	  border-left: 1px solid white;
+	}
+
+	.dentalesOp {
+	  border:5px solid white; 
+	  background-color: #076599;
+	  border-top-right-radius: 10px;
+	  border-bottom-right-radius: 10px;
+	  border-left: 1px solid white;
+	}
+  	.activoOp {
+		background-color: white;
+  	}
+  	.activoOp p {
+  		color:#777;
+  	}
+  	.nuevosWell {
+  		margin: 0 10%;
+  		max-width: 80%;
+  	}
+  	.urlSearch {
+  		margin-left: 0;
+  	}		
 
 }
 

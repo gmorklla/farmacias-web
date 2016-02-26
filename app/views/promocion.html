@@ -3,46 +3,57 @@
                                                   'titleCombo': tipoDeOferta == 'Combo',
                                                   'titleOferta': tipoDeOferta == 'Oferta'
                                                 }">{{tipoDeOferta}}</h1>
-    <div ng-if="tipoDeOferta == 'Oferta'" class="row row-centered" ng-repeat="oferta in ofertas track by $index">
+    <div ng-if="tipoDeOferta == 'Oferta'" class="row row-centered">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 col-sm-12 col-xs-12 col-centered">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-centered ofertaInfo">
                 <div class="col-md-12 col-xs-12 panel panel-default">
-                    <div class="panel-heading text-center">{{oferta.description}}</div>
+                    <div class="panel-heading text-center">
+                        {{ofertas[0].description}}                        
+                    </div>
                     <div class="panel-body ofertaViewPanel">
                         <div class="col-md-12 col-sm-5 col-xs-12 ofertaViewPic">
                             <p class="well">
-                                <a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{oferta.id.trim()}}.jpg" alt="{{oferta.description}}" data-toggle="tooltip" data-placement="bottom" title="{{oferta.description}}"></a>
+                                <a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{ofertas[0].id.trim()}}.jpg" alt="{{ofertas[0].description}}" data-toggle="tooltip" data-placement="bottom" title="{{ofertas[0].description}}"></a>
                             </p>
                         </div>
-                        <div class="col-md-12 col-sm-5 col-xs-12 label label-warning ofertaContainer">
-                            <span class="ofertaTxt">{{oferta.cantidad}} X {{oferta.precio}}</span>
+                        <div class="col-md-12 col-sm-5 col-xs-12 label label-default ofertaContainer">
+                            <span class="ofertaTxt badge">{{ofertas[0].cantidad}} X {{ofertas[0].precio | currency}}</span>
                         </div>
                         <div class="col-md-12 col-sm-5 col-xs-12 label label-success ofertaContainer">
-                            <span class="ofertaTxt">Ahorras {{oferta.ahorro}}</span>
+                            <span class="ofertaTxt">{{ofertas[0].ahorro}}</span>
+                        </div>
+                        <div ng-repeat="oferta in ofertas" ng-if="ofertas.length > 1 && $index >= 1">
+                            <div class="col-md-12 col-sm-5 col-xs-12 label label-default ofertaContainer">
+                                <span class="ofertaTxt badge">{{ofertas[$index].cantidad}} X {{ofertas[$index].precio | currency}}</span>
+                            </div>
+                            <div class="col-md-12 col-sm-5 col-xs-12 label label-success ofertaContainer">
+                                <span class="ofertaTxt">{{ofertas[$index].ahorro}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div ng-if="tipoDeOferta == 'Combo'" class="row row-centered" ng-repeat="oferta in ofertas track by $index">
+    <div ng-if="tipoDeOferta == 'Combo'" class="row row-centered">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 col-sm-12 col-xs-12 col-centered">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-centered ofertaInfo">
                 <div class="col-md-12 col-xs-12 panel panel-default">
                     <div class="panel-heading text-center">
-                        {{oferta.producto1.nombre}}
-                        <br>
-                        <img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{oferta.producto1.id.trim()}}.jpg" alt="{{oferta.producto1.nombre}}" data-toggle="tooltip" data-placement="bottom" title="{{oferta.producto1.nombre}}">
-                    </div>
-                    <div class="panel-heading text-center">
-                        {{oferta.producto2.nombre}}
-                        <br>
-                        <img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{oferta.producto2.id.trim()}}.jpg" alt="{{oferta.producto2.nombre}}" data-toggle="tooltip" data-placement="bottom" title="{{oferta.producto2.nombre}}">
+                        {{ofertas[0].description}}
                     </div>
                     <div class="panel-body ofertaViewPanel">
+                        <div class="col-md-12 col-sm-5 col-xs-12 ofertaViewPic">
+                            <p class="well">
+                                <a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{ofertas[0].id.trim()}}.jpg" alt="{{ofertas[0].description}}" data-toggle="tooltip" data-placement="bottom" title="{{ofertas[0].description}}"></a>
+                            </p>
+                        </div>                        
                         <div class="col-md-12 col-sm-5 col-xs-12 label label-warning ofertaContainer">
-                            <span class="ofertaTxt">{{oferta.precio}}</span>
+                            <span class="ofertaTxt">{{ofertas[0].precio | currency}}</span>
                         </div>
+                        <div class="col-md-12 col-sm-5 col-xs-12 label label-success ofertaContainer">
+                            <span class="ofertaTxt">{{ofertas[0].ahorro}}</span>
+                        </div>                        
                     </div>
                 </div>
             </div>

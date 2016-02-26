@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <base href="/propuesta/">
+    <title ng-bind-html="pageTitulo + ' | Farmacias Similares'"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta property="fb:app_id" content="398798393664417" />
@@ -105,6 +106,7 @@
     <script src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
     <script src="bower_components/angular-socialshare/dist/angular-socialshare.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -126,7 +128,8 @@
     <script src="scripts/controllers/nota.js"></script>
     <script src="scripts/controllers/localiza.js"></script>
     <script src="scripts/services/map.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places&language=es"></script>
+    <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places&language=es"></script>-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&language=es"></script>
     <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
     <script src="scripts/services/carritosrv.js"></script>
     <script src="scripts/controllers/carrito.js"></script>
@@ -156,6 +159,11 @@
     <script src="scripts/directives/pressEnter.js"></script>
     <script src="scripts/controllers/busquedagrupo.js"></script>
     <script src="scripts/controllers/bienestar.js"></script>
+    <script src="scripts/services/loadlocations.js"></script>
+    <script src="scripts/filters/datefilter.js"></script>
+    <script src="scripts/services/locationsrv.js"></script>
+    <script src="scripts/services/angularseo.js"></script>
+    <script src="scripts/services/getshorturl.js"></script>
     <!-- endbuild -->
 </body>
 

@@ -19,33 +19,9 @@ angular.module('farmaciasWebApp')
 
         $scope.urlShare = $location.absUrl();
 
-        $log.info($stateParams.idProducto);
-
         var idProductoParam = $stateParams.idProducto.trim();
 
-        var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
-        medDetalle.then(function(info) {
-            $scope.medActual = JSON.parse(info.data.d)[0];
-            $stateParams.medicamentoId = $scope.medActual.SUSTANCIA;
-            $scope.getPromo($scope.medActual.ID);
-            if ($scope.medActual.FAMILIA === 'PERFUMERIA' || $scope.medActual.FAMILIA === 'SUPLEMENTOS') {
-                $scope.calificable = 0;
-            } else {
-                $scope.calificable = -1;
-            }
-            $log.info($scope.medActual);
-            /*      for (var prop in $scope.medActual) {
-                    console.log("Med." + prop + " = " + $scope.medActual[prop] + ' | ' + typeof $scope.medActual[prop]);
-                  }*/
-        }, function(e) {
-            $log.error(e);
-        });
-
-        $rootScope.muestraCarrito = true;
-
-        $scope.ocultaCarrito = function() {
-            $rootScope.muestraCarrito = false;
-        };
+        var productoInMemory = _.isEmpty($rootScope.productoAct);
 
         $scope.getPromo = function(id) {
             //console.clear();
@@ -59,9 +35,75 @@ angular.module('farmaciasWebApp')
                 }
 
             }, function(e) {
-                $log.error(e);
+                for (var key in e) {
+                    $log.error(key + ' ', e[key]);
+                }
             });
 
+        };        
+
+        function preparaEntorno() {
+            for (var key in $scope.medActual) {
+                console.info(key + ' ', $scope.medActual[key]);
+            }
+            $stateParams.medicamentoId = $scope.medActual.NombreProducto;
+
+            var productoConOferta = _.isEmpty($scope.medActual.Oferta);
+            if (!productoConOferta) {
+
+                var ofertaTxtF = {
+                    "ofertas": []
+                }
+                $rootScope.tipoDeOferta = $scope.medActual.Oferta[0].TipoOferta;
+                for (var i = 0; i < $scope.medActual.Oferta.length; i++) {
+                    ofertaTxtF.ofertas.push({
+                        id: $scope.medActual.IdProducto.trim(),
+                        description: $scope.medActual.Oferta[i].Descripcion,
+                        cantidad: $scope.medActual.Oferta[i].Cantidad,
+                        precio: $scope.medActual.Oferta[i].PrecioOferta,
+                        ahorro: $scope.medActual.Oferta[i].Mensaje
+                    });
+                }
+                $rootScope.ofertas = ofertaTxtF.ofertas;
+            } else {
+                console.info('No busca promo');
+                $rootScope.tipoDeOferta = '';
+            }
+
+            if ($scope.medActual.NombreSeccion === 'HIGIENE Y PERFUMERIA' || $scope.medActual.NombreSeccion === 'VITAMINAS Y SUPLEMENTOS') {
+                $scope.calificable = 0;
+            } else {
+                $scope.calificable = -1;
+            }
+            console.info($scope.medActual.Ingredientes.length);
+            for (var i = 0; i < $scope.medActual.Ingredientes.length; i++) {
+                for (var key in $scope.medActual.Ingredientes[i]) {
+                    console.log("Ingrediente." + key + " = " + $scope.medActual.Ingredientes[i][key] + ' | ' + typeof $scope.medActual.Ingredientes[i][key]);
+                }
+            };
+        };
+
+        if (productoInMemory) {
+            var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
+            medDetalle.then(function(info) {
+                $scope.medActual = (JSON.parse(info.data.d))[0];
+                productoSrv.addProduct($scope.medActual);
+                preparaEntorno();
+            }, function(e) {
+                for (var key in e) {
+                    $log.error(key + ' ', e[key]);
+                }
+            });
+        } else {
+            console.info('Esta en memoria');
+            $scope.medActual = productoSrv.getProduct();
+            preparaEntorno();
+        }
+
+        $rootScope.muestraCarrito = true;
+
+        $scope.ocultaCarrito = function() {
+            $rootScope.muestraCarrito = false;
         };
 
         $scope.calificaText = '';

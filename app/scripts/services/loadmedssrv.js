@@ -10,8 +10,8 @@
 angular.module('farmaciasWebApp')
   .service('LoadMedsSrv', ['$http', function ($http) {
     return {
-      httpReq: function(cuantos, pagina) {
-		return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'cuantos':'" + cuantos + "','paginador':'" + pagina + "','familia':'medicamentos'}");
+      httpReq: function(tipo) {
+		return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'familia':'" + tipo + "'}");
       }
     };
   }]);

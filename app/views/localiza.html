@@ -1,6 +1,63 @@
 <div class="row show-grid productos">
     <div class="col-md-12 bread">
         <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>    
+    <div class="row localizaOps hidden-sm hidden-xs">
+        <div class="col-md-3 col-sm-12 col-xs-12 mapOptions farmaciasOp" ng-click="cambiaBusqueda(1)" ng-class="{ 'activoOp': tipoDeBusqueda == 1 }">
+            <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 1">&nbsp;</span> Farmacias</p>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12 mapOptions analisisOp" ng-click="cambiaBusqueda(2)" ng-class="{ 'activoOp': tipoDeBusqueda == 2 }">
+            <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 2">&nbsp;</span> Análisis Clínicos</p>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12 mapOptions consultoriosOp" ng-click="cambiaBusqueda(3)" ng-class="{ 'activoOp': tipoDeBusqueda == 3 }">
+            <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 3">&nbsp;</span> Consultorios</p>
+        </div>
+        <div class="col-md-3 col-sm-12 col-xs-12 mapOptions dentalesOp" ng-click="cambiaBusqueda(4)" ng-class="{ 'activoOp': tipoDeBusqueda == 4 }">
+            <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 4">&nbsp;</span> Consultorios Dentales</p>
+        </div>
+    </div>
+    <div class="row localizaOps" ng-if="tipoDeBusqueda == 1">
+        <div class="col-md-3">
+            <button type="button" ng-click="checkToogle()" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" ng-class="{ 'btn-danger': horas.value1 == false, 'btn-success': horas.value1 == true }">
+                <span class="glyphicon" aria-hidden="true" ng-class="{ 'glyphicon-time': horas.value1 == false, 'glyphicon-refresh': horas.value1 == true }"></span> <span ng-if="horas.value1 == false"> Mostrar unidades 24 hrs.</span> <span ng-if="horas.value1 == true"> Mostrar todas las unidades</span>
+            </button>
+        </div>
+    </div>
+    <div class="col-md-12 unidadesTitle" ng-if="datosLocaliza">
+        <div class="col-md-12">
+            <div class="instruccionesLabel" style="text-align:left;"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> UNIDAD {{datosLocaliza[0].unidad}}</div>
+            <p>
+                <button class="btn btn-success" type="button">
+                    Calle: <span class="badge">{{datosLocaliza[0].calle}}</span>
+                </button>
+                <button class="btn btn-success" type="button">
+                    Número: <span class="badge">{{datosLocaliza[0].numero}}</span>
+                </button>
+                <button class="btn btn-success" type="button">
+                    Colonia: <span class="badge">{{datosLocaliza[0].colonia}}</span>
+                </button>
+                <button class="btn btn-success" type="button">
+                    Municipio: <span class="badge">{{datosLocaliza[0].municipio}}</span>
+                </button>
+                <button class="btn btn-success" type="button">
+                    Estado: <span class="badge">{{datosLocaliza[0].estado}}</span>
+                </button>
+                <button class="btn btn-success" type="button">
+                    Teléfono: <span class="badge">{{datosLocaliza[0].telefono}}</span>
+                </button>
+                <div class="alert alert-info col-md-12" role="alert" ng-if="datosLocaliza[0].tipoEstudio.length > 0">
+                    <div class="instruccionesLabel" style="text-align:left;">{{datosLocaliza[0].tipoEstudio.length}} ESTUDIOS</div>
+                    <hr style="margin-top:2px; margin-bottom:2px;">
+                    <span ng-repeat="estudio in datosLocaliza[0].tipoEstudio" ng-class-odd="'odd'" ng-class-even="'even'">{{datosLocaliza[0].tipoEstudio[$index]}}<span ng-if="!$last">, </span></span>
+                </div>
+                <div class="alert alert-warning col-md-12" role="alert">
+                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span> Horario: {{datosLocaliza[0].horario}}
+                </div>
+            </p>
+        </div>
+    </div>
+    <div class="col-md-12 hidden-md hidden-lg" style="margin-bottom:15px;">
+        <select class="select form-control" ng-options="item as item.label for item in items track by item.id" ng-model="selected" ng-change="cambiaBusqueda()"></select>
     </div>
     <div id="mapaFinal" class="col-md-12 col-sm-12 col-xs-12 mapaF">
         <div class="alert alert-danger text-center" role="alert" ng-show="apiError">
@@ -8,27 +65,22 @@
             <span>{{ apiStatus }}</span>
         </div>
         <div class="hidden-sm hidden-xs visible-md visible-lg" id="right-panel">
-            <div class="col-md-12 unidadesTitle">
-                <div class="instruccionesLabel"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> INSTRUCCIONES</div>
-            </div>            
-        </div>
-        <div id="map"></div>
-        <div class="hidden-lg hidden-md" id="right-panel2">
-            <div class="col-xs-12 visible-xs unidadesTitle">
-                <div class="instruccionesLabel"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> INSTRUCCIONES</div>
+            <div class="col-md-12 unidadesTitle" style="background-color:#fff;">
+                <div class="instruccionesLabel"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> INDICACIONES</div>
             </div>
         </div>
+        <div id="map"></div>
         <input id="searchId" name="place" placeholder="Busca tu unidad" type="text" class="controls col-xs-12" />
         <div class="mapControles" id="opcionesMapa">
             <form class="form-inline row">
                 <div class="form-group col-md-12 col-sm-12 col-xs-12 hidden-xs">
                     <label class="uni" for="inputAmount">UNIDADES MOSTRADAS</label>
-                    <input type="number" class="form-control localizaInput" min="5" max="40" step="5" name="numUnidades" ng-model="inputUnidades" id="inputAmount">
-                    <select id="mode" ng-model="selectedMode" ng-change="ruta(puntoDeInteres)">
-                        <option value="DRIVING">Manejando</option>
-                        <option value="WALKING">Caminando</option>
-                        <option value="TRANSIT">En transporte público</option>
-                    </select>
+                    <input type="number" class="form-control localizaInput" min="10" max="50" step="5" name="numUnidades" ng-model="inputUnidades" id="inputAmount">
+                    <!--                     <select id="mode" ng-model="selectedMode" ng-change="ruta(puntoDeInteres)">
+    <option value="DRIVING">Manejando</option>
+    <option value="WALKING">Caminando</option>
+    <option value="TRANSIT">En transporte público</option>
+</select> -->
                 </div>
             </form>
         </div>
@@ -52,4 +104,69 @@
         </div>
         <hr>
     </div>
+    <span class="glyphicon glyphicon-menu-down showOps" aria-hidden="true" ng-click="muestraOps();"></span>
+    <div class="col-md-12 unidadesTitle login" ng-show="showOps">
+        <form class="navbar-form navbar-left col-md-12">
+            <span ng-show="!usuario">
+                <div class="form-group" style="margin-top:0">
+                    <input type="email" placeholder="Email" class="form-control urlSearch" ng-model="email" required>
+                </div>
+                <div class="form-group" style="margin-top:0">
+                    <input type="password" placeholder="Contraseña" class="form-control urlSearch" ng-model="password" required>
+                </div>
+                <button class="btn btn-info" ng-click="login()"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Ingresar</button>
+                    <div class="alert alert-danger" role="alert" style="margin-top:10px; border-radius: 10px;" ng-show="logInError">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      <span class="sr-only">Error:</span>
+                      ¡{{loginErrorMsg}}!
+                    </div>
+            </span>
+        </form>
+        <form class="navbar-form navbar-left col-md-12">
+            <span ng-show="usuario">
+                <div class="col-md-12">
+                    <span>Hola {{usuario}}</span>
+                    <div class="form-group" style="margin-top:0">
+                        <input type="text" placeholder="Término 1" class="form-control urlSearch" ng-model="termino1">
+                    </div>
+                    <div class="form-group" style="margin-top:0">
+                        <input type="text" placeholder="Término 2" class="form-control urlSearch" ng-model="termino2">
+                    </div>
+                    <div class="form-group" style="margin-top:0">
+                        <input type="text" placeholder="Término 3" class="form-control urlSearch" ng-model="termino3">
+                    </div>
+                    <button class="btn btn-success" ng-click="urlBusca()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
+                    <button class="btn btn-danger" ng-click="logout()"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Salir</button>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button ng-click="guardaPost('Facebook');" class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShareShort}}" socialshare-caption="Tenemos más de 100 nuevos genéricos. ¡Pregunta por el tuyo!" socialshare-media="{{mapImgShare}}" socialshare-text="Farmacias Similares cerca de ti" socialshare-type="feed" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx/propuesta/gracias.html" socialshare-description="Sigue este enlace para conocer nuestras unidades más cercanas a: {{shareDirection}}" socialshare-popup-height="350" socialshare-popup-width="540" data-toggle="tooltip" data-placement="bottom" title="Compartir en Facebook">
+                            <div class="resp-sharing-button__icon">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32">
+                                    <path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path>
+                                </svg>
+                            </div>
+                        </button>
+                        <a ng-click="guardaPost('Twitter');" class="btn btn-info" socialshare socialshare-provider="twitter" socialshare-via="fsimilares" socialshare-text="Unidades cercanas a: {{shareDirection}}" socialshare-url="{{urlShareShort}}" socialshare-popup-height="400" socialshare-popup-width="500" data-toggle="tooltip" data-placement="bottom" title="Compartir en Twitter">
+                            <div class="resp-sharing-button__icon">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32">
+                                    <path d="M32 6.076c-1.177 0.522-2.443 0.875-3.771 1.034 1.355-0.813 2.396-2.099 2.887-3.632-1.269 0.752-2.674 1.299-4.169 1.593-1.198-1.276-2.904-2.073-4.792-2.073-3.626 0-6.565 2.939-6.565 6.565 0 0.515 0.058 1.016 0.17 1.496-5.456-0.274-10.294-2.888-13.532-6.86-0.565 0.97-0.889 2.097-0.889 3.301 0 2.278 1.159 4.287 2.921 5.465-1.076-0.034-2.088-0.329-2.974-0.821-0.001 0.027-0.001 0.055-0.001 0.083 0 3.181 2.263 5.834 5.266 6.437-0.551 0.15-1.131 0.23-1.73 0.23-0.423 0-0.834-0.041-1.235-0.118 0.835 2.608 3.26 4.506 6.133 4.559-2.247 1.761-5.078 2.81-8.154 2.81-0.53 0-1.052-0.031-1.566-0.092 2.905 1.863 6.356 2.95 10.064 2.95 12.076 0 18.679-10.004 18.679-18.68 0-0.285-0.006-0.568-0.019-0.849 1.283-0.926 2.396-2.082 3.276-3.398z"></path>
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top:0">
+                    <label for="urlForShare">Link por compartir</label>
+                    <input id="urlForShare" type="text" class="form-control urlSearch" ng-model="urlShare" style="width:90%">
+                    <button class="btn btn-default" ng-click="copiaLink();" data-toggle="tooltip" data-placement="bottom" title="Copiar link"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+                </div>
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert" ng-if="copiado" style="margin-top:10px; border-radius: 10px;">
+                      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                      <span class="sr-only">Hecho:</span>
+                      ¡Link copiado!
+                    </div>
+                </div>
+            </span>
+        </form>
+    </div>    
 </div>

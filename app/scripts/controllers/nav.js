@@ -33,19 +33,11 @@ angular.module('farmaciasWebApp')
                 } else {
                     $scope.viewSearchModal = true;
                     $scope.searchLoader = true;
-                    var cuantos = busqueda.buscaPredictiva($scope.doSearchInput, 1);
+                    var cuantos = busqueda.buscaPredictiva($scope.doSearchInput);
                     cuantos.then(function(datos) {
-                        var itemP = JSON.parse(datos.data.d);
-                        var cantidad = itemP[0].TotalProductos;
-                        search = busqueda.buscaPredictiva($scope.doSearchInput, cantidad);
+                        $scope.searchResult = JSON.parse(datos.data.d);
+                        $scope.searchLoader = false;
                         $scope.terminoBuscado = $scope.doSearchInput;
-                        search.then(function(datos) {
-                            $scope.searchResult = JSON.parse(datos.data.d);
-                            $log.info($scope.searchResult);
-                            $scope.searchLoader = false;
-                        }, function(e) {
-                            $log.error(e);
-                        });
                     }, function(e) {
                         $log.error(e);
                     });
@@ -60,17 +52,12 @@ angular.module('farmaciasWebApp')
                     $scope.searchLoader = true;
                     var cuantos = busqueda.buscaPredictiva($scope.termino, 1);
                     cuantos.then(function(datos) {
-                        var itemP = JSON.parse(datos.data.d);
-                        var cantidad = itemP[0].TotalProductos;
-                        search = busqueda.buscaPredictiva($scope.termino, cantidad);
+                        $scope.searchResult = JSON.parse(datos.data.d);
+                        for(var key in $scope.searchResult[0]){
+                            $log.info(key + ' ', $scope.searchResult[0][key]);
+                        }
+                        $scope.searchLoader = false;
                         $scope.terminoBuscado = $scope.termino;
-                        search.then(function(datos) {
-                            $scope.searchResult = JSON.parse(datos.data.d);
-                            $log.info($scope.searchResult);
-                            $scope.searchLoader = false;
-                        }, function(e) {
-                            $log.error(e);
-                        });
                     }, function(e) {
                         $log.error(e);
                     });
@@ -161,6 +148,10 @@ angular.module('farmaciasWebApp')
         $('#buscaModal').on('shown.bs.modal', function(e) {
             $log.info('Abierto');
             $('#modalInput').focus();
-        })
+        });
+
+        $scope.localizaType = function(type) {
+            $rootScope.ubicaType = type;
+        };        
 
     }]);

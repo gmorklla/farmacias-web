@@ -11,48 +11,55 @@
                 <div class="col-md-6 col-sm-4 col-xs-12">
                     <div class="col-md-12 col-xs-12">
                         <p class="well">
-                            <a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim() || medActual.ID.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
+                            <a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-8 col-xs-12">
                     <div class="col-md-12 col-xs-12 panel panel-default">
-                        <div class="panel-heading">{{medActual.NombreProducto || medActual.DESCRIPCION}}</div>
+                        <div class="panel-heading">{{medActual.NombreProducto}}</div>
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
-                                Precio: {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}
+                                Precio: {{medActual.PrecioVenta | currency}}
                             </div>
                             <div class="col-md-12 col-sm-5 col-xs-12 label label-default datosDetalle">
-                                Clave: {{medActual.IdProducto || medActual.ID.trim()}}
+                                Clave: {{medActual.IdProducto.trim()}}
                                 <hr>
                                 <br>
-                                <div class="infoProducto">Presentación: {{medActual.Presentacion || medActual.PRESENTACION}}</div>
-                                <hr>
-                                <br>
-                                <div class="infoProducto" ng-if="medActual.SUSTANCIA">Sustancia: {{medActual.SUSTANCIA}}</div>
-                                <hr>
-                                <br>
-                                <div class="infoProducto" ng-if="medActual.CONCENTRACION">Concentración: {{medActual.CONCENTRACION}}</div>
+                                <div class="infoProducto">Presentación: {{medActual.Presentacion}}</div>
+                                <hr ng-if="medActual.Concentracion">
+                                <br ng-if="medActual.Concentracion">
+                                <div class="infoProducto" ng-if="medActual.Concentracion">Concentración: {{medActual.Concentracion}}</div>
                             </div>
-<!--                             <div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual.ID.trim());" ng-model="agregaAlert">
+                            <div class="well col-md-12 col-sm-5 col-xs-12" ng-if="medActual.Ingredientes.length > 0">
+                                <h1>INGREDIENTES</h1>
+                            <div class="col-md-12 col-sm-5 col-xs-12 label label-success" ng-if="medActual.Ingredientes.length > 0" ng-repeat="ingrediente in medActual.Ingredientes">
+                                <div class="infoProducto">
+                                    {{ingrediente.Nombre}} {{ingrediente.Cantidad}} {{ingrediente.UnidadMedida}}
+                                </div>
+                            </div>                                
+                            </div>
+                            <!--                             <div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual.ID.trim());" ng-model="agregaAlert">
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 </div> -->
                             <div class="col-md-12 col-sm-6 col-xs-12 calificacion" ng-if="calificable == 0">
                                 <p>
                                     Calificación
-                                    <span ng-show="medActual.VOTACION > 0" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="medActual.VOTACION > 1" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="medActual.VOTACION > 2" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="medActual.VOTACION > 3" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="medActual.VOTACION > 4" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="medActual.Calificacion > 0" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="medActual.Calificacion > 1" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="medActual.Calificacion > 2" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="medActual.Calificacion > 3" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="medActual.Calificacion > 4" class="star"><img src="images/star.png" alt=""></span>
                                 </p>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12" ng-if="calificable == 0">
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#estrellas" ng-if="calificable == 0"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
-                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="{{shareCaption}}" socialshare-text="{{medActual.NombreProducto || medActual.DESCRIPCION}} a sólo {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}" socialshare-media="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim() || medActual.ID.trim()}}.jpg" socialshare-type="feed" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx/propuesta/gracias.html" socialshare-description="Tenemos más de 100 nuevos genéricos. ¡Pregunta por el tuyo!" socialshare-popup-height="350" socialshare-popup-width="540">
+                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="{{shareCaption}}" socialshare-text="{{medActual.NombreProducto || medActual.DESCRIPCION}} a sólo {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}" socialshare-media="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" socialshare-type="feed" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx/propuesta/gracias.html" socialshare-description="Tenemos más de 100 nuevos genéricos. ¡Pregunta por el tuyo!" socialshare-popup-height="350" socialshare-popup-width="540">
                                         <div class="resp-sharing-button__icon">
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32"><path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path></svg>
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32">
+                                                <path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path>
+                                            </svg>
                                         </div>
                                     </button>
                                     <a class="btn btn-info" socialshare socialshare-provider="twitter" socialshare-hashtags="{{hashtag}}, loMismoPeroMasBarato" socialshare-via="fsimilares" socialshare-text="{{medActual.NombreProducto || medActual.DESCRIPCION}} | {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}" socialshare-url="{{urlShare}}" socialshare-popup-height="400" socialshare-popup-width="500">
@@ -73,8 +80,8 @@
             </div>
         </div>
         <div class="col-md-4 col-xs-12">
-            <div class="ofertaDetalle" ng-if="tipoDeOferta !== ''" ng-include="'views/oferta.html'"></div>
-            <div class="ofertaDetalle" ng-if="tipoDeOferta == ''" ng-include="'views/promosSide.html'"></div>
+            <div class="ofertaDetalle" ng-if="tipoDeOferta !== ''" ng-include="'views/promocion.html'"></div>
+            <div class="ofertaDetalle" ng-if="tipoDeOferta === ''" ng-include="'views/promosSide.html'"></div>
         </div>
         <div class="col-md-4 col-xs-12 hidden-lg hidden-md hidden-sm visible-xs">
             <div class="banner">
@@ -121,7 +128,7 @@
                         <h4 class="modal-title" id="exampleModalLabel">{{medActual.NombreProducto || medActual.DESCRIPCION}}</h4>
                     </div>
                     <div class="modal-body">
-                        <p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.IdProducto.trim() || medActual.ID.trim()}}.jpg" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/noImage_G.jpg"></p>
+                        <p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.IdProducto.trim()}}.jpg" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/noImage_G.jpg"></p>
                     </div>
                     <div class="modal-footer">
                         <div class="col-md-4 col-sm-5 col-xs-12 label label-warning">
@@ -149,9 +156,9 @@
                 <div class="modal-body">
                     <form name="calificaForm" class="contacto" method="post" novalidate>
                         <div class="form-group has-feedback" ng-class="{
-	                                              'has-error': calificaForm.calificaRadio.$touched && calificaForm.calificaRadio.$invalid,
-	                                              'has-success': calificaForm.calificaRadio.$touched && !calificaForm.calificaRadio.$invalid
-	                                            }" ng-hide="enviado == 1">
+                                                  'has-error': calificaForm.calificaRadio.$touched && calificaForm.calificaRadio.$invalid,
+                                                  'has-success': calificaForm.calificaRadio.$touched && !calificaForm.calificaRadio.$invalid
+                                                }" ng-hide="enviado == 1">
                             <label for="message-text" class="control-label calificaLabel">¿Ya probaste <span>{{medActual.NombreProducto || medActual.DESCRIPCION}}</span>?</label>
                             <br>
                             <label class="col-md-2 col-sm-6 col-xs-6 col-md-offset-6 siLabel">
@@ -163,9 +170,9 @@
                         </div>
                         <div id='stars' class='col-md-12 starrr' ng-show="probado === 1 && enviado == 0"></div>
                         <div ng-show="probado === 1 && enviado == 0" class="form-group has-feedback" ng-class="{
-	                                              'has-error': calificaForm.calificaText.$touched && calificaForm.calificaText.$invalid,
-	                                              'has-success': calificaForm.calificaText.$touched && !calificaForm.calificaText.$invalid
-	                                            }">
+                                                  'has-error': calificaForm.calificaText.$touched && calificaForm.calificaText.$invalid,
+                                                  'has-success': calificaForm.calificaText.$touched && !calificaForm.calificaText.$invalid
+                                                }">
                             <label for="message-text" class="control-label calificaLabel">Comentarios:</label>
                             <textarea class="form-control calificaTextarea" id="calificaText" name="calificaText" ng-model="calificaText" ng-minlength="10" ng-maxlength="2000"></textarea>
                         </div>

@@ -17,7 +17,13 @@ angular.module('farmaciasWebApp')
         });
         var original = prettyUrlSpc.deconfig($stateParams.notaId);
 
+        //$stateParams.medicamentoId = $scope.medActual.NombreProducto;
+
         $scope.urlShare = 'http://www.farmaciasdesimilares.com.mx/propuesta/#!/siminotas/' + $stateParams.notaId;
+
+        var resultado = prettyUrlSpc.deconfig($stateParams.notaId);
+        resultado = prettyUrlSpc.capitalize(resultado);
+        $stateParams.notaId = resultado;        
 
         var datos = loadData.httpReq('data/siminotas.json');
 

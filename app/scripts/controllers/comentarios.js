@@ -42,20 +42,6 @@ angular.module('farmaciasWebApp')
 
 		$scope.getComments(url, '10000', '100');
 
-		$scope.getDate = function(fecha) {
-			var x = fecha.indexOf("(") + 1;
-			var y = fecha.indexOf(")");
-			var res = parseInt(fecha.substring(x, y));
-			var d = new Date(res);
-			var options = {
-				weekday: "long",
-				year: "numeric",
-				month: "short",
-				day: "numeric"
-			};
-			return d.toLocaleDateString("es-ES", options);
-		};
-
 		$scope.scrollToTop = function() {
 			$('html, body').animate({
 				scrollTop: $("#comentariosTitle").offset().top

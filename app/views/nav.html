@@ -17,19 +17,19 @@
         <li role="separator" class="divider hidden-xs hidden-sm"></li>
         <li><a class="hvr-sweep-to-right" ui-sref="calidad" hreflang="es"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp; Registro de nuevos proveedores</a></li>
         <li role="separator" class="divider"></li>
-        <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Proveedores de vienes y servicios</a></li>
+        <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Proveedores de bienes y servicios</a></li>
         <li role="separator" class="divider"></li>
         <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Acceso a franquiciatarios</a></li>
         <li class="hidden-xs hidden-sm" role="separator" class="divider"></li>
     </ul>
 </li> -->
-                            <li><a ui-sref="#" hreflang="es">Proveedores de vienes y servicios</a></li>
+                            <li><a ui-sref="#" hreflang="es">Proveedores de bienes y servicios</a></li>
                         </ol>
                     </div>
                     <div class="col-md-4">
                         <ol class="list-unstyled">
                             <li><a ui-sref="#" hreflang="es">Acceso a franquiciatarios</a></li>
-                            <li><a ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
+                            <li><a ng-click="localizaType(1)" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
                         </ol>
                     </div>                                           
 <!--                     <div class="col-md-5">
@@ -64,18 +64,40 @@
                             <div class="col-sm-12 col-xs-12" ng-show="searchLoader">
                                 <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                             </div>
-                            <div class="col-sm-12 col-xs-12">
+                            <div class="col-sm-12 col-xs-12" ng-if="searchResult.length > 0">
                                 <p class="searchResult"><b class="searchB">Medicamentos</b></p>
                             </div>
                         </div>
                         <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
                             <div class="col-sm-12 col-xs-12">
-                                <a ng-click="noInput()" ui-sref="busqueda({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
+                                <a ng-click="noInput()" ui-sref="busquedaGrupo.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
                                     <p class="searchResults">{{item.NombreProducto}}</p>
                                 </a>
                             </div>
                         </div>
-                        <div class="row bPag">
+                        <div class="row" ng-if="searchResult.length == 0">
+                            <div class="col-sm-12 col-xs-12 bg-danger">
+                                <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 bg-info">
+                                <p class="searchResults"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Si tiene alguna duda, puede llamarnos sin costo a Simitel</p>
+                                <h3>01 800 911 6666</h3>
+                                <hr style="border-top: 1px solid white;">
+                            </div>                            
+                            <div class="col-sm-6 col-xs-6 bg-info">
+                                <p>
+                                    <b>Opción 4:</b><br>
+                                    Asesoría nutricional
+                                </p>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 bg-info">
+                                <p>
+                                    <b>Opción 5:</b><br>
+                                    Asesoría médica
+                                </p>
+                            </div>
+                        </div>                        
+                        <div class="row bPag" ng-if="searchResult.length > 0">
                             <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
                                                   'disabled': searchLoader === true
                                                 }">Ver todos los resultados</a></p>
@@ -112,18 +134,40 @@
                                     <div class="col-sm-12 col-xs-12" ng-show="searchLoader">
                                         <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                                     </div>
-                                    <div class="col-sm-12 col-xs-12">
-                                        <p class="searchResult"><b class="searchB">Medicamento</b></p>
+                                    <div class="col-sm-12 col-xs-12" ng-if="searchResult.length > 0">
+                                        <p class="searchResult"><b class="searchB">Medicamentos</b></p>
                                     </div>
                                 </div>
                                 <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
                                     <div class="col-sm-12 col-xs-12">
-                                        <a ng-click="noInput()" ui-sref="busqueda({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
+                                        <a ng-click="noInput()" ui-sref="busquedaGrupo.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
                                             <p class="searchResults">{{item.NombreProducto}}</p>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="row bPag">
+                                <div class="row" ng-if="searchResult.length == 0">
+                                    <div class="col-sm-12 col-xs-12 bg-danger">
+                                        <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12 bg-info">
+                                        <p class="searchResults"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Si tiene alguna duda, puede llamarnos sin costo a Simitel</p>
+                                        <h3>01 800 911 6666</h3>
+                                        <hr style="border-top: 1px solid white;">
+                                    </div>                            
+                                    <div class="col-sm-6 col-xs-6 bg-info">
+                                        <p>
+                                            <b>Opción 4:</b><br>
+                                            Asesoría nutricional
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-6 bg-info">
+                                        <p>
+                                            <b>Opción 5:</b><br>
+                                            Asesoría médica
+                                        </p>
+                                    </div>
+                                </div>                                
+                                <div class="row bPag" ng-if="searchResult.length > 0">
                                     <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
                                                           'disabled': searchLoader === true
                                                         }">Ver todos los resultados</a></p>
@@ -150,6 +194,8 @@
                         <li role="separator" class="divider hidden-xs hidden-sm"></li>
                         <li><a class="hvr-sweep-to-right" ui-sref="calidad" hreflang="es"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp; Control de Calidad</a></li>
                         <li role="separator" class="divider"></li>
+                        <li><a class="hvr-sweep-to-right" ui-sref="bolsa" hreflang="es"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp;&nbsp; Bolsa de Trabajo</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a class="hvr-sweep-to-right" ui-sref="contacto" hreflang="es"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; Contáctanos</a></li>
                         <li class="hidden-xs hidden-sm" role="separator" class="divider"></li>
                     </ul>
@@ -173,13 +219,13 @@
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="curacion" hreflang="es">Material de Curación</a></li>
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" href="http://www.farmaciasdesimilares.com.mx/catalogo/nov-dic/" target="_blank" hreflang="es">Catálogo</a></li>
-                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="promociones" hreflang="es">Entérate</a></li>
+                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="promociones" hreflang="es">Lo nuevo</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="bienestar" hreflang="es">Bienestar</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nuevos" hreflang="es">Nuevos</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nota({ notaId: notaFinal })" hreflang="es">Siminotas</a></li>
 <!--                 <li class="hvr-underline-from-center visible-xs"><a class="navUnaLinea" ui-sref="carrito" hreflang="es">Carrito</a></li> -->
                 <li class="hvr-underline-from-center visible-xs"><a class="navUnaLinea" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
-                <li id="carritoNav" class="hvr-underline-from-center carritoNav hidden-xs"><a id="carritoNav" class="navUnaLinea" data-toggle="modal" data-target="#buscaModal" hreflang="es"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+                <li class="hvr-underline-from-center carritoNav hidden-xs"><a id="carritoNav" class="navUnaLinea" data-toggle="modal" data-target="#buscaModal" hreflang="es"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -206,18 +252,40 @@
                             <div class="col-sm-12 col-xs-12" ng-show="searchLoader">
                                 <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                             </div>
-                            <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12" ng-if="searchResult.length > 0">
                                 <p class="searchResults"><b>Medicamentos</b></p>
                             </div>
                         </div>
                         <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <a ng-click="noInput()" ui-sref="busqueda({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
+                                <a ng-click="noInput()" ui-sref="busquedaGrupo.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
                                     <p class="searchResults">{{item.NombreProducto}}</p>
                                 </a>
                             </div>
                         </div>
-                        <div class="row bPag">
+                        <div class="row" ng-if="searchResult.length == 0">
+                            <div class="col-sm-12 col-xs-12 bg-danger">
+                                <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
+                            </div>
+                            <div class="col-sm-12 col-xs-12 bg-info">
+                                <p class="searchResults" style="margin-top:10px;"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Si tiene alguna duda, puede llamarnos sin costo a Simitel</p>
+                                <h3>01 800 911 6666</h3>
+                                <hr style="border-top: 1px solid white;">
+                            </div>                            
+                            <div class="col-sm-6 col-xs-6 bg-info">
+                                <p style="margin:10px 0;">
+                                    <b>Opción 4:</b><br>
+                                    Asesoría nutricional
+                                </p>
+                            </div>
+                            <div class="col-sm-6 col-xs-6 bg-info">
+                                <p style="margin:10px 0;">
+                                    <b>Opción 5:</b><br>
+                                    Asesoría médica
+                                </p>
+                            </div>
+                        </div>                        
+                        <div class="row bPag" ng-if="searchResult.length > 0">
                             <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
                                                   'disabled': searchLoader === true
                                                 }">Ver todos los resultados</a></p>

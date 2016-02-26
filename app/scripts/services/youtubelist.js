@@ -14,8 +14,8 @@ angular.module('farmaciasWebApp')
 			return $.get(
 				"https://www.googleapis.com/youtube/v3/playlistItems", {
 					part: 'snippet',
-					maxResults: 25,
-					playlistId: 'PLIsp8dpzwfEMSZMM1BtcSk3H0a8yzNP2R',
+					maxResults: 50,
+					playlistId: 'UU_rxdnyzupsXt6xmzw4MuLw',
 					key: 'AIzaSyB_JIsaXkFIo51uyD6WgifZd2f6FJDx2V8'
 				},
 				function(data) {

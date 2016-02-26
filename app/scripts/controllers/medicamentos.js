@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadPromoSrv', 'PromoOrComboSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, LoadPromoSrv, PromoOrComboSrv, $scope, $rootScope, $stateParams, $log, $timeout, $window) {
+    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadPromoSrv', 'PromoOrComboSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, LoadPromoSrv, PromoOrComboSrv, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
 
         $rootScope.muestraCarrito = true;
 
@@ -23,16 +23,39 @@ angular.module('farmaciasWebApp')
         //console.log(LoadMedsSrv.httpReq());
         $scope.meds = [];
         $scope.cuantos = 9;
+        $scope.familia = $state.$current.name;
 
-        $scope.getMeds = function(cuantos, page) {
+        var familia = '';
 
-            var page = page;
+        switch ($state.$current.name) {
+            case 'medicamentos':
+                familia = 'MEDICAMENTOS'
+                $rootScope.familiaId = 'medicamentos.detalle';
+                $scope.calificable = 1;
+                break;
+            case 'vitaminas':
+                familia = 'VITAMINAS Y SUPLEMENTOS'
+                $rootScope.familiaId = 'vitaminas.detalle';
+                $scope.calificable = 0;
+                break;
+            case 'higiene':
+                familia = 'HIGIENE Y PERFUMERIA'
+                $rootScope.familiaId = 'higiene.detalle';
+                $scope.calificable = 0;
+                break;
+            case 'curacion':
+                familia = 'MATERIAL DE CURACION'
+                $rootScope.familiaId = 'curacion.detalle';
+                $scope.calificable = 1;
+                break;
+            case 'nuevos':
+                familia = 'MEDICAMENTOS'
+                $rootScope.familiaId = 'nuevos.detalle';
+                $scope.calificable = 1;
+                break;                
+        }
 
-            $rootScope.paginationNumber = page;
-
-            if(!$rootScope.paginationNumber){
-                page = 1;
-            }
+        $scope.getMeds = function() {
 
             $("#loadingMeds, #loadingMeds2, .loadScreen").fadeIn("slow");
 
@@ -40,25 +63,40 @@ angular.module('farmaciasWebApp')
                 scrollTop: $(".productos").offset().top
             }, 1000);
 
-            var medicamentos = LoadMedsSrv.httpReq(cuantos, page);
+            var medicamentos = LoadMedsSrv.httpReq(familia);
 
             medicamentos.then(function(datos) {
+                if (!$scope.pagina) {
+                    $scope.pagina = 1;
+                }
                 $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
-
                 $scope.meds = JSON.parse(datos.data.d);
-                $scope.totalMeds = $scope.meds[0].TotalProductos;
+                console.log($scope.meds);
+                if ($scope.familia == 'nuevos') {
+                    $scope.meds = $filter('filter')($scope.meds, true);
+                }
+                /*for (var key in $scope.meds[29]) {
+                    console.log(key + ' ', $scope.meds[29][key]);
+                }
+                for (var key in $scope.meds[29].Oferta[0]) {
+                    console.info(key + ' ', $scope.meds[29].Oferta[0][key]);
+                }*/
             }, function(e) {
-                console.log(e);
+                for (var key in e) {
+                    console.log(key + ' ', e[key]);
+                }
             });
 
         };
 
-        if ($rootScope.prevState === 'medicamentos.detalle') {
-            $scope.getMeds($scope.cuantos, $rootScope.paginationNumber);
-            $scope.pagina = $rootScope.paginationNumber;
-        } else {
-            $scope.getMeds($scope.cuantos, 1);
-        }
+        function decide() {
+            if ($rootScope.prevState === $rootScope.familiaId) {
+                $scope.getMeds();
+                $scope.pagina = $rootScope.paginationNumber;
+            } else {
+                $scope.getMeds();
+            }
+        };
 
         $scope.sendProduct = function(pro) {
             productoSrv.addProduct(pro);
@@ -66,7 +104,7 @@ angular.module('farmaciasWebApp')
 
         $scope.muestraMas = function() {
             $scope.cuantos = $scope.cuantos + 9;
-            $scope.getMeds($scope.cuantos, 1);
+            $scope.getMeds();
         };
 
         $scope.ocultaCarrito = function() {
@@ -75,45 +113,90 @@ angular.module('farmaciasWebApp')
             });
         };
 
-        $scope.getPromo = function(id) {
-            console.clear();
-
-            var datos = LoadPromoSrv.httpReq(id);
-
-            datos.then(function(info) {
-                var promoCombo = PromoOrComboSrv.getPromoCombo(info);
-                $rootScope.ofertas = promoCombo.ofertas;
-
-                colocaPromoView();
-                $('.promoView').fadeIn("slow");
-
-            }, function(e) {
-                $log.error(e);
-            });
-
+        $scope.getPromo = function(item) {
+            colocaPromoView();
+            $('.promoView').fadeIn("slow");
+            var ofertaTxtF = {
+                "ofertas": []
+            }
+            $rootScope.tipoDeOferta = item.Oferta[0].TipoOferta;
+            for (var i = 0; i < item.Oferta.length; i++) {
+                ofertaTxtF.ofertas.push({
+                    id: item.IdProducto.trim(),
+                    description: item.Oferta[i].Descripcion,
+                    cantidad: item.Oferta[i].Cantidad,
+                    precio: item.Oferta[i].PrecioOferta,
+                    ahorro: item.Oferta[i].Mensaje
+                });
+            }
+            $rootScope.ofertas = ofertaTxtF.ofertas;
         };
 
         $scope.hidePromo = function() {
             $rootScope.viewData = '';
-            $('.promoView').fadeOut("slow");
+            $('.promoView').fadeOut(0);
         };
 
-        function colocaPromoView() {
+        function colocaPromoView(id) {
             var element = document.getElementById('carritoNav'); //replace elementId with your element's Id.
+            if (id) {
+                element = document.getElementById(id);
+            }
             var rect = element.getBoundingClientRect();
             var elementLeft, elementTop; //x and y
             var scrollTop = document.documentElement.scrollTop ?
                 document.documentElement.scrollTop : document.body.scrollTop;
             var scrollLeft = document.documentElement.scrollLeft ?
                 document.documentElement.scrollLeft : document.body.scrollLeft;
-            elementTop = rect.top + scrollTop + 50;
+            elementTop = rect.top + scrollTop + 30;
             elementLeft = rect.left + scrollLeft - 261;
+            if (id) {
+                elementTop = rect.top + scrollTop + 0;
+                elementLeft = rect.left + scrollLeft + 15;
+            }
 
-            $('.promoView').css({
+            $('.promoView, .preView').css({
                 'top': elementTop,
                 'left': elementLeft
             });
         };
 
+        $scope.guardaPageNum = function(num) {
+            $rootScope.paginationNumber = num;
+        };
+
+        $scope.getPreview = function(item) {
+            $scope.productoPreview = item;
+            var id = 'P_' + item.IdProducto;
+            colocaPromoView(id);
+            $scope.muestraProducto = true;
+            $('.preView').fadeIn("slow");
+        };
+
+        $scope.hidePreview = function() {
+            $('.preView').fadeOut("slow");
+            $scope.muestraProducto = false;
+        };
+
+        $scope.muestraFiltros = function() {
+            $scope.filtros = !$scope.filtros;
+        };
+
+        $scope.filtros = false;
+
+        $scope.filtraOfertas = function(tipo) {
+            switch (tipo) {
+                case 1:
+                    $scope.filtrarPorOfertas = 'Oferta';
+                    break;
+                case 2:
+                    $scope.filtrarPorOfertas = 'Combo';
+                    break;
+                default:
+                    $scope.filtrarPorOfertas = '';
+            }
+        };
+
+        decide();
 
     }]);

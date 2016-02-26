@@ -26,12 +26,12 @@ angular
         '720kb.socialshare'
     ])
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', '$sceDelegateProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, $sceDelegateProvider) {
-        $locationProvider.hashPrefix('!');
+        //$locationProvider.hashPrefix('!');
+        $locationProvider.html5Mode(false);
+
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.useApplyAsync(true);
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
-        $urlRouterProvider.otherwise("/");
 
         $stateProvider
             .state('inicio', {
@@ -155,6 +155,35 @@ angular
                     label: 'Localiza tu unidad'
                 }
             })
+            .state('localiza.url', {
+                url: "/:tipo/:calle/:colonia/:ciudad",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/localiza.html',
+                        controller: 'localizaCtrl',
+                        controllerAs: 'localiza'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{$stateParams.calle | capitaliza}} - {{$stateParams.colonia | capitaliza}} - {{$stateParams.ciudad | capitaliza}}'
+                }
+            })
             .state('nota', {
                 url: "/siminotas/:notaId",
                 'views': {
@@ -185,7 +214,7 @@ angular
                 }
             })
             .state('calidad', {
-                url: "/calidad",
+                url: "/control-de-calidad",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -209,6 +238,33 @@ angular
                 },
                 ncyBreadcrumb: {
                     label: 'Control de Calidad'
+                }
+            })
+            .state('bolsa', {
+                url: "/bolsa-de-trabajo",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/bolsa.html'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Bolsa de Trabajo'
                 }
             })
             .state('contacto', {
@@ -299,7 +355,7 @@ angular
                 }
             })
             .state('vitaminas', {
-                url: "/vitaminas",
+                url: "/vitaminas-y-suplementos",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -307,8 +363,8 @@ angular
                         controllerAs: 'nav'
                     },
                     'home@': {
-                        templateUrl: 'views/vitaminas.html',
-                        controller: 'VitaminasCtrl',
+                        templateUrl: 'views/medicamentos.html',
+                        controller: 'MedicamentosCtrl',
                         controllerAs: 'vitaminas'
                     },
                     'barra@': {
@@ -357,7 +413,7 @@ angular
                 }
             })
             .state('higiene', {
-                url: "/higiene",
+                url: "/higiene-y-perfumeria",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -365,8 +421,8 @@ angular
                         controllerAs: 'nav'
                     },
                     'home@': {
-                        templateUrl: 'views/higiene.html',
-                        controller: 'HigieneCtrl',
+                        templateUrl: 'views/medicamentos.html',
+                        controller: 'MedicamentosCtrl',
                         controllerAs: 'higiene'
                     },
                     'barra@': {
@@ -415,7 +471,7 @@ angular
                 }
             })
             .state('curacion', {
-                url: "/curacion",
+                url: "/material-de-curacion",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -423,8 +479,8 @@ angular
                         controllerAs: 'nav'
                     },
                     'home@': {
-                        templateUrl: 'views/curacion.html',
-                        controller: 'CuracionCtrl',
+                        templateUrl: 'views/medicamentos.html',
+                        controller: 'MedicamentosCtrl',
                         controllerAs: 'curacion'
                     },
                     'barra@': {
@@ -472,37 +528,8 @@ angular
                     label: '{{$stateParams.medicamentoId}}'
                 }
             })
-            .state('busqueda', {
-                url: "/:idProducto/:medicamentoId",
-                'views': {
-                    'nav': {
-                        templateUrl: 'views/nav.html',
-                        controller: 'NavCtrl',
-                        controllerAs: 'nav'
-                    },
-                    'home@': {
-                        templateUrl: 'views/detalle.html',
-                        controller: 'DetalleCtrl',
-                        controllerAs: 'detalle'
-                    },
-                    'barra@': {
-                        template: '',
-                        controller: 'BarraCtrl',
-                        controllerAs: 'barra'
-                    },
-                    'siminotas@': {
-                        template: ''
-                    },
-                    'footer': {
-                        templateUrl: 'views/footer.html'
-                    }
-                },
-                ncyBreadcrumb: {
-                    label: '{{$stateParams.medicamentoId}}'
-                }
-            })
             .state('promociones', {
-                url: "/promociones",
+                url: "/lo-nuevo",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -512,7 +539,7 @@ angular
                     'home@': {
                         templateUrl: 'views/promociones.html',
                         controller: 'PromocionesCtrl',
-                        controllerAs: 'promociones'                        
+                        controllerAs: 'promociones'
                     },
                     'barra@': {
                         template: '',
@@ -527,7 +554,7 @@ angular
                     }
                 },
                 ncyBreadcrumb: {
-                    label: 'Promociones'
+                    label: 'Lo nuevo'
                 }
             })
             .state('bienestar', {
@@ -541,7 +568,7 @@ angular
                     'home@': {
                         templateUrl: 'views/bienestar.html',
                         controller: 'BienestarCtrl',
-                        controllerAs: 'bienestar'                        
+                        controllerAs: 'bienestar'
                     },
                     'barra@': {
                         template: '',
@@ -568,8 +595,8 @@ angular
                         controllerAs: 'nav'
                     },
                     'home@': {
-                        templateUrl: 'views/nuevos.html',
-                        controller: 'NuevosCtrl',
+                        templateUrl: 'views/medicamentos.html',
+                        controller: 'MedicamentosCtrl',
                         controllerAs: 'nuevos'
                     },
                     'barra@': {
@@ -616,9 +643,9 @@ angular
                 ncyBreadcrumb: {
                     label: '{{$stateParams.medicamentoId}}'
                 }
-            })            
+            })
             .state('busquedaGrupo', {
-                url: "/:termino",
+                url: "/busqueda/:termino",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -626,7 +653,7 @@ angular
                         controllerAs: 'nav'
                     },
                     'home@': {
-                        templateUrl: 'views/busquedaGrupo.html',
+                        templateUrl: 'views/medicamentos.html',
                         controller: 'BusquedaCtrl',
                         controllerAs: 'busqueda'
                     },
@@ -646,7 +673,7 @@ angular
                     label: 'Búsqueda'
                 }
             })
-            .state('busquedaGrupo.busqueda', {
+            .state('busquedaGrupo.detalle', {
                 url: "/:idProducto/:medicamentoId",
                 'views': {
                     'nav': {
@@ -675,8 +702,16 @@ angular
                     label: '{{$stateParams.medicamentoId}}'
                 }
             });
+        $urlRouterProvider.otherwise("/");
     }])
-    .run(['$rootScope', '$window', '$state', 'youTubeList', 'runstatechange', function($rootScope, $window, $state, youTubeList, runstatechange) {
+    .run(['$rootScope', '$window', '$state', 'youTubeList', 'runstatechange', 'angularSeo', function($rootScope, $window, $state, youTubeList, runstatechange, angularSeo) {
+
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip({
+                trigger: 'hover'
+            });
+            $('[data-toggle="popover"]').popover();
+        })
 
         var w = window.innerWidth;
         var h = window.innerHeight;
@@ -686,10 +721,8 @@ angular
 
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams) {
-                //clearInterval($rootScope.intervalo);
-                //$('.carritoPreviewNav').fadeOut("slow");
                 runstatechange.onStateChange(toState, fromState);
-
+                angularSeo.onStateChange(toState);
             });
 
         $rootScope.$on('$viewContentLoaded',

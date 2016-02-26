@@ -23,6 +23,10 @@ angular.module('farmaciasWebApp')
                 $rootScope.ocultarBarra = true;
             }
 
+            if (fromState.name.indexOf('detalle') !== -1) {
+                $rootScope.productoAct = {};
+            }
+
             $rootScope.prevState = fromState.name;
         };
         this.onScroll = function() {
