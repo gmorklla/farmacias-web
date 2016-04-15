@@ -3,7 +3,7 @@
 /**
  * @ngdoc directive
  * @name farmaciasWebApp.directive:fallbackSrc
- * @description
+ * @description: fallback para las imágenes que no se encuentran
  * # fallbackSrc
  */
 angular.module('farmaciasWebApp')

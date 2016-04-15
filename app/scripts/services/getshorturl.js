@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.gerShortUrl
- * @description
+ * @description: servicio que usa google api url shortener para recortar url que se usarán en redes sociales
  * # gerShortUrl
  * Service in the farmaciasWebApp.
  */

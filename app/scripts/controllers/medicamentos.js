@@ -8,10 +8,10 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadPromoSrv', 'PromoOrComboSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, LoadPromoSrv, PromoOrComboSrv, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
+    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
 
         $rootScope.muestraCarrito = true;
-
+        // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
         $scope.transUrl = function(args) {
             return prettyUrlSpc.prettyUrl(args);
         };
@@ -23,10 +23,11 @@ angular.module('farmaciasWebApp')
         //console.log(LoadMedsSrv.httpReq());
         $scope.meds = [];
         $scope.cuantos = 9;
+        // Define la familia a la que pertenecen los productos de acuerdo al estado en el que nos encontramos
         $scope.familia = $state.$current.name;
 
         var familia = '';
-
+        // Establece datos de acuerdo a la familia
         switch ($state.$current.name) {
             case 'medicamentos':
                 familia = 'MEDICAMENTOS'
@@ -54,13 +55,14 @@ angular.module('farmaciasWebApp')
                 $scope.calificable = 1;
                 break;                
         }
-
+        // Función que usa servicio 'LoadMedsSrv.httpReq' para buscar productos de la familia deseada
         $scope.getMeds = function() {
 
             $("#loadingMeds, #loadingMeds2, .loadScreen").fadeIn("slow");
+            $scope.muestraAlerta = false;
 
             $('html, body').animate({
-                scrollTop: $(".productos").offset().top
+                scrollTop: $("html").offset().top
             }, 1000);
 
             var medicamentos = LoadMedsSrv.httpReq(familia);
@@ -70,11 +72,13 @@ angular.module('farmaciasWebApp')
                     $scope.pagina = 1;
                 }
                 $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
+                //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
                 $scope.meds = JSON.parse(datos.data.d);
                 console.log($scope.meds);
                 if ($scope.familia == 'nuevos') {
                     $scope.meds = $filter('filter')($scope.meds, true);
                 }
+                $scope.muestraAlerta = true;
                 /*for (var key in $scope.meds[29]) {
                     console.log(key + ' ', $scope.meds[29][key]);
                 }
@@ -82,13 +86,14 @@ angular.module('farmaciasWebApp')
                     console.info(key + ' ', $scope.meds[29].Oferta[0][key]);
                 }*/
             }, function(e) {
+                $scope.muestraAlerta = true;
                 for (var key in e) {
                     console.log(key + ' ', e[key]);
                 }
             });
 
         };
-
+        // Si regresa de ver el detalle de un producto, guarda el número de página en el que iba el usuario, de otra manera empieza en la primer página
         function decide() {
             if ($rootScope.prevState === $rootScope.familiaId) {
                 $scope.getMeds();
@@ -97,7 +102,7 @@ angular.module('farmaciasWebApp')
                 $scope.getMeds();
             }
         };
-
+        // Guarda los datos del producto al que se le hizo click para presentar la información de manera rápida al usuario en la vista de detalle
         $scope.sendProduct = function(pro) {
             productoSrv.addProduct(pro);
         };
@@ -112,7 +117,7 @@ angular.module('farmaciasWebApp')
                 $rootScope.muestraCarrito = false;
             });
         };
-
+        // Si el producto tiene alguna promoción, esta función se encarga de presentar los datos de dicha promoción
         $scope.getPromo = function(item) {
             colocaPromoView();
             $('.promoView').fadeIn("slow");
@@ -131,12 +136,12 @@ angular.module('farmaciasWebApp')
             }
             $rootScope.ofertas = ofertaTxtF.ofertas;
         };
-
+        // Oculta la información de la promo con un fadeOut
         $scope.hidePromo = function() {
             $rootScope.viewData = '';
             $('.promoView').fadeOut(0);
         };
-
+        // Función que se encarga de colocar adecuadamente la promoción en la página, calculando propiedades css top y left
         function colocaPromoView(id) {
             var element = document.getElementById('carritoNav'); //replace elementId with your element's Id.
             if (id) {
@@ -160,7 +165,7 @@ angular.module('farmaciasWebApp')
                 'left': elementLeft
             });
         };
-
+        // Guarda el número de página (paginación) en el que va el usuario
         $scope.guardaPageNum = function(num) {
             $rootScope.paginationNumber = num;
         };
@@ -177,13 +182,13 @@ angular.module('farmaciasWebApp')
             $('.preView').fadeOut("slow");
             $scope.muestraProducto = false;
         };
-
+        // Muestra u oculta los filtros para los productos
         $scope.muestraFiltros = function() {
             $scope.filtros = !$scope.filtros;
         };
-
+        // Variable que se usa para mostrar u ocultar los filtros
         $scope.filtros = false;
-
+        // Función que ayuda a mostrar únicamente productos con oferta, combo o a quitar dichos filtros
         $scope.filtraOfertas = function(tipo) {
             switch (tipo) {
                 case 1:
@@ -198,5 +203,7 @@ angular.module('farmaciasWebApp')
         };
 
         decide();
+
+        banner.random();
 
     }]);

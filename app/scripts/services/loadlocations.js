@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.loadLocations
- * @description
+ * @description: busca unidades por tipo o por id
  * # loadLocations
  * Service in the farmaciasWebApp.
  */

@@ -8,10 +8,10 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('ContactCtrl', ['ContactSrv', '$scope', '$log', function(ContactSrv, $scope, $log) {
+    .controller('ContactCtrl', ['ContactSrv', '$scope', '$log', 'jQuery', 'banner', function(ContactSrv, $scope, $log, $, banner) {
 
         $scope.enviado = 0;
-
+        // Usa servicio 'ContactSrv.postContactInfo' para mandar información de hoja de contacto
         $scope.postContactInfo = function() {
 
             console.clear();
@@ -55,6 +55,8 @@ angular.module('farmaciasWebApp')
                 scrollTop: $("html").offset().top
             }, 1000);
         };
+
+        banner.random();
 
 
     }]);

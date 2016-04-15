@@ -1,15 +1,15 @@
 <div class="row rowHead">
-    <div class="col-md-7">
+    <div class="col-md-6 no-padding">
         <a ui-sref="inicio"><img src="images/logo.png" alt="Farmacias Similares"></a>
     </div>
     <!-- Header Top Left | Imagen logo -->
-    <div class="col-md-5 visible-md-block visible-lg-block">
+    <div class="col-md-6 visible-md-block visible-lg-block">
         <div class="row">
             <div class="col-md-12">
                 <div class="row show-grid">
                     <div class="col-md-6">
                         <ol class="list-unstyled">
-                            <li><a ui-sref="#" hreflang="es">Registro de nuevos proveedores</a></li>
+                            <li><a href="http://200.34.206.72/farmaciasmexico/Compras_FormularioProveedores/frm_proveedor.aspx" hreflang="es" target="_blank">Registro de nuevos proveedores</a></li>
 <!--                             <li class="dropdown">
     <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Proveedores y Franquiciatarios<span class="caret"></span></a>
     <ul class="dropdown-menu proveedores">
@@ -23,13 +23,15 @@
         <li class="hidden-xs hidden-sm" role="separator" class="divider"></li>
     </ul>
 </li> -->
-                            <li><a ui-sref="#" hreflang="es">Proveedores de bienes y servicios</a></li>
+                            <li><a href="http://facturacfd.farmaciasdesimilares.com.mx:82/CFD_Recepciones_FS/Acceso.aspx" hreflang="es" target="_blank">Proveedores de bienes y servicios</a></li>
+                            <li><a href="https://reem.farmaciasdesimilares.com.mx/" hreflang="es" target="_blank">Reembolsos</a></li>
                         </ol>
                     </div>
                     <div class="col-md-4">
                         <ol class="list-unstyled">
-                            <li><a ui-sref="#" hreflang="es">Acceso a franquiciatarios</a></li>
+                            <li><a href="https://portalfranq.com.mx/" hreflang="es" target="_blank">Acceso a franquiciatarios</a></li>
                             <li><a ng-click="localizaType(1)" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
+                            <li><a ui-sref="facturacion" hreflang="es">Facturación electrónica</a></li>
                         </ol>
                     </div>                                           
 <!--                     <div class="col-md-5">
@@ -65,7 +67,7 @@
                                 <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                             </div>
                             <div class="col-sm-12 col-xs-12" ng-if="searchResult.length > 0">
-                                <p class="searchResult"><b class="searchB">Medicamentos</b></p>
+                                <p class="searchResult"><b class="searchB">Resultados</b></p>
                             </div>
                         </div>
                         <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
@@ -114,7 +116,7 @@
     <div class="container-fluid navContent">
         <div class="navbar-header row">
             <div class="visible-xs-block visible-sm-block col-sm-10 col-xs-9">
-                <div class="form-group buscaInputSmall">
+                <div class="form-group buscaInputSmall" style="margin-bottom:0;">
                     <div class="input-group">
                         <div>
                             <div class="form-group">
@@ -135,7 +137,7 @@
                                         <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                                     </div>
                                     <div class="col-sm-12 col-xs-12" ng-if="searchResult.length > 0">
-                                        <p class="searchResult"><b class="searchB">Medicamentos</b></p>
+                                        <p class="searchResult"><b class="searchB">Resultados</b></p>
                                     </div>
                                 </div>
                                 <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">
@@ -192,6 +194,8 @@
                     <ul class="dropdown-menu dropSmallDevs">
                         <li class="hidden-xs hidden-sm">Empresa</li>
                         <li role="separator" class="divider hidden-xs hidden-sm"></li>
+                        <li><a class="hvr-sweep-to-right" ui-sref="historia" hreflang="es"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;&nbsp; Historia</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a class="hvr-sweep-to-right" ui-sref="calidad" hreflang="es"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp; Control de Calidad</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a class="hvr-sweep-to-right" ui-sref="bolsa" hreflang="es"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp;&nbsp; Bolsa de Trabajo</a></li>
@@ -205,27 +209,27 @@
                     <ul class="dropdown-menu dropSmallDevs">
                         <li class="hidden-xs hidden-sm">Productos</li>
                         <li role="separator" class="divider hidden-xs hidden-sm"></li>                        
-                        <li ui-sref-active="activo" class="hvr-underline-from-center medIcon"><a class="navUnaLinea" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
+                        <li ui-sref-active="activo" class="hvr-underline-from-center medIcon"><a class="navUnaLinea subMenu2" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
                         <li role="separator" class="divider"></li>
-                        <li class="hvr-underline-from-center higieneIcon"><a class="navUnaLinea" ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
+                        <li class="hvr-underline-from-center higieneIcon"><a class="navUnaLinea subMenu2" ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
                         <li role="separator" class="divider"></li>
-                        <li class="hvr-underline-from-center curacionIcon"><a ui-sref="curacion" hreflang="es">Material de Curación</a></li>
+                        <li class="hvr-underline-from-center curacionIcon"><a class="subMenu2" ui-sref="curacion" hreflang="es">Material de Curación</a></li>
                         <li role="separator" class="divider"></li>
-                        <li class="hvr-underline-from-center vitaminasIcon"><a ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
+                        <li class="hvr-underline-from-center vitaminasIcon"><a class="subMenu2" ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
                     </ul>
                 </li>                
                 <li ui-sref-active="activo" class="hvr-underline-from-center hidden-xs hidden-sm"><a class="navUnaLinea" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="curacion" hreflang="es">Material de Curación</a></li>
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
-                <li class="hvr-underline-from-center"><a class="navUnaLinea" href="http://www.farmaciasdesimilares.com.mx/catalogo/nov-dic/" target="_blank" hreflang="es">Catálogo</a></li>
+                <li class="hvr-underline-from-center"><a class="navUnaLinea" href="http://www.farmaciasdesimilares.com.mx/catalogo/Marzo-Abril/" target="_blank" hreflang="es">Catálogo</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="promociones" hreflang="es">Lo nuevo</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="bienestar" hreflang="es">Bienestar</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nuevos" hreflang="es">Nuevos</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nota({ notaId: notaFinal })" hreflang="es">Siminotas</a></li>
 <!--                 <li class="hvr-underline-from-center visible-xs"><a class="navUnaLinea" ui-sref="carrito" hreflang="es">Carrito</a></li> -->
-                <li class="hvr-underline-from-center visible-xs"><a class="navUnaLinea" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
-                <li class="hvr-underline-from-center carritoNav hidden-xs"><a id="carritoNav" class="navUnaLinea" data-toggle="modal" data-target="#buscaModal" hreflang="es"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+                <li class="hvr-underline-from-center visible-sm visible-xs"><a class="navUnaLinea" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
+                <li class="hvr-underline-from-center carritoNav hidden-sm hidden-xs"><a id="carritoNav" class="navUnaLinea" data-toggle="modal" data-target="#buscaModal" hreflang="es"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -253,7 +257,7 @@
                                 <p class="searchLoader"><img src="images/loader.gif" alt=""></p>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12" ng-if="searchResult.length > 0">
-                                <p class="searchResults"><b>Medicamentos</b></p>
+                                <p class="searchResults"><b>Resultados</b></p>
                             </div>
                         </div>
                         <div class="row" dir-paginate="item in searchResult | itemsPerPage: 4" pagination-id="buscaPag">

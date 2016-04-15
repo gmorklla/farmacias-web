@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.ContactSrv
- * @description
+ * @description: servicio para mandar datos de forma de contacto
  * # ContactSrv
  * Service in the farmaciasWebApp.
  */

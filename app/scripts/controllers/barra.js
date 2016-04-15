@@ -8,9 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('BarraCtrl', ['loadImg', '$scope', '$rootScope', '$state', function(loadImg, $scope, $rootScope, $state) {
-        var imagenesBarra = ['analisis_icon.png', 'consultorios_medicos_icon.png', 'consultorios_icon.png'];
-        loadImg.loadImgs($('.loadImgBarra'), imagenesBarra);
+    .controller('BarraCtrl', ['$scope', '$rootScope', '$state', function($scope, $rootScope, $state) {
         $scope.localizaType = function(type) {
             $rootScope.ubicaType = type;
             $state.go('localiza');

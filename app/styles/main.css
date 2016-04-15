@@ -20,6 +20,10 @@ video {
   border-radius: 10px;
 }
 
+ol {
+  margin-bottom: 0;
+}
+
 .thumbnail > img, .thumbnail a > img {
   border-radius: 10px;
 }
@@ -44,6 +48,7 @@ hr {
 
 .busca {
   text-align: center;
+  font-size: 1.5em;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
@@ -70,7 +75,16 @@ hr {
   z-index: 999999;
 }
 
-.loading img { margin-bottom: 20px; max-width: 80%;}
+.loading p {
+  margin:10px 0;
+  padding:10px;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.8);
+}
+
+.loading img { max-width: 80%;}
+
+.simi {margin-left: 10px;}
 
 .loadingMeds {
   min-width: 100%;
@@ -93,7 +107,7 @@ hr {
   width: 100%;
 }
 
-.aCssSpinner2 p {
+.aCssSpinner2 p, .aCssSpinner p {
   text-align: center;
 }
 
@@ -121,7 +135,7 @@ hr {
 
 .headLabel {
   width:100%;
-  height:48px;
+  height:58px;
   background: url("../images/label.png") no-repeat;
   float: right;
   margin-right: 10px;
@@ -511,7 +525,6 @@ hr {
   border-radius:50px;
   background-color: #fff;
   margin-top: 17px;
-  float:left;
   cursor: pointer;
 }
 
@@ -663,6 +676,10 @@ footer {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-8 */
 }
 
+footer a {
+  cursor:pointer;
+}
+
 footer h1 {
   color:#0682CE;
   text-align: center;
@@ -717,6 +734,14 @@ footer li:nth-child(2) {
 footer li:nth-child(3) {
   background-color: #BE2126;
   margin-right: 0px;
+}
+
+footer ol li {
+  width:100%;
+}
+
+footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
+  background-color: transparent !important;
 }
 
 .lineaFooter {
@@ -951,6 +976,7 @@ footer li:nth-child(3) {
 .detalle img {
   border-radius: 20px;
   border: 1px solid #EEE;
+  padding: 5px;
 }
 .detalle .col-md-6 p {
   padding:10px;
@@ -2575,6 +2601,63 @@ label span {
   top:0;
   left:98%;
   margin-top: 10px;
+}
+
+.cssload-container {
+  width: 100%;
+  height: 49px;
+  text-align: center;
+}
+
+.cssload-speeding-wheel {
+  width: 49px;
+  height: 49px;
+  margin: 0 auto;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: cssload-spin 575ms infinite linear;
+    -o-animation: cssload-spin 575ms infinite linear;
+    -ms-animation: cssload-spin 575ms infinite linear;
+    -webkit-animation: cssload-spin 575ms infinite linear;
+    -moz-animation: cssload-spin 575ms infinite linear;
+}
+
+
+
+@keyframes cssload-spin {
+  100%{ transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-o-keyframes cssload-spin {
+  100%{ -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-ms-keyframes cssload-spin {
+  100%{ -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-webkit-keyframes cssload-spin {
+  100%{ -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+@-moz-keyframes cssload-spin {
+  100%{ -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+.adminInput {
+  margin-bottom: 10px;
+}
+
+.adminBtnSave {
+  margin: 10px;
+  margin-right: 25px;
+}
+
+.adminLabel {
+  margin-left: 45px;
+  color: #bbb;
 }
 
 @media (max-width: 767px) {

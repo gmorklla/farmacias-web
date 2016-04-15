@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.map
- * @description
+ * @description: obtiene la distancia entre dos puntos de los que conocemos su lat y lng
  * # map
  * Service in the farmaciasWebApp.
  */

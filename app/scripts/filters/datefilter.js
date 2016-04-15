@@ -18,6 +18,11 @@ angular.module('farmaciasWebApp')
             return d;
         };
     })
+    .filter('imageFilter', function() {
+        return function(image) {
+            return image;
+        };
+    })    
     .filter('capitaliza',['prettyUrlSpc', function(prettyUrlSpc) {
         return function(texto) {
             var textF = prettyUrlSpc.deconfig(texto);

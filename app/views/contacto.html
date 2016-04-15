@@ -3,7 +3,7 @@
         <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
     </div>
     <div class="col-md-12 banner hidden-xs">
-        <img src="images/nuevos_genericos.jpg" alt="">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
     </div>
     <div class="row detalleF">
         <div class="col-md-8 col-xs-12 detalle detalleD">
@@ -48,7 +48,10 @@
                                                   'has-error': contactForm.name.$touched && contactForm.name.$invalid,
                                                   'has-success': contactForm.name.$touched && !contactForm.name.$invalid
                                                 }">
-
+                            <label class="control-label requiredField" for="name">
+                                Nombre
+                                <span class="asteriskField">*</span>
+                            </label>
                             <input class="form-control" id="name" name="name" type="text" aria-describedby="inputSuccess5Status" placeholder="Nombre" ng-model="username" ng-minlength="3" ng-maxlength="150" required />
                         </div>
                     </div>
@@ -62,6 +65,10 @@
                                                 'has-error': contactForm.email.$touched && contactForm.email.$invalid,
                                                 'has-success': contactForm.email.$touched && !contactForm.email.$invalid
                                               }">
+                            <label class="control-label requiredField" for="email">
+                                Email
+                                <span class="asteriskField">*</span>
+                            </label>                                              
                             <input class="form-control" id="email" name="email" type="email" placeholder="Email" ng-model="email" required />
                         </div>
                     </div>
@@ -136,7 +143,7 @@
                     <div ng-messages="contactForm.estado.$error" ng-if="contactForm.estado.$touched">
                         <p ng-message="required">Debes seleccionar un estado.</p>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12 contactoMessage">
                         <div class="form-group" ng-class="{ 
                                                 'has-error': contactForm.mensaje.$touched && contactForm.mensaje.$invalid,
                                                 'has-success': contactForm.mensaje.$touched && !contactForm.mensaje.$invalid

@@ -1,0 +1,91 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
+    </div>
+    <div class="col-md-8 col-xs-12 detalle">
+        <div class="row nota">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12">
+                    <h1 class="popDisplayTitle notaTitulo">Facturación Electrónica</h1>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12 panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="subtitulo">¡Genere su factura!</div>
+                            <div class="notaFrame">
+                                <p class="contenido">
+                                    En este portal usted podrá generar y consultar las facturas de las compras que haya realizado.
+                                    <br>
+                                </p>
+                            </div>
+                            <div class="subtitulo">Importante</div>
+                            <div class="notaFrame">
+                                <p class="contenido">
+                                    Siempre conserve su ticket, de lo contrario no se podrá realizar ningún movimiento o consulta.
+                                    <br>
+                                </p>
+                            </div>
+                            <div class="subtitulo">Vigencia</div>
+                            <div class="notaFrame">
+                                <p class="contenido">
+                                    Podrá generar su factura en un periodo no mayor a 30 días naturales después de haber realizado su compra (verifique la fecha impresa en el ticket).
+                                    <br>
+                                </p>
+                            </div>
+                            <div class="notaFrame">
+                                <p class="contenido">
+                                    Cliente EXTRANJERO, podrá solicitar su factura al correo <a href="mailto:facturaelectronica@farmaciasdesimilares.com.mx" style="color: 07CAEA;">facturaelectronica@farmaciasdesimilares.com.mx</a> (información: clave fiscal extranjera, razón social y domicilio fiscal).
+                                    <br>
+                                </p>
+                            </div>
+                            <div class="notaFrame">
+                                <p class="contenido">
+                                    Para poder generar su factura, es necesario contar con la versión 7.0 o superior Acrobat Reader. En caso de tener alguna duda o comentario, llámenos sin costo al teléfono 01-800-911-6666 (SIMITEL) o mande un correo a <a href="mailto:facturaelectronica@farmaciasdesimilares.com.mx" style="color: 07CAEA;">facturaelectronica@farmaciasdesimilares.com.mx.</a>
+                                    <br>
+                                    <br>
+                                </p>
+                                <p>Si tu ticket tiene <a data-toggle="modal" data-target="#refencia">REFERENCIA DE FACTURACIÓN</a> ingresa a la siguiente opción:</p>
+                                <br>
+                                <p>
+                                    <a href="https://facturacion.gpupm.com/eFActuraPos/Consumidor/Facturacion/Similares" target="_blank" type="button" class="btn btn-info"><span class="glyphicon glyphicon-save-file"></span>  Generar factura</a>
+                                    <a ui-sref="facturacion.faqs" hreflang="es" type="button" class="btn btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off"><span class="glyphicon glyphicon-question-sign"></span>  Preguntas Frecuentes</a>
+                                </p>
+                            </div>
+                            <hr>
+                            <br>
+                            <div class="notaFrame">
+                                <p class="contenido">Si tu ticket NO CONTIENE referencia de facturación solicita la factura en la farmacia en donde realizaste la compra.</p>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div ng-include="'views/promosSide.html'"></div>
+    </div>
+</div>
+<div class="modal fade" id="refencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Referencia de Facturación</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="well" style="text-align:center;"><img src="images/ticket-referencia-facturacion.jpg" alt=""></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

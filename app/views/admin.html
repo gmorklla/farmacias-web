@@ -1,0 +1,99 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+	<div class="col-md-12 unidadesTitle login">
+	    <div class="jumbotron adminJumbotron">
+	    <button class="btn btn-danger btn-lg" type="button">Administrador <span class="badge" ng-show="usuario">{{usuario}}</span></button>
+	        <hr>
+	        <br>
+	        <form class="navbar-form navbar-left col-md-12">
+	            <span ng-show="!usuario">
+				                <div class="form-group" style="margin-top:0">
+				                    <input type="email" placeholder="Email" class="form-control urlSearch" ng-model="email" required>
+				                </div>
+				                <div class="form-group" style="margin-top:0">
+				                    <input type="password" placeholder="Contraseña" class="form-control urlSearch" ng-model="password" required>
+				                </div>
+				                <button class="btn btn-info" ng-click="login()"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Ingresar</button>
+	            <div class="alert alert-danger" role="alert" style="margin-top:10px; border-radius: 10px;" ng-show="logInError">
+	                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	                <span class="sr-only">Error:</span> ¡{{loginErrorMsg}}!
+	            </div>
+	            </span>
+	        </form>
+
+            <div class="col-md-12" ng-show="guardado" style="margin-bottom: 10px;">
+                <div class="alert alert-success" role="alert" style="border-radius: 10px;">
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                  <span class="sr-only">Hecho:</span>
+                  ¡Nota guardada!
+                </div>
+            </div>
+
+	        <form name="notasFirebaseForm" id="notasFirebaseForm" ng-model="notasFirebaseForm">
+		        <div class="col-md-12">
+		        	<span ng-show="usuario">
+
+		        		<!-- Url -->
+		    			<div class="col-md-6" ng-class="{ 
+                                                'has-error': notasFirebaseForm.urlNotas.$touched && notasFirebaseForm.urlNotas.$invalid,
+                                                'has-success': notasFirebaseForm.urlNotas.$touched && !notasFirebaseForm.urlNotas.$invalid
+                                              }">
+		    				<input type="text" name="urlNotas" id="urlNotas" class="form-control adminInput" placeholder="Url" ng-model="urlNotas" required />
+		    			</div>
+						
+						<!-- Título -->
+		    			<div class="col-md-6" ng-class="{ 
+                                                'has-error': notasFirebaseForm.tituloNotas.$touched && notasFirebaseForm.tituloNotas.$invalid,
+                                                'has-success': notasFirebaseForm.tituloNotas.$touched && !notasFirebaseForm.tituloNotas.$invalid
+                                              }">
+		    				<input type="text" name="tituloNotas" id="tituloNotas" ng-model="tituloNotas" class="form-control adminInput" placeholder="Título" required />
+						</div>
+
+						<!-- Subtítulo -->
+		    			<div class="col-md-6" ng-class="{ 
+                                                'has-error': notasFirebaseForm.subtituloNotas.$touched && notasFirebaseForm.subtituloNotas.$invalid,
+                                                'has-success': notasFirebaseForm.subtituloNotas.$touched && !notasFirebaseForm.subtituloNotas.$invalid
+                                              }">
+		    				<input type="text" name="subtituloNotas" id="subtituloNotas" ng-model="subtituloNotas" class="form-control adminInput" placeholder="Subtítulo" required />
+		    			</div>
+
+
+						<!-- Hashtag -->
+						<div class="col-md-6" ng-class="{ 
+                                                'has-error': notasFirebaseForm.hashtagNotas.$touched && notasFirebaseForm.hashtagNotas.$invalid,
+                                                'has-success': notasFirebaseForm.hashtagNotas.$touched && !notasFirebaseForm.hashtagNotas.$invalid
+                                              }">
+		    				<input type="text" name="hashtagNotas" id="hashtagNotas" ng-model="hashtagNotas" class="form-control adminInput" placeholder="Hashtag" required />
+		    			</div>    			
+
+						<!-- Texto introductorio -->
+		    			<div class="col-md-6" ng-class="{ 
+                                                'has-error': notasFirebaseForm.cuerpoNotas.$touched && notasFirebaseForm.cuerpoNotas.$invalid,
+                                                'has-success': notasFirebaseForm.cuerpoNotas.$touched && !notasFirebaseForm.cuerpoNotas.$invalid
+                                              }">
+							<label for="cuerpoNotas" class="adminLabel">Texto introductorio</label>
+		    				<textarea name="cuerpoNotas" id="cuerpoNotas" ng-model="cuerpoNotas" class="form-control adminInput" rows="3" required></textarea>
+		    			</div>
+						
+						<!-- Texto para compartir -->
+						<div class="col-md-6" ng-class="{ 
+                                                'has-error': notasFirebaseForm.shareTextNotas.$touched && notasFirebaseForm.shareTextNotas.$invalid,
+                                                'has-success': notasFirebaseForm.shareTextNotas.$touched && !notasFirebaseForm.shareTextNotas.$invalid
+                                              }">
+							<label for="shareTextNotas" class="adminLabel">Texto para compartir</label>
+		    				<textarea name="shareTextNotas" id="shareTextNotas" ng-model="shareTextNotas" class="form-control adminInput" rows="3" required></textarea>
+		    			</div>
+
+		    			<div class="col-md-12">
+		    				<button class="btn btn-danger btn-lg pull-right adminBtnSave" ng-click="logout()" ng-show="usuario"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Salir</button>
+		    				<button class="btn btn-success btn-lg pull-right adminBtnSave" ng-disabled="notasFirebaseForm.$invalid" ng-click="guardaNotaInfo();"><span class="glyphicon glyphicon-ok" aria-hidden="true" type="submit"></span> Guardar</button>    				
+		    			</div>
+
+					</span>
+				</div>
+			</form>			
+		</div>
+	</div>
+</div>

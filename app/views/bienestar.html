@@ -3,7 +3,7 @@
         <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
     </div>
     <div class="col-md-12 banner hidden-xs">
-        <img src="images/nuevos_genericos.jpg" alt="">
+        <a href="http://simiinforma.com.mx/" target="_blank"><img src="images/banner-simi-tv-radio.jpg" alt="Banner SimiTV"></a>
     </div>
     <div class="col-md-8 proFrame">
         <div class="row filtros promocionesFiltro">
@@ -11,9 +11,9 @@
         </div>
         <div class="row promocionesRow">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <video id="bienestar" width="100%" controls>
+                <video id="bienestar" width="100%" controls poster="images/bienestar.jpg">
                     <source src="http://www.siminforma.com.mx/fla/BIENESTAR-ADICCIONES.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
+                    Tu navegador no soporta video HTML 5. Intenta con otro navegador.
                 </video>
             </div>
             <div class="col-xs-6 col-sm-3 col-md-3 promocionesThumb vidsT" ng-repeat="item in vids" style="transition-delay: {{$index * 500}}ms">

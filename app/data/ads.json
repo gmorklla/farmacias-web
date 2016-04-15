@@ -1,8 +1,8 @@
 {"ads" : [
 		{
-			"titulo" : "¿Piojos?",
-			"img" : "piojitos",
-			"hashtag" : ["oferta", "piojitos"],
+			"titulo" : "Compra, Registra y Gana",
+			"img" : "compra_registra_gana",
+			"hashtag" : ["sorteo", "compraRegistraGana"],
 			"key" : 1
 		},
 		{
@@ -10,24 +10,6 @@
 			"img" : "el_buen_lunes",
 			"hashtag" : ["oferta", "buenLunes"],
 			"key" : 2
-		},
-		{
-			"titulo" : "Tu vida sin dolor",
-			"img" : "analgesia",
-			"hashtag" : ["oferta", "vidaSinDolor"],
-			"key" : 3
-		},
-		{
-			"titulo" : "La panchita hay que cuidar",
-			"img" : "panchita",
-			"hashtag" : ["oferta", "panchita"],
-			"key" : 4
-		},
-		{
-			"titulo" : "Descarga la nueva App",
-			"img" : "app",
-			"hashtag" : ["oferta", "app"],
-			"key" : 5
 		}
 	]
 }

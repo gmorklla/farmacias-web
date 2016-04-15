@@ -1,6 +1,9 @@
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+	.no-padding img {
+		padding-top:15px;
+	}
 	.dropdown-menu {
 		border:1px solid #ccc;
 		border-radius: 4px;
@@ -230,10 +233,9 @@
 		left:22px;
 	}
 	.loading {
-		padding-top: 25%
+		padding-top: 28%
 	}
 	.loading img { 
-		margin-bottom: 20px; 
 		max-width: none;
 	}
 	.meds:nth-child(3n) .proGrid {
@@ -334,7 +336,7 @@
 		border-radius: 10px;
 		margin:0;
 		max-width: 100%;
-		border:none;
+		border: 5px solid #d9d9d9;
 	}
 	/* centered columns styles */
 	.row-centered {
@@ -364,11 +366,12 @@
 	.form-control {
 		border-radius: 10px;
 		margin-left: 30px;
-		width: 80%;
+		width: 86%;
+		height:42px;
 	}
 
 	.form-group {
-	    margin-top: 10px;
+	    margin-top: 12px;
 	}
 
 	#map {
@@ -383,13 +386,13 @@
 	}
 
 	.table-responsive {
-		top:45px;
+		top:58px;
 		left:0px;
 		width:100% !important;
 	}
 
 	.cierraBusqueda {
-		top: 13px;
+		top: 18px;
     	left: 77%;
 		z-index:100;
 	}
@@ -793,7 +796,13 @@
   	}
   	.urlSearch {
   		margin-left: 0;
-  	}		
+  	}
+
+	.adminJumbotron {
+		min-height: 500px;
+		border-radius: 0 !important;
+		margin-bottom: 0;
+	}
 
 }
 

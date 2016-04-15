@@ -25,7 +25,8 @@ angular
         'ngStorage',
         '720kb.socialshare'
     ])
-    .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', '$sceDelegateProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, $sceDelegateProvider) {
+    // Configuración de la aplicación, se definen controles, vistas y títulos de página
+    .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
         //$locationProvider.hashPrefix('!');
         $locationProvider.html5Mode(false);
 
@@ -222,7 +223,9 @@ angular
                         controllerAs: 'nav'
                     },
                     'home@': {
-                        templateUrl: 'views/controlCalidad.html'
+                        templateUrl: 'views/controlCalidad.html',
+                        controller: 'CalidadCtrl',
+                        controllerAs: 'calidad'
                     },
                     'barra@': {
                         template: '',
@@ -240,6 +243,62 @@ angular
                     label: 'Control de Calidad'
                 }
             })
+            .state('historia', {
+                url: "/historia",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/historia.html',
+                        controller: 'CalidadCtrl',
+                        controllerAs: 'calidad'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Historia'
+                }
+            })
+            .state('simitel', {
+                url: "/simitel",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/simitel.html'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Simitel'
+                }
+            })                        
             .state('bolsa', {
                 url: "/bolsa-de-trabajo",
                 'views': {
@@ -249,7 +308,9 @@ angular
                         controllerAs: 'nav'
                     },
                     'home@': {
-                        templateUrl: 'views/bolsa.html'
+                        templateUrl: 'views/bolsa.html',
+                        controller: 'CalidadCtrl',
+                        controllerAs: 'calidad'
                     },
                     'barra@': {
                         template: '',
@@ -266,7 +327,7 @@ angular
                 ncyBreadcrumb: {
                     label: 'Bolsa de Trabajo'
                 }
-            })
+            })           
             .state('contacto', {
                 url: "/contacto",
                 'views': {
@@ -701,37 +762,125 @@ angular
                 ncyBreadcrumb: {
                     label: '{{$stateParams.medicamentoId}}'
                 }
-            });
+            })
+            .state('facturacion', {
+                url: "/facturacion-electronica",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/facturacion.html',
+                        controller: 'CalidadCtrl',
+                        controllerAs: 'calidad'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Facturación Electrónica'
+                }
+            })
+            .state('facturacion.faqs', {
+                url: "/preguntas-frecuentes",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/facturacion-faqs.html',
+                        controller: 'CalidadCtrl',
+                        controllerAs: 'calidad'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Preguntas Frecuentes'
+                }
+            })
+            .state('administrador', {
+                url: "/administrador",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/admin.html',
+                        controller: 'AdminCtrl',
+                        controllerAs: 'admin'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Administrador'
+                }
+            });             
         $urlRouterProvider.otherwise("/");
     }])
-    .run(['$rootScope', '$window', '$state', 'youTubeList', 'runstatechange', 'angularSeo', function($rootScope, $window, $state, youTubeList, runstatechange, angularSeo) {
-
+    // Función que se ejecuta justo después de la configuración de la aplicación
+    .run(['$rootScope', '$window', '$state', 'youTubeList', 'runstatechange', 'angularSeo', 'jQuery', function($rootScope, $window, $state, youTubeList, runstatechange, angularSeo, $) {
+        //Luego de que jquery ha sido cargado, ejecuta tooltips y popovers de boostrap
         $(function() {
             $('[data-toggle="tooltip"]').tooltip({
                 trigger: 'hover'
             });
             $('[data-toggle="popover"]').popover();
-        })
-
+        });
+        // Pantalla completa para el loader principal
         var w = window.innerWidth;
         var h = window.innerHeight;
         var elemento = document.getElementById('loading');
         elemento.setAttribute("style", "width:" + w + "px");
         elemento.setAttribute("style", "height:" + h + "px");
-
+        // Seguimiento de cambios entre estados para cargar o no youtube script, también se usa para colocar títulos de página dinámicos
         $rootScope.$on('$stateChangeStart',
-            function(event, toState, toParams, fromState, fromParams) {
+            function(event, toState, toParams, fromState) {
                 runstatechange.onStateChange(toState, fromState);
                 angularSeo.onStateChange(toState);
             });
-
+        // Una vez cargados todos los datos de la vista, desvanece el loading
         $rootScope.$on('$viewContentLoaded',
             function() {
                 $("#loading").fadeOut("slow");
             });
-
+        // Dependiendo del scroll y el estado, coloca o quita elementos de la interfaz de usuario
         $(window).scroll(function() {
             runstatechange.onScroll();
-        });
+        });      
 
     }]);

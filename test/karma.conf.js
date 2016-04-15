@@ -36,6 +36,7 @@ module.exports = function(config) {
       'bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js',
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-socialshare/dist/angular-socialshare.min.js',
+      'bower_components/firebase/firebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

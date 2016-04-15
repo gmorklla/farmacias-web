@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.LoadMedsSrv
- * @description
+ * @description: request post para obtener productos de acuerdo a su familia
  * # LoadMedsSrv
  * Service in the farmaciasWebApp.
  */

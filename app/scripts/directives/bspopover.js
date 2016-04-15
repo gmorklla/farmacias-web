@@ -3,7 +3,7 @@
 /**
  * @ngdoc directive
  * @name farmaciasWebApp.directive:bsPopover
- * @description
+ * @description: permite popover de bootstarp en un ng-repeat
  * # bsPopover
  */
 angular.module('farmaciasWebApp')

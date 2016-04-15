@@ -2,7 +2,7 @@
     <div class="col-md-12 bread">
         <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
     </div>    
-    <div class="row localizaOps hidden-sm hidden-xs">
+    <div class="row localizaOps hidden-sm hidden-xs" ng-if="!sencillo">
         <div class="col-md-3 col-sm-12 col-xs-12 mapOptions farmaciasOp" ng-click="cambiaBusqueda(1)" ng-class="{ 'activoOp': tipoDeBusqueda == 1 }">
             <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 1">&nbsp;</span> Farmacias</p>
         </div>
@@ -10,13 +10,13 @@
             <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 2">&nbsp;</span> Análisis Clínicos</p>
         </div>
         <div class="col-md-3 col-sm-12 col-xs-12 mapOptions consultoriosOp" ng-click="cambiaBusqueda(3)" ng-class="{ 'activoOp': tipoDeBusqueda == 3 }">
-            <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 3">&nbsp;</span> Consultorios</p>
+            <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 3">&nbsp;</span> Consultorios Médicos</p>
         </div>
         <div class="col-md-3 col-sm-12 col-xs-12 mapOptions dentalesOp" ng-click="cambiaBusqueda(4)" ng-class="{ 'activoOp': tipoDeBusqueda == 4 }">
             <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 4">&nbsp;</span> Consultorios Dentales</p>
         </div>
     </div>
-    <div class="row localizaOps" ng-if="tipoDeBusqueda == 1">
+    <div class="row localizaOps" ng-if="tipoDeBusqueda == 1 && !sencillo">
         <div class="col-md-3">
             <button type="button" ng-click="checkToogle()" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" ng-class="{ 'btn-danger': horas.value1 == false, 'btn-success': horas.value1 == true }">
                 <span class="glyphicon" aria-hidden="true" ng-class="{ 'glyphicon-time': horas.value1 == false, 'glyphicon-refresh': horas.value1 == true }"></span> <span ng-if="horas.value1 == false"> Mostrar unidades 24 hrs.</span> <span ng-if="horas.value1 == true"> Mostrar todas las unidades</span>
@@ -59,6 +59,11 @@
     <div class="col-md-12 hidden-md hidden-lg" style="margin-bottom:15px;">
         <select class="select form-control" ng-options="item as item.label for item in items track by item.id" ng-model="selected" ng-change="cambiaBusqueda()"></select>
     </div>
+    <div id="loadingMeds" class="loadingMeds col-md-4 col-sm-4">
+        <div class='aCssSpinner2'>
+            <p><img src="images/loader.gif" alt=""></p>
+        </div>
+    </div>    
     <div id="mapaFinal" class="col-md-12 col-sm-12 col-xs-12 mapaF">
         <div class="alert alert-danger text-center" role="alert" ng-show="apiError">
             <b>API Error : </b>
@@ -70,10 +75,10 @@
             </div>
         </div>
         <div id="map"></div>
-        <input id="searchId" name="place" placeholder="Busca tu unidad" type="text" class="controls col-xs-12" />
+        <input id="searchId" name="place" placeholder="Busca tu unidad" type="text" class="controls col-xs-12" ng-show="!sencillo" />
         <div class="mapControles" id="opcionesMapa">
             <form class="form-inline row">
-                <div class="form-group col-md-12 col-sm-12 col-xs-12 hidden-xs">
+                <div class="form-group col-md-12 col-sm-12 col-xs-12 hidden-xs" ng-if="!sencillo">
                     <label class="uni" for="inputAmount">UNIDADES MOSTRADAS</label>
                     <input type="number" class="form-control localizaInput" min="10" max="50" step="5" name="numUnidades" ng-model="inputUnidades" id="inputAmount">
                     <!--                     <select id="mode" ng-model="selectedMode" ng-change="ruta(puntoDeInteres)">

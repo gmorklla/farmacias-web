@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.loadData
- * @description
+ * @description: request get genérico
  * # loadData
  * Service in the farmaciasWebApp.
  */

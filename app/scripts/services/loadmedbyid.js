@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.loadPromo
- * @description
+ * @description: request post para obtener datos de un producto mediante su id
  * # loadPromo
  * Service in the farmaciasWebApp.
  */

@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.locationSrv
- * @description
+ * @description: este servicio guarda los datos de los productos para no tener que cargarlos en cada momento
  * # locationSrv
  * Service in the farmaciasWebApp.
  */

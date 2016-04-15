@@ -1,13 +1,13 @@
 <div class="row show-grid notasFrame">
     <div class="col-md-12 col-xs-12 notas">
-        <div class="col-md-6 col-sm-6 col-xs-12" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
+        <div class="col-md-6 col-sm-12 col-xs-12" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
             <h1>SIMINOTAS</h1>
             <dir-pagination-controls class="paginacion" pagination-id="siminotasPag" max-size="5" boundary-links="false"></dir-pagination-controls>
             <h2>{{::item.url}}</h2>
             <p ng-bind-html="item.entrada"></p>
             <a ui-sref="nota({ notaId: prettyFn(item.url) })" type="button" class="btn btn-sm btn-primary hvr-shutter-in-horizontal btnNota">{{::item.url}}</a>
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-12 videos">
+        <div class="col-md-6 col-sm-12 col-xs-12 videos">
             <div class="row rowNoMargin">
                 <div class="col-md-12 col-sm-12 col-xs-12 labelVid">
                     <img src="images/simicanal_label.png" alt="">

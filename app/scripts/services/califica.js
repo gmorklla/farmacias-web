@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.Califica
- * @description
+ * @description: servicio para calificar productos (vitaminas - higiene)
  * # Califica
  * Service in the farmaciasWebApp.
  */

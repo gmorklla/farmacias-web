@@ -4,10 +4,10 @@
 			"titulo" : "Siéntete ligero",
 			"subtitulo" : "Activa tu Tránsito Intestinal",
 			"entrada" : "<p>El estreñimiento es motivo de consultas frecuentes. Algunas personas que lo padecen le dan poca importancia y tratan de resolverlo con laxantes, lo que puede acarrear más problemas que beneficios. Por tal motivo, es indispensable la asesoría de un médico o nutriólogo para mejorar este padecimiento.</p><p>En tanto, te dejamos estas recomendaciones del equipo de médicos y nutriólogos del Dr. Simi®:</p>",
-			"cuerpo" : "views/siminotas/aprendiendo_con_el_dr_simi.html",
-			"img" : "activa_tu_transito",
+			"cuerpo" : "views/siminotas/sientete-ligero.html",
+			"img" : "sientete-ligero",
 			"shareTxt": "El estreñimiento es motivo de consultas frecuentes. Algunas personas que lo padecen le dan poca importancia y tratan de resolverlo con laxantes, lo que puede acarrear más problemas que beneficios. Por tal motivo, es indispensable la asesoría de un médico o nutriólogo para mejorar este padecimiento.",
-			"hashtag" : ["sienteteLigero", "transitoIntestinal"],
+			"hashtag" : ["sienteteLigero", "simiNotas"],
 			"key" : 1
 		},
 		{
@@ -15,10 +15,10 @@
 			"titulo" : "Eternal Secret",
 			"subtitulo" : "Es momento de lucir tu belleza",
 			"entrada" : "<p>ETERNAL SECRET, la línea para el cuidado de la piel, se crea con la firme convicción de que la belleza va más allá de un reflejo. La esencia de nuestra línea se enfoca en brindarte un cuidado integral que nutre, protege y repara tu belleza natural.</p><p>Descubre los beneficios de tener una piel sana y comienza a proyectar lo mejor de ti, con los productos dermocosméticos más vanguardistas y de calidad internacional, diseñados para ofrecerte soluciones en todas las etapas de tu vida.</p>",
-			"cuerpo" : "views/siminotas/eternal_secret.html",
-			"img" : "eternal_secret",
+			"cuerpo" : "views/siminotas/es-momento-de-lucir-tu-belleza.html",
+			"img" : "es-momento-de-lucir-tu-belleza",
 			"shareTxt": "ETERNAL SECRET, la línea para el cuidado de la piel, se crea con la firme convicción de que la belleza va más allá de un reflejo. La esencia de nuestra línea se enfoca en brindarte un cuidado integral que nutre, protege y repara tu belleza natural.",
-			"hashtag" : ["eternalSecret", "belleza"],
+			"hashtag" : ["eternalSecret", "simiNotas"],
 			"key" : 2
 		},
 		{
@@ -26,10 +26,10 @@
 			"titulo" : "Ejercicios",
 			"subtitulo" : "Fuera de casa",
 			"entrada" : "<p>En esta ocasión te daremos algunas recomendaciones para iniciar con ejercicios en un parque o gimnasio, que mejorarán tus niveles de glucosa:</p><p>1. Si estás debutando en el mundo del ejercicio, lo primero es no exigirle a tu cuerpo demasiado; tómate tu tiempo e inicia con sesiones de 20 minutos, de ser posible, diariamente.</p>",
-			"cuerpo" : "views/siminotas/ejercicios.html",
-			"img" : "ejercicios_fuera_de_casa",
+			"cuerpo" : "views/siminotas/ejercicios-fuera-de-casa.html",
+			"img" : "ejercicios-fuera-de-casa",
 			"shareTxt": "En esta ocasión te daremos algunas recomendaciones para iniciar con ejercicios en un parque o gimnasio, que mejorarán tus niveles de glucosa.",
-			"hashtag" : ["ejercicio", "glucosa"],
+			"hashtag" : ["ejercicio", "simiNotas"],
 			"key" : 3
 		},
 		{
@@ -37,10 +37,10 @@
 			"titulo" : "Mente sana",
 			"subtitulo" : "En cuerpo sano",
 			"entrada" : "<p>Los mexicanos hemos ido escalando en el índice mundial de personas con obesidad y sobrepeso, lo que convierte este tema en un problema de salud pública.</p><p>Esta situación se ha agravado en los últimos años como consecuencia de un estilo de vida en el que prevalecen la ingesta de comida “chatarra” y el sedentarismo. No obstante, el aspecto emocional también es importante, ya que, por ejemplo, se suele evadir el displacer con la comida, lo que resulta en personas que ante la ansiedad o la tristeza, comen de manera excesiva.</p>",
-			"cuerpo" : "views/siminotas/mente_sana.html",
-			"img" : "mente_sana",
+			"cuerpo" : "views/siminotas/mente-sana-en-cuerpo-sano.html",
+			"img" : "mente-sana-en-cuerpo-sano",
 			"shareTxt": "Los mexicanos hemos ido escalando en el índice mundial de personas con obesidad y sobrepeso, lo que convierte este tema en un problema de salud pública.",
-			"hashtag" : ["menteSana", "cuerpoSano"],
+			"hashtag" : ["menteSana", "simiNotas"],
 			"key" : 4
 		},
 		{
@@ -48,10 +48,10 @@
 			"titulo" : "Como cuidar",
 			"subtitulo" : "Las articulaciones",
 			"entrada" : "<p>El ejercicio bien realizado ayuda a fortalecer tus músculos, y estos protegen tus articulaciones, pero se debe de practicar con moderaciones para prevenir su desgaste prematuro.</p><p>Realiza un calentamiento previo a fin de que tus músculos se activen y estén preparados para el ejercicio. Los movimientos del cuerpo deben ser sincronizados; esto evitará lesiones.</p>",
-			"cuerpo" : "views/siminotas/como_cuidar_articulaciones.html",
-			"img" : "articulaciones",
+			"cuerpo" : "views/siminotas/como-cuidar-las-articulaciones.html",
+			"img" : "como-cuidar-las-articulaciones",
 			"shareTxt": "El ejercicio bien realizado ayuda a fortalecer tus músculos, y estos protegen tus articulaciones, pero se debe de practicar con moderaciones para prevenir su desgaste prematuro.",
-			"hashtag" : ["menteSana", "cuerpoSano"],
+			"hashtag" : ["articulaciones", "simiNotas"],
 			"key" : 5
 		},
 		{
@@ -59,10 +59,10 @@
 			"titulo" : "Tips para reducir",
 			"subtitulo" : "Masa corporal",
 			"entrada" : "<p>El proceso para bajar el porcentaje de grasa corporal no sucede de la noche a la mañana. Para lograrlo se requiere una alimentación saludable y un ejercitamiento adecuado.</p><p>Fisiológicamente, las mujeres tienen más grasa que los hombres; el rango normal oscila entre 18 y 28 %, mientras que para un hombre es entre un 8 y 20 %.</p>",
-			"cuerpo" : "views/siminotas/reducir_masa_corporal.html",
-			"img" : "grasa_corporal",
+			"cuerpo" : "views/siminotas/tips-para-reducir-masa-corporal.html",
+			"img" : "tips-para-reducir-masa-corporal",
 			"shareTxt": "El proceso para bajar el porcentaje de grasa corporal no sucede de la noche a la mañana. Para lograrlo se requiere una alimentación saludable y un ejercitamiento adecuado.",
-			"hashtag" : ["tips", "masaCorporal"],
+			"hashtag" : ["reducirMasaCorporal", "simiNotas"],
 			"key" : 6
 		},
 		{
@@ -70,10 +70,10 @@
 			"titulo" : "Perfeccionador de piel tono medio",
 			"subtitulo" : "FPS 30 Proteccion alta Eternal Secret",
 			"entrada" : "<p>La BB Cream, cuyas siglas significan Blemish Balm, es un bálsamo antimperfecciones, una crema formulada por dermatólogos alemanes que, debido a su acción antinflamatoria y protectora, se utilizaba para cuidar la piel después de intervenciones quirúrgicas, o con láser.</p><p>Posteriormente, se le dio un giro a estas cremas hacia el lado estético para aprovechar sus nuevos beneficios, como la protección solar y los ingredientes blanqueadores y antienvejecimiento.</p>",
-			"cuerpo" : "views/siminotas/perfeccionador_de_piel.html",
-			"img" : "bb_cream",
+			"cuerpo" : "views/siminotas/perfeccionador-de-piel-tono-medio-fps-30.html",
+			"img" : "perfeccionador-de-piel-tono-medio-fps-30",
 			"shareTxt": "La BB Cream, cuyas siglas significan Blemish Balm, es un bálsamo antimperfecciones, una crema formulada por dermatólogos alemanes que, debido a su acción antinflamatoria y protectora, se utilizaba para cuidar la piel después de intervenciones quirúrgicas, o con láser.",
-			"hashtag" : ["bbCream", "cuidadoDeLapiel"],
+			"hashtag" : ["cuidadoDeLaPiel", "simiNotas"],
 			"key" : 7
 		},
 		{
@@ -81,10 +81,10 @@
 			"titulo" : "Suero Colágeno",
 			"subtitulo" : "Hidrolizado Eternal Secret",
 			"entrada" : "<p>La apariencia joven es una de las principales preocupaciones de las mujeres en cuanto a belleza se refiere. Es inevitable que con la edad vayan apareciendo arrugas, líneas de expresión y manchas.</p><p>La línea Eternal Secret te ofrece el Serum Dermo Renovador, dentro de los cuidados antiedad, el cual combina los beneficios de soporte y firmeza del colágeno, para conseguir efectos inmediatos y duraderos, rejuvenecer la piel, aportar hidratación y reforzar los tejidos. El colágeno actúa como una base para las fibras de la dermis, lo que le permite a la piel recuperar volumen y elasticidad excepcional.</p>",
-			"cuerpo" : "views/siminotas/suero_colageno.html",
-			"img" : "serum",
+			"cuerpo" : "views/siminotas/suero-colageno-hidrolizado-eternal-secret.html",
+			"img" : "suero-colageno-hidrolizado-eternal-secret",
 			"shareTxt": "La apariencia joven es una de las principales preocupaciones de las mujeres en cuanto a belleza se refiere. Es inevitable que con la edad vayan apareciendo arrugas, líneas de expresión y manchas.",
-			"hashtag" : ["serum", "belleza"],
+			"hashtag" : ["cuidadoDeLaPiel", "simiNotas"],
 			"key" : 8
 		},
 		{
@@ -92,11 +92,22 @@
 			"titulo" : "Farmacias Similares",
 			"subtitulo" : "Entidad certificadora",
 			"entrada" : "<p>Por el impacto que representa en materia de salud, su experiencia, infraestructura, reconocimiento social, vinculación con los sectores productivos y el perfil de su capital humano, el Consejo Nacional de Normalización y Certificación de Competencias Laborales (Conocer) entregó a Farmacias Similares la cédula que la acredita como entidad certificadora. </p><p> En una ceremonia encabezada por Liliana Reyes Duarte, funcionaria de la Secretaría de Educación Pública, estableció que con esta cédula, Farmacias Similares comienza una nueva etapa en la gestión de capital humano en el sector farmacéutico de México.</p>",
-			"cuerpo" : "views/siminotas/entidad_certificadora.html",
-			"img" : "entidad_certificadora",
+			"cuerpo" : "views/siminotas/farmacias-similares-entidad-certificadora.html",
+			"img" : "farmacias-similares-entidad-certificadora",
 			"shareTxt": "Por el impacto que representa en materia de salud, su experiencia, infraestructura, reconocimiento social, vinculación con los sectores productivos y el perfil de su capital humano, el Consejo Nacional de Normalización y Certificación de Competencias Laborales (Conocer) entregó a Farmacias Similares la cédula que la acredita como entidad certificadora.",
-			"hashtag" : ["farmaciasSimilares", "reconocimiento"],
+			"hashtag" : ["reconocimiento", "simiNotas"],
 			"key" : 9
+		},
+		{
+			"url" : "dolores musculares por ejercicio",
+			"titulo" : "Dolores musculares",
+			"subtitulo" : "por ejercicio",
+			"entrada" : "<p>La actividad física se puede realizar prácticamente en cualquier sitio y en algunos casos no requiere equipo necesariamente.</p><p>Para mejorar y mantener su salud bastan 30 minutos de actividad física de intensidad moderada 5 días por semana, ya sea que practiques algún deporte, caminata, natación o andar en bicicleta por mencionar algunos ejemplos.</p>",
+			"cuerpo" : "views/siminotas/dolores-musculares-por-ejercicio.html",
+			"img" : "dolores-musculares-por-ejercicio",
+			"shareTxt": "La actividad física se puede realizar prácticamente en cualquier sitio y en algunos casos no requiere equipo necesariamente.",
+			"hashtag" : ["doloresMusculares", "simiNotas"],
+			"key" : 10
 		}
 	]
 }

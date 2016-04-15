@@ -1,5 +1,7 @@
 @media (min-width: 460px) and (max-width: 991px) {
-
+	body {
+		font-size: 1.8em;
+	}
 	.container-fluid {
 		padding:0 15px;
 	}
@@ -23,6 +25,7 @@
 	}
 	.navbar-header {
 	    float: none;
+	    margin-left: -15px !important;
 	}
 	.navbar-toggle {
 	    display: block;
@@ -105,10 +108,13 @@
 		cursor: pointer;
 	}
 	.barraCirculo div img {
-		margin-top: 15px;
-		margin-left: 15px;
+		margin-top: 15px !important;
+		margin-left: 15px !important;
 		max-width: 100%;
 	}
+	.barraCirculo div img:nth-child(2) {
+		margin-left: 25px !important;
+	}	
 	.barraTitulo p, .barraTitulo2 p {
 		min-width: 100%;
 		text-align: center;
@@ -121,8 +127,9 @@
 	  left: 5px;
 	}
 	.siminotasVideos {
+		min-height: 1150px !important;
 		height: auto;
-	    padding-bottom: 10px;
+	    padding-bottom: 60px !important;
 	}
 	.videos img {
 	}
@@ -140,7 +147,7 @@
 	    margin: 2px auto !important;
 	}	
 	.videos iframe {
-		min-height: 310px;
+		min-height: 380px;
 		float:right;
 		margin-right: 0;
 		max-width: 100% !important;
@@ -153,7 +160,9 @@
 	}
 	.proGrid h1 {
 		margin-top: 20px;
-		padding-top: 0px;		
+		padding-top: 0px;
+		min-height: 80px;
+		max-height: 80px;
 	}
 
 	.proGrid p {
@@ -185,7 +194,7 @@
 		max-height: none;
 	}
 	.row .col-sm-4 .well {
-		max-width: 240px;
+		
 	}
 	.rotate {
 		top:-20px;
@@ -197,6 +206,7 @@
 	}
 	.panel-heading {
 		margin-bottom: 10px;
+		text-align: center;
 	}
 
 	.loading {
@@ -245,9 +255,6 @@
 	}
 	.adsTitle {
 		max-width: 100%;
-	}
-	.combo {
-		background-color: #E28500;
 	}
 	.nuevo {
 		background-color: #00527F;
@@ -305,13 +312,13 @@
 	}
 
 	.table-responsive {
-		top:10px;
+		top:12px;
 		left:0px;
 		width:100% !important;
 	}
 
 	.cierraBusqueda {
-		top:20px;
+		top:10px;
 		left:102%;
 	}
 
@@ -342,16 +349,84 @@
 		text-align: center !important;
 	}
 
-		.adsTitle {
-			margin:20px 0px !important;
-			text-align: center;
-			padding:10px 5px;
-		}
+	.adsTitle {
+		margin:20px 0px !important;
+		text-align: center;
+		padding:10px 5px;
+	}
+	.ads .panel-body {
+	    border-right: 1px solid white;
+	}	
 
 	.notaTitulo {
 		margin: 0 !important;
 		margin-bottom: 10px !important;
+	}
+	.notas .col-xs-12 {
+	    padding: 5px;
+	}
+	.notas p {
+	    text-align: justify;
+	}
+	.notas h1 {
+		margin-right: 10px;
 	}	
+	.barraCirculo p {
+		font-size: 1.2em;
+	}
+	.contenido {
+		font-size: 1.3em !important;
+	}
+
+	.busca {
+		height:53px;
+		font-size: 1.5em;
+		width: 109% !important;
+	}
+
+	.form-group {
+		margin-bottom: 30px;
+    	height: 50px;
+    	margin-top: 3px;		
+	}
+
+	.filtros .col-md-12 input {
+	    font-size: 1.2em;
+	    height: 40px;
+	}
+
+	.subMenu2 {
+		padding-left: 95px !important;
+	}
+
+	.medIcon {
+	    background-position: 55px 3px;
+	}
+
+	.higieneIcon {
+	    background-position: 55px 3px;
+	}
+
+	.curacionIcon {
+	    background-position: 55px 3px;
+	}
+
+	.vitaminasIcon {
+	    background-position: 55px 3px;
+	}
+
+	.modal-body {
+	    min-height: 130px;
+	}
+
+	.contactoMessage {
+		min-height: 260px !important;
+	}
+
+	.barraCirculo div .consulMeds {
+		margin-left: 21px !important;
+		margin-top: 21px !important;
+	}		
 
 }
 

@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.runstatechange
- * @description
+ * @description: carga youtube si no se ha cargado todavía y fija la barra de navegación cuando se hace scroll en la página
  * # runstatechange
  * Service in the farmaciasWebApp.
  */

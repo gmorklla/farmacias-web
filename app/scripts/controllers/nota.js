@@ -8,37 +8,36 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('NotaCtrl', ['prettyUrlSpc', 'loadData', '_', '$stateParams', '$scope', '$rootScope', '$state', '$log', function(prettyUrlSpc, loadData, _, $stateParams, $scope, $rootScope, $state, $log) {
-        //$scope.url = "http://www.farmaciasdesimilares.com.mx/propuesta/#!" + $location.url();
+    .controller('NotaCtrl', ['prettyUrlSpc', 'loadData', '_', 'banner', '$stateParams', '$scope', '$rootScope', '$state', '$log', function(prettyUrlSpc, loadData, _, banner, $stateParams, $scope, $rootScope, $state, $log) {
 
+        // Inicializa tooltips de bootstrap
         $('[data-toggle="tooltip"]').tooltip({
             html: 'true',
             container: 'body'
         });
+        // Usa servicio 'prettyUrlSpc.deconfig' para quitar guiones
         var original = prettyUrlSpc.deconfig($stateParams.notaId);
-
-        //$stateParams.medicamentoId = $scope.medActual.NombreProducto;
-
+        // Define el url que se compartirá en redes sociales
         $scope.urlShare = 'http://www.farmaciasdesimilares.com.mx/propuesta/#!/siminotas/' + $stateParams.notaId;
 
         var resultado = prettyUrlSpc.deconfig($stateParams.notaId);
         resultado = prettyUrlSpc.capitalize(resultado);
         $stateParams.notaId = resultado;        
-
+        // Usa servicio 'loadData.httpReq' para obtener datos de las notas
         var datos = loadData.httpReq('data/siminotas.json');
 
         datos.then(function(datos) {
             $scope.notaActual = _.findWhere(datos.data.siminotas, {
                 url: original
             });
-
+            // Si se da click en el menu y no en una nota en específico, se presenta la última nota
             if (!$scope.notaActual) {
-                $log.info('Indefinido');
+                //$log.info('Indefinido');
                 var size = _.size(datos.data.siminotas);
                 $scope.notaActual = _.findWhere(datos.data.siminotas, {
                     key: size
                 });
-                $log.info($scope.notaActual);
+                //$log.info($scope.notaActual);
             };
 
             getNextAndPrev(datos);
@@ -46,7 +45,7 @@ angular.module('farmaciasWebApp')
         }, function(e) {
             console.log(e);
         });
-
+        // Función que define nota previa y próxima para los botones de navegación
         var getNextAndPrev = function(datos) {
             var size = _.size(datos.data.siminotas);
             var siguiente;
@@ -71,7 +70,7 @@ angular.module('farmaciasWebApp')
                 key: anterior
             });
         };
-
+        // Función para navegar entre las notas
         $rootScope.otraNota = function(nota) {
             if (nota === 'prev') {
                 $state.go('nota', {
@@ -83,9 +82,22 @@ angular.module('farmaciasWebApp')
                 });
             }
         };
-
+        // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
         $scope.prettyFn = function(args) {
             return prettyUrlSpc.prettyUrl(args);
         };
+
+        banner.random();
+
+        // Referencia a base de datos en Firebase
+        var ref = new Firebase("https://farmaciasdesimilares.firebaseio.com/notas");
+
+// Retrieve new posts as they are added to our database
+ref.on("child_added", function(snapshot, prevChildKey) {
+  var newPost = snapshot.val();
+  console.log("Author: " + newPost.author);
+  console.log("Title: " + newPost.titulo);
+  console.log("Previous Post ID: " + prevChildKey);
+});        
 
     }]);

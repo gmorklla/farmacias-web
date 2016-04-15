@@ -2,7 +2,7 @@
 <div class="historico" ng-controller="SiminotasCtrl">
     <h1 class="popDisplayTitle notasTitle">SIMINOTAS</h1>
     <dir-pagination-controls class="paginacion col-md-12 col-sm-12 col-xs-12" style="margin-left:15px;" pagination-id="siminotasPag" max-size="5"></dir-pagination-controls>
-    <div class="col-md-12 col-sm-6 col-xs-12 panel panel-default historicoPanel" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
+    <div class="col-md-12 col-sm-12 col-xs-12 panel panel-default historicoPanel" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
         <div class="panel-heading"><a ui-sref="nota({ notaId: prettyFn(item.url) })">{{::item.url}}</a></div>
         <div class="panel-body">
             <p>

@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.angularSeo
- * @description
+ * @description: Define los títulos de las páginas de manera dinámica
  * # angularSeo
  * Service in the farmaciasWebApp.
  */
@@ -63,6 +63,12 @@ angular.module('farmaciasWebApp')
         		case 'calidad':
         			$rootScope.pageTitulo = 'Control de calidad';
         		break;
+                case 'historia':
+                    $rootScope.pageTitulo = 'Historia';
+                break;
+                case 'simitel':
+                    $rootScope.pageTitulo = 'Simitel';
+                break;                
         		case 'contacto':
         			$rootScope.pageTitulo = 'Contacto';
         		break;
@@ -103,7 +109,13 @@ angular.module('farmaciasWebApp')
         			if(datos.NombreProducto){
         				$rootScope.pageTitulo = datos.NombreProducto + ' | Búsqueda';
         			}
-        		break;        		
+        		break;
+                case 'facturacion':
+                    $rootScope.pageTitulo = 'Facturación Electrónica';
+                break;
+                case 'facturacion.faqs':
+                    $rootScope.pageTitulo = 'Preguntas Frecuentes | Facturación Electrónica';
+                break;                                 
         	}
         };
 

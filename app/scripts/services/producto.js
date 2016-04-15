@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.producto
- * @description
+ * @description: guarda datos de un producto en la memoria
  * # producto
  * Service in the farmaciasWebApp.
  */

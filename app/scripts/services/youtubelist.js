@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.youTubeList
- * @description
+ * @description: obtiene lista de videos de youtube
  * # youTubeList
  * Service in the farmaciasWebApp.
  */

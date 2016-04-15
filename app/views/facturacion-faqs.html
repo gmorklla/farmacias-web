@@ -1,0 +1,127 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
+    </div>
+    <div class="col-md-8 col-xs-12 detalle">
+        <div class="row nota">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12">
+                    <h1 class="popDisplayTitle notaTitulo">Preguntas Frecuentes</h1>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12 panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ol>
+                                <li>
+                                    ¿Cuándo puedo generar mi factura?
+                                    <br>
+                                    <span class="text-muted">Tendrá 30 días para generar su factura a partir de la fecha impresa en su ticket de compra. (El portal está disponible las 24 horas del día los 365 días del año).</span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    ¿Necesito tener algún programa especial para poder generar y ver mis facturas?
+                                    <br>
+                                    <span class="text-muted">Si, para poder ver su factura en pantalla es necesario contar con la versión 7.0 ó superior de Acrobat Reader.</span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    Si no recibo la factura por correo electrónico y ya no tengo el ticket ¿cómo la puedo recuperar?
+                                    <br>
+                                    <span class="text-muted">Es importante que siempre conserve su ticket, de lo contrario no se podrá realizar ningún movimiento o consulta.</span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    Ya facturé pero no me llegó la factura ¿Qué debo hacer?
+                                    <br>
+                                    <span class="text-muted">Capturar sus datos como si fuera a generar su factura por primera vez, por lo que debes tener a la mano tu ticket y tu RFC.</span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    ¿Dónde está ubicado el importe del ticket?
+                                    <br>
+                                    <span class="text-muted">Ubicar importe del ticket <a data-toggle="modal" data-target="#importe">haz clic para ver ejemplo.</a></span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    ¿Dónde está ubicada la referencia de facturación?
+                                    <br>
+                                    <span class="text-muted">Ubicar clave de facturación en el ticket <a data-toggle="modal" data-target="#refencia">haz clic para ver ejemplo.</a></span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    ¿Cómo puedo consultar mi factura?
+                                    <br>
+                                    <span class="text-muted">Capturar sus datos como si fuera a generar su factura por primera vez, por lo que debes tener a la mano tu ticket y tu RFC.</span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    ¿Puedo volver a generar mi factura?
+                                    <br>
+                                    <span class="text-muted">Si tuviste un error en tus datos fiscales, y quieres realizar una refacturación, debes enviar un correo a: facturaelectronica@farmaciasdesimilares.com.mx o llamar al tel: 01-800-911-6666 (SIMITEL).</span>
+                                </li>
+                                <hr>
+                                <br>
+                                <li>
+                                    ¿Como sé que productos gravan IVA en mi factura?
+                                    <br>
+                                    <span class="text-muted">Verifique el detalle de productos en su ticket de compra (marcado con un *) haz clic para ver ejemplo.</span>
+                                </li>                                
+                            </ol>                                                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div ng-include="'views/promosSide.html'"></div>
+    </div>
+</div>
+<div class="modal fade" id="importe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Importe del ticket</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="well" style="text-align:center;"><img src="images/ticket-importe.jpg" alt=""></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="refencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Referencia de Facturación</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="well" style="text-align:center;"><img src="images/ticket-referencia-facturacion.jpg" alt=""></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

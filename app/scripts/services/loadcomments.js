@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.LoadCommentsSrv
- * @description
+ * @description: servicio para manenar los comentarios. | httpReq muestra los comentarios; httpLike sirve para dar like a un comentario; httpDislike califica negativamente un comentario y httpComment deja una respuesta a un comentario ya existente
  * # LoadCommentsSrv
  * Service in the farmaciasWebApp.
  */

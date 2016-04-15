@@ -3,7 +3,7 @@
         <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
     </div>
     <div class="col-md-12 banner hidden-xs">
-        <img src="images/nuevos_genericos.jpg" alt="">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
     </div>
     <div id="loadingMeds" class="loadingMeds col-md-4 col-sm-4">
         <div class='aCssSpinner2'>
@@ -82,7 +82,7 @@
                 </p>
             </div>
         </div>
-        <div class="row filtros" ng-if="(meds|filter:item.Oferta[0].TipoOferta = filtrarPorOfertas).length == 0">
+        <div class="row filtros" ng-if="(meds|filter:item.Oferta[0].TipoOferta = filtrarPorOfertas).length == 0 && muestraAlerta == true">
             <div class="col-sm-12 col-xs-12 bg-danger">
                 <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No exiten {{filtrarPorOfertas}}s</p>
             </div>

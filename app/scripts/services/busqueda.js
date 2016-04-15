@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.busqueda
- * @description
+ * @description: Servicio para búsqueda predictiva
  * # busqueda
  * Service in the farmaciasWebApp.
  */

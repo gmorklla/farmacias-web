@@ -3,26 +3,62 @@
         <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
     </div>
     <div class="col-md-12 banner hidden-xs">
-        <img src="images/nuevos_genericos.jpg" alt="">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
     </div>
     <div class="row detalleF">
         <div class="col-md-8 col-xs-12 detalle detalleD">
             <div class="row">
-                <div class="col-md-6 col-sm-4 col-xs-12">
-                    <div class="col-md-12 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 0 || medActual.urlImagen.length == 1">
                         <p class="well">
-                            <a data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
+                            <a ng-click="version()" data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
                         </p>
                     </div>
+                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length > 1">
+                        <div ng-repeat="item in medActual.urlImagen" ng-if="$index >= 1">
+                            <p class="well">
+                                <a ng-click="version($index)" data-toggle="modal" data-target="#productoBG">                                    
+                                    <img ng-src="https://fsappmovilstorage.blob.core.windows.net/imagenes/M_{{medActual.IdProducto.trim()}}_{{$index}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg">
+                                </a>
+                            </p>
+                            <br>
+                        </div>
+                    </div>                    
+                    <div class="col-md-12 col-sm-12 col-xs-12" ng-if="medActual.ProductoUnidadRegionalizada.length > 0">
+                        <h5 class="text-warning text-center"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Este producto lo puedes encontrar en:</h5>
+                        <hr style="margin-bottom: 20px;">
+                        <select class="form-control" ng-model="unidad" ng-options="unidad.unidad for unidad in opciones"></select>
+                        <div class="bs-example" data-example-id="striped-table">
+                            <hr style="margin-bottom: 20px;">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Colonia</th>
+                                        <td>{{unidad.colonia}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Municipio</th>
+                                        <td>{{unidad.municipio}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Estado</th>
+                                        <td>{{unidad.estado}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr style="margin-bottom: 20px;">
+                        <button type="button" class="btn btn-info" ng-click="localizaUnidad(unidad);"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Localiza esta unidad</button>
+                    </div>
                 </div>
-                <div class="col-md-6 col-sm-8 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="col-md-12 col-xs-12 panel panel-default">
                         <div class="panel-heading">{{medActual.NombreProducto}}</div>
                         <div class="panel-body">
-                            <div class="col-md-12 col-sm-5 col-xs-12 label label-warning">
+                            <div class="col-md-12 col-sm-12 col-xs-12 label label-warning">
                                 Precio: {{medActual.PrecioVenta | currency}}
                             </div>
-                            <div class="col-md-12 col-sm-5 col-xs-12 label label-default datosDetalle">
+                            <div class="col-md-12 col-sm-12 col-xs-12 label label-default datosDetalle">
                                 Clave: {{medActual.IdProducto.trim()}}
                                 <hr>
                                 <br>
@@ -31,18 +67,18 @@
                                 <br ng-if="medActual.Concentracion">
                                 <div class="infoProducto" ng-if="medActual.Concentracion">Concentración: {{medActual.Concentracion}}</div>
                             </div>
-                            <div class="well col-md-12 col-sm-5 col-xs-12" ng-if="medActual.Ingredientes.length > 0">
+                            <div class="well col-md-12 col-sm-12 col-xs-12" ng-if="medActual.Ingredientes.length > 0">
                                 <h1>INGREDIENTES</h1>
-                            <div class="col-md-12 col-sm-5 col-xs-12 label label-success" ng-if="medActual.Ingredientes.length > 0" ng-repeat="ingrediente in medActual.Ingredientes">
-                                <div class="infoProducto">
-                                    {{ingrediente.Nombre}} {{ingrediente.Cantidad}} {{ingrediente.UnidadMedida}}
+                                <div class="col-md-12 col-sm-12 col-xs-12 label label-success" ng-if="medActual.Ingredientes.length > 0" ng-repeat="ingrediente in medActual.Ingredientes">
+                                    <div class="infoProducto">
+                                        {{ingrediente.Nombre}} {{ingrediente.Cantidad}} {{ingrediente.UnidadMedida}}
+                                    </div>
                                 </div>
-                            </div>                                
                             </div>
                             <!--                             <div class="col-md-12 col-sm-5 col-xs-12 label label-info label-carrito" ng-click="guardaEnCarrito(medActual.ID.trim());" ng-model="agregaAlert">
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;&nbsp; <span class="hidden-xs">Agregar a carrito</span>
 </div> -->
-                            <div class="col-md-12 col-sm-6 col-xs-12 calificacion" ng-if="calificable == 0">
+                            <div class="col-md-12 col-sm-12 col-xs-12 calificacion" ng-if="calificable == 0">
                                 <p>
                                     Calificación
                                     <span ng-show="medActual.Calificacion > 0" class="star"><img src="images/star.png" alt=""></span>
@@ -128,7 +164,7 @@
                         <h4 class="modal-title" id="exampleModalLabel">{{medActual.NombreProducto || medActual.DESCRIPCION}}</h4>
                     </div>
                     <div class="modal-body">
-                        <p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.IdProducto.trim()}}.jpg" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/noImage_G.jpg"></p>
+                        <p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.IdProducto.trim()}}{{versionN}}.jpg" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/noImage_G.jpg"></p>
                     </div>
                     <div class="modal-footer">
                         <div class="col-md-4 col-sm-5 col-xs-12 label label-warning">

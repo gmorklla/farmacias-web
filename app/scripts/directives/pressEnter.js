@@ -3,7 +3,7 @@
 /**
  * @ngdoc directive
  * @name farmaciasWebApp.directive:myEnter
- * @description
+ * @description: 
  * # myEnter
  */
 angular.module('farmaciasWebApp')

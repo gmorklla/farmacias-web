@@ -3,9 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <base href="/propuesta/">
+    <base href="/">
     <title ng-bind-html="pageTitulo + ' | Farmacias Similares'"></title>
     <meta name="description" content="">
+    <link rel="manifest" href="manifest.json">
+    <script src="ChromePushManager.js"></script>  
+    <script src="https://messaging-public.realtime.co/js/2.1.0/ortc.js"></script>
+    <script src="notifications.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta property="fb:app_id" content="398798393664417" />
     <meta content="farmacias,farmacias similares,similares, farmacias de similares, farmacia de similares, farmacias dr simi, similares farmacias, farmacias similares mexico, farmaciasdesimilares.com.mx, simi, dr simi, dr. simi, doctor simi, laboratorios simi,laboratorios similares, medicamentos, medicamentos similares, genéricos intercambiables, generico, genericos, antibioticos, antigripales, analisis clinicos, medicinas, simicarrera" name="Keywords"></meta>
@@ -26,7 +30,7 @@
     <link rel="stylesheet" href="styles/desktop.css">
     <link rel="stylesheet" href="styles/tablets.css">
     <link rel="stylesheet" href="styles/transiciones.css">
-    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <!-- endbuild -->
 </head>
@@ -37,8 +41,10 @@
     <![endif]-->
     <!-- Add your site or application content here -->
     <div id="loading" class="loading">
-        <img src="images/logo.png" alt="">
-        <div class='aCssSpinner'><img src="images/loader.gif" alt=""></div>
+        <p><img class="simi" src="images/logo.png" alt=""></p>
+        <div class="cssload-container">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
     </div>
     <div class="col-md-4 col-xs-12 sugeridos carritoPreviewNav">
         <div ng-include="'views/carritoTotal.html'"></div>
@@ -123,24 +129,19 @@
     <script src="scripts/controllers/medicamentos.js"></script>
     <script src="scripts/controllers/detalle.js"></script>
     <script src="scripts/services/_.js"></script>
+    <script src="scripts/services/jquery.js"></script>
     <script src="scripts/services/producto.js"></script>
     <script src="scripts/controllers/promos.js"></script>
     <script src="scripts/controllers/nota.js"></script>
     <script src="scripts/controllers/localiza.js"></script>
     <script src="scripts/services/map.js"></script>
     <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places&language=es"></script>-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&language=es"></script>
-    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I"></script>
+    <script type="text/javascript" src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
     <script src="scripts/services/carritosrv.js"></script>
     <script src="scripts/controllers/carrito.js"></script>
     <script src="scripts/directives/bspopover.js"></script>
     <script src="scripts/services/loadmedssrv.js"></script>
-    <script src="scripts/controllers/vitaminas.js"></script>
-    <script src="scripts/services/loadvitssrv.js"></script>
-    <script src="scripts/controllers/higiene.js"></script>
-    <script src="scripts/services/loadhigienesrv.js"></script>
-    <script src="scripts/controllers/curacion.js"></script>
-    <script src="scripts/services/loadcurasrv.js"></script>
     <script src="scripts/controllers/carritodetalle.js"></script>
     <script src="scripts/services/loadpromo.js"></script>
     <script src="scripts/services/promoorcombo.js"></script>
@@ -164,6 +165,9 @@
     <script src="scripts/services/locationsrv.js"></script>
     <script src="scripts/services/angularseo.js"></script>
     <script src="scripts/services/getshorturl.js"></script>
+    <script src="scripts/services/banner.js"></script>
+    <script src="scripts/controllers/calidad.js"></script>
+    <script src="scripts/controllers/administrador.js"></script>
     <!-- endbuild -->
 </body>
 

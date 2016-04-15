@@ -8,6 +8,6 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-  .controller('CarritoDetalleCtrl', ['$stateParams', function ($stateParams) {
+  .controller('CarritoDetalleCtrl', [function () {
 
   }]);

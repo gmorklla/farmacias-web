@@ -3,7 +3,7 @@
 /**
  * @ngdoc service
  * @name farmaciasWebApp.prettyUrlSpc
- * @description
+ * @description: prettyUrl quita caracteres especiales y añade guiones para hacer url's; deconfig quita guiones y añade espacios en su lugar
  * # prettyUrlSpc
  * Service in the farmaciasWebApp.
  */
