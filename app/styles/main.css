@@ -307,19 +307,19 @@ hr {
 }
 
 .navbar-default .navbar-nav>li:nth-child(7) {
-  background: url("../images/catalogo_icon.png") no-repeat 20px 10px;
+  background: url("../images/nuevos_icon.png") no-repeat 20px 10px;
 }
 
 .navbar-default .navbar-nav>li:nth-child(8) {
-  background: url("../images/promociones_icon.png") no-repeat 20px 10px;
+  background: url("../images/catalogo_icon.png") no-repeat 20px 10px;
 }
 
 .navbar-default .navbar-nav>li:nth-child(9) {
-  background: url("../images/bienestar_icon.png") no-repeat 20px 10px;
+  background: url("../images/promociones_icon.png") no-repeat 20px 10px;
 }
 
 .navbar-default .navbar-nav>li:nth-child(10) {
-  background: url("../images/nuevos_icon.png") no-repeat 20px 10px;
+  background: url("../images/bienestar_icon.png") no-repeat 20px 10px;
 }
 
 .navbar-default .navbar-nav>li:nth-child(11) {
@@ -328,6 +328,14 @@ hr {
 
 .navbar-default .navbar-nav>li:nth-child(12) {
   background: url("../images/localiza_icon.png") no-repeat 20px 10px;
+}
+
+.navbar-default .navbar-nav>li:nth-child(13) {
+  background: url("../images/reembolsos_icon.png") no-repeat 20px 10px;
+}
+
+.navbar-default .navbar-nav>li:nth-child(14) {
+  background: url("../images/facturacion_icon.png") no-repeat 20px 10px;
 }
 
 .navbar-default .navbar-nav>li:last-child {
@@ -641,7 +649,7 @@ hr {
 }
 
 .vidPag {
-  margin-left:15px;
+  margin-left:0;
 }
 
 .vidList {
@@ -791,7 +799,7 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
   border-bottom: 1px solid #95B1BA;
 }
 
-.proGrid h1 {
+.proGrid h1, .notaVits h1 {
   font-family: 'Oswald', sans-serif !important;
   font-size: 0.9em;
   text-align: center;
@@ -804,6 +812,16 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
   overflow:hidden;
   padding-bottom: 5px;
   border-bottom: 1px dotted #ccc;
+}
+
+.notaVits h1 {
+  text-align: left;
+  min-height:0;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;  
 }
 
 .proGrid p {
@@ -828,6 +846,11 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
   font-weight: 700;
   margin:5px;
   color:#02405B;
+}
+
+.proGrid p {
+  color:#02405B;
+  font-size: 0.8em;
 }
 
 .proGrid img {
@@ -1000,6 +1023,11 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
   margin-left: 0px;
 }
 
+.detalle .label span {
+  font-size: 0.8em;
+  white-space: initial;
+}
+
 .detalle .panel {
   margin:5px;
   padding:10px;
@@ -1044,6 +1072,14 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
   font-weight: 700;
   font-size: 1.5em;
   text-transform: capitalize;
+}
+
+.panel-heading span {
+  font-size: 2.5em;
+  line-height: 0;
+  position: relative;
+  top: 8px;
+  color: #E28500;
 }
 
 .panel-body {
@@ -1642,6 +1678,10 @@ top: 241px !important;
 
   .historico .btn {
     width:100%;
+  }
+
+  .text-justify p {
+    text-align: justify !important;
   }
 
   .share + .popover {
@@ -2285,7 +2325,7 @@ top: 241px !important;
 }
 
 .pagination > li > a, .pagination > li > span {
-  padding: 10px 15px;
+  padding: 10px 14px;
 }
 
 .titleOferta {
@@ -2498,7 +2538,12 @@ label span {
 }
 
 .historicoPanel {
-  padding: 15px 0 0 15px !important;
+  padding: 15px 15px 0 15px !important;
+}
+
+.panel-body h3 {
+  margin-top: 0;
+  text-transform: capitalize;
 }
 
 .verSearch {

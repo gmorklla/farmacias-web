@@ -23,29 +23,31 @@ angular.module('farmaciasWebApp')
         var resultado = prettyUrlSpc.deconfig($stateParams.notaId);
         resultado = prettyUrlSpc.capitalize(resultado);
         $stateParams.notaId = resultado;
+        // Usa servicio 'loadData.httpReq' para obtener datos de las notas
+        var datos = loadData.httpReq('data/siminotas.json');
 
-        // Referencia a base de datos en Firebase
-        var ref = new Firebase("https://farmaciasdesimilares.firebaseio.com/notas");
-        // Array en el que se colocarán las notas
-        var datos = [];
-        // Llamada a firebase para obtener las notas
-        ref.once("value", function(snapshot) {
-            $scope.notasFirebase = snapshot.val();
-            for(var i in $scope.notasFirebase){
-                datos.push($scope.notasFirebase[i]);
-            }
-            $scope.notaActual = _.findWhere(datos, {
+        datos.then(function(datos) {
+            $scope.notaActual = _.findWhere(datos.data.siminotas, {
                 url: original
             });
-            // Llamada a función para determinar notas previa y próxima
-            getNextAndPrev(datos);
-        }, function (errorObject) {
-          console.log("The read failed: " + errorObject.code);
-        });
+            // Si se da click en el menu y no en una nota en específico, se presenta la última nota
+            if (!$scope.notaActual) {
+                //$log.info('Indefinido');
+                var size = _.size(datos.data.siminotas);
+                $scope.notaActual = _.findWhere(datos.data.siminotas, {
+                    key: size
+                });
+                //$log.info($scope.notaActual);
+            };
 
+            getNextAndPrev(datos);
+
+        }, function(e) {
+            console.log(e);
+        });
         // Función que define nota previa y próxima para los botones de navegación
         var getNextAndPrev = function(datos) {
-            var size = _.size(datos);
+            var size = _.size(datos.data.siminotas);
             var siguiente;
             var anterior;
 
@@ -60,11 +62,11 @@ angular.module('farmaciasWebApp')
                 anterior = $scope.notaActual.key - 1;
             }
 
-            $rootScope.notaNext = _.findWhere(datos, {
+            $rootScope.notaNext = _.findWhere(datos.data.siminotas, {
                 key: siguiente
             });
 
-            $rootScope.notaPrev = _.findWhere(datos, {
+            $rootScope.notaPrev = _.findWhere(datos.data.siminotas, {
                 key: anterior
             });
         };
@@ -82,9 +84,7 @@ angular.module('farmaciasWebApp')
         };
         // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
         $scope.prettyFn = function(args) {
-            if(args) {
-                return prettyUrlSpc.prettyUrl(args);
-            }
+            return prettyUrlSpc.prettyUrl(args);
         };
 
         banner.random();

@@ -20,7 +20,7 @@ angular.module('farmaciasWebApp')
         var geocoder = new google.maps.Geocoder();
         var infoBubble2;
         // Checa si ya se tiene el tipo de unidad que se quiere buscar
-        if ($state.$current.name == 'localiza.url') {
+        if ($state.$current.name === 'localiza.url') {
             $rootScope.ubicaType = parseInt($stateParams.tipo);
         }
         // Si ya se tiene el tipo de unidad, determina el ícono que se usará, de otra manera se usa el tipo 1 y su respectivo ícono
@@ -80,7 +80,7 @@ angular.module('farmaciasWebApp')
                     }
                     break;
                 case 3:
-                    $scope.icono = 'images/consultoriosMapIcon.png'
+                    $scope.icono = 'images/consultoriosMapIcon.png';
                     if ($rootScope.locationData.consultorios) {
                         $scope.getInfo(1);
                     } else {
@@ -88,7 +88,7 @@ angular.module('farmaciasWebApp')
                     }
                     break;
                 case 4:
-                    $scope.icono = 'images/dentalesMapIcon.png'
+                    $scope.icono = 'images/dentalesMapIcon.png';
                     if ($rootScope.locationData.dentales) {
                         $scope.getInfo(1);
                     } else {
@@ -143,7 +143,7 @@ angular.module('farmaciasWebApp')
                 }*/
                 $scope.datosUbicacion = farmacias;
                 // Checa si el estado es 'localiza.url' para usar o no los parámetros que se establecen en el url
-                if ($state.$current.name == 'localiza.url') {
+                if ($state.$current.name === 'localiza.url' || $state.$current.name === 'localiza.urlNoLat') {
                     var pruebaCoords1 = isNaN(parseFloat($stateParams.calle));
                     var pruebaCoords2 = isNaN(parseFloat($stateParams.colonia));
                     var pruebaCoords3 = isNaN(parseFloat($stateParams.ciudad));
@@ -167,7 +167,9 @@ angular.module('farmaciasWebApp')
                         var rutaMob = "http://maps.google.com/maps?saddr=" + usuario.lat() + "," + usuario.lng() + "&daddr=" + myLatlng.lat() + "," + myLatlng.lng();
 
                         google.maps.event.addListener(marker, 'click', function() {
-                            if (infowindow) infowindow.close();
+                            if (infowindow) {
+                                infowindow.close();
+                            }
 
                             var infoMarker = this;
 
@@ -189,6 +191,7 @@ angular.module('farmaciasWebApp')
                         markers.push(marker);
                         map.setZoom(13); // Se establece zoom del mapa
                         google.maps.event.clearListeners(map, 'dragend'); // Se quita el listener dragend dentro de la vista de una sola unidad
+                        $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
 
                     } else if(!pruebaCoords1 && !pruebaCoords2){ // Opción de búsqueda con coordenadas de interés pero sin ID de unidad
                         datosGeo.latitude = parseFloat($stateParams.calle);
@@ -210,7 +213,7 @@ angular.module('farmaciasWebApp')
                             if (responses && responses.length > 0) {
                                 // Procesa datos para que angular los actualice en la vista
                                 $timeout(function() {
-                                    console.info(responses[0]);
+                                    //console.info(responses[0]);
                                     $scope.shareDirection = responses[0].formatted_address;
                                 });
                                 /*$timeout(function() {
@@ -229,6 +232,13 @@ angular.module('farmaciasWebApp')
                         // Mapa estático que se usa cuando se comparte una dirección a través del módulo de administración
                         $scope.mapImgShare = "http://maps.google.com/maps/api/staticmap?sensor=false&center=" + $scope.posActual.lat + "," + $scope.posActual.lng + "&zoom=14&size=512x512&markers=icon:http://farmaciasdesimilares.com.mx/propuesta/images/userLocIcon.png|" + $scope.posActual.lat + "," + $scope.posActual.lng + "&markers=icon:http://farmaciasdesimilares.com.mx/propuesta/images/farmaciasMapIcon.png|" + $scope.distancias[0].Latitud + "," + $scope.distancias[0].Longitud;
 
+                    } else if($stateParams.calle === null && $stateParams.colonia === null && $stateParams.ciudad === null){
+                        // Función que se usa para obtener las unidades más cercanas al punto indicado
+                        $scope.obtenDistancias(datosGeo.latitude, datosGeo.longitude, $scope.datosUbicacion);
+                        // Farmacia más cercana de acuerdo a la función anterior
+                        var farmaciaMasCercana = new google.maps.LatLng($scope.distancias[0].Latitud, $scope.distancias[0].Longitud);
+                        // Trazo de ruta a la farmacia más cercana
+                        $scope.ruta(farmaciaMasCercana);
                     } else { // Opción de búsqueda a través de términos, no de coordenadas
 
                         marker = new google.maps.Marker({
@@ -244,7 +254,7 @@ angular.module('farmaciasWebApp')
                             if (status === google.maps.GeocoderStatus.OK) {
                                 // Procesa datos para que angular los actualice en la vista
                                 $timeout(function() {
-                                    console.info(results[0].geometry.location);
+                                    //console.info(results[0].geometry.location);
                                     map.setCenter(results[0].geometry.location);
                                     marker.setIcon( /** @type {google.maps.Icon} */ ({
                                         url: 'images/userLocIcon.png'
@@ -431,7 +441,7 @@ angular.module('farmaciasWebApp')
             // Call setMap() on the renderer to bind it to the passed map
             directionsDisplay.setMap(map);
             // Decide donde colocar las indicaciones de ruta
-            if ($('#right-panel').css('display') == 'none') {
+            if ($('#right-panel').css('display') === 'none') {
                 directionsDisplay.setPanel(document.getElementById('right-panel2'));
             } else {
                 directionsDisplay.setPanel(document.getElementById('right-panel'));
@@ -545,7 +555,7 @@ angular.module('farmaciasWebApp')
             });
             // Listener del evento click en el marcador del usuario
             marker.addListener('click', function (event) {
-                console.log(marker);
+                //console.log(marker);
             });
             markers.push(marker);
             // Estable contenido del infowindow del usuario
@@ -614,7 +624,7 @@ angular.module('farmaciasWebApp')
                     // Servicio de google maps para desplegar las indicaciones de la ruta obtenida
                     directionsDisplay.setDirections(response);
 
-                    if ($('#right-panel').css('display') == 'none') {
+                    if ($('#right-panel').css('display') === 'none') {
                         $('#right-panel2').css('display', 'block');
                         $('#right-panel2').addClass('pt-page-moveFromTopFade');
                     } else {
@@ -684,11 +694,13 @@ angular.module('farmaciasWebApp')
                 });
                 // Listener que escucha el evento click del marcador
                 google.maps.event.addListener(marker, 'click', function() {
-                    if (infowindow) infowindow.close();
+                    if (infowindow) {
+                        infowindow.close();
+                    }
 
                     var infoMarker = this;
 
-                    console.log(infoMarker.id);
+                    //console.log(infoMarker.id);
                     // Usa servicio 'loadLocations.idLocation' para obtener información de la unidad a través de su ID
                     var localizaId = loadLocations.idLocation(infoMarker.id);
 
@@ -846,11 +858,11 @@ angular.module('farmaciasWebApp')
         function loginErrorHandler(error) {
             $scope.logInError = true;
             console.log(error.code);
-            if (error.code == 'INVALID_PASSWORD') {
+            if (error.code === 'INVALID_PASSWORD') {
                 $scope.loginErrorMsg = 'Esa no es tu contraseña';
-            } else if (error.code == 'INVALID_USER') {
+            } else if (error.code === 'INVALID_USER') {
                 $scope.loginErrorMsg = 'Ese usuario no existe';
-            } else if (error.code == 'INVALID_EMAIL') {
+            } else if (error.code === 'INVALID_EMAIL') {
                 $scope.loginErrorMsg = 'Ese email no es válido';
             }
             digiere();
@@ -858,14 +870,14 @@ angular.module('farmaciasWebApp')
 
         // Función que maneja login exitoso
         function loginSuccessHanlder(authData) {
-            console.info(authData);
-        }
+            //console.info(authData);
+        };
 
 
         // Función para logout
         $scope.logout = function () {
             ref.unauth();
-        }
+        };
 
         // Función callback para el estado de la autenticación
         function authDataCallback(authData) {
@@ -954,7 +966,7 @@ angular.module('farmaciasWebApp')
                 // Después de haber seleccionado el texto, ejecuta el comando para copiar  
                 var successful = document.execCommand('copy');  
                 var msg = successful ? 'successful' : 'unsuccessful';  
-                if(msg = 'successful'){
+                if(msg === 'successful'){
                     $scope.copiado = true;
                     $scope.guardaPost('Copiado');
                     $timeout(function(){ $scope.copiado = false; }, 3000);
@@ -963,7 +975,7 @@ angular.module('farmaciasWebApp')
             } catch(err) {  
                 console.log('Oops, unable to copy');
             }
-        }
+        };
 
         // Procesa datos que angular todavía no ha digerido
         function digiere() {

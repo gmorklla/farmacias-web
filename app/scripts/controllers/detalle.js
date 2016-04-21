@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('DetalleCtrl', ['loadData', '_', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadMedByIdSrv', 'LoadPromoSrv', 'PromoOrComboSrv', 'Califica', 'loadLocations', 'banner', '$state', '$stateParams', '$scope', '$rootScope', '$log', '$location', function(loadData, _, prettyUrlSpc, productoSrv, CarritoSrv, LoadMedByIdSrv, LoadPromoSrv, PromoOrComboSrv, Califica, loadLocations, banner, $state, $stateParams, $scope, $rootScope, $log, $location) {
+    .controller('DetalleCtrl', ['loadData', '_', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadMedByIdSrv', 'LoadPromoSrv', 'PromoOrComboSrv', 'Califica', 'loadLocations', 'banner', 'jQuery', '$state', '$stateParams', '$scope', '$rootScope', '$log', '$location', function(loadData, _, prettyUrlSpc, productoSrv, CarritoSrv, LoadMedByIdSrv, LoadPromoSrv, PromoOrComboSrv, Califica, loadLocations, banner, jQuery, $state, $stateParams, $scope, $rootScope, $log, $location) {
         // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
         $scope.transUrl = function(args) {
             return prettyUrlSpc.prettyUrl(args);
@@ -30,8 +30,10 @@ angular.module('farmaciasWebApp')
 
             datos.then(function(info) {
                 var promoCombo = PromoOrComboSrv.getPromoCombo(info);
+                console.info(promoCombo);
                 if (promoCombo) {
                     $rootScope.ofertas = promoCombo.ofertas;
+                    console.info($rootScope.ofertas);
                 }
 
             }, function(e) {
@@ -40,19 +42,19 @@ angular.module('farmaciasWebApp')
                 }
             });
 
-        };        
+        };
         // Con el medicamento, checa si tiene o no promo, si es o no regional, si es de sección higiene o vitaminas, y dependiendo de eso muestra información correspondiente
         function preparaEntorno() {
-            for (var key in $scope.medActual) {
+            /*for (var key in $scope.medActual) {
                 console.info(key + ' ', $scope.medActual[key]);
-            }           
+            } */          
             $stateParams.medicamentoId = $scope.medActual.NombreProducto;
 
             var productoConOferta = _.isEmpty($scope.medActual.Oferta);
             if (!productoConOferta) {
                 buscaPromo();
             } else {
-                console.info('No busca promo');
+                //console.info('No busca promo');
                 $rootScope.tipoDeOferta = '';
             }
 
@@ -79,6 +81,7 @@ angular.module('farmaciasWebApp')
             var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
             medDetalle.then(function(info) {
                 $scope.medActual = (JSON.parse(info.data.d))[0];
+                //console.info($scope.medActual);
                 productoSrv.addProduct($scope.medActual);
                 preparaEntorno();
             }, function(e) {
@@ -91,7 +94,7 @@ angular.module('farmaciasWebApp')
         if (productoInMemory) {
             getProductById();
         } else {
-            console.info('Esta en memoria');
+            //console.info('Esta en memoria');
             $scope.medActual = productoSrv.getProduct();
             preparaEntorno();
             getProductById();
@@ -107,11 +110,11 @@ angular.module('farmaciasWebApp')
         $scope.enviado = 0;
         // Si se puede, usa servicio 'Califica.postCalificacion' para calificar producto mostrado
         $scope.califica = function() {
-            console.info(document.getElementsByClassName("glyphicon-star").length - 1);
+            //console.info(document.getElementsByClassName("glyphicon-star").length - 1);
             var calificacionAct = $('.glyphicon-star').length - 1;
-            console.log(calificacionAct);
-            console.log($scope.calificaText);
-            console.log(idProductoParam);
+            //console.log(calificacionAct);
+            //console.log($scope.calificaText);
+            //console.log(idProductoParam);
 
             var calificacion = Califica.postCalificacion(idProductoParam, calificacionAct, $scope.calificaText);
 
@@ -122,7 +125,7 @@ angular.module('farmaciasWebApp')
             calificacion.then(function(datos) {
                 var yaCalificado = JSON.parse(datos.data.d);
                 $log.info('Calificado!');
-                console.log(yaCalificado);
+                //console.log(yaCalificado);
             }, function(e) {
                 $log.info('Error!');
                 console.log(e);
@@ -130,7 +133,7 @@ angular.module('farmaciasWebApp')
 
         };
 
-        // Dependiendo del estado, establece informació que se usara en el comparte
+        // Dependiendo del estado, establece información que se usará en el comparte
         switch ($state.$current.name) {
             case 'medicamentos.detalle':
                 $scope.shareCaption = 'Medicamentos';
@@ -150,11 +153,12 @@ angular.module('farmaciasWebApp')
             var ofertaTxtF = {
                 "ofertas": []
             };
+            //console.info($scope.medActual);
             $rootScope.tipoDeOferta = $scope.medActual.Oferta[0].TipoOferta;
             for (var i = 0; i < $scope.medActual.Oferta.length; i++) {
                 ofertaTxtF.ofertas.push({
                     id: $scope.medActual.IdProducto.trim(),
-                    description: $scope.medActual.Oferta[i].Descripcion,
+                    description: prettyUrlSpc.plusSize($scope.medActual.Oferta[i].Descripcion),
                     cantidad: $scope.medActual.Oferta[i].Cantidad,
                     precio: $scope.medActual.Oferta[i].PrecioOferta,
                     ahorro: $scope.medActual.Oferta[i].Mensaje
@@ -173,12 +177,12 @@ angular.module('farmaciasWebApp')
         }
         // Usa servicio 'loadLocations.idLocation' para localizar la unidad en google maps
         $scope.localizaUnidad = function (unidad) {
-            console.info(unidad);
+            //console.info(unidad);
             var localizaId = loadLocations.idLocation(unidad.idunidad);
 
             localizaId.then(function(datos) {
                 $scope.datosLocaliza = JSON.parse(datos.data.d);
-                $state.go('localiza.url', { 
+                $state.go('localiza.urlNoLat', { 
                     tipo: 1,
                     calle: $scope.datosLocaliza[0].latitud,
                     colonia: $scope.datosLocaliza[0].longitud,
@@ -199,7 +203,7 @@ angular.module('farmaciasWebApp')
             }else{
                 $scope.versionN = '';
             }
-        }
+        };
               
 
     }]);

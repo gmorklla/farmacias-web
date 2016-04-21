@@ -23,7 +23,8 @@ angular
         'angularUtils.directives.uiBreadcrumbs',
         'youtube-embed',
         'ngStorage',
-        '720kb.socialshare'
+        '720kb.socialshare',
+        'ng.deviceDetector'
     ])
     // Configuración de la aplicación, se definen controles, vistas y títulos de página
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
@@ -127,6 +128,35 @@ angular
                     label: '{{$stateParams.medicamentoId}}'
                 }
             })
+            .state('producto', {
+                url: "/producto/:idProducto",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Producto'
+                }
+            })
             .state('localiza', {
                 url: "/localiza",
                 'views': {
@@ -183,6 +213,41 @@ angular
                 },
                 ncyBreadcrumb: {
                     label: '{{$stateParams.calle | capitaliza}} - {{$stateParams.colonia | capitaliza}} - {{$stateParams.ciudad | capitaliza}}'
+                }
+            })
+            .state('localiza.urlNoLat', {
+                url: "/farmacia-participante",
+                params: {
+                    tipo: null,
+                    calle: null,
+                    colonia: null,
+                    ciudad: null
+                },
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/localiza.html',
+                        controller: 'localizaCtrl',
+                        controllerAs: 'localiza'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Farmacia participante'
                 }
             })
             .state('nota', {
@@ -849,11 +914,74 @@ angular
                 ncyBreadcrumb: {
                     label: 'Administrador'
                 }
-            });             
+            })
+            .state('localizaFrame', {
+                url: "/localizaFrame",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/navFrame.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/localizaFrame.html',
+                        controller: 'localizaCtrl',
+                        controllerAs: 'localiza'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footerFrame.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Localiza tu unidad'
+                }
+            });
+            /*.state('sitemap', {
+                url: "/sitemap",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/sitemap.html',
+                        controller: 'MedicamentosCtrl',
+                        controllerAs: 'sitemap'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Sitemap Generator'
+                }
+            });*/
         $urlRouterProvider.otherwise("/");
     }])
     // Función que se ejecuta justo después de la configuración de la aplicación
-    .run(['$rootScope', '$window', '$state', 'youTubeList', 'runstatechange', 'angularSeo', 'jQuery', function($rootScope, $window, $state, youTubeList, runstatechange, angularSeo, $) {
+    .run(['$rootScope', '$window', '$state', '$location', 'youTubeList', 'runstatechange', 'angularSeo', 'jQuery', function($rootScope, $window, $state, $location, youTubeList, runstatechange, angularSeo, $) {
+        // Crea elemento para google analytics
+        $window.ga('create', 'UA-8531338-13', 'auto');
+
+        //console.info($state.get());
+
         //Luego de que jquery ha sido cargado, ejecuta tooltips y popovers de boostrap
         $(function() {
             $('[data-toggle="tooltip"]').tooltip({
@@ -871,11 +999,12 @@ angular
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState) {
                 runstatechange.onStateChange(toState, fromState);
-                angularSeo.onStateChange(toState);
+                angularSeo.onStateChange(toState, toParams);
             });
         // Una vez cargados todos los datos de la vista, desvanece el loading
         $rootScope.$on('$viewContentLoaded',
             function() {
+                $window.ga('send', 'pageview', $location.path());
                 $("#loading").fadeOut("slow");
             });
         // Dependiendo del scroll y el estado, coloca o quita elementos de la interfaz de usuario

@@ -12,7 +12,7 @@ angular.module('farmaciasWebApp')
 	$rootScope.productoAct = {};
 
 	var addProduct = function(newObj) {
-		console.log(newObj);
+		//console.log(newObj);
 		$rootScope.productoAct = newObj;
 	};
 

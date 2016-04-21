@@ -3,11 +3,10 @@
     <h1 class="popDisplayTitle notasTitle">SIMINOTAS</h1>
     <dir-pagination-controls class="paginacion col-md-12 col-sm-12 col-xs-12" style="margin-left:15px;" pagination-id="siminotasPag" max-size="5"></dir-pagination-controls>
     <div class="col-md-12 col-sm-12 col-xs-12 panel panel-default historicoPanel" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
-        <div class="panel-heading"><a ui-sref="nota({ notaId: prettyFn(item.url) })">{{::item.url}}</a></div>
         <div class="panel-body">
-            <p>
-                <a ui-sref="nota({ notaId: prettyFn(item.url) })"><img ng-src="images/siminotas/{{::item.img}}.jpg" alt=""></a>
-            </p>
+            <h3><a ui-sref="nota({ notaId: prettyFn(item.url) })">{{::item.url}}</a></h3>
+            <hr><br>
+            <p ng-bind-html="item.intro" class="text-justify"></p>
             <!-- <p>{{::item.entrada}}</p> -->
         </div>
         <a ui-sref="nota({ notaId: prettyFn(item.url) })" type="button" class="btn btn-sm btn-primary hvr-shutter-in-horizontal">Ir a la nota</a>

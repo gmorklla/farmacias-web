@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
+    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', 'deviceDetector', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, deviceDetector, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
 
         $rootScope.muestraCarrito = true;
         // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
@@ -19,6 +19,14 @@ angular.module('farmaciasWebApp')
         $scope.etiqueta = $stateParams.promo;
         $scope.sortType = 'item.NombreProducto'; // set the default sort type
         $scope.sortReverse = false; // set the default sort order
+
+        $scope.numeroLinksPaginacion = function () {
+            if(deviceDetector.isMobile()){
+                return 5;
+            } else {
+                return 7;
+            }
+        }
 
         //console.log(LoadMedsSrv.httpReq());
         $scope.meds = [];
@@ -53,6 +61,11 @@ angular.module('farmaciasWebApp')
                 familia = 'MEDICAMENTOS'
                 $rootScope.familiaId = 'nuevos.detalle';
                 $scope.calificable = 1;
+                break; 
+            case 'sitemap':
+                familia = 'VITAMINAS Y SUPLEMENTOS'
+                $rootScope.familiaId = 'vitaminas.detalle';
+                $scope.calificable = 1;
                 break;                
         }
         // Función que usa servicio 'LoadMedsSrv.httpReq' para buscar productos de la familia deseada
@@ -66,6 +79,7 @@ angular.module('farmaciasWebApp')
             }, 1000);
 
             var medicamentos = LoadMedsSrv.httpReq(familia);
+            var sitemap = '';
 
             medicamentos.then(function(datos) {
                 if (!$scope.pagina) {
@@ -74,9 +88,17 @@ angular.module('farmaciasWebApp')
                 $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
                 //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
                 $scope.meds = JSON.parse(datos.data.d);
-                console.log($scope.meds);
+                //console.log($scope.meds);
                 if ($scope.familia == 'nuevos') {
                     $scope.meds = $filter('filter')($scope.meds, true);
+                }
+                if ($scope.familia == 'sitemap') {
+                    //console.info(typeof $scope.meds);
+                    for (var i = $scope.meds.length - 1; i >= 0; i--) {
+                        var concatenado = '<url><loc>http://farmaciasdesimilares.com.mx/#/medicamentos/' + $scope.meds[i].IdProducto + '/' + $scope.transUrl($scope.meds[i].NombreProducto) + '</loc></url>';
+                        sitemap += concatenado;
+                    }
+                    $('#jsonHere').html(sitemap.toString());
                 }
                 $scope.muestraAlerta = true;
                 /*for (var key in $scope.meds[29]) {
@@ -117,24 +139,27 @@ angular.module('farmaciasWebApp')
                 $rootScope.muestraCarrito = false;
             });
         };
+        var timer;
         // Si el producto tiene alguna promoción, esta función se encarga de presentar los datos de dicha promoción
         $scope.getPromo = function(item) {
-            colocaPromoView();
-            $('.promoView').fadeIn("slow");
-            var ofertaTxtF = {
-                "ofertas": []
+            if(!deviceDetector.isMobile()){
+                colocaPromoView();
+                $('.promoView').fadeIn("slow");
+                var ofertaTxtF = {
+                    "ofertas": []
+                }
+                $rootScope.tipoDeOferta = item.Oferta[0].TipoOferta;
+                for (var i = 0; i < item.Oferta.length; i++) {
+                    ofertaTxtF.ofertas.push({
+                        id: item.IdProducto.trim(),
+                        description: item.Oferta[i].Descripcion,
+                        cantidad: item.Oferta[i].Cantidad,
+                        precio: item.Oferta[i].PrecioOferta,
+                        ahorro: item.Oferta[i].Mensaje
+                    });
+                }
+                $rootScope.ofertas = ofertaTxtF.ofertas;
             }
-            $rootScope.tipoDeOferta = item.Oferta[0].TipoOferta;
-            for (var i = 0; i < item.Oferta.length; i++) {
-                ofertaTxtF.ofertas.push({
-                    id: item.IdProducto.trim(),
-                    description: item.Oferta[i].Descripcion,
-                    cantidad: item.Oferta[i].Cantidad,
-                    precio: item.Oferta[i].PrecioOferta,
-                    ahorro: item.Oferta[i].Mensaje
-                });
-            }
-            $rootScope.ofertas = ofertaTxtF.ofertas;
         };
         // Oculta la información de la promo con un fadeOut
         $scope.hidePromo = function() {

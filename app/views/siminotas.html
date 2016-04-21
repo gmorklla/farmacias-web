@@ -2,9 +2,9 @@
     <div class="col-md-12 col-xs-12 notas">
         <div class="col-md-6 col-sm-12 col-xs-12" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
             <h1>SIMINOTAS</h1>
-            <dir-pagination-controls class="paginacion" pagination-id="siminotasPag" max-size="5" boundary-links="false"></dir-pagination-controls>
+            <dir-pagination-controls class="paginacion" pagination-id="siminotasPag" max-size="7" boundary-links="false"></dir-pagination-controls>
             <h2>{{::item.url}}</h2>
-            <p ng-bind-html="item.entrada"></p>
+            <p ng-bind-html="item.intro"></p>
             <a ui-sref="nota({ notaId: prettyFn(item.url) })" type="button" class="btn btn-sm btn-primary hvr-shutter-in-horizontal btnNota">{{::item.url}}</a>
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12 videos">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="row rowNoMargin">
-                        <dir-pagination-controls class="paginacion vidPag" pagination-id="youTubePag" boundary-links="false" max-size="5"></dir-pagination-controls>
+                        <dir-pagination-controls class="paginacion vidPag" pagination-id="youTubePag" boundary-links="false" max-size="7"></dir-pagination-controls>
                     </div>
                 </div>
             </div>

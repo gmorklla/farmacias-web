@@ -22,7 +22,7 @@ angular.module('farmaciasWebApp')
             // Opción Modal
             if (modo === 'modal') {
                 // Realiza búsqueda sólo con 3 o más caracteres
-                if ($scope.doSearchInput.length < 3) {
+                if ($scope.doSearchInput.length < 2) {
                     // Variable que muestra o no el Modal
                     $scope.viewSearchModal = false;
                 } else {
@@ -42,7 +42,7 @@ angular.module('farmaciasWebApp')
 
             } else { // Opción sin Modal
 
-                if ($scope.termino.length < 3) {
+                if ($scope.termino.length < 2) {
                     // Variable que despliega o no el panel con el resultado de la búsqueda
                     $scope.viewSearch = false;
                 } else {

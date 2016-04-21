@@ -110,6 +110,7 @@
 		margin-top: 10%;
 		font-size: 1.7em;
 		color:#fff;
+		text-align: left;
 	}
 	.barraCirculo div img {
 		max-width: 85%;
@@ -182,7 +183,7 @@
 		margin-top: 20px;
 		padding-top: 0;
 		padding-bottom: 0;
-		height: 45px;
+		height: 60px;
 		overflow: hidden;
 		max-width: 160px;
 		border-bottom: 1px dotted #ccc;

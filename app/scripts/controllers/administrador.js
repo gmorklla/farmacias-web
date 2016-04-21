@@ -34,18 +34,18 @@ angular.module('farmaciasWebApp')
                 loginSuccessHanlder(authData);
               }
             });
-        }
+        };
 
 
         // Función que maneja error en login
         function loginErrorHandler(error) {
             $scope.logInError = true;
             console.log(error.code);
-            if (error.code == 'INVALID_PASSWORD') {
+            if (error.code === 'INVALID_PASSWORD') {
                 $scope.loginErrorMsg = 'Esa no es tu contraseña';
-            } else if (error.code == 'INVALID_USER') {
+            } else if (error.code === 'INVALID_USER') {
                 $scope.loginErrorMsg = 'Ese usuario no existe';
-            } else if (error.code == 'INVALID_EMAIL') {
+            } else if (error.code === 'INVALID_EMAIL') {
                 $scope.loginErrorMsg = 'Ese email no es válido';
             }
             digiere();
@@ -60,7 +60,7 @@ angular.module('farmaciasWebApp')
         // Función para logout
         $scope.logout = function () {
             ref.unauth();
-        }
+        };
 
         // Función callback para el estado de la autenticación
         function authDataCallback(authData) {
@@ -81,7 +81,7 @@ angular.module('farmaciasWebApp')
             var usuarioAVerificar = 'users/' + user;
             ref.child(usuarioAVerificar).on("value", function(snapshot) {
                 if (!snapshot.val()) {
-                    registraUsuario(usuarioAVerificar);
+                    //registraUsuario(usuarioAVerificar);
                 } else {
                     $scope.usuario = snapshot.val().full_name;
                     digiere();
@@ -89,6 +89,15 @@ angular.module('farmaciasWebApp')
                 }
             });            
         }
+
+        // Referencia a base de datos en Firebase
+        var refNotas = new Firebase("https://farmaciasdesimilares.firebaseio.com/notas");        
+
+        refNotas.once("value", function(snapshot) {
+            $scope.numNotas = snapshot.numChildren();
+        }, function (errorObject) {
+          console.log("The read failed: " + errorObject.code);
+        });
 
         // Función para guardar las notas
         $scope.guardaNotaInfo = function() {
@@ -102,6 +111,7 @@ angular.module('farmaciasWebApp')
                 hashtag: $scope.hashtagNotas,
                 intro: $scope.cuerpoNotas,
                 shareText: $scope.shareTextNotas,
+                key: $scope.numNotas + 1,
                 htmlPath : 'views/siminotas/' + prettyUrlSpc.prettyUrl($scope.urlNotas),
                 timestamp: Firebase.ServerValue.TIMESTAMP
             }, function(error) {
@@ -112,7 +122,7 @@ angular.module('farmaciasWebApp')
 			  }
 			});
 
-        }
+        };
 
         // Callback success
         function notaGuardada() {

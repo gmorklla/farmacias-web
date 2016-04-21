@@ -36,6 +36,12 @@ angular.module('farmaciasWebApp')
 			case 'tips-para-reducir-masa-corporal':
 				url = '/temas/Tips para reducir';
 				break;
+			case 'como-cuidar-las-articulaciones':
+				url = '/temas/Como cuidar';
+				break;
+			case 'suero-colageno-hidrolizado-eternal-secret':
+				url = '/temas/Suero Colageno';
+				break;
 			default:
 				url = notaAct;
 		}

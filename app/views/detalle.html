@@ -5,13 +5,13 @@
     <div class="col-md-12 banner hidden-xs">
         <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
     </div>
-    <div class="row detalleF">
+    <div class="row detalleF" vocab="http://schema.org/" typeof="Product">
         <div class="col-md-8 col-xs-12 detalle detalleD">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 0 || medActual.urlImagen.length == 1">
                         <p class="well">
-                            <a ng-click="version()" data-toggle="modal" data-target="#productoBG"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
+                            <a ng-click="version()" data-toggle="modal" data-target="#productoBG"><img propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
                         </p>
                     </div>
                     <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length > 1">
@@ -53,16 +53,16 @@
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="col-md-12 col-xs-12 panel panel-default">
-                        <div class="panel-heading">{{medActual.NombreProducto}}</div>
+                        <div class="panel-heading" property="name">{{medActual.NombreProducto}}</div>
                         <div class="panel-body">
-                            <div class="col-md-12 col-sm-12 col-xs-12 label label-warning">
+                            <div class="col-md-12 col-sm-12 col-xs-12 label label-warning" property="price">
                                 Precio: {{medActual.PrecioVenta | currency}}
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12 label label-default datosDetalle">
                                 Clave: {{medActual.IdProducto.trim()}}
                                 <hr>
                                 <br>
-                                <div class="infoProducto">Presentación: {{medActual.Presentacion}}</div>
+                                <div class="infoProducto" property="description">Presentación: {{medActual.Presentacion}}</div>
                                 <hr ng-if="medActual.Concentracion">
                                 <br ng-if="medActual.Concentracion">
                                 <div class="infoProducto" ng-if="medActual.Concentracion">Concentración: {{medActual.Concentracion}}</div>
@@ -111,6 +111,8 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p class="acotacion" ng-if="shareCaption == 'Vitaminas'">*IVA INCLUIDO</p>
+                    <p class="acotacion" ng-if="shareCaption == 'Vitaminas'">*De acuerdo a lo publicado en el diario oficial de la federación con fecha 26 de marzo 2015</p>
                     <p class="acotacion">Recuerde, no a la automedicación. Consulte a su médico. La imagen y el precio pueden variar con respecto al producto final y zona geográfica. El consumo de este producto es responsabilidad de quien lo recomienda y quien lo usa.</p>
                 </div>
             </div>

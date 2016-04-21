@@ -8,9 +8,9 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-	.controller('InicioCtrl', ['loadImg', '$scope', function(loadImg, $scope) {
+	.controller('InicioCtrl', ['loadImg', function(loadImg) {
 
-		var imagenesInicio = ['banner.jpg', 'banner-simi-aventuras.jpg'];
+		var imagenesInicio = ['banner-main-1.jpg', 'banner-main-2.jpg'];
 		loadImg.loadImgs($('.loadImg'), imagenesInicio);
 
 		var imgMain = ['principal_1.jpg', 'principal_3.jpg'];
@@ -20,13 +20,13 @@ angular.module('farmaciasWebApp')
 			var url = 'images/' + imagen;
 			document.getElementById('mainImg').style.backgroundImage = 'url(' + url + ')';
 
-			setInterval(function() {
+			/*setInterval(function() {
 				var imagen2 = imgMain[Math.round(Math.random())];
 				var url2 = 'images/' + imagen2;
 				if(document.getElementById('mainImg')){
 					document.getElementById('mainImg').style.backgroundImage = 'url(' + url2 + ')';
 				}
-			}, 15000);
+			}, 15000);*/
 		}
 
 		coinFlip();

@@ -12,7 +12,7 @@ angular.module('farmaciasWebApp')
         $scope.title = 'Bienestar';
         $log.info($scope.title);
         // Usa servicio loadData para cargar los datos sobre los videos
-        var datos = loadData.httpReq('data/bienestar.json');
+        /*var datos = loadData.httpReq('data/bienestar.json');
 
         datos.then(function(datos) {
             $scope.vids = datos.data.vids;
@@ -20,7 +20,7 @@ angular.module('farmaciasWebApp')
             $('#bienestar').attr('src', videoC);
         }, function(e) {
             console.log(e);
-        });
+        });*/
         // Función para cambiar video del reproductor
         $scope.changeVid = function (url) {
         	$('#bienestar').attr('src', url);

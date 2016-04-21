@@ -37,6 +37,8 @@ module.exports = function(config) {
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-socialshare/dist/angular-socialshare.min.js',
       'bower_components/firebase/firebase.js',
+      'bower_components/re-tree/re-tree.js',
+      'bower_components/ng-device-detector/ng-device-detector.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
