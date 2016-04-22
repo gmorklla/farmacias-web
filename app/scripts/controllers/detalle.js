@@ -96,14 +96,7 @@ angular.module('farmaciasWebApp')
             });
         }        
 
-        if (productoInMemory) {
-            getProductById();
-        } else {
-            //console.info('Esta en memoria');
-            $scope.medActual = productoSrv.getProduct();
-            preparaEntorno();
-            getProductById();
-        }
+        getProductById();
 
         $rootScope.muestraCarrito = true;
 
