@@ -306,6 +306,7 @@
 	}
 	.combo {
 		border-right: 60px solid #E28500;
+		outline: none;
 	}
 	.nuevo {
 		background-color: #00527F;

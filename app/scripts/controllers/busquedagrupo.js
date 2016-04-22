@@ -31,7 +31,9 @@ angular.module('farmaciasWebApp')
                 scrollTop: $(".productos").offset().top
             }, 1000);
 
-            var search = busqueda.buscaPredictiva($stateParams.termino);
+            //console.info($stateParams.termino);
+
+            var search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig($stateParams.termino));
 
             search.then(function(datos) {
                 if (!$scope.pagina) {

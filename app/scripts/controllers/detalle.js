@@ -9,6 +9,8 @@
  */
 angular.module('farmaciasWebApp')
     .controller('DetalleCtrl', ['loadData', '_', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadMedByIdSrv', 'LoadPromoSrv', 'PromoOrComboSrv', 'Califica', 'loadLocations', 'banner', 'jQuery', '$state', '$stateParams', '$scope', '$rootScope', '$log', '$location', function(loadData, _, prettyUrlSpc, productoSrv, CarritoSrv, LoadMedByIdSrv, LoadPromoSrv, PromoOrComboSrv, Califica, loadLocations, banner, jQuery, $state, $stateParams, $scope, $rootScope, $log, $location) {
+        
+        $rootScope.general = false;
         // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
         $scope.transUrl = function(args) {
             return prettyUrlSpc.prettyUrl(args);
@@ -21,6 +23,9 @@ angular.module('farmaciasWebApp')
 
         var idProductoParam = $stateParams.idProducto.trim();
 
+        // Define la familia a la que pertenecen los productos de acuerdo al estado en el que nos encontramos
+        $scope.familia = $state.$current.parent.toString();      
+
         var productoInMemory = _.isEmpty($rootScope.productoAct);
         // Usa servicio 'LoadPromoSrv.httpReq' para buscar promociones del producto mostrado
         $scope.getPromo = function(id) {
@@ -30,10 +35,10 @@ angular.module('farmaciasWebApp')
 
             datos.then(function(info) {
                 var promoCombo = PromoOrComboSrv.getPromoCombo(info);
-                console.info(promoCombo);
+                //console.info(promoCombo);
                 if (promoCombo) {
                     $rootScope.ofertas = promoCombo.ofertas;
-                    console.info($rootScope.ofertas);
+                    //console.info($rootScope.ofertas);
                 }
 
             }, function(e) {
@@ -78,7 +83,7 @@ angular.module('farmaciasWebApp')
 
         // Función que usa el servicio 'LoadMedByIdSrv.httpReq' para buscar la información del producto con base en su id
         function getProductById() {
-            var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
+            var medDetalle = LoadMedByIdSrv.httpReq2(idProductoParam);
             medDetalle.then(function(info) {
                 $scope.medActual = (JSON.parse(info.data.d))[0];
                 //console.info($scope.medActual);
@@ -153,16 +158,27 @@ angular.module('farmaciasWebApp')
             var ofertaTxtF = {
                 "ofertas": []
             };
-            //console.info($scope.medActual);
-            $rootScope.tipoDeOferta = $scope.medActual.Oferta[0].TipoOferta;
+            //console.info( $scope.medActual);
             for (var i = 0; i < $scope.medActual.Oferta.length; i++) {
-                ofertaTxtF.ofertas.push({
-                    id: $scope.medActual.IdProducto.trim(),
-                    description: prettyUrlSpc.plusSize($scope.medActual.Oferta[i].Descripcion),
-                    cantidad: $scope.medActual.Oferta[i].Cantidad,
-                    precio: $scope.medActual.Oferta[i].PrecioOferta,
-                    ahorro: $scope.medActual.Oferta[i].Mensaje
-                });
+                var idDelCombo = $scope.medActual.Oferta[i].idCombo;
+                var existeONo = _.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo});
+                if(!existeONo) {
+                    ofertaTxtF.ofertas.push({
+                        id: $scope.medActual.Oferta[i].idproducto.trim(),
+                        nombre: $scope.medActual.Oferta[i].Nombre,
+                        cantidad: $scope.medActual.Oferta[i].Cantidad,
+                        precio: $scope.medActual.Oferta[i].PrecioOferta,
+                        ahorro: $scope.medActual.Oferta[i].Mensaje,
+                        tipo: $scope.medActual.Oferta[i].TipoOferta,
+                        idCombo: $scope.medActual.Oferta[i].idCombo
+                    });
+                } else {
+                    _.extend(_.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo}),
+                        {
+                            id2: $scope.medActual.Oferta[i].idproducto.trim(),
+                            nombre2: $scope.medActual.Oferta[i].Nombre
+                        });
+                }
             }
             $rootScope.ofertas = ofertaTxtF.ofertas;
         }

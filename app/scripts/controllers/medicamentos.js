@@ -8,8 +8,9 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', 'deviceDetector', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, deviceDetector, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
+    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', 'deviceDetector', 'LoadMedByIdSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, deviceDetector, LoadMedByIdSrv, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
 
+        $rootScope.general = true;
         $rootScope.muestraCarrito = true;
         // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
         $scope.transUrl = function(args) {
@@ -20,6 +21,7 @@ angular.module('farmaciasWebApp')
         $scope.sortType = 'item.NombreProducto'; // set the default sort type
         $scope.sortReverse = false; // set the default sort order
 
+        // Número de links en paginador de acuerdo a si es mobile o no
         $scope.numeroLinksPaginacion = function () {
             if(deviceDetector.isMobile()){
                 return 5;
@@ -126,7 +128,11 @@ angular.module('farmaciasWebApp')
         };
         // Guarda los datos del producto al que se le hizo click para presentar la información de manera rápida al usuario en la vista de detalle
         $scope.sendProduct = function(pro) {
-            productoSrv.addProduct(pro);
+            $scope.hidePromo();
+            $rootScope.general = false;
+            if(pro.Oferta.length === 0) {
+                productoSrv.addProduct(pro);
+            }
         };
 
         $scope.muestraMas = function() {
@@ -143,24 +149,61 @@ angular.module('farmaciasWebApp')
         // Si el producto tiene alguna promoción, esta función se encarga de presentar los datos de dicha promoción
         $scope.getPromo = function(item) {
             if(!deviceDetector.isMobile()){
-                colocaPromoView();
-                $('.promoView').fadeIn("slow");
-                var ofertaTxtF = {
-                    "ofertas": []
-                }
-                $rootScope.tipoDeOferta = item.Oferta[0].TipoOferta;
-                for (var i = 0; i < item.Oferta.length; i++) {
-                    ofertaTxtF.ofertas.push({
-                        id: item.IdProducto.trim(),
-                        description: item.Oferta[i].Descripcion,
-                        cantidad: item.Oferta[i].Cantidad,
-                        precio: item.Oferta[i].PrecioOferta,
-                        ahorro: item.Oferta[i].Mensaje
-                    });
-                }
-                $rootScope.ofertas = ofertaTxtF.ofertas;
+                var medDetalle = LoadMedByIdSrv.httpReq2(item.IdProducto.trim());
+                medDetalle.then(function(info) {
+                    var datosOfertas = (JSON.parse(info.data.d))[0];
+
+                    $rootScope.tipoDeOferta = item.Oferta[0].TipoOferta;
+                    var ofertaTxtF = {
+                        "ofertas": []
+                    };
+                    console.info( datosOfertas );
+                    for (var i = 0; i < datosOfertas.Oferta.length; i++) {
+                        var idDelCombo = datosOfertas.Oferta[i].idCombo;
+                        var existeONo = _.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo});
+                        if(!existeONo) {
+                            ofertaTxtF.ofertas.push({
+                                id: datosOfertas.Oferta[i].idproducto.trim(),
+                                nombre: datosOfertas.Oferta[i].Nombre,
+                                cantidad: datosOfertas.Oferta[i].Cantidad,
+                                precio: datosOfertas.Oferta[i].PrecioOferta,
+                                ahorro: datosOfertas.Oferta[i].Mensaje,
+                                tipo: datosOfertas.Oferta[i].TipoOferta,
+                                idCombo: datosOfertas.Oferta[i].idCombo
+                            });
+                        } else {
+                            _.extend(_.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo}),
+                                {
+                                    id2: datosOfertas.Oferta[i].idproducto.trim(),
+                                    nombre2: datosOfertas.Oferta[i].Nombre
+                                });
+                        }
+                    }
+                    $rootScope.ofertas = ofertaTxtF.ofertas;
+                    //console.info($rootScope.ofertas);
+                    colocaPromoView();
+                    $('.promoView').fadeIn("slow");
+
+                }, function(e) {
+                    for (var key in e) {
+                        $log.error(key + ' ', e[key]);
+                    }
+                });
+                // -------------------------------------             
             }
         };
+        // Función que usa el servicio 'LoadMedByIdSrv.httpReq' para buscar la información del producto con base en su id
+        function getProductById(id) {
+            var medDetalle = LoadMedByIdSrv.httpReq2(id);
+            medDetalle.then(function(info) {
+                var dator = (JSON.parse(info.data.d))[0];
+                console.info(dator);
+            }, function(e) {
+                for (var key in e) {
+                    $log.error(key + ' ', e[key]);
+                }
+            });
+        }         
         // Oculta la información de la promo con un fadeOut
         $scope.hidePromo = function() {
             $rootScope.viewData = '';
@@ -196,6 +239,7 @@ angular.module('farmaciasWebApp')
         };
 
         $scope.getPreview = function(item) {
+            $rootScope.general = false;
             $scope.productoPreview = item;
             var id = 'P_' + item.IdProducto;
             colocaPromoView(id);
@@ -226,6 +270,14 @@ angular.module('farmaciasWebApp')
                     $scope.filtrarPorOfertas = '';
             }
         };
+        // Cierra Modal y resetea campos
+        $scope.closeModal = function () {
+            $('.modal').modal('hide');
+        };
+
+        $( window ).scroll(function() {
+            $scope.hidePromo();        
+        });               
 
         decide();
 

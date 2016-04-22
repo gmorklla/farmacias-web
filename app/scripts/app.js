@@ -976,7 +976,7 @@ angular
         $urlRouterProvider.otherwise("/");
     }])
     // Función que se ejecuta justo después de la configuración de la aplicación
-    .run(['$rootScope', '$window', '$state', '$location', 'youTubeList', 'runstatechange', 'angularSeo', 'jQuery', function($rootScope, $window, $state, $location, youTubeList, runstatechange, angularSeo, $) {
+    .run(['$rootScope', '$window', '$state', '$location', 'prettyUrlSpc', 'youTubeList', 'runstatechange', 'angularSeo', 'jQuery', function($rootScope, $window, $state, $location, prettyUrlSpc, youTubeList, runstatechange, angularSeo, $) {
         // Crea elemento para google analytics
         $window.ga('create', 'UA-8531338-13', 'auto');
 
@@ -1004,8 +1004,15 @@ angular
         // Una vez cargados todos los datos de la vista, desvanece el loading
         $rootScope.$on('$viewContentLoaded',
             function() {
-                $window.ga('send', 'pageview', $location.path());
+                //$window.ga('send', 'pageview', { page: $location.url() });
                 $("#loading").fadeOut("slow");
+            });
+        $rootScope.$on('$stateChangeSuccess',
+            function (event, toState, toParams, fromState, fromParams) {
+                $window.ga('send', 'pageview', { 
+                    'page': $location.url(),
+                    'title': $rootScope.pageTitulo
+                });
             });
         // Dependiendo del scroll y el estado, coloca o quita elementos de la interfaz de usuario
         $(window).scroll(function() {

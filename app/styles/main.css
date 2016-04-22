@@ -945,6 +945,34 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
   color:#fff;
 }
 
+.etiqueta-nuevo2 {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-left: 60px solid #CD2441;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  cursor: help;
+}
+
+.etiqueta-nuevo2 .glyphicon-usd {
+  top: -25px;
+  left: -45px;
+  color:#fff;
+}
+.etiqueta-nuevo2 .glyphicon-plus {
+  top:-20px;
+  left:35px;
+  color:#fff;
+}
+.etiqueta-nuevo2 .glyphicon-flag {
+  top:-20px;
+  left:35px;
+  color:#fff;
+}
+
 .rotate {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -959,10 +987,12 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
 
 .ofertaTxt {
   font-size: 1em;
+  white-space: normal;
 }
 
 .oferta {
   border-right:60px solid #CD2441;
+  outline: none;
 }
 
 .Combo {
@@ -1080,6 +1110,12 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
   position: relative;
   top: 8px;
   color: #E28500;
+}
+
+.commentsDate {
+  font-size: 0.8em !important;
+  color: #777 !important;
+  top: 0 !important;
 }
 
 .panel-body {
@@ -2703,6 +2739,10 @@ label span {
 .adminLabel {
   margin-left: 45px;
   color: #bbb;
+}
+
+.comboNames {
+  font-size: 1em !important;
 }
 
 @media (max-width: 767px) {
