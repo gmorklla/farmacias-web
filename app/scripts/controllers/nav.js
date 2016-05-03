@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('NavCtrl', ['$scope', '$rootScope', '$log', '$state', 'prettyUrlSpc', 'loadData', 'productoSrv', 'busqueda', function($scope, $rootScope, $log, $state, prettyUrlSpc, loadData, productoSrv, busqueda) {
+    .controller('NavCtrl', ['$scope', '$rootScope', '$log', '$state', '$window', 'prettyUrlSpc', 'loadData', 'productoSrv', 'busqueda', function($scope, $rootScope, $log, $state, $window, prettyUrlSpc, loadData, productoSrv, busqueda) {
         // Boolean que controla si se debe o no mostrar el Modal que se usa para buscar productos
         $scope.viewSearchModal = false;
         // Función que controla el modo de búsqueda y usa el servicio 'busqueda.buscaPredictiva' para obtener los resultados
@@ -94,7 +94,18 @@ angular.module('farmaciasWebApp')
             if($scope.listo === true) {
                 $scope.noInput();
                 $rootScope.busqueda = true;
-                console.info($scope.termino);
+                var terminoFinal;
+                if($scope.termino) {
+                    terminoFinal = $scope.termino;
+                } else {
+                    terminoFinal = $scope.doSearchInput;
+                }
+                $window.ga('send', {
+                  hitType: 'event',
+                  eventCategory: 'Busqueda',
+                  eventAction: 'Ver todos los resultados',
+                  eventLabel: 'Termino: ' + terminoFinal
+                });                
                 $state.go('busquedaGrupo', {
                     termino: $scope.prettyFn($scope.termino || $scope.doSearchInput)
                 });                

@@ -6,6 +6,10 @@
 		{
 			"titulo" : "El Buen Lunes",
 			"img" : "el_buen_lunes"
+		},
+		{
+			"titulo" : "¡Yo cuido mi panchita! ¿Y tú?",
+			"img" : "yo_cuido_mi_panchita"
 		}
 	]
 }

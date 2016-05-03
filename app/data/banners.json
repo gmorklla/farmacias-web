@@ -1,9 +1,5 @@
 {
     "banners": [{
-        "banner": "banner-analgesia",
-        "url": "#/lo-nuevo",
-        "target": "_self"
-    }, {
         "banner": "banner-buen-lunes",
         "url": "#/lo-nuevo",
         "target": "_self"
@@ -20,7 +16,7 @@
         "url": "http://www.siminforma.com.mx/",
         "target": "_blank"
     }, {
-        "banner": "banner-simicarrera",
+        "banner": "banner-simicarrera-puebla",
         "url": "http://www.simicarreras.com.mx/",
         "target": "_blank"
     }, {

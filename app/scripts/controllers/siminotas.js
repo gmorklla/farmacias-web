@@ -21,10 +21,29 @@ angular.module('farmaciasWebApp')
                 datos.push($scope.notasFirebase[i]);
             }
             $scope.siminotas = datos;
-            $rootScope.notaFinal = prettyUrlSpc.prettyUrl(datos[$scope.siminotas.length - 1].url);
+            if($scope.siminotas.length == 0) {
+                notasIfNoFirebase();
+            } else {
+                $rootScope.notaFinal = prettyUrlSpc.prettyUrl(datos[$scope.siminotas.length - 1].url);
+                digiere();
+            }
         }, function (errorObject) {
-          console.log("The read failed: " + errorObject.code);
-        });        
+          console.log("The read failed: " + errorObject.code);          
+        });
+
+        // Fallback si no se logran obtener los datos de las notas a través de firebase
+        function notasIfNoFirebase() {
+            // Usa servicio 'loadData.httpReq' para obtener datos de las notas de manera local si Firebase no carga
+            var datos = loadData.httpReq('data/notas.json');
+
+            datos.then(function(datos) {
+                $scope.siminotas = datos.data;
+                $rootScope.notaFinal = prettyUrlSpc.prettyUrl(datos.data[$scope.siminotas.length - 1].url);
+                digiere();
+            }, function(e) {
+                console.log(e);
+            });            
+        }
 
         // Usa servicio 'prettyUrlSpc.prettyUrl' para dar formato a un texto, adecuado para su uso en un url
         $scope.prettyFn = function(args) {
@@ -35,7 +54,7 @@ angular.module('farmaciasWebApp')
             console.info('No hay video');
             var videos = youTubeList.getVids();
             videos.then(function(datos) {
-                $rootScope.theBestVideo = datos[1].id;
+                $rootScope.theBestVideo = datos[2].id;
                 $rootScope.listaVideos = datos;
                 $scope.$apply();
             }, function(e) {
@@ -54,6 +73,13 @@ angular.module('farmaciasWebApp')
             $scope.mostrados = 4;
         } else {
             $scope.mostrados = 2;
-        }       
+        }
+
+        // Procesa datos que angular todavía no ha digerido
+        function digiere() {
+            if(!$scope.$$phase) {
+                $scope.$digest();
+            }                
+        }        
 
     }]);

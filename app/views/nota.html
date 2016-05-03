@@ -21,15 +21,21 @@
                         <div class="panel-heading">{{notaActual.subtitulo}}</div>
                         <div class="panel-body">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <ng-include src="notaActual.htmlPath + '.html'"></ng-include>
+                                <ng-include src="htmlDigerido"></ng-include>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="btn-group" role="group" style="margin-top:10px;">
-                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="Siminotas" socialshare-text="{{notaActual.titulo}} {{notaActual.subtitulo}}" socialshare-media="http://farmaciasdesimilares.com.mx/propuesta/images/siminotas/{{prettyFn(notaActual.url)}}.jpg" socialshare-type="feed" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx/propuesta/gracias.html" socialshare-description="{{notaActual.shareTxt}}" socialshare-popup-height="350" socialshare-popup-width="540">
+                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" ng-click="fbComparteClick()">
                                         <div class="resp-sharing-button__icon">
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32"><path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path></svg>
                                         </div>
                                     </button>
+
+                                    <!-- <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="Siminotas" socialshare-text="{{notaActual.titulo}} {{notaActual.subtitulo}}" socialshare-media="http://farmaciasdesimilares.com.mx/propuesta/images/siminotas/{{prettyFn(notaActual.url)}}.jpg" socialshare-type="feed" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx/propuesta/gracias.html" socialshare-description="{{notaActual.shareText}}" socialshare-popup-height="350" socialshare-popup-width="540">
+                                        <div class="resp-sharing-button__icon">
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32"><path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path></svg>
+                                        </div>
+                                    </button> -->
                                     <a class="btn btn-info" socialshare socialshare-provider="twitter" socialshare-hashtags="{{notaActual.hashtag}}, siminotas" socialshare-via="fsimilares" socialshare-text="{{notaActual.url}}" socialshare-url="{{url}}" socialshare-popup-height="400" socialshare-popup-width="500">
                                         <div class="resp-sharing-button__icon">
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32">

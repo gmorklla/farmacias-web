@@ -83,7 +83,7 @@ angular.module('farmaciasWebApp')
 
         // Función que usa el servicio 'LoadMedByIdSrv.httpReq' para buscar la información del producto con base en su id
         function getProductById() {
-            var medDetalle = LoadMedByIdSrv.httpReq2(idProductoParam);
+            var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
             medDetalle.then(function(info) {
                 $scope.medActual = (JSON.parse(info.data.d))[0];
                 //console.info($scope.medActual);
@@ -182,6 +182,7 @@ angular.module('farmaciasWebApp')
             for (var i = 0; i < unidades.length; i++) {
                 $scope.opciones.push(unidades[i]);
             }
+            $scope.opciones = _.sortBy($scope.opciones, 'unidad');
             $scope.unidad = $scope.opciones[0];
         }
         // Usa servicio 'loadLocations.idLocation' para localizar la unidad en google maps

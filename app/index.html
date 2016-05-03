@@ -5,20 +5,19 @@
     <meta charset="utf-8">
     <base href="/">
     <title ng-bind-html="pageTitulo + ' | Farmacias Similares'"></title>
-    <meta name="description" content="{{pageDescription}}">
+    <meta name="Description" content="Somos la cadena farmacéutica líder en ventas y distribución en México y América Latina. Aquí encontrarás genéricos de calidad a los mejores precios. ¡Compruébalo!">
     <!-- <link rel="manifest" href="manifest.json">
     <script src="ChromePushManager.js"></script>  
     <script src="https://messaging-public.realtime.co/js/2.1.0/ortc.js"></script>
     <script src="notifications.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta property="fb:app_id" content="398798393664417" />
-    <meta content="farmacias,farmacias similares,similares, farmacias de similares, farmacia de similares, farmacias dr simi, similares farmacias, farmacias similares mexico, farmaciasdesimilares.com.mx, simi, dr simi, dr. simi, doctor simi, laboratorios simi,laboratorios similares, medicamentos, medicamentos similares, genéricos intercambiables, generico, genericos, antibioticos, antigripales, analisis clinicos, medicinas, simicarrera" name="Keywords"></meta>
-    <meta content="Somos la cadena farmacéutica líder en ventas y distribución en México y América Latina. Aquí encontrarás genéricos de calidad a los mejores precios. ¡Compruébalo!" name="Description"></meta>
+    <meta content="farmacias,farmacias similares,similares, farmacias de similares, farmacia de similares, farmacias dr simi, similares farmacias, farmacias similares mexico, farmaciasdesimilares.com.mx, simi, dr simi, dr. simi, doctor simi, laboratorios simi,laboratorios similares, medicamentos, medicamentos similares, genéricos intercambiables, generico, genericos, antibioticos, antigripales, analisis clinicos, medicinas, simicarrera" name="Keywords" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.farmaciasdesimilares.com.mx/propuesta/#!/" />
+    <meta property="og:url" content="http://www.farmaciasdesimilares.com.mx/" />
     <meta property="og:title" content="Farmacias de Similares" />
-    <meta property="og:image" content="http://www.farmaciasdesimilares.com.mx/propuesta/images/siminotas/entidad_certificadora.jpg" />
-    <meta property="og:description" content="Somos la cadena farmacéutica líder en ventas y distribución en México y América Latina. Aquí encontrarás genéricos de calidad a los mejores precios. ¡Compruébalo!"/>
+    <meta property="og:image" content="http://www.farmaciasdesimilares.com.mx/images/siminotas/entidad_certificadora.jpg" />
+    <meta property="og:description" content="{{pageDescription}}"/>
     <meta content="sp" name="language">
     <meta content="contacto@farmaciasdesimilares.com.mx" name="email">
     <meta content="health" name="classification">
@@ -48,7 +47,18 @@
 
 <body>
     <!--[if lte IE 8]>
-      <p class="browsehappy">Estás usando un navegador muy <strong>viejo</strong>. Por favor <a href="http://browsehappy.com/">actualiza tu navegador</a> para mejorar tu experiencia.</p>
+    <style>
+        #loading {
+            display:none;
+        }
+    </style>
+    <div class="container">
+        <div class="jumbotron" style="background:none;">
+            <h1>Estás usando un navegador <strong>obsoleto</strong>.</h1>
+            <p class="lead">Por favor <a href="https://www.google.com/chrome/browser/desktop/">actualízalo</a> para mejorar tu experiencia.</p>
+            <p><a class="btn btn-lg btn-success" href="https://www.google.com/chrome/browser/desktop/" role="button">Actualiza tu navegador</a></p>
+        </div>
+    </div>
     <![endif]-->
     <!-- Add your site or application content here -->
     <div id="loading" class="loading">
@@ -144,8 +154,6 @@
     <script src="scripts/controllers/localiza.js"></script>
     <script src="scripts/services/map.js"></script>
     <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I&libraries=places&language=es"></script>-->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I"></script>
-    <script type="text/javascript" src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js"></script>
     <script src="scripts/services/carritosrv.js"></script>
     <script src="scripts/controllers/carrito.js"></script>
     <script src="scripts/directives/bspopover.js"></script>
@@ -176,6 +184,7 @@
     <script src="scripts/services/banner.js"></script>
     <script src="scripts/controllers/calidad.js"></script>
     <script src="scripts/controllers/administrador.js"></script>
+    <script src="scripts/services/fbShare.js"></script>
     <script src="https://rawgit.com/srfrnk/re-tree/master/re-tree.js" type="text/javascript"></script>
     <!-- endbuild -->
 </body>

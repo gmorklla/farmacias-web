@@ -15,7 +15,7 @@ angular.module('farmaciasWebApp')
 
 	    datos.then(function(datos) {
 	        $scope.ads = datos.data.ads;
-	        $log.info($scope.ads);
+	        //$log.info($scope.ads);
 	    }, function(e) {
 	        console.log(e);
 	    });

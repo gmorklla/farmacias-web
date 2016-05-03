@@ -11,13 +11,13 @@ angular.module('farmaciasWebApp')
     .controller('localizaCtrl', ['MapSrv', 'loadLocations', 'locationSrv', 'prettyUrlSpc', 'getShortUrl', 'loadData', '$scope', '$rootScope', '$filter', '$timeout', '$stateParams', '$state', '$location', function(MapSrv, loadLocations, locationSrv, prettyUrlSpc, getShortUrl, loadData, $scope, $rootScope, $filter, $timeout, $stateParams, $state, $location) {
 
         var directionsDisplay;
-        var directionsService = new google.maps.DirectionsService();
+        var directionsService;
         var map;
         var infoWindow;
         var service;
         var markers = [];
         var usuario;
-        var geocoder = new google.maps.Geocoder();
+        var geocoder;
         var infoBubble2;
         // Checa si ya se tiene el tipo de unidad que se quiere buscar
         if ($state.$current.name === 'localiza.url') {
@@ -207,6 +207,7 @@ angular.module('farmaciasWebApp')
                         marker.setVisible(true);
                         markers.push(marker);
                         // Método de google maps que se usa para obtener dirección de un punto a través de sus coordenadas
+                        geocoder = new google.maps.Geocoder();
                         geocoder.geocode({
                             latLng: marker.position
                         }, function(responses) {
@@ -248,6 +249,7 @@ angular.module('farmaciasWebApp')
                         // Se usa el servicio 'prettyUrlSpc.deconfig' para quitar guiones
                         var direccion = prettyUrlSpc.deconfig($stateParams.calle) + ', ' + prettyUrlSpc.deconfig($stateParams.colonia) + ', ' + prettyUrlSpc.deconfig($stateParams.ciudad);
                         // Método de google maps que se usa para obtener dirección de un punto a través de los términos de búsqueda
+                        geocoder = new google.maps.Geocoder();
                         geocoder.geocode({
                             'address': direccion
                         }, function(results, status) {
@@ -504,6 +506,7 @@ angular.module('farmaciasWebApp')
                         // Términos que se usarán para la búsqueda
                         var address = document.getElementById('searchId').value;
                         // Método de google maps que se usa para obtener dirección de un punto a través de los términos de búsqueda
+                        geocoder = new google.maps.Geocoder();
                         geocoder.geocode({
                             'address': address
                         }, function(results, status) {
@@ -616,6 +619,7 @@ angular.module('farmaciasWebApp')
                 travelMode: google.maps.TravelMode[$scope.selectedMode]
             };
             // Servicio de google maps que se usa para obtener la ruta
+            directionsService = new google.maps.DirectionsService();
             directionsService.route(request, function(response, status) {
                 if (status === google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setOptions({
@@ -751,7 +755,28 @@ angular.module('farmaciasWebApp')
             var areaLat = pos.coords.latitude,
                 areaLng = pos.coords.longitude,
                 areaZoom = 16;
-            google.maps.event.addDomListener(window, 'load', $scope.init(areaLat, areaLng, areaZoom));
+            // Checa si ya se cargó la librería de google, si no la carga y luego ejecuta la función init para cargar el mapa    
+            if (!angular.isObject(window.google)) {
+                console.error('No');
+                $.getScript( "https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I" )
+                  .done(function( script, textStatus ) {
+                    console.log( textStatus );
+                    $.getScript( "https://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js" )
+                      .done(function( script, textStatus ) {
+                        console.log( textStatus );
+                        google.maps.event.addDomListener(window, 'load', $scope.init(areaLat, areaLng, areaZoom));
+                      })
+                      .fail(function( jqxhr, settings, exception ) {
+                        console.error(settings);
+                    });            
+                  })
+                  .fail(function( jqxhr, settings, exception ) {
+                    console.error(settings);
+                });            
+            } else {
+                console.info('Si');
+                google.maps.event.addDomListener(window, 'load', $scope.init(areaLat, areaLng, areaZoom));
+            }
         }
 
         function errorHandler(e){
@@ -760,7 +785,29 @@ angular.module('farmaciasWebApp')
             locationWoGeo.then(function (datos) {
                 var latLng = datos.data.loc;
                 var res = latLng.split(",");
-                google.maps.event.addDomListener(window, 'load', $scope.init(parseInt(res[0]), parseInt(res[1]), 16));
+                // Checa si ya se cargó la librería de google, si no la carga y luego ejecuta la función init para cargar el mapa
+                if (!angular.isObject(window.google)) {
+                    console.error('No');
+                    $.getScript( "https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I" )
+                      .done(function( script, textStatus ) {
+                        console.log( textStatus );
+                        $.getScript( "https://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js" )
+                          .done(function( script, textStatus ) {
+                            console.log( textStatus );
+                            google.maps.event.addDomListener(window, 'load', $scope.init(parseInt(res[0]), parseInt(res[1]), 16));
+                          })
+                          .fail(function( jqxhr, settings, exception ) {
+                            console.error(settings);
+                        });            
+                      })
+                      .fail(function( jqxhr, settings, exception ) {
+                        console.error(settings);
+                    });            
+                } else {
+                    console.info('Si');
+                    google.maps.event.addDomListener(window, 'load', $scope.init(parseInt(res[0]), parseInt(res[1]), 16));
+                }
+
             }, function(e) {
                 console.log(e);
             });

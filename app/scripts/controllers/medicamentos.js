@@ -149,7 +149,7 @@ angular.module('farmaciasWebApp')
         // Si el producto tiene alguna promoción, esta función se encarga de presentar los datos de dicha promoción
         $scope.getPromo = function(item) {
             if(!deviceDetector.isMobile()){
-                var medDetalle = LoadMedByIdSrv.httpReq2(item.IdProducto.trim());
+                var medDetalle = LoadMedByIdSrv.httpReq(item.IdProducto.trim());
                 medDetalle.then(function(info) {
                     var datosOfertas = (JSON.parse(info.data.d))[0];
 

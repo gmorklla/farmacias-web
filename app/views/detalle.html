@@ -9,16 +9,16 @@
         <div class="col-md-8 col-xs-12 detalle detalleD">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 0 || medActual.urlImagen.length == 1">
+                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 1">
                         <p class="well">
                             <a ng-click="version()" data-toggle="modal" data-target="#productoBG"><img propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
                         </p>
                     </div>
-                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length > 1">
-                        <div ng-repeat="item in medActual.urlImagen" ng-if="$index >= 1">
+                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length > 1 ">
+                        <div ng-repeat="item in medActual.urlImagen">
                             <p class="well">
-                                <a ng-click="version($index)" data-toggle="modal" data-target="#productoBG">                                    
-                                    <img ng-src="https://fsappmovilstorage.blob.core.windows.net/imagenes/M_{{medActual.IdProducto.trim()}}_{{$index}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg">
+                                <a ng-click="version($index + 1)" data-toggle="modal" data-target="#productoBG">                                    
+                                    <img ng-src="https://fsappmovilstorage.blob.core.windows.net/imagenes/M_{{medActual.IdProducto.trim()}}_{{$index + 1}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg">
                                 </a>
                             </p>
                             <br>

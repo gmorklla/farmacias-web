@@ -28,7 +28,7 @@ angular
     ])
     // Configuración de la aplicación, se definen controles, vistas y títulos de página
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
-        //$locationProvider.hashPrefix('!');
+        $locationProvider.hashPrefix('!');
         $locationProvider.html5Mode(false);
 
         $httpProvider.defaults.useXDomain = true;

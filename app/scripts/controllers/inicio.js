@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-	.controller('InicioCtrl', ['loadImg', function(loadImg) {
+	.controller('InicioCtrl', ['loadImg', '$scope', '$window', function(loadImg, $scope, $window) {
 
 		var imagenesInicio = ['banner-main-1.jpg', 'banner-main-2.jpg'];
 		loadImg.loadImgs($('.loadImg'), imagenesInicio);
@@ -30,5 +30,14 @@ angular.module('farmaciasWebApp')
 		}
 
 		coinFlip();
+
+		$scope.mandaEvento = function () {
+            $window.ga('send', {
+              hitType: 'event',
+              eventCategory: 'Banner Compra, Registra y Gana',
+              eventAction: 'Click',
+              eventLabel: 'Ir a compra, registra y gana'
+            });			
+		}
 
 	}]);

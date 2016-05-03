@@ -8,7 +8,14 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('NotaCtrl', ['prettyUrlSpc', 'loadData', '_', 'banner', '$stateParams', '$scope', '$rootScope', '$state', '$log', function(prettyUrlSpc, loadData, _, banner, $stateParams, $scope, $rootScope, $state, $log) {
+    .controller('NotaCtrl', ['prettyUrlSpc', 'loadData', '_', 'banner', 'fbShare', '$stateParams', '$scope', '$rootScope', '$state', '$log', function(prettyUrlSpc, loadData, _, banner, fbShare, $stateParams, $scope, $rootScope, $state, $log) {
+
+        fbShare.fbSetup();
+
+        $scope.fbComparteClick = function () {
+            //console.info($scope.notaActual);
+            fbShare.compartir($scope.notaActual);
+        }
 
         // Inicializa tooltips de bootstrap
         $('[data-toggle="tooltip"]').tooltip({
@@ -34,14 +41,38 @@ angular.module('farmaciasWebApp')
             for(var i in $scope.notasFirebase){
                 datos.push($scope.notasFirebase[i]);
             }
-            $scope.notaActual = _.findWhere(datos, {
-                url: original
-            });
-            // Llamada a función para determinar notas previa y próxima
-            getNextAndPrev(datos);
+            if(datos.length == 0) {
+                notasIfNoFirebase();
+            } else {
+                $scope.notaActual = _.findWhere(datos, {
+                    url: original
+                });
+                digiere();
+                $scope.htmlDigerido = $scope.notaActual.htmlPath + '.html';
+                // Llamada a función para determinar notas previa y próxima
+                getNextAndPrev(datos);
+            }            
         }, function (errorObject) {
           console.log("The read failed: " + errorObject.code);
         });
+
+        // Fallback si no se logran obtener los datos de las notas a través de firebase
+        function notasIfNoFirebase() {
+            // Usa servicio 'loadData.httpReq' para obtener datos de las notas de manera local si Firebase no carga
+            var datos = loadData.httpReq('data/notas.json');
+
+            datos.then(function(datos) {
+                $scope.notaActual = _.findWhere(datos.data, {
+                    url: original
+                });
+                digiere();
+                $scope.htmlDigerido = $scope.notaActual.htmlPath + '.html';
+                // Llamada a función para determinar notas previa y próxima
+                getNextAndPrev(datos.data);
+            }, function(e) {
+                console.log(e);
+            });            
+        }        
 
         // Función que define nota previa y próxima para los botones de navegación
         var getNextAndPrev = function(datos) {
@@ -93,6 +124,13 @@ angular.module('farmaciasWebApp')
         /*ref.on("child_added", function(snapshot, prevChildKey) {
           var newPost = snapshot.val();
           siminotasArray.push(newPost);
-        });*/        
+        });*/
+
+        // Procesa datos que angular todavía no ha digerido
+        function digiere() {
+            if(!$scope.$$phase) {
+                $scope.$digest();
+            }                
+        }                 
 
     }]);
