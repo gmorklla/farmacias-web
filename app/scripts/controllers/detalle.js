@@ -86,7 +86,7 @@ angular.module('farmaciasWebApp')
             var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
             medDetalle.then(function(info) {
                 $scope.medActual = (JSON.parse(info.data.d))[0];
-                //console.info($scope.medActual);
+                console.info($scope.medActual);
                 productoSrv.addProduct($scope.medActual);
                 preparaEntorno();
             }, function(e) {

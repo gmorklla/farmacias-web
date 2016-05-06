@@ -112,7 +112,10 @@
                         <div id="P_{{item.IdProducto}}" class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
                             <div class="col-md-12 well hvr-shadow">
                                 <a ui-sref="{{familia}}.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
-                                    <p><img propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg"></p>
+                                    <p>
+                                        <img ng-if="item.urlImagen.length == 0 || item.urlImagen.length == 1" propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
+                                        <img ng-if="item.urlImagen.length > 1" propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
+                                    </p>
                                 </a>
                                 <!--                                 <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
@@ -121,7 +124,9 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
                             <div class="col-md-12">
-                                <h1 property="name">{{item.NombreProducto}}</h1>
+                                <a ui-sref="{{familia}}.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
+                                    <h1 property="name">{{item.NombreProducto}}</h1>
+                                </a>
                                 <!-- <p>{{item.FechaInclusion | dateFilterFormat}}</p> -->
                             </div>
                             <div class="col-md-12" ng-if="calificable == 0">

@@ -72,28 +72,32 @@ angular.module('farmaciasWebApp')
         }
         // Función que usa servicio 'LoadMedsSrv.httpReq' para buscar productos de la familia deseada
         $scope.getMeds = function() {
-
+            // Se muestra el loader gif superior 
             $("#loadingMeds, #loadingMeds2, .loadScreen").fadeIn("slow");
             $scope.muestraAlerta = false;
 
             $('html, body').animate({
                 scrollTop: $("html").offset().top
             }, 1000);
-
+            // Llamada http get mediante servicio LoadMedsSrv
             var medicamentos = LoadMedsSrv.httpReq(familia);
             var sitemap = '';
-
+            // Una vez obtenida las respuesta del http get se manejan los datos
             medicamentos.then(function(datos) {
+                // Si no hay indice de paginación, se manda al número 1
                 if (!$scope.pagina) {
                     $scope.pagina = 1;
                 }
+                // Como ya se obtuvieron los resultados del get se quita el loager gif superior
                 $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
                 //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
                 $scope.meds = JSON.parse(datos.data.d);
-                //console.log($scope.meds);
+                console.log($scope.meds);
+                // Si esta es sección nuevos se aplica un filtro que coloca los productos más recientes
                 if ($scope.familia == 'nuevos') {
                     $scope.meds = $filter('filter')($scope.meds, true);
                 }
+                // Si se quiere hacer sitemap con todas las url que se crean a partir de los medicamentos se usan estas sentencias
                 if ($scope.familia == 'sitemap') {
                     //console.info(typeof $scope.meds);
                     for (var i = $scope.meds.length - 1; i >= 0; i--) {
@@ -103,12 +107,6 @@ angular.module('farmaciasWebApp')
                     $('#jsonHere').html(sitemap.toString());
                 }
                 $scope.muestraAlerta = true;
-                /*for (var key in $scope.meds[29]) {
-                    console.log(key + ' ', $scope.meds[29][key]);
-                }
-                for (var key in $scope.meds[29].Oferta[0]) {
-                    console.info(key + ' ', $scope.meds[29].Oferta[0][key]);
-                }*/
             }, function(e) {
                 $scope.muestraAlerta = true;
                 for (var key in e) {

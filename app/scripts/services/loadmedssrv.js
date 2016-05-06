@@ -11,7 +11,7 @@ angular.module('farmaciasWebApp')
   .service('LoadMedsSrv', ['$http', function ($http) {
     return {
       httpReq: function(tipo) {
-		return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'familia':'" + tipo + "'}");
+		return $http.post('http://www.farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'familia':'" + tipo + "'}");
       }
     };
   }]);

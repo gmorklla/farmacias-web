@@ -45,7 +45,7 @@
               // In this example we are using a Realtime application key without any security
               // so you should replace it with your own appkey and follow the guidelines
               // to configure it
-              client.connect('Syvoqz', 'myAuthenticationToken');
+              client.connect('CMPvnG', 'myAuthenticationToken');
            }
          }
       });

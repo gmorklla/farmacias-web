@@ -200,34 +200,34 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/controllers/detalle.js",
+			"file": "app/index.html",
 			"settings":
 			{
-				"buffer_size": 9193,
+				"buffer_size": 11401,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/detalle.html",
-			"settings":
-			{
-				"buffer_size": 18789,
-				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 37338,
+				"buffer_size": 38396,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/scripts/controllers/promociones.js",
+			"file": "app/scripts/controllers/imageCheck.js",
 			"settings":
 			{
-				"buffer_size": 667,
+				"buffer_size": 772,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/medicamentos.js",
+			"settings":
+			{
+				"buffer_size": 12471,
 				"line_ending": "Unix"
 			}
 		}
@@ -301,10 +301,42 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web"
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/node"
 	],
 	"file_history":
 	[
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/detalle.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/app.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/promociones.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/detalle.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/promociones.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/ChromePushManager.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/sw.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/manifest.json",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/notifications.js",
+		"/C/Users/pubmrodriguez/Desktop/proceso-git-heroku.txt",
+		"/C/Users/pubmrodriguez/Desktop/Universal.cs",
+		"/C/Users/pubmrodriguez/Desktop/.bowerrc",
+		"/C/Users/pubmrodriguez/Desktop/web2.config",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/index.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/imageCheck.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/imagesCheck.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/medicamentos.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/medicamentos.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/node/app.js",
+		"/C/Users/pubmrodriguez/Documents/node/05-08/app.js",
+		"/C/Users/pubmrodriguez/Documents/node/udemy/app.js",
+		"/C/Users/pubmrodriguez/Documents/node/udemy/todo-api/server.js",
+		"/C/Users/pubmrodriguez/Documents/node/05-08/routes/index.js",
+		"/C/Users/pubmrodriguez/Documents/node/mean/server.js",
+		"/C/Users/pubmrodriguez/Documents/node/mean/package.json",
+		"/C/Users/pubmrodriguez/Documents/node/mean/bower.json",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/ads.json",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/promocion.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/notas.json",
 		"/C/Users/pubmrodriguez/Documents/GitHub/video2Brain/built/out.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/video2Brain/HolaMundo.ts",
 		"/C/Users/pubmrodriguez/Documents/EternalSecret/mob/builds/css/estilos.css",
@@ -392,47 +424,18 @@
 		"/C/Users/pubmrodriguez/Documents/GitHub/video2Brain/main.ts",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/administrador.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/angular2/tsconfig.json",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/app.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/siminotas.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/notasHistorico.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/loaddata.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/nota.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/notas.json",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/nota.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/siminotas/enfermedades-gastrointestinales.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/localiza.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/sitemap.xml",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/index.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/angularseo.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/web.config",
 		"/C/Users/pubmrodriguez/Documents/GitHub/facebook/facebook.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/fbShare.js",
-		"/C/Users/pubmrodriguez/Desktop/index.html",
-		"/C/Users/pubmrodriguez/Desktop/main.js",
-		"/C/Users/pubmrodriguez/Desktop/angular-seo.js",
-		"/C/Users/pubmrodriguez/Desktop/_browser.html",
-		"/C/Users/pubmrodriguez/Desktop/web.config",
-		"/C/Users/pubmrodriguez/Desktop/angular-viewhead.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/web.config",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/banners.json",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/nav.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/bower_components/angular-socialshare/src/js/angular-socialshare.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/bower_components/angular-socialshare/dist/angular-socialshare.min.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/promociones.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/promociones.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/ads.json",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/bienestar.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/localizaFrame.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/nav.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/inicio.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/inicio.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/styles/main.css",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/medicamentos.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/siminotas.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/detalle.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/index-ie8.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/bower_components/angular-youtube-embed/src/angular-youtube-embed.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/runstatechange.js"
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/fbShare.js"
 	],
 	"find":
 	{
@@ -455,6 +458,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Imágenes",
+			"meds",
+			"BarraControl",
+			"localizaFrame",
+			"muestraAlerta",
+			"sitemap",
 			"version",
 			"    	<div class=\"redes\">\n        \n        	<a data-pin-do=\"buttonFollow\" href=\"http://www.pinterest.com/eternalsecret/\">Pinterest</a>\n<!-- Please call pinit.js only once per page -->\n<script type=\"text/javascript\" async src=\"http://assets.pinterest.com/js/pinit.js\"></script>\n        \n        </div>",
 			"  119:     	<div class=\"redes\">\n  120:         \n  121:         	<a data-pin-do=\"buttonFollow\" href=\"http://www.pinterest.com/eternalsecret/\">Pinterest</a>\n  122: <!-- Please call pinit.js only once per page -->\n  123: <script type=\"text/javascript\" async src=\"http://assets.pinterest.com/js/pinit.js\"></script>\n  124:         \n  125:         </div>",
@@ -576,13 +585,7 @@
 			"buscaPromo",
 			"getPromo",
 			"deviceDetector",
-			"<a class=\"navUnaLinea\" ui-sref=\"nuevos\"",
-			"<a class=\"navUnaLinea\" ui-sref=\"nuevos\" hreflang=\"es\" href=\"#/nuevos\">Nuevos</a>",
-			"seo",
-			"vSpeed",
-			"item.ofer",
-			"producto",
-			" == null"
+			"<a class=\"navUnaLinea\" ui-sref=\"nuevos\""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -601,24 +604,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/controllers/detalle.js",
+					"file": "app/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9193,
+						"buffer_size": 11401,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3952,
-								3952
+								3970,
+								3970
 							]
 						],
 						"settings":
@@ -626,160 +629,65 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content"
-							],
-							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1216.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/detalle.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18789,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1528,
-								1528
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"typescript_plugin_format_options":
-							{
-								"convertTabsToSpaces": true,
-								"indentSize": 4,
-								"tabSize": 4
-							}
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -789,20 +697,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "app/scripts/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37338,
+						"buffer_size": 38396,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23594,
-								23602
+								34047,
+								34058
 							]
 						],
 						"settings":
@@ -810,26 +718,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -840,58 +733,71 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
-							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 11585.0,
+						"translation.y": 16915.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/scripts/controllers/promociones.js",
+					"buffer": 2,
+					"file": "app/scripts/controllers/imageCheck.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 667,
+						"buffer_size": 772,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								559,
-								559
+								392,
+								404
 							]
 						],
 						"settings":
@@ -899,26 +805,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -929,37 +820,142 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
-								"bh_double_quote_content"
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/controllers/medicamentos.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12471,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2390,
+								2410
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 594.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1029,20 +1025,60 @@
 		"selected_items":
 		[
 			[
-				"promocion",
-				"app\\scripts\\controllers\\promociones.js"
+				"medi",
+				"app\\scripts\\controllers\\medicamentos.js"
+			],
+			[
+				"image",
+				"app\\scripts\\controllers\\imageCheck.js"
 			],
 			[
 				"app",
 				"app\\scripts\\app.js"
 			],
 			[
-				"detal",
+				"promo",
+				"app\\views\\promociones.html"
+			],
+			[
+				"promocio",
+				"app\\scripts\\controllers\\promociones.js"
+			],
+			[
+				"detalle",
 				"app\\views\\detalle.html"
 			],
 			[
+				"detal",
+				"app\\scripts\\controllers\\detalle.js"
+			],
+			[
 				"index",
-				"index.html"
+				"app\\index.html"
+			],
+			[
+				"not",
+				"app\\notifications.js"
+			],
+			[
+				"medic",
+				"app\\scripts\\controllers\\medicamentos.js"
+			],
+			[
+				"imageche",
+				"app\\scripts\\controllers\\imageCheck.js"
+			],
+			[
+				"promociones",
+				"app\\views\\promociones.html"
+			],
+			[
+				"medicam",
+				"app\\views\\medicamentos.html"
+			],
+			[
+				"promocion",
+				"app\\scripts\\controllers\\promociones.js"
 			],
 			[
 				"faqs",
@@ -1081,14 +1117,6 @@
 				"app\\views\\nav.html"
 			],
 			[
-				"promo",
-				"app\\scripts\\controllers\\promociones.js"
-			],
-			[
-				"promociones",
-				"app\\views\\promociones.html"
-			],
-			[
 				"app.j",
 				"app\\scripts\\app.js"
 			],
@@ -1115,14 +1143,6 @@
 			[
 				"main",
 				"app\\styles\\main.css"
-			],
-			[
-				"medicam",
-				"app\\scripts\\controllers\\medicamentos.js"
-			],
-			[
-				"detalle",
-				"app\\scripts\\controllers\\detalle.js"
 			],
 			[
 				"siminot",
@@ -1171,14 +1191,6 @@
 			[
 				"medica",
 				"app\\views\\medicamentos.html"
-			],
-			[
-				"medic",
-				"app\\scripts\\controllers\\medicamentos.js"
-			],
-			[
-				"promocio",
-				"app\\views\\promocion.html"
 			],
 			[
 				"deta",

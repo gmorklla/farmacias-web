@@ -14,7 +14,7 @@
             </div>
             <div class="row promocionesRow">
                 <div class="col-xs-12 col-sm-4 col-md-4 promocionesThumb" ng-repeat="item in ads" style="transition-delay: {{$index * 500}}ms">
-                    <a data-toggle="modal" data-target="#{{item.img}}" class="thumbnail promoThumb"> <img alt="{{item.titulo}}" ng-src="images/ads/{{::item.img}}.jpg" data-holder-rendered="true" style="width: 100%; display: block;"> </a>
+                    <a data-toggle="modal" data-target="#{{item.img}}" class="thumbnail promoThumb"> <img alt="{{item.titulo}}" ng-src="/images/ads/{{item.img}}.jpg" data-holder-rendered="true" style="width: 100%; display: block;"> </a>
                     <p>{{item.titulo}}</p>
                     <div class="modal fade" id="{{item.img}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="vertical-alignment-helper">

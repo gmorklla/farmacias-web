@@ -38,7 +38,7 @@ self.addEventListener('notificationclick', function(event) {
         return client.focus();
     }
     if (clients.openWindow)      
-      var url = '/propuesta';    
+      var url = '/#!/medicamentos';    
       return clients.openWindow(url);
   }));
 });

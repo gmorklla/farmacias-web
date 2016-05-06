@@ -9,7 +9,7 @@
         <div class="col-md-8 col-xs-12 detalle detalleD">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 1">
+                    <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 0 || medActual.urlImagen.length == 1">
                         <p class="well">
                             <a ng-click="version()" data-toggle="modal" data-target="#productoBG"><img propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
                         </p>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="well col-md-12 col-sm-12 col-xs-12" ng-if="medActual.Ingredientes.length > 0">
                                 <h1>INGREDIENTES</h1>
-                                <div class="col-md-12 col-sm-12 col-xs-12 label label-success" ng-if="medActual.Ingredientes.length > 0" ng-repeat="ingrediente in medActual.Ingredientes">
+                                <div class="col-md-12 col-sm-12 col-xs-12 label label-success" ng-if="medActual.Ingredientes.length > 0" ng-repeat="ingrediente in medActual.Ingredientes | orderBy:'$index':true">
                                     <div class="infoProducto">
                                         {{ingrediente.Nombre}} {{ingrediente.Cantidad}} {{ingrediente.UnidadMedida}}
                                     </div>

@@ -10,6 +10,10 @@
 		{
 			"titulo" : "¡Yo cuido mi panchita! ¿Y tú?",
 			"img" : "yo_cuido_mi_panchita"
+		},
+		{
+			"titulo" : "Farmacias Similares® desde tu celular",
+			"img" : "farmacias_similares_desde_tu_celular"
 		}
 	]
 }

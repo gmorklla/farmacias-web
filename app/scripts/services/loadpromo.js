@@ -11,7 +11,7 @@ angular.module('farmaciasWebApp')
 	.service('LoadPromoSrv', ['$http', '$log', function($http, $log) {
 		return {
 			httpReq: function(id) {
-				return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductosPorID', "{'id':'" + id + "'}");
+				return $http.post('http://www.farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductosPorID', "{'id':'" + id + "'}");
 			}
 		};
 	}]);

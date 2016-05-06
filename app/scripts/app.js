@@ -29,7 +29,7 @@ angular
     // Configuración de la aplicación, se definen controles, vistas y títulos de página
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
         $locationProvider.hashPrefix('!');
-        $locationProvider.html5Mode(false);
+        $locationProvider.html5Mode(true);
 
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.useApplyAsync(true);
@@ -944,6 +944,35 @@ angular
                     label: 'Localiza tu unidad'
                 }
             });
+            /*.state('imagesCheck', {
+                url: "/imagesCheck",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/navFrame.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/imagesCheck.html',
+                        controller: 'imageCheckCtrl',
+                        controllerAs: 'imageCheck'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footerFrame.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Localiza tu unidad'
+                }
+            });*/
             /*.state('sitemap', {
                 url: "/sitemap",
                 'views': {

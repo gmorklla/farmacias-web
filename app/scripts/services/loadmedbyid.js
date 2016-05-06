@@ -11,10 +11,10 @@ angular.module('farmaciasWebApp')
 	.service('LoadMedByIdSrv', ['$http', function($http) {
 		return {
 			httpReq: function(id) {
-				return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductosPorID', "{'id':'" + id + "'}");
+				return $http.post('http://www.farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductosPorID', "{'id':'" + id + "'}");
 			},
 			httpReq2: function(id) {
-				return $http.post('http://farmaciasdesimilares.com.mx/WSAjaxPrueba/MXFSWEBAJAXService.asmx/ObtenerProductosPorID', "{'id':'" + id + "'}");
+				return $http.post('http://www.farmaciasdesimilares.com.mx/WSAjaxPrueba/MXFSWEBAJAXService.asmx/ObtenerProductosPorID', "{'id':'" + id + "'}");
 			}
 		};
 	}]);
