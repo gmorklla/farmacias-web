@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-	.controller('InicioCtrl', ['loadImg', '$scope', '$window', function(loadImg, $scope, $window) {
+	.controller('InicioCtrl', ['loadImg', 'deviceDetector', '$scope', '$window', function(loadImg, deviceDetector, $scope, $window) {
 
 		var imagenesInicio = ['banner-main-1.jpg', 'banner-main-2.jpg'];
 		loadImg.loadImgs($('.loadImg'), imagenesInicio);
@@ -37,7 +37,10 @@ angular.module('farmaciasWebApp')
               eventCategory: 'Banner Compra, Registra y Gana',
               eventAction: 'Click',
               eventLabel: 'Ir a compra, registra y gana'
-            });			
+            });
+            if(deviceDetector.isMobile()){
+                window.open("http://farmaciasdesimilares.com.mx/PromoOlimpiadas2016/Registra.aspx");
+            }           		
 		}
 
 	}]);

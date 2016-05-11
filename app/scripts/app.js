@@ -29,7 +29,7 @@ angular
     // Configuración de la aplicación, se definen controles, vistas y títulos de página
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', function($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
         $locationProvider.hashPrefix('!');
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(false);
 
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.useApplyAsync(true);
@@ -943,7 +943,65 @@ angular
                 ncyBreadcrumb: {
                     label: 'Localiza tu unidad'
                 }
-            });
+            })
+            .state('productosCompletos', {
+                url: "/productos/:termino",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/allproducts.html',
+                        controller: 'AllProductsCtrl',
+                        controllerAs: 'AllProducts'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Todos nuestros productos'
+                }
+            })
+            .state('productosCompletos.detalle', {
+                url: "/detalle/:idProducto",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Producto'
+                }
+            });     
             /*.state('imagesCheck', {
                 url: "/imagesCheck",
                 'views': {

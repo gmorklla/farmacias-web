@@ -74,6 +74,7 @@ angular.module('farmaciasWebApp')
             $('.modal-backdrop').remove();
             $scope.viewSearch = false;
             $('#busca').val('');
+            $rootScope.terminoDeBusqueda = $scope.termino;
         };
 
         var cierraMenu = function() {

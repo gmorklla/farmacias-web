@@ -1,0 +1,246 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
+    </div>
+    <div id="loadingMeds" class="loadingMeds col-md-4 col-sm-4">
+        <div class='aCssSpinner2'>
+            <p><img src="images/loader.gif" alt=""></p>
+        </div>
+    </div>
+    <div class="col-md-8 proFrame">
+        <div class="row filtros">
+            <div class="col-md-12">
+                <div class="col-xs-10 col-md-9 btn-group" role="group" aria-label="...">
+                    <dir-pagination-controls on-page-change="guardaPageNum(newPageNumber)" class="paginacion col-md-12 col-xs-12" max-size="numeroLinksPaginacion()" boundary-links="false" style="margin:0; text-align:left;"></dir-pagination-controls>
+                </div>
+                <div class="col-xs-2 col-md-2 pull-right">
+                    <button type="button" class="btn btn-default leyendas leyendaOferta pull-right" aria-label="Left Align" data-toggle="tooltip" data-placement="top" title="Filtros" ng-click="muestraFiltros()" style="margin-top: 5px;">
+                        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row filtros" ng-show="filtros">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                        <input type="text" ng-model="termino" placeholder="Buscar">
+                    </div>
+                    <div class="col-xs-12 col-md-8">
+                        <span class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default leyendas" aria-label="Left Align" ng-click="sortType = 'NombreProducto'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Ordenar [a-z]">
+                              <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default leyendas" aria-label="Left Align" ng-click="sortType = 'NombreProducto'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Ordenar [z-a]">
+                            <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default leyendas" aria-label="Left Align" ng-click="sortType = 'PrecioVenta'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Ordenar de menor a mayor precio">
+                            <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default leyendas" aria-label="Left Align" ng-click="sortType = 'PrecioVenta'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Ordenar de mayor a menor precio">
+                            <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default leyendas leyendaNuevo" aria-label="Left Align" ng-click="sortType = 'FechaInclusion | dateFilter'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Ordenar por más reciente">
+                            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default leyendas leyendaOferta" aria-label="Left Align" ng-click="filtraOfertas(1)" data-toggle="tooltip" data-placement="top" title="Mostrar ofertas">
+                            <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default leyendas leyendaOferta" aria-label="Left Align" ng-click="filtraOfertas(2)" data-toggle="tooltip" data-placement="top" title="Mostrar combos">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default leyendas leyendaOferta" aria-label="Left Align" ng-click="filtraOfertas(3)" data-toggle="tooltip" data-placement="top" title="Mostrar todos">
+                            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row filtros" ng-if="(meds|filter:termino).length == 0">
+            <div class="col-sm-12 col-xs-12 bg-danger">
+                <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
+            </div>
+            <div class="col-sm-12 col-xs-12 bg-info">
+                <p class="searchResults" style="margin-top:10px;"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>  Si tiene alguna duda, puede llamarnos sin costo a Simitel</p>
+                <h3>01 800 911 6666</h3>
+                <hr style="border-top: 1px solid white;">
+            </div>
+            <div class="col-sm-6 col-xs-6 bg-info">
+                <p style="margin:10px 0;">
+                    <b>Opción 4:</b>
+                    <br> Asesoría nutricional
+                </p>
+            </div>
+            <div class="col-sm-6 col-xs-6 bg-info">
+                <p style="margin:10px 0;">
+                    <b>Opción 5:</b>
+                    <br> Asesoría médica
+                </p>
+            </div>
+        </div>
+        <div class="row filtros" ng-if="(meds|filter:item.Oferta[0].TipoOferta = filtrarPorOfertas).length == 0 && muestraAlerta == true">
+            <div class="col-sm-12 col-xs-12 bg-danger">
+                <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No exiten {{filtrarPorOfertas}}s</p>
+            </div>
+            <div class="col-sm-12 col-xs-12 bg-info">
+                <p class="searchResults" style="margin-top:10px;"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>  Si tiene alguna duda, puede llamarnos sin costo a Simitel</p>
+                <h3>01 800 911 6666</h3>
+                <hr style="border-top: 1px solid white;">
+            </div>
+            <div class="col-sm-6 col-xs-6 bg-info">
+                <p style="margin:10px 0;">
+                    <b>Opción 4:</b>
+                    <br> Asesoría nutricional
+                </p>
+            </div>
+            <div class="col-sm-6 col-xs-6 bg-info">
+                <p style="margin:10px 0;">
+                    <b>Opción 5:</b>
+                    <br> Asesoría médica
+                </p>
+            </div>
+        </div>        
+        <div class="row filtros loadScreen"></div>
+        <div class="row" vocab="http://schema.org/" typeof="Product">
+            <div class="col-md-4 col-sm-4 meds" dir-paginate="item in meds | orderBy:sortType:sortReverse | filter: item.Oferta[0].TipoOferta = filtrarPorOfertas | filter: termino | itemsPerPage: cuantos" current-page="pagina" bs-popover>
+                <div class="col-md-4 col-sm-12 proGrid col-lg-height">
+                    <div class="row">
+                        <div id="P_{{item.IdProducto}}" class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
+                            <div class="col-md-12 well hvr-shadow">
+                                <a ui-sref="productosCompletos.detalle({ idProducto:(item.IdProducto.trim())})" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
+                                    <p>
+                                        <img ng-if="item.urlImagen.length == 0 || item.urlImagen.length == 1" propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
+                                        <img ng-if="item.urlImagen.length > 1" propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
+                                    </p>
+                                </a>
+                                <!--                                 <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
+    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
+</button> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                            <div class="col-md-12">
+                                <a ui-sref="{{familia}}.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
+                                    <h1 property="name">{{item.NombreProducto}}</h1>
+                                </a>
+                                <!-- <p>{{item.FechaInclusion | dateFilterFormat}}</p> -->
+                            </div>
+                            <div class="col-md-12" ng-if="calificable == 0">
+                                <p>
+                                    <span ng-show="{{item.Calificacion > 0}}" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="{{item.Calificacion > 1}}" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="{{item.Calificacion > 2}}" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="{{item.Calificacion > 3}}" class="star"><img src="images/star.png" alt=""></span>
+                                    <span ng-show="{{item.Calificacion > 4}}" class="star"><img src="images/star.png" alt=""></span>
+                                </p>
+                            </div>
+                            <div class="col-md-12">
+                                <h2 property="price">{{item.PrecioVenta | currency}}</h2>
+                                <p ng-if="familia == 'vitaminas'">*IVA incluido</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="item.Oferta[0]" class="etiqueta-nuevo {{item.Oferta[0].TipoOferta.toLowerCase()}}" ng-click="getPromo(item)">
+                        <p>
+                            <span class="glyphicon" aria-hidden="true" ng-class="{
+                                                  'glyphicon-usd': item.Oferta[0].TipoOferta == 'Oferta',
+                                                  'glyphicon-plus': item.Oferta[0].TipoOferta == 'Combo',
+                                                  'glyphicon-flag': item.Oferta[0].TipoOferta == 'Nuevo'
+                                                }"></span>
+                        </p>
+                    </div>
+                    <div ng-if="item.Oferta[1] && item.Oferta[1].TipoOferta != item.Oferta[0].TipoOferta" class="etiqueta-nuevo2" ng-click="getPromo(item)">
+                        <p>
+                            <span class="glyphicon" aria-hidden="true" ng-class="{
+                                                  'glyphicon-usd': item.Oferta[1].TipoOferta == 'Oferta',
+                                                  'glyphicon-plus': item.Oferta[1].TipoOferta == 'Combo',
+                                                  'glyphicon-flag': item.Oferta[1].TipoOferta == 'Nuevo'
+                                                }"></span>
+                        </p>
+                    </div>
+                </div>
+                <!--                 <div ng-mouseover="getPromo(item)" ng-mouseleave="hidePromo()" class="pop" ng-class="{
+                                  'popCombo': item.Oferta[0].TipoOferta == 'Combo',
+                                  'popNuevo': item.Oferta[0].TipoOferta == 'Nuevo'
+                                }"></div> -->
+            </div>
+        </div>
+        <br ng-if="familia == 'vitaminas'">
+        <div class="notaVits" ng-if="familia == 'vitaminas'">
+            <h1>*De acuerdo a lo publicado en el diario oficial de la federación con fecha 26 de marzo 2015</h1></div>
+        <br>
+        <div class="row filtros">
+            <div class="col-md-12 col-sm-12">
+                <!--                 <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="muestraMas();">
+    <span class="badge">Mostrar 9 productos más</span>
+</button>
+<hr><br> -->
+                <dir-pagination-controls on-page-change="guardaPageNum(newPageNumber)" class="paginacion col-md-9 col-xs-12" max-size="5" boundary-links="false" style="margin:0; text-align:left;"></dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div ng-include="'views/promosSide.html'"></div>
+    </div>
+    <div id="carritoPreview" ng-if="$storage.array.length && muestraCarrito" class="row detalleF mensajesFrame" bs-popover>
+        <div class="col-md-12 col-xs-12 mensajes" id="carritoShow">
+            <div class="alert alert-info row">
+                <div class="col-md-12 col-xs-12">
+                    <a ui-sref="carrito" hreflang="es">
+                        <button class="btn btn-info btn-sm" type="button">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Carrito &nbsp;<span class="badge">{{$storage.array.length}}</span>
+                        </button>
+                    </a>
+                    <a ng-click="ocultaCarrito()" hreflang="es">
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </a>
+                </div>
+                <div class="col-md-12 col-xs-12 listaProductosAgregados">
+                    <div>
+                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row detalleF mensajesFrame">
+        <div class="col-md-12 col-xs-12 mensajes alertaAdd">
+            <div class="alertaProAdded" ng-messages="agregaAlert" ng-if="showAddedProduct">
+                <p class="alert alert-success">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;¡Producto agregado!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="productPreview" class="row detalleF mensajesFrame preView" ng-if="muestraProducto" bs-popover>
+        <div class="historico">
+            <div class="row row-centered">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-centered">
+                        <div class="col-md-12 col-xs-12 panel panel-default">
+                            <div class="panel-body ofertaViewPanel">
+                                <div class="col-md-12 col-sm-5 col-xs-12 label label-default ofertaContainer">
+                                    <span class="ofertaTxt">Presentación</span>
+                                    <hr style="margin:5px 0;">
+                                    <span class="ofertaTxt">{{productoPreview.Presentacion}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover'
+    });
+    $('[data-toggle="popover"]').popover();
+})
+</script>

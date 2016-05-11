@@ -10,6 +10,15 @@
 angular.module('farmaciasWebApp')
     .controller('DetalleCtrl', ['loadData', '_', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadMedByIdSrv', 'LoadPromoSrv', 'PromoOrComboSrv', 'Califica', 'loadLocations', 'banner', 'jQuery', '$state', '$stateParams', '$scope', '$rootScope', '$log', '$location', function(loadData, _, prettyUrlSpc, productoSrv, CarritoSrv, LoadMedByIdSrv, LoadPromoSrv, PromoOrComboSrv, Califica, loadLocations, banner, jQuery, $state, $stateParams, $scope, $rootScope, $log, $location) {
         
+        // Establece el parámetro de estado 'termino' si es que no se encuentra especificado (cuando dan click en el producto y no en 'Ver todos los resultados' dentro de las búsquedas)
+        if($state.$current.toString() == 'busquedaGrupo.detalle') {
+            if($stateParams.termino == ''){
+                if($rootScope.terminoDeBusqueda) {                    
+                    $state.transitionTo('busquedaGrupo.detalle', {termino: $rootScope.terminoDeBusqueda, idProducto: $stateParams.idProducto, medicamentoId: $stateParams.medicamentoId}, { location: true, inherit: true, relative: $state.$current, notify: false })
+                }
+            }
+        }
+
         $rootScope.general = false;
         // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
         $scope.transUrl = function(args) {
@@ -86,7 +95,7 @@ angular.module('farmaciasWebApp')
             var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
             medDetalle.then(function(info) {
                 $scope.medActual = (JSON.parse(info.data.d))[0];
-                console.info($scope.medActual);
+                //console.info($scope.medActual);
                 productoSrv.addProduct($scope.medActual);
                 preparaEntorno();
             }, function(e) {

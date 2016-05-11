@@ -2745,6 +2745,11 @@ label span {
   font-size: 1em !important;
 }
 
+.bannerHref {
+  width: 100%;
+  height: 100%;
+}
+
 @media (max-width: 767px) {
 
   .navbar-default .navbar-collapse {
