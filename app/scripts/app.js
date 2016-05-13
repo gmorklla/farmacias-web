@@ -722,8 +722,8 @@ angular
                     },
                     'home@': {
                         templateUrl: 'views/medicamentos.html',
-                        controller: 'MedicamentosCtrl',
-                        controllerAs: 'nuevos'
+                        controller: 'BusquedaCtrl',
+                        controllerAs: 'busqueda'
                     },
                     'barra@': {
                         template: '',

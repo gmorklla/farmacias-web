@@ -103,9 +103,10 @@ angular.module('farmaciasWebApp')
                     $rootScope.pageDescription = 'Todo lo que quieres saber acerca de ' + dato ;
         		break;
         		case 'busquedaGrupo':
-                    var dato = toParams.termino;
-                    dato = prettyUrlSpc.capitalize(dato);
-                    $rootScope.pageTitulo = dato + ' | Búsqueda';
+                    //var dato = toParams.termino;
+                    //dato = prettyUrlSpc.capitalize(dato);
+                    //$rootScope.pageTitulo = dato + ' | Búsqueda';
+                    $rootScope.pageTitulo = 'Búsqueda';
                     $rootScope.pageDescription = 'En Farmacias Similares contamos con más de 100 nuevos genéricos. ¡Pregunta por el tuyo!';
         		break;
         		case 'busquedaGrupo.detalle':

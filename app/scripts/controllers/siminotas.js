@@ -80,6 +80,8 @@ angular.module('farmaciasWebApp')
             if(!$scope.$$phase) {
                 $scope.$digest();
             }                
-        }        
+        }
+
+        notasIfNoFirebase();        
 
     }]);

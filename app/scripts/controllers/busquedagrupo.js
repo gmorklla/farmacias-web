@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('BusquedaCtrl', ['$scope', '$log', '$stateParams', '$rootScope', 'busqueda', 'prettyUrlSpc', 'productoSrv', 'jQuery', function($scope, $log, $stateParams, $rootScope, busqueda, prettyUrlSpc, productoSrv, $) {
+    .controller('BusquedaCtrl', ['$scope', '$log', '$stateParams', '$state', '$rootScope', 'busqueda', 'prettyUrlSpc', 'productoSrv', 'jQuery', function($scope, $log, $stateParams, $state, $rootScope, busqueda, prettyUrlSpc, productoSrv, $) {
 
         $rootScope.muestraCarrito = true;
         // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
@@ -33,7 +33,13 @@ angular.module('farmaciasWebApp')
 
             //console.info($stateParams.termino);
 
-            var search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig($stateParams.termino));
+            var search;
+
+            if( $state.$current.name == 'nuevos' ) {
+                search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig('nuevo'));
+            } else {
+                search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig($stateParams.termino));
+            }
 
             search.then(function(datos) {
                 if (!$scope.pagina) {

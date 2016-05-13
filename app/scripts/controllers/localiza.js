@@ -761,14 +761,7 @@ angular.module('farmaciasWebApp')
                 $.getScript( "https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I" )
                   .done(function( script, textStatus ) {
                     console.log( textStatus );
-                    $.getScript( "https://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js" )
-                      .done(function( script, textStatus ) {
-                        console.log( textStatus );
-                        google.maps.event.addDomListener(window, 'load', $scope.init(areaLat, areaLng, areaZoom));
-                      })
-                      .fail(function( jqxhr, settings, exception ) {
-                        console.error(settings);
-                    });            
+                    google.maps.event.addDomListener(window, 'load', $scope.init(areaLat, areaLng, areaZoom));           
                   })
                   .fail(function( jqxhr, settings, exception ) {
                     console.error(settings);
