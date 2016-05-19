@@ -10,7 +10,7 @@
 angular.module('farmaciasWebApp')
     .controller('SiminotasCtrl', ['loadData', 'prettyUrlSpc', 'youTubeList', '$scope', '$rootScope', function(loadData, prettyUrlSpc, youTubeList, $scope, $rootScope) {
 
-        // Referencia a base de datos en Firebase
+/*        // Referencia a base de datos en Firebase
         var ref = new Firebase("https://farmaciasdesimilares.firebaseio.com/notas");
         // Array en el que se colocarán las notas
         var datos = [];
@@ -29,7 +29,7 @@ angular.module('farmaciasWebApp')
             }
         }, function (errorObject) {
           console.log("The read failed: " + errorObject.code);          
-        });
+        });*/
 
         // Fallback si no se logran obtener los datos de las notas a través de firebase
         function notasIfNoFirebase() {

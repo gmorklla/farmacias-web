@@ -771,7 +771,7 @@ angular
                 }
             })
             .state('busquedaGrupo', {
-                url: "/busqueda/:termino",
+                url: "/busqueda",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -797,7 +797,8 @@ angular
                 },
                 ncyBreadcrumb: {
                     label: 'Búsqueda'
-                }
+                },
+                params : { termino: null, }
             })
             .state('busquedaGrupo.detalle', {
                 url: "/:idProducto/:medicamentoId",

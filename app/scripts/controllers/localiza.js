@@ -774,7 +774,22 @@ angular.module('farmaciasWebApp')
 
         function errorHandler(e){
             console.error(e);
-            var locationWoGeo = loadData.httpReq('http://ipinfo.io');
+            // Checa si ya se cargó la librería de google, si no la carga y luego ejecuta la función init para cargar el mapa
+            if (!angular.isObject(window.google)) {
+                console.error('No');
+                $.getScript( "https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I" )
+                  .done(function( script, textStatus ) {
+                    console.log( textStatus );
+                    google.maps.event.addDomListener(window, 'load', $scope.init(19.4352685, -99.1576836, 8));            
+                  })
+                  .fail(function( jqxhr, settings, exception ) {
+                    console.error(settings);
+                });            
+            } else {
+                console.info('Si');
+                google.maps.event.addDomListener(window, 'load', $scope.init(19.4352685, -99.1576836, 8));
+            }
+            /*var locationWoGeo = loadData.httpReq('http://ipinfo.io');
             locationWoGeo.then(function (datos) {
                 var latLng = datos.data.loc;
                 var res = latLng.split(",");
@@ -803,13 +818,14 @@ angular.module('farmaciasWebApp')
 
             }, function(e) {
                 console.log(e);
-            });
+                google.maps.event.addDomListener(window, 'load', $scope.init(19.3910038, -99.2836982, 16));
+            });*/
         }
 
         // Intenta utilizar geolocation HTML5
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(muestraPos, errorHandler);
-        }      
+        }   
 
         // Inicializa variable de número de unidades mostradas
         $scope.inputUnidades = 20;

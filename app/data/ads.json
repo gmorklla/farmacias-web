@@ -1,4 +1,4 @@
-{"ads" : [
+{"ads" : [	
 		{
 			"titulo" : "Compra, Registra y Gana",
 			"img" : "compra_registra_gana"
@@ -8,12 +8,12 @@
 			"img" : "el_buen_lunes"
 		},
 		{
-			"titulo" : "¡Yo cuido mi panchita! ¿Y tú?",
-			"img" : "yo_cuido_mi_panchita"
-		},
-		{
 			"titulo" : "Farmacias Similares® desde tu celular",
 			"img" : "farmacias_similares_desde_tu_celular"
-		}
+		},
+		{
+			"titulo" : "Cuida tu panchita",
+			"img" : "cuida_tu_panchita"
+		}		
 	]
 }

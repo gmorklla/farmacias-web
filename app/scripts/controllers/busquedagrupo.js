@@ -38,7 +38,11 @@ angular.module('farmaciasWebApp')
             if( $state.$current.name == 'nuevos' ) {
                 search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig('nuevo'));
             } else {
-                search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig($stateParams.termino));
+                if($stateParams.termino){
+                    search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig($stateParams.termino));
+                } else {
+                    $state.go('inicio');                     
+                }
             }
 
             search.then(function(datos) {

@@ -77,6 +77,14 @@ angular.module('farmaciasWebApp')
             $rootScope.terminoDeBusqueda = $scope.termino;
         };
 
+        $scope.cierraBusqueda = function () {
+            $('#buscaModal').modal('hide');
+            $('.modal-backdrop').remove();            
+            $scope.viewSearch = false;
+            $scope.doSearchInput = '';
+            $scope.termino = '';            
+        }
+
         var cierraMenu = function() {
             $(".btn-navbar").click(); //bootstrap 2.x
             $(".navbar-toggle").click(); //bootstrap 3.x by Richard    
@@ -106,10 +114,10 @@ angular.module('farmaciasWebApp')
                   eventCategory: 'Busqueda',
                   eventAction: 'Ver todos los resultados',
                   eventLabel: 'Termino: ' + terminoFinal
-                });                
+                });
                 $state.go('busquedaGrupo', {
                     termino: $scope.prettyFn($scope.termino || $scope.doSearchInput)
-                });                
+                });               
             }
         };
 
