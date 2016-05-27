@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"index",
+				"indexOf"
+			],
+			[
+				"sa",
+				"saludable"
+			],
+			[
 				"conte",
 				"contenedor"
 			],
@@ -208,10 +216,34 @@
 	"buffers":
 	[
 		{
-			"file": "app/scripts/controllers/localiza.js",
+			"file": "app/scripts/app.js",
 			"settings":
 			{
-				"buffer_size": 53559,
+				"buffer_size": 42694,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 11571,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/imageCheck.js",
+			"settings":
+			{
+				"buffer_size": 772,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/scripts/controllers/medicamentos.js",
+			"settings":
+			{
+				"buffer_size": 12473,
 				"line_ending": "Unix"
 			}
 		}
@@ -287,25 +319,32 @@
 	[
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers"
 	],
 	"file_history":
 	[
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/index.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/app.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/banners.json",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/nav.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/medicamentos.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/medicamentos.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/nav.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/youtubelist.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/siminotas.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/index.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/detalle.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/detalle.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/busquedagrupo.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/nota.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/siminotas/consejos-para-ser-mas-saludable.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/siminotas/10-mitos-sobre-la-gastritis.html",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/notas.json",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/imageCheck.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/localiza.js",
+		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/app.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/ads.json",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/busqueda.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/detalle.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/siminotas.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/medicamentos.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/nota.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/nav.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/nav.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/administrador.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/localiza.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/prettyurlspc.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/styles/desktop.css",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/angularseo.js",
@@ -335,14 +374,11 @@
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/loadpromo.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/.gitignore",
 		"/C/Users/pubmrodriguez/Desktop/Backups/index.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/services/youtubelist.js",
 		"/C/Users/pubmrodriguez/Desktop/Backups/Web2.config",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/imageCheck.js",
 		"/C/Users/pubmrodriguez/Desktop/Backups/app.js",
 		"/C/Users/pubmrodriguez/Desktop/Web2.config",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/node/app.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/scripts/controllers/promociones.js",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/detalle.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/promociones.html",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/ChromePushManager.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/sw.js",
@@ -361,7 +397,6 @@
 		"/C/Users/pubmrodriguez/Documents/node/mean/package.json",
 		"/C/Users/pubmrodriguez/Documents/node/mean/bower.json",
 		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/views/promocion.html",
-		"/C/Users/pubmrodriguez/Documents/GitHub/farmacias-web/app/data/notas.json",
 		"/C/Users/pubmrodriguez/Documents/GitHub/video2Brain/built/out.js",
 		"/C/Users/pubmrodriguez/Documents/GitHub/video2Brain/HolaMundo.ts",
 		"/C/Users/pubmrodriguez/Documents/EternalSecret/mob/builds/css/estilos.css",
@@ -416,10 +451,7 @@
 		"/C/Users/pubmrodriguez/Documents/EternalSecret/nota_bb_cream.html",
 		"/C/Users/pubmrodriguez/Documents/EternalSecret/nota_crema_antioxidante.html",
 		"/C/Users/pubmrodriguez/Documents/EternalSecret/nota_suero.html",
-		"/C/Users/pubmrodriguez/Documents/EternalSecret/organo_mas_grande_de_nuestro_cuerpo.html",
-		"/C/Users/pubmrodriguez/Documents/EternalSecret/piel_perfecta.html",
-		"/C/Users/pubmrodriguez/Documents/EternalSecret/rutina_facial.html",
-		"/C/Users/pubmrodriguez/Documents/EternalSecret/rutinas_para_el_cuidado_de_la_piel.html"
+		"/C/Users/pubmrodriguez/Documents/EternalSecret/organo_mas_grande_de_nuestro_cuerpo.html"
 	],
 	"find":
 	{
@@ -442,6 +474,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"umeroLinksPaginacion",
+			"window",
+			"kgb",
+			"bInt",
+			"kadabra",
+			"$scope.familia",
+			"consejos-para-ser-mas-saludable",
+			"<li>",
 			"16",
 			"-99.2836982",
 			"19.3910038",
@@ -561,15 +601,7 @@
 			"httpReq",
 			"hide",
 			"productos",
-			"0",
-			"hidePromo",
-			"viewData",
-			"span",
-			"closeModal",
-			"$scope.medActual",
-			"colocaPromoView",
-			"ofertaModal",
-			"refencia"
+			"0"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -593,19 +625,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/scripts/controllers/localiza.js",
+					"file": "app/scripts/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 53559,
+						"buffer_size": 42694,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								53411,
-								53215
+								38337,
+								38337
 							]
 						],
 						"settings":
@@ -613,56 +645,56 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -674,10 +706,277 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 18336.0,
+						"translation.y": 18991.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11571,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11428,
+								11424
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3141.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/scripts/controllers/imageCheck.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 772,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								37,
+								37
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/scripts/controllers/medicamentos.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12473,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1791,
+								1803
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Unity3D/UnityJavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -744,6 +1043,66 @@
 		"selected_items":
 		[
 			[
+				"medic",
+				"app\\scripts\\controllers\\medicamentos.js"
+			],
+			[
+				"im",
+				"app\\scripts\\controllers\\imageCheck.js"
+			],
+			[
+				"inde",
+				"app\\index.html"
+			],
+			[
+				"medi",
+				"app\\views\\medicamentos.html"
+			],
+			[
+				"yout",
+				"app\\scripts\\services\\youtubelist.js"
+			],
+			[
+				"siminotas",
+				"app\\scripts\\controllers\\siminotas.js"
+			],
+			[
+				"you",
+				"app\\scripts\\services\\youtubelist.js"
+			],
+			[
+				"nav",
+				"app\\views\\nav.html"
+			],
+			[
+				"medicam",
+				"app\\scripts\\controllers\\medicamentos.js"
+			],
+			[
+				"detal",
+				"app\\scripts\\controllers\\detalle.js"
+			],
+			[
+				"detale",
+				"app\\views\\detalle.html"
+			],
+			[
+				"simino",
+				"app\\scripts\\controllers\\siminotas.js"
+			],
+			[
+				"nota",
+				"app\\scripts\\controllers\\nota.js"
+			],
+			[
+				"image",
+				"app\\scripts\\controllers\\imageCheck.js"
+			],
+			[
+				"app",
+				"app\\scripts\\app.js"
+			],
+			[
 				"local",
 				"app\\scripts\\controllers\\localiza.js"
 			],
@@ -760,24 +1119,12 @@
 				"app\\scripts\\controllers\\busquedagrupo.js"
 			],
 			[
-				"app",
-				"app\\scripts\\app.js"
-			],
-			[
-				"medi",
-				"app\\scripts\\controllers\\medicamentos.js"
-			],
-			[
 				"admi",
 				"app\\scripts\\controllers\\administrador.js"
 			],
 			[
 				"medica",
 				"app\\views\\medicamentos.html"
-			],
-			[
-				"nota",
-				"app\\scripts\\controllers\\nota.js"
 			],
 			[
 				"siminot",
@@ -788,20 +1135,12 @@
 				"app\\scripts\\controllers\\detalle.js"
 			],
 			[
-				"nav",
-				"app\\views\\nav.html"
-			],
-			[
 				"busque",
 				"app\\scripts\\services\\busqueda.js"
 			],
 			[
 				"not",
 				"app\\scripts\\controllers\\nota.js"
-			],
-			[
-				"siminotas",
-				"app\\scripts\\controllers\\siminotas.js"
 			],
 			[
 				"desk",
@@ -812,14 +1151,6 @@
 				"app\\scripts\\controllers\\busquedagrupo.js"
 			],
 			[
-				"medic",
-				"app\\views\\medicamentos.html"
-			],
-			[
-				"medicam",
-				"app\\scripts\\controllers\\medicamentos.js"
-			],
-			[
 				"inicio",
 				"app\\scripts\\controllers\\inicio.js"
 			],
@@ -828,20 +1159,12 @@
 				"app\\scripts\\services\\youtubelist.js"
 			],
 			[
-				"image",
-				"app\\scripts\\controllers\\imageCheck.js"
-			],
-			[
 				"promo",
 				"app\\views\\promociones.html"
 			],
 			[
 				"promocio",
 				"app\\scripts\\controllers\\promociones.js"
-			],
-			[
-				"detal",
-				"app\\scripts\\controllers\\detalle.js"
 			],
 			[
 				"imageche",
@@ -866,14 +1189,6 @@
 			[
 				"conse",
 				"consejos.html"
-			],
-			[
-				"simino",
-				"app\\scripts\\controllers\\siminotas.js"
-			],
-			[
-				"inde",
-				"farmacias-web\\app\\index.html"
 			],
 			[
 				"web.",

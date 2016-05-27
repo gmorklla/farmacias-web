@@ -92,7 +92,7 @@ angular.module('farmaciasWebApp')
                 $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
                 //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
                 $scope.meds = JSON.parse(datos.data.d);
-                console.log($scope.meds);
+                //console.log($scope.meds);
                 // Si esta es sección nuevos se aplica un filtro que coloca los productos más recientes
                 if ($scope.familia == 'nuevos') {
                     $scope.meds = $filter('filter')($scope.meds, true);

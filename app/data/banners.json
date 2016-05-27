@@ -16,10 +16,6 @@
         "url": "http://www.siminforma.com.mx/",
         "target": "_blank"
     }, {
-        "banner": "banner-simicarrera-puebla",
-        "url": "http://www.simicarreras.com.mx/",
-        "target": "_blank"
-    }, {
         "banner": "nuevos_genericos",
         "url": "#/lo-nuevo",
         "target": "_self"

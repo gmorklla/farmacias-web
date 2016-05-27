@@ -14,7 +14,7 @@ angular.module('farmaciasWebApp')
         // Función que controla el modo de búsqueda y usa el servicio 'busqueda.buscaPredictiva' para obtener los resultados
         $scope.doSearch = function(modo) {
 
-            $log.info('Buscando...');
+            // $log.info('Buscando...');
             // Variable que permite o no el paso a la página donde se muestra el resultado de la búsqueda, sólo cuando ya se tiene dicho resultado
             $scope.listo = false;
 
@@ -48,7 +48,14 @@ angular.module('farmaciasWebApp')
                 } else {
                     $scope.viewSearch = true;
                     $scope.searchLoader = true;
-                    var cuantos = busqueda.buscaPredictiva($scope.termino, 1);
+                    var cuantos;
+                    if($scope.termino.indexOf('kgb') != -1){
+                        var indice = $scope.termino.indexOf('kgb') - 1;
+                        cuantos = busqueda.buscaPredictiva($scope.termino.slice(0, indice), 1);
+                    } else {
+                        cuantos = busqueda.buscaPredictiva($scope.termino, 1);
+                    }
+                    
                     cuantos.then(function(datos) {
                         $scope.searchResult = JSON.parse(datos.data.d);
                         $scope.searchLoader = false;
@@ -109,15 +116,22 @@ angular.module('farmaciasWebApp')
                 } else {
                     terminoFinal = $scope.doSearchInput;
                 }
-                $window.ga('send', {
-                  hitType: 'event',
-                  eventCategory: 'Busqueda',
-                  eventAction: 'Ver todos los resultados',
-                  eventLabel: 'Termino: ' + terminoFinal
-                });
-                $state.go('busquedaGrupo', {
-                    termino: $scope.prettyFn($scope.termino || $scope.doSearchInput)
-                });               
+                if(terminoFinal.indexOf('kgb') != -1) {
+                    var indice = terminoFinal.indexOf('kgb') - 1;
+                    $state.go('busquedaInterna', {
+                        termino: $scope.prettyFn(terminoFinal.slice(0, indice))
+                    });
+                } else {
+                    $window.ga('send', {
+                      hitType: 'event',
+                      eventCategory: 'Busqueda',
+                      eventAction: 'Ver todos los resultados',
+                      eventLabel: 'Termino: ' + terminoFinal
+                    });
+                    $state.go('busquedaGrupo', {
+                        termino: $scope.prettyFn(terminoFinal)
+                    });
+                }               
             }
         };
 

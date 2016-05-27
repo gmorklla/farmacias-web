@@ -108,4 +108,26 @@
     "timestamp": 1462199025796,
     "titulo": "Enfermedades",
     "url": "enfermedades gastrointestinales"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "serMasSaludable",
+    "htmlPath": "views/siminotas/consejos-para-ser-mas-saludable",
+    "intro": "<p>Para mantenerte saludable basta con seguir algunos consejos que, según Mayo Clinic Health Letter, pueden ayudarte a tener una mejor salud física y lograr bienestar emocional:</p><p>Come frutas y verduras diariamente. Las frutas y las verduras son fuente de antioxidantes, componentes que, se ha comprobado, ayudan a prevenir enfermedades como el cáncer, el Alzheimer y algunos trastornos del corazón.</p>",
+    "key": 12,
+    "shareText": "Para mantenerte saludable basta con seguir algunos consejos que, según Mayo Clinic Health Letter, pueden ayudarte a tener una mejor salud física",
+    "subtitulo": "más saludable",
+    "timestamp": 1462199025796,
+    "titulo": "Consejos para ser",
+    "url": "consejos para ser mas saludable"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "Gastritis10Mitos",
+    "htmlPath": "views/siminotas/10-mitos-sobre-la-gastritis",
+    "intro": "<p>La gastritis se presenta cuando el revestimiento del estómago se inflama. Puede ocasionarse después de la ingesta de alcohol o algunos condimentos; aunque en ocasiones algunas personas podrían no indicar ningún malestar, es importante estar al pendiente de cualquiera de los siguientes síntomas y, en caso de presentar alguno, acudir con el Médico.</p>",
+    "key": 12,
+    "shareText": "Se estima que hasta 80% de la población en México ha padecido gastritis.",
+    "subtitulo": "sobre la gastritis",
+    "timestamp": 1462199025796,
+    "titulo": "10 mitos",
+    "url": "10 mitos sobre la gastritis"
 }]

@@ -829,6 +829,64 @@ angular
                     label: '{{$stateParams.medicamentoId}}'
                 }
             })
+            .state('busquedaInterna', {
+                url: "/busquedaI/:termino",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/medicamentos.html',
+                        controller: 'BusquedaCtrl',
+                        controllerAs: 'busqueda'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Búsqueda'
+                }
+            })
+            .state('busquedaInterna.detalle', {
+                url: "/:idProducto/:medicamentoId",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{$stateParams.medicamentoId}}'
+                }
+            })            
             .state('facturacion', {
                 url: "/facturacion-electronica",
                 'views': {
@@ -1031,7 +1089,7 @@ angular
                 ncyBreadcrumb: {
                     label: 'Localiza tu unidad'
                 }
-            });*/
+            });
             /*.state('sitemap', {
                 url: "/sitemap",
                 'views': {
