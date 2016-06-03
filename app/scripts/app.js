@@ -1060,7 +1060,36 @@ angular
                 ncyBreadcrumb: {
                     label: 'Producto'
                 }
-            });     
+            })
+            .state('farmaciasIn', {
+                url: "/farmaciasIn",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/navFrame.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/localizaFrame.html',
+                        controller: 'localizaCtrl',
+                        controllerAs: 'localiza'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footerFrame.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Localiza tu unidad'
+                }
+            });                 
             /*.state('imagesCheck', {
                 url: "/imagesCheck",
                 'views': {

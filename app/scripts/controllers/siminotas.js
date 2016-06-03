@@ -54,7 +54,7 @@ angular.module('farmaciasWebApp')
             console.info('No hay video');
             var videos = youTubeList.getVids();
             videos.then(function(datos) {
-                $rootScope.theBestVideo = datos[2].id;
+                $rootScope.theBestVideo = datos[0].id;
                 $rootScope.listaVideos = datos;
                 $scope.$apply();
             }, function(e) {

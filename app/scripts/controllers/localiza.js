@@ -138,6 +138,7 @@ angular.module('farmaciasWebApp')
             loc.then(function(datos) {
                 var farmacias = JSON.parse(datos.data.d);
                 locationSrv.addLocationData(farmacias, $scope.tipoDeBusqueda);
+                console.log(farmacias);
                 /*for (var key in farmacias[0]) {
                     console.info(key + ' ', farmacias[0][key]);
                 }*/
@@ -828,7 +829,7 @@ angular.module('farmaciasWebApp')
         }   
 
         // Inicializa variable de número de unidades mostradas
-        $scope.inputUnidades = 20;
+        $scope.inputUnidades = 100;
 
         // Monitorea el número de unidades que se quiere mostrar
         $scope.$watch('inputUnidades', function() {
