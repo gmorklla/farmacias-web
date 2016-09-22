@@ -1,3 +1,8 @@
+<style>
+        .productos {
+            background-color: white !important;
+        }
+    </style>
 <div class="row show-grid productos">
     <div class="row localizaOps" ng-if="tipoDeBusqueda == 1 && !sencillo">
         <div class="col-md-3">
@@ -59,19 +64,6 @@
         </div>
         <div id="map"></div>
         <input id="searchId" name="place" placeholder="Busca tu farmacia" type="text" class="controls col-xs-12" ng-show="!sencillo" />
-        <div class="mapControles" id="opcionesMapa">
-            <form class="form-inline row">
-                <div class="form-group col-md-12 col-sm-12 col-xs-12 hidden-xs" ng-if="!sencillo">
-                    <label class="uni" for="inputAmount">UNIDADES MOSTRADAS</label>
-                    <input type="number" class="form-control localizaInput" min="10" max="50" step="5" name="numUnidades" ng-model="inputUnidades" id="inputAmount">
-                    <!--                     <select id="mode" ng-model="selectedMode" ng-change="ruta(puntoDeInteres)">
-    <option value="DRIVING">Manejando</option>
-    <option value="WALKING">Caminando</option>
-    <option value="TRANSIT">En transporte público</option>
-</select> -->
-                </div>
-            </form>
-        </div>
     </div>
     <div class="col-xs-12 visible-xs unidadesTitle">
         <div class="instruccionesLabel"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> UNIDADES CERCANAS</div>

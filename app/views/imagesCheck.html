@@ -1,16 +1,16 @@
 <h1>Productos con más de una imagen</h1>
 <ul class="list-group">
 	<li class="list-group-item col-md-3" ng-repeat="item in imgs" ng-if="item.urlImagen.length > 1">
-		<img propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
+		<img propertyu="image" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg">
 		{{item.IdProducto}}<br>
-		No existe: <a href="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" target="_blank">http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg</a>
+		No existe: <a href="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" target="_blank">https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg</a>
 	</li>
 </ul>
 <br><br><br>
 <h1>Productos sin imagen en app</h1>
 <ul class="list-group">
 	<li class="list-group-item col-md-3" ng-repeat="item in imgs" ng-if="item.urlImagen.length == 0">
-		<img propertyu="image" ng-src="https://fsappmovilstorage.blob.core.windows.net/imagenes/M_{{item.NombreProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
+		<img propertyu="image" ng-src="https://fsappmovilstorage.blob.core.windows.net/imagenes/M_{{item.NombreProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg">
 		{{item.IdProducto}}<br>
 		{{item.urlImagen}}
 	</li>

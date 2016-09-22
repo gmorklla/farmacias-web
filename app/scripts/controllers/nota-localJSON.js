@@ -18,7 +18,7 @@ angular.module('farmaciasWebApp')
         // Usa servicio 'prettyUrlSpc.deconfig' para quitar guiones
         var original = prettyUrlSpc.deconfig($stateParams.notaId);
         // Define el url que se compartirá en redes sociales
-        $scope.urlShare = 'http://www.farmaciasdesimilares.com.mx/propuesta/#!/siminotas/' + $stateParams.notaId;
+        $scope.urlShare = 'https://farmaciasdesimilares.com/propuesta/#!/siminotas/' + $stateParams.notaId;
 
         var resultado = prettyUrlSpc.deconfig($stateParams.notaId);
         resultado = prettyUrlSpc.capitalize(resultado);

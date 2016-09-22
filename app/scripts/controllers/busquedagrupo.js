@@ -36,6 +36,8 @@ angular.module('farmaciasWebApp')
             var search;
 
             if( $state.$current.name == 'nuevos' ) {
+                console.log('Aqui');
+                $scope.showPromos = 1;
                 search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig('nuevo'));
             } else {
                 if($stateParams.termino){

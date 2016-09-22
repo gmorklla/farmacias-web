@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-4">
+		<p style="text-align:center;">
+			<a onclick="openChat(1)" style="cursor: pointer; color:#05ced3;">
+				<img src="images/chat_med.png" alt="">
+				<br>Asesoría médica
+			</a>
+		</p>
+		<hr class="hidden-sm hidden-xs">
+		<p style="text-align:center;"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></p>
+		<p style="font-size: 0.8em; color:grey; text-align:center;">L - V de 07:00 a 22:00 horas.<br>S - D de 08:00 a 20:00 horas.</p>
+		<hr class="hidden-md hidden-lg">
+	</div>
+    <div class="col-md-4">
+		<p style="text-align:center;">
+			<a onclick="openChat(2)" style="cursor: pointer; color:#ff7606;">
+				<img src="images/chat_nut.png" alt=""><br>Atención a clientes
+			</a>
+		</p>
+		<hr class="hidden-sm hidden-xs">
+		<p style="text-align:center;"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></p>
+		<p style="font-size: 0.8em; color:grey; text-align:center;">L - V de 07:00 a 22:00 horas.<br>S - D de 08:00 a 20:00 horas.</p>
+		<hr class="hidden-md hidden-lg">
+	</div>
+    <div class="col-md-4">
+		<p style="text-align:center;">
+			<a onclick="openChat(3)" style="cursor: pointer; color:#00ac37;">
+				<img src="images/chat_aten.png" alt=""><br>Asesoría nutricional
+			</a>
+		</p>
+		<hr class="hidden-sm hidden-xs">
+		<p style="text-align:center;"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></p>
+		<p style="font-size: 0.8em; color:grey; text-align:center;">L - S de 10:00 a 17:30 horas.</p>
+	</div>
+</div>
+<script>
+	function openChat(args) {
+		switch(args) {
+			case 1:
+				var myWindow = window.open("https://farmaciasdesimilares.com/scam/", "", "width=300,height=500");
+				$('#chatOpts').modal('hide');
+			break;
+			case 2:
+				var myWindow = window.open("https://farmaciasdesimilares.com/scac/", "", "width=300,height=500");
+				$('#chatOpts').modal('hide');
+			break;
+			case 3:
+				var myWindow = window.open("https://farmaciasdesimilares.com/scan/", "", "width=300,height=500");
+				$('#chatOpts').modal('hide');
+			break;			
+		}
+	}
+</script>

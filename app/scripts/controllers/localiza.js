@@ -98,6 +98,8 @@ angular.module('farmaciasWebApp')
             }
         };
 
+        $scope.quieresBuscarZona = 0;
+
         var input = (document.getElementById('searchId')); // Define input que se usa dentro de google maps para búsquedas predictivas
         // Función init
         $scope.init = function(lat, lng, zoom) {
@@ -137,8 +139,9 @@ angular.module('farmaciasWebApp')
 
             loc.then(function(datos) {
                 var farmacias = JSON.parse(datos.data.d);
-                locationSrv.addLocationData(farmacias, $scope.tipoDeBusqueda);
                 console.log(farmacias);
+                locationSrv.addLocationData(farmacias, $scope.tipoDeBusqueda);
+                //console.log(farmacias);
                 /*for (var key in farmacias[0]) {
                     console.info(key + ' ', farmacias[0][key]);
                 }*/
@@ -165,7 +168,7 @@ angular.module('farmaciasWebApp')
 
                         $scope.ruta(myLatlng);
 
-                        var rutaMob = "http://maps.google.com/maps?saddr=" + usuario.lat() + "," + usuario.lng() + "&daddr=" + myLatlng.lat() + "," + myLatlng.lng();
+                        var rutaMob = "https://maps.google.com/maps?saddr=" + usuario.lat() + "," + usuario.lng() + "&daddr=" + myLatlng.lat() + "," + myLatlng.lng();
 
                         google.maps.event.addListener(marker, 'click', function() {
                             if (infowindow) {
@@ -179,6 +182,7 @@ angular.module('farmaciasWebApp')
 
                             localizaId.then(function(datos) {
                                 $scope.datosLocaliza = JSON.parse(datos.data.d);
+                                console.info($scope.datosLocaliza);
                                 infowindow = new google.maps.InfoWindow({
                                     content: "<div class='direccion'><span>UNIDAD:</span> " + $scope.datosLocaliza[0].unidad + " </div> <div class='direccion visible-xs'><hr><p><a href='" + rutaMob + "'>VER RUTA EN GOOGLE MAPS</a></p></div>"
                                 });
@@ -232,7 +236,7 @@ angular.module('farmaciasWebApp')
                         // Trazo de ruta a la farmacia más cercana
                         $scope.ruta(farmaciaMasCercana);
                         // Mapa estático que se usa cuando se comparte una dirección a través del módulo de administración
-                        $scope.mapImgShare = "http://maps.google.com/maps/api/staticmap?sensor=false&center=" + $scope.posActual.lat + "," + $scope.posActual.lng + "&zoom=14&size=512x512&markers=icon:http://farmaciasdesimilares.com.mx/propuesta/images/userLocIcon.png|" + $scope.posActual.lat + "," + $scope.posActual.lng + "&markers=icon:http://farmaciasdesimilares.com.mx/propuesta/images/farmaciasMapIcon.png|" + $scope.distancias[0].Latitud + "," + $scope.distancias[0].Longitud;
+                        $scope.mapImgShare = "https://maps.google.com/maps/api/staticmap?sensor=false&center=" + $scope.posActual.lat + "," + $scope.posActual.lng + "&zoom=14&size=512x512&markers=icon:https://farmaciasdesimilares.com/propuesta/images/userLocIcon.png|" + $scope.posActual.lat + "," + $scope.posActual.lng + "&markers=icon:https://farmaciasdesimilares.com/propuesta/images/farmaciasMapIcon.png|" + $scope.distancias[0].Latitud + "," + $scope.distancias[0].Longitud;
 
                     } else if($stateParams.calle === null && $stateParams.colonia === null && $stateParams.ciudad === null){
                         // Función que se usa para obtener las unidades más cercanas al punto indicado
@@ -277,7 +281,7 @@ angular.module('farmaciasWebApp')
                                     $scope.$digest();
                                 });*/
                                 $scope.shareDirection = results[0].formatted_address;
-                                $scope.mapImgShare = "http://maps.google.com/maps/api/staticmap?sensor=false&center=" + $scope.posActual.lat + "," + $scope.posActual.lng + "&zoom=14&size=512x512&markers=icon:http://farmaciasdesimilares.com.mx/propuesta/images/userLocIcon.png|" + $scope.posActual.lat + "," + $scope.posActual.lng + "&markers=icon:http://farmaciasdesimilares.com.mx/propuesta/images/farmaciasMapIcon.png|" + $scope.distancias[0].Latitud + "," + $scope.distancias[0].Longitud;
+                                $scope.mapImgShare = "https://maps.google.com/maps/api/staticmap?sensor=false&center=" + $scope.posActual.lat + "," + $scope.posActual.lng + "&zoom=14&size=512x512&markers=icon:https://farmaciasdesimilares.com/propuesta/images/userLocIcon.png|" + $scope.posActual.lat + "," + $scope.posActual.lng + "&markers=icon:https://farmaciasdesimilares.com/propuesta/images/farmaciasMapIcon.png|" + $scope.distancias[0].Latitud + "," + $scope.distancias[0].Longitud;
 
                             } else {
                                 alert('Geocode was not successful for the following reason: ' + status);
@@ -564,7 +568,7 @@ angular.module('farmaciasWebApp')
             markers.push(marker);
             // Estable contenido del infowindow del usuario
             var infowindow = new google.maps.InfoWindow({
-                content: '<div class="prueba">Usted está aquí<hr style="margin-top:0"><span style="color:#449d44">Haz click en una unidad para desplegar su información</span></div>'
+                content: '<div class="prueba">Usted está aquí. <hr style="margin-top:0"><span style="color:#449d44">Haz click en una unidad para desplegar su información</span></div>'
             });
             // Abre infowindow de usuario
             infowindow.open(map, marker);
@@ -579,16 +583,46 @@ angular.module('farmaciasWebApp')
                 map.setCenter($scope.usuarioMarker);
                 $scope.puntoDeInteres = farmaciaMasCercana;
             });  
-            // Listener del evento dragend dentro del mapa para actualizar datos de unidades              
+            $scope.draggable = false;
+            $scope.flag = false;
+            $scope.dragOn = function () {  
+                $scope.flag = true;  
+	            // Listener del evento dragend dentro del mapa para actualizar datos de unidades
+                if($scope.draggable == true) {
+                    google.maps.event.clearListeners(map, 'dragend'); // Se quita el listener dragend
+                    $scope.flag = false;
+                    digiere();
+                } else {
+                        marker.setPosition(new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng()));
+                        $scope.obtenDistancias(map.getCenter().lat(), map.getCenter().lng(), $scope.datosUbicacion);
+                        $scope.usuarioMarker = new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng());
+                        $scope.posActual.lat = $scope.usuarioMarker.lat();
+                        $scope.posActual.lng = $scope.usuarioMarker.lng();
+                        var farmaciaMasCercana = new google.maps.LatLng($scope.distancias[0].Latitud, $scope.distancias[0].Longitud);
+                        $scope.ruta(farmaciaMasCercana);
+                        $scope.puntoDeInteres = farmaciaMasCercana;
+                    google.maps.event.addListener(map, 'dragend', function(event) {
+                        $("#zonaLoader").fadeIn("slow");  
+                        marker.setPosition(new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng()));
+                        $scope.obtenDistancias(map.getCenter().lat(), map.getCenter().lng(), $scope.datosUbicacion);
+                        $scope.usuarioMarker = new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng());
+                        $scope.posActual.lat = $scope.usuarioMarker.lat();
+                        $scope.posActual.lng = $scope.usuarioMarker.lng();
+                        var farmaciaMasCercana = new google.maps.LatLng($scope.distancias[0].Latitud, $scope.distancias[0].Longitud);
+                        $scope.ruta(farmaciaMasCercana);
+                        $scope.puntoDeInteres = farmaciaMasCercana;
+                        $("#zonaLoader").fadeOut("slow");
+                        $scope.flag = false;
+                        digiere();
+                    });
+                }	            
+                $scope.draggable = !$scope.draggable;
+                digiere();
+            }
+            // Listener del evento dragend dentro del mapa para actualizar datos de unidades
             google.maps.event.addListener(map, 'dragend', function(event) {
-                marker.setPosition(new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng()));
-                $scope.obtenDistancias(map.getCenter().lat(), map.getCenter().lng(), $scope.datosUbicacion);
-                $scope.usuarioMarker = new google.maps.LatLng(map.getCenter().lat(), map.getCenter().lng());
-                $scope.posActual.lat = $scope.usuarioMarker.lat();
-                $scope.posActual.lng = $scope.usuarioMarker.lng();
-                var farmaciaMasCercana = new google.maps.LatLng($scope.distancias[0].Latitud, $scope.distancias[0].Longitud);
-                $scope.ruta(farmaciaMasCercana);
-                $scope.puntoDeInteres = farmaciaMasCercana;
+                $scope.quieresBuscarZona = 1;
+                digiere();
             });
 
             function toggleBounce() {
@@ -651,7 +685,7 @@ angular.module('farmaciasWebApp')
             // Loop para recorrer todas las unidades y determinar la distancia a la que se ubican
             for (var i = 0; i < data.length; i++) {
                 // Link que abre la aplicación de google maps trazando la ruta hacia la unidad seleccionada
-                var rutaMob = "http://maps.google.com/maps?saddr=" + usuario.lat() + "," + usuario.lng() + "&daddr=" + data[i].latitud + "," + data[i].longitud;
+                var rutaMob = "https://maps.google.com/maps?saddr=" + usuario.lat() + "," + usuario.lng() + "&daddr=" + data[i].latitud + "," + data[i].longitud;
                 // Usa servicio 'MapSrv.getDistance' para obtener la distancia entre el punto de interés y la unidad
                 var distancia = MapSrv.getDistance(lat, lng, data[i].latitud, data[i].longitud);
                 // Coloca la unidad en el array 'distancias' con su respectiva información
@@ -684,7 +718,7 @@ angular.module('farmaciasWebApp')
                 // Método de google maps que se usa para crear objeto con lat y lng de la unidad por la que se itera 
                 var myLatlng = new google.maps.LatLng($scope.distancias[j].Latitud, $scope.distancias[j].Longitud);
                 // Link que abre la aplicación de google maps trazando la ruta hacia la unidad seleccionada
-                var rutaMob = "http://maps.google.com/maps?saddr=" + usuario.lat() + "," + usuario.lng() + "&daddr=" + myLatlng.lat() + "," + myLatlng.lng();
+                var rutaMob = "https://maps.google.com/maps?saddr=" + usuario.lat() + "," + usuario.lng() + "&daddr=" + myLatlng.lat() + "," + myLatlng.lng();
                 // Variable que contendrá la información que se presentará en el infowindow de la unidad por la que se itera
                 var infowindow;
                 // Marcador de la unidad
@@ -705,14 +739,14 @@ angular.module('farmaciasWebApp')
 
                     var infoMarker = this;
 
-                    //console.log(infoMarker.id);
+                    console.log(infoMarker.id);
                     // Usa servicio 'loadLocations.idLocation' para obtener información de la unidad a través de su ID
                     var localizaId = loadLocations.idLocation(infoMarker.id);
 
                     localizaId.then(function(datos) {
                         $scope.datosLocaliza = JSON.parse(datos.data.d);
-                        /*console.info('Success');
-                        console.log($scope.datosLocaliza);*/
+                        /*console.info('Success');*/
+                        console.log($scope.datosLocaliza);
                         infowindow = new google.maps.InfoWindow({
                             content: "<div class='direccion'><span>UNIDAD:</span> " + infoMarker.title + " </div> <div class='direccion visible-xs'><hr><p><a href='" + rutaMob + "'>VER RUTA EN GOOGLE MAPS</a></p></div>"
                         });
@@ -758,10 +792,10 @@ angular.module('farmaciasWebApp')
                 areaZoom = 16;
             // Checa si ya se cargó la librería de google, si no la carga y luego ejecuta la función init para cargar el mapa    
             if (!angular.isObject(window.google)) {
-                console.error('No');
+                //console.error('No');
                 $.getScript( "https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I" )
                   .done(function( script, textStatus ) {
-                    console.log( textStatus );
+                    //console.log( textStatus );
                     google.maps.event.addDomListener(window, 'load', $scope.init(areaLat, areaLng, areaZoom));           
                   })
                   .fail(function( jqxhr, settings, exception ) {
@@ -781,14 +815,14 @@ angular.module('farmaciasWebApp')
                 $.getScript( "https://maps.googleapis.com/maps/api/js?libraries=places&language=es&key=AIzaSyBy2XNERytdPndsS6LXGqcTsl0THYlJ54I" )
                   .done(function( script, textStatus ) {
                     console.log( textStatus );
-                    google.maps.event.addDomListener(window, 'load', $scope.init(19.4352685, -99.1576836, 8));            
+                    google.maps.event.addDomListener(window, 'load', $scope.init(19.4352685, -99.1576836, 16));            
                   })
                   .fail(function( jqxhr, settings, exception ) {
                     console.error(settings);
                 });            
             } else {
                 console.info('Si');
-                google.maps.event.addDomListener(window, 'load', $scope.init(19.4352685, -99.1576836, 8));
+                google.maps.event.addDomListener(window, 'load', $scope.init(19.4352685, -99.1576836, 16));
             }
             /*var locationWoGeo = loadData.httpReq('http://ipinfo.io');
             locationWoGeo.then(function (datos) {
@@ -945,7 +979,7 @@ angular.module('farmaciasWebApp')
             verificaDatosEnFirebase();
           } else {
             $scope.usuario = null;
-            console.log("User is logged out");
+            //console.log("User is logged out");
           }
         }
 

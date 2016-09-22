@@ -1,13 +1,13 @@
 <div class="historico" ng-controller="NuevosSideCtrl">
-    <h1 class="popDisplayTitle adsTitle">Nuevos</h1>
+    <h1 class="popDisplayTitle adsTitle" style="font-size: 1.8em !important;">Nuevos Productos</h1>
     <div class="col-md-12 col-sm-12 col-xs-12 hidden-sm panel panel-default ads nuevos">
-        <div dir-paginate="item in searchResult | itemsPerPage: 2" pagination-id="nuevosPag">
+        <div dir-paginate="item in searchResult | itemsPerPage: 3" pagination-id="nuevosPag">
             <div class="col-md-4 col-sm-12 proGrid col-lg-height">
                     <div class="row">
                         <div id="P_{{item.IdProducto}}" class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
                             <div class="col-md-12 well hvr-shadow nuevosWell">
                                 <a ui-sref="nuevos.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
-                                    <p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg"></p>
+                                    <p><img ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg"></p>
                                 </a>
                                 <!--                                 <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
@@ -19,16 +19,7 @@
                                 <h1 style="max-width:none;">{{item.NombreProducto}}</h1>
                                 <!-- <p>{{item.FechaInclusion | dateFilterFormat}}</p> -->
                             </div>
-                            <div class="col-md-12" ng-if="calificable == 0">
-                                <p>
-                                    <span ng-show="{{item.Calificacion > 0}}" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="{{item.Calificacion > 1}}" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="{{item.Calificacion > 2}}" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="{{item.Calificacion > 3}}" class="star"><img src="images/star.png" alt=""></span>
-                                    <span ng-show="{{item.Calificacion > 4}}" class="star"><img src="images/star.png" alt=""></span>
-                                </p>
-                            </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 hidden-lg hidden-md">
                                 <h2>{{item.PrecioVenta | currency}}</h2>
                             </div>
                         </div>

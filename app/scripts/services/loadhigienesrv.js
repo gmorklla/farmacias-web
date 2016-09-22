@@ -11,7 +11,7 @@ angular.module('farmaciasWebApp')
   .service('LoadHigieneSrv', ['$http', function ($http) {
     return {
       httpReq: function(cuantos, pagina) {
-      	return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'cuantos':'" + cuantos + "','paginador':'" + pagina + "','familia':'higiene'}");
+      	return $http.post('https://farmaciasdesimilares.com/WSAjaxHttps/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'cuantos':'" + cuantos + "','paginador':'" + pagina + "','familia':'higiene'}");
       }
     };
   }]);

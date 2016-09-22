@@ -11,7 +11,7 @@ angular.module('farmaciasWebApp')
   .service('LoadVitsSrv', ['$rootScope', '$http', function ($rootScope, $http) {
     return {
       httpReq: function(cuantos, pagina) {
-      	return $http.post('http://farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'familia':'VITAMINAS Y SUPLEMENTOS'}");
+      	return $http.post('https://farmaciasdesimilares.com/WSAjaxHttps/MXFSWEBAJAXService.asmx/ObtenerProductos', "{'familia':'VITAMINAS Y SUPLEMENTOS'}");
       }
     };
   }]);

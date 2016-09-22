@@ -15,6 +15,7 @@ angular.module('farmaciasWebApp')
 
 			comentarios.then(function(datos) {
 				$scope.comentarios = JSON.parse(datos.data.d);
+				//console.log($scope.comentarios);
 			}, function(e) {
 				console.log(e);
 			});
@@ -61,6 +62,7 @@ angular.module('farmaciasWebApp')
 
 			comentarios.then(function(datos) {
 				$scope.likes = JSON.parse(datos.data.d);
+				console.log($scope.likes);
 			}, function(e) {
 				console.log(e);
 			});

@@ -10,7 +10,7 @@
 angular.module('farmaciasWebApp')
 	.controller('InicioCtrl', ['loadImg', 'deviceDetector', '$scope', '$window', function(loadImg, deviceDetector, $scope, $window) {
 
-		var imagenesInicio = ['banner-main-1.jpg', 'banner-main-2.jpg'];
+		var imagenesInicio = ['banner-main-catalogo.jpg', 'banner-main-2.jpg'];
 		loadImg.loadImgs($('.loadImg'), imagenesInicio);
 
 		var imgMain = ['principal_1.jpg', 'principal_3.jpg'];
@@ -39,7 +39,7 @@ angular.module('farmaciasWebApp')
               eventLabel: 'Ir a compra, registra y gana'
             });
             if(deviceDetector.isMobile()){
-                window.open("http://farmaciasdesimilares.com.mx/PromoOlimpiadas2016/Registra.aspx");
+                window.open("https://farmaciasdesimilares.com/PromoOlimpiadas2016/Registra.aspx");
             }           		
 		}
 

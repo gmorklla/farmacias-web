@@ -3,17 +3,18 @@
         <div class="col-md-6 col-sm-12 col-xs-12" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
             <h1>SIMINOTAS</h1>
             <dir-pagination-controls class="paginacion" pagination-id="siminotasPag" max-size="7" boundary-links="false"></dir-pagination-controls>
-            <h2>{{::item.url}}</h2>
+            <h2 style="text-transform: inherit;">{{::item.titulo}}</h2>
             <p ng-bind-html="item.intro"></p>
-            <a ui-sref="nota({ notaId: prettyFn(item.url) })" type="button" class="btn btn-sm btn-primary hvr-shutter-in-horizontal btnNota">{{::item.url}}</a>
+            <a ui-sref="nota({ notaId: prettyFn(item.url) })" type="button" class="btn btn-sm btn-primary hvr-shutter-in-horizontal btnNota" style="text-transform: inherit;">{{::item.titulo}}</a>
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12 videos">
             <div class="row rowNoMargin">
                 <div class="col-md-12 col-sm-12 col-xs-12 labelVid">
                     <img src="images/simicanal_label.png" alt="">
-                    <youtube-video video-id="theBestVideo" player-width="'100%'" player-height="'100%'"></youtube-video>
+                    <iframe width="100%" height="`100%" src="https://www.youtube.com/embed/cyUYdq_uLgA?&loop=1&list=UU_rxdnyzupsXt6xmzw4MuLw " frameborder="0" allowfullscreen></iframe>
+                    <!-- <youtube-video video-id="theBestVideo" player-width="'100%'" player-height="'100%'"></youtube-video> -->
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12 thumbs">
+                <!-- <div class="col-md-12 col-sm-12 col-xs-12 thumbs">
                     <div class="row rowNoMargin">
                         <div class="col-md-3 col-sm-3 col-xs-6" dir-paginate="(key, item) in listaVideos | itemsPerPage: mostrados" pagination-id="youTubePag">
                             <div class="thumbnail">
@@ -27,7 +28,7 @@
                     <div class="row rowNoMargin">
                         <dir-pagination-controls class="paginacion vidPag" pagination-id="youTubePag" boundary-links="false" max-size="7"></dir-pagination-controls>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

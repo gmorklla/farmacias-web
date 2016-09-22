@@ -9,12 +9,12 @@
  */
 angular.module('farmaciasWebApp')
     .controller('DetalleCtrl', ['loadData', '_', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadMedByIdSrv', 'LoadPromoSrv', 'PromoOrComboSrv', 'Califica', 'loadLocations', 'banner', 'jQuery', '$state', '$stateParams', '$scope', '$rootScope', '$log', '$location', function(loadData, _, prettyUrlSpc, productoSrv, CarritoSrv, LoadMedByIdSrv, LoadPromoSrv, PromoOrComboSrv, Califica, loadLocations, banner, jQuery, $state, $stateParams, $scope, $rootScope, $log, $location) {
-        
+
         // Establece el parámetro de estado 'termino' si es que no se encuentra especificado (cuando dan click en el producto y no en 'Ver todos los resultados' dentro de las búsquedas)
-        if($state.$current.toString() == 'busquedaGrupo.detalle') {
-            if($stateParams.termino == ''){
-                if($rootScope.terminoDeBusqueda) {                    
-                    $state.transitionTo('busquedaGrupo.detalle', {termino: $rootScope.terminoDeBusqueda, idProducto: $stateParams.idProducto, medicamentoId: $stateParams.medicamentoId}, { location: true, inherit: true, relative: $state.$current, notify: false })
+        if ($state.$current.toString() == 'busquedaGrupo.detalle') {
+            if ($stateParams.termino == '') {
+                if ($rootScope.terminoDeBusqueda) {
+                    $state.transitionTo('busquedaGrupo.detalle', { termino: $rootScope.terminoDeBusqueda, idProducto: $stateParams.idProducto, medicamentoId: $stateParams.medicamentoId }, { location: true, inherit: true, relative: $state.$current, notify: false })
                 }
             }
         }
@@ -33,7 +33,7 @@ angular.module('farmaciasWebApp')
         var idProductoParam = $stateParams.idProducto.trim();
 
         // Define la familia a la que pertenecen los productos de acuerdo al estado en el que nos encontramos
-        $scope.familia = $state.$current.parent.toString();      
+        $scope.familia = $state.$current.parent.toString();
 
         var productoInMemory = _.isEmpty($rootScope.productoAct);
         // Usa servicio 'LoadPromoSrv.httpReq' para buscar promociones del producto mostrado
@@ -61,7 +61,7 @@ angular.module('farmaciasWebApp')
         function preparaEntorno() {
             /*for (var key in $scope.medActual) {
                 console.info(key + ' ', $scope.medActual[key]);
-            } */          
+            } */
             $stateParams.medicamentoId = $scope.medActual.NombreProducto;
 
             var productoConOferta = _.isEmpty($scope.medActual.Oferta);
@@ -103,7 +103,7 @@ angular.module('farmaciasWebApp')
                     $log.error(key + ' ', e[key]);
                 }
             });
-        }        
+        }
 
         getProductById();
 
@@ -132,7 +132,7 @@ angular.module('farmaciasWebApp')
             calificacion.then(function(datos) {
                 var yaCalificado = JSON.parse(datos.data.d);
                 $log.info('Calificado!');
-                //console.log(yaCalificado);
+                console.log(yaCalificado);
             }, function(e) {
                 $log.info('Error!');
                 console.log(e);
@@ -160,11 +160,14 @@ angular.module('farmaciasWebApp')
             var ofertaTxtF = {
                 "ofertas": []
             };
+            var added = 0;
             //console.info( $scope.medActual);
             for (var i = 0; i < $scope.medActual.Oferta.length; i++) {
                 var idDelCombo = $scope.medActual.Oferta[i].idCombo;
-                var existeONo = _.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo});
-                if(!existeONo) {
+                console.log($scope.medActual);
+                // Checa si el tipo es 1 (oferta)
+                if ($scope.medActual.Oferta[i].Tipo == 1) {
+                    // Integra la oferta en el array que se lee para presentar las ofertas
                     ofertaTxtF.ofertas.push({
                         id: $scope.medActual.Oferta[i].idproducto.trim(),
                         nombre: $scope.medActual.Oferta[i].Nombre,
@@ -174,15 +177,53 @@ angular.module('farmaciasWebApp')
                         tipo: $scope.medActual.Oferta[i].TipoOferta,
                         idCombo: $scope.medActual.Oferta[i].idCombo
                     });
-                } else {
-                    _.extend(_.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo}),
-                        {
+                // Checa si el tipo es 2 (combo)
+                } else if ($scope.medActual.Oferta[i].Tipo == 2) {
+                    // Integra la oferta en el array que se lee para presentar las ofertas, en este caso combos
+                    if (added === 0) {
+                        ofertaTxtF.ofertas.push({
+                            id: $scope.medActual.Oferta[i].idproducto.trim(),
+                            nombre: $scope.medActual.Oferta[i].Nombre,
+                            cantidad: $scope.medActual.Oferta[i].Cantidad,
+                            precio: $scope.medActual.Oferta[i].PrecioOferta,
+                            ahorro: $scope.medActual.Oferta[i].Mensaje,
+                            tipo: $scope.medActual.Oferta[i].TipoOferta,
+                            idCombo: $scope.medActual.Oferta[i].idCombo
+                        });                        
+                        added++;
+                    // Se integran los datos del segundo producto del combo
+                    } else {
+                        _.extend(_.findWhere(ofertaTxtF.ofertas, { idCombo: idDelCombo }), {
                             id2: $scope.medActual.Oferta[i].idproducto.trim(),
                             nombre2: $scope.medActual.Oferta[i].Nombre
                         });
+                    }
                 }
+                /*                if (!existeONo) {
+                                    ofertaTxtF.ofertas.push({
+                                        id: $scope.medActual.Oferta[i].idproducto.trim(),
+                                        nombre: $scope.medActual.Oferta[i].Nombre,
+                                        cantidad: $scope.medActual.Oferta[i].Cantidad,
+                                        precio: $scope.medActual.Oferta[i].PrecioOferta,
+                                        ahorro: $scope.medActual.Oferta[i].Mensaje,
+                                        tipo: $scope.medActual.Oferta[i].TipoOferta,
+                                        idCombo: $scope.medActual.Oferta[i].idCombo
+                                    });
+                                } else {
+                                    _.extend(_.findWhere(ofertaTxtF.ofertas, { idCombo: idDelCombo }), {
+                                        id2: $scope.medActual.Oferta[i].idproducto.trim(),
+                                        nombre2: $scope.medActual.Oferta[i].Nombre
+                                    });
+                                }*/
             }
             $rootScope.ofertas = ofertaTxtF.ofertas;
+            // Checa si el combo está completo (hay combos que se hacen con productos que ya no están en catálogo, para que se acaben, en esos casos no se debe mostrar el combo)
+            if ($rootScope.ofertas[0].tipo === 'Combo') {
+                // Combo incompleto
+                if (!$rootScope.ofertas[0].id2) {
+                    $rootScope.ofertas = '';
+                }
+            }
         }
         // Función que se encarga de presentar la información de las unidades en las que se vende el producto
         function buscaUnidades() {
@@ -195,13 +236,13 @@ angular.module('farmaciasWebApp')
             $scope.unidad = $scope.opciones[0];
         }
         // Usa servicio 'loadLocations.idLocation' para localizar la unidad en google maps
-        $scope.localizaUnidad = function (unidad) {
+        $scope.localizaUnidad = function(unidad) {
             //console.info(unidad);
             var localizaId = loadLocations.idLocation(unidad.idunidad);
 
             localizaId.then(function(datos) {
                 $scope.datosLocaliza = JSON.parse(datos.data.d);
-                $state.go('localiza.urlNoLat', { 
+                $state.go('localiza.urlNoLat', {
                     tipo: 1,
                     calle: $scope.datosLocaliza[0].latitud,
                     colonia: $scope.datosLocaliza[0].longitud,
@@ -216,13 +257,13 @@ angular.module('farmaciasWebApp')
 
         $scope.versionN = '';
         // Si el producto tiene más de un proveedor, con esta función se determina a cual se refiere para usar en el modal
-        $scope.version = function (indice) {
-            if(indice){
+        $scope.version = function(indice) {
+            if (indice) {
                 $scope.versionN = '_' + indice;
-            }else{
+            } else {
                 $scope.versionN = '';
             }
         };
-              
+
 
     }]);

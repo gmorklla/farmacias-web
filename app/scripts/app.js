@@ -337,6 +337,33 @@ angular
                     label: 'Historia'
                 }
             })
+            .state('compraRegistraGana', {
+                url: "/compraron-registraron-y-ya-ganaron",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/compraRegistraGana.html'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Compraron, registraron y ya ganaron'
+                }
+            })
             .state('simitel', {
                 url: "/simitel",
                 'views': {
@@ -683,8 +710,8 @@ angular
                     label: 'Lo nuevo'
                 }
             })
-            .state('bienestar', {
-                url: "/bienestar",
+            .state('vivir-mejor', {
+                url: "/vivir-mejor",
                 'views': {
                     'nav': {
                         templateUrl: 'views/nav.html',
@@ -709,7 +736,7 @@ angular
                     }
                 },
                 ncyBreadcrumb: {
-                    label: 'Bienestar'
+                    label: 'Vivir Mejor'
                 }
             })
             .state('nuevos', {
@@ -945,6 +972,35 @@ angular
                     label: 'Preguntas Frecuentes'
                 }
             })
+            .state('renta', {
+                url: "/rentanos-tu-local",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/rentanosTuLocal.html',
+                        controller: 'RentaCtrl',
+                        controllerAs: 'renta'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Réntanos tu local'
+                }
+            })
             .state('administrador', {
                 url: "/administrador",
                 'views': {
@@ -1089,7 +1145,7 @@ angular
                 ncyBreadcrumb: {
                     label: 'Localiza tu unidad'
                 }
-            });                 
+            });
             /*.state('imagesCheck', {
                 url: "/imagesCheck",
                 'views': {
@@ -1118,7 +1174,7 @@ angular
                 ncyBreadcrumb: {
                     label: 'Localiza tu unidad'
                 }
-            });
+            });*/
             /*.state('sitemap', {
                 url: "/sitemap",
                 'views': {

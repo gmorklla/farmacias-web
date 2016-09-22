@@ -1,0 +1,382 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
+    </div>
+    <div class="col-md-8 col-xs-12 detalle">
+        <div class="row nota">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12">
+                    <h1 class="popDisplayTitle notaTitulo">Réntanos tu local</h1>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 img">
+                <p><img ng-src="images/siminotas/entidad_certificadora.jpg" alt=""></p>
+            </div>
+            <div class="contacto col-md-12 col-sm-12 col-xs-12" ng-hide="enviado == 0">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="popDisplayTitle notaTitulo" style="background-color: lightgreen !important;">¡Gracias!</h1>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p>Nos pondremos en contacto contigo a la brevedad.</p>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12 panel panel-default">
+                    <div class="panel-heading" style="text-transform: initial;">¿Tienes un local comercial disponible?</div>
+                    <div class="panel-body">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="notaFrame">
+                                <p class="contenido">
+                                    Nos gustaría tener presencia en tu localidad, si cuenta con buena ubicación, fácil acceso, superficie minima de: 80m2, preferentemente esquina o sobre Av. principal, rodeado de comercios con alto flujo peatonal y vehicular.
+                                    <br>
+                                    <br> Para que tu local sea seleccionado deberá cumplir con lo siguiente:
+                                    <br>
+                                    <br>
+                                    <ul class="faq">
+                                        <li>Contar con uso de suelo comercial.</li>
+                                        <li>Tener al corriente el pago de (predial, agua y luz).</li>
+                                        <li>Expedir CFDI (comprobante fiscal digital).</li>
+                                        <li>Contar titulo de propiedad.</li>
+                                        <li>Contar con cuenta bancaria y clabe interbancaria para transferencias.</li>
+                                    </ul>
+                                </p>
+                            </div>
+                            <div class="subtitulo">Datos de contacto</div>
+                            <div class="notaFrame">
+                                <p class="contenido">
+                                    Correo electrónico:
+                                </p>
+                                <a type="button" class="btn btn-primary" href="mailto:aperturalocales@fsimilares.com">
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; aperturalocales@fsimilares.com
+                                </a>
+                                <br>
+                                <br>
+                                <p class="contenido">
+                                    Llame sin costo del interior de la república al:
+                                </p>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;&nbsp; 01 800 718 5970
+                                </button>
+                                <br>
+                                <br>
+                                <p class="contenido">
+                                    Ciudad de México y área metropolitana:
+                                </p>
+                                <button type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;&nbsp; 55 39 07 99
+                                </button>
+                                <br>
+                                <br>
+                                <p class="contenido">
+                                    Fax:
+                                </p>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;&nbsp; (01 55) 5422 4500</button>
+                                    <button type="button" class="btn btn-primary">ext. 7152</button>
+                                </div>
+                                <br>
+                                <br>
+                            </div>
+                            <div class="subtitulo" ng-hide="enviado == 0">Mandanos tu información:</div>
+                        </div>
+                        <div class="row">
+                            <form name="rentaForm" class="contacto" novalidate ng-hide="enviado == 1">
+                                <div class="col-md-12 col-xs-12">
+                                    <h1 class="popDisplayTitle notaTitulo">Datos personales</h1>
+                                </div>
+                                <!-- Nombre -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.name.$touched && rentaForm.name.$invalid,
+                                                  'has-success': rentaForm.name.$touched && !rentaForm.name.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="name">
+                                            Nombre
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="name" name="name" type="text" aria-describedby="inputSuccess5Status" placeholder="Nombre" ng-model="username" ng-minlength="3" ng-maxlength="150" required />
+                                    </div>
+                                </div>
+                                <!-- Email -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" ng-class="{ 
+                                                'has-error': rentaForm.email.$touched && rentaForm.email.$invalid,
+                                                'has-success': rentaForm.email.$touched && !rentaForm.email.$invalid
+                                              }">
+                                        <label class="control-label requiredField" for="email">
+                                            Email
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="email" name="email" type="email" placeholder="Email" ng-model="email" required />
+                                    </div>
+                                </div>
+                                <!-- Teléfono Fijo -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" ng-class="{ 
+                                                'has-error': rentaForm.tel.$touched && rentaForm.tel.$invalid,
+                                                'has-success': rentaForm.tel.$touched && !rentaForm.tel.$invalid
+                                              }">
+                                        <label class="control-label requiredField" for="tel">
+                                            Teléfono fijo
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="tel" name="tel" type="tel" placeholder="Teléfono fijo" ng-model="tel" ng-minlength="10" ng-maxlength="10" required/>
+                                    </div>
+                                </div>
+                                <!-- Teléfono Móvil -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group" ng-class="{ 
+                                                'has-error': rentaForm.telMov.$touched && rentaForm.telMov.$invalid,
+                                                'has-success': rentaForm.telMov.$touched && !rentaForm.telMov.$invalid
+                                              }">
+                                        <label class="control-label requiredField" for="telMov">
+                                            Teléfono móvil
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="telMov" name="telMov" type="telMov" placeholder="Teléfono móvil" ng-model="telMov" ng-minlength="10" ng-maxlength="10" required/>
+                                    </div>
+                                </div>
+                                <!-- Dirección -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.direccion.$touched && rentaForm.direccion.$invalid,
+                                                  'has-success': rentaForm.direccion.$touched && !rentaForm.direccion.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="direccion">
+                                            Dirección
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="direccion" name="direccion" type="text" aria-describedby="inputSuccess5Status" placeholder="Dirección" ng-model="direccion" ng-minlength="10" ng-maxlength="500" required />
+                                    </div>
+                                </div>
+                                <!-- Localidad -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.localidad.$touched && rentaForm.localidad.$invalid,
+                                                  'has-success': rentaForm.localidad.$touched && !rentaForm.localidad.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="localidad">
+                                            Localidad
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="localidad" name="localidad" type="text" aria-describedby="inputSuccess5Status" placeholder="Localidad" ng-model="localidad" ng-minlength="3" ng-maxlength="100" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <h1 class="popDisplayTitle notaTitulo">Datos del local</h1>
+                                    <br>
+                                    <div class="subtitulo">Dirección</div>
+                                </div>
+                                <!-- Num ext -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.numExt.$touched && rentaForm.numExt.$invalid,
+                                                  'has-success': rentaForm.numExt.$touched && !rentaForm.numExt.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="numExt">
+                                            Número exterior
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="numExt" name="numExt" type="number" aria-describedby="inputSuccess5Status" placeholder="Número exterior" ng-model="numExt" ng-minlength="1" ng-maxlength="5" required />
+                                    </div>
+                                </div>
+                                <!-- Num int -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.numInt.$touched && rentaForm.numInt.$invalid,
+                                                  'has-success': rentaForm.numInt.$touched && !rentaForm.numInt.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="numInt">
+                                            Número interior
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="numInt" name="numInt" type="number" aria-describedby="inputSuccess5Status" placeholder="Número interior" ng-model="numInt" ng-minlength="1" ng-maxlength="5" required />
+                                    </div>
+                                </div>
+                                <!-- Colonia -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.colonia.$touched && rentaForm.colonia.$invalid,
+                                                  'has-success': rentaForm.colonia.$touched && !rentaForm.colonia.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="colonia">
+                                            Colonia
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="colonia" name="colonia" type="text" aria-describedby="inputSuccess5Status" placeholder="Colonia" ng-model="colonia" ng-minlength="5" ng-maxlength="500" required />
+                                    </div>
+                                </div>
+                                <!-- Del / Mun -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.municipio.$touched && rentaForm.municipio.$invalid,
+                                                  'has-success': rentaForm.municipio.$touched && !rentaForm.municipio.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="municipio">
+                                            Delegación / Municipio
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="municipio" name="municipio" type="text" aria-describedby="inputSuccess5Status" placeholder="Delegación / Municipio" ng-model="municipio" ng-minlength="5" ng-maxlength="500" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="subtitulo">Superficie total en m2</div>
+                                </div>
+                                <!-- Metros frente -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.metrosFrente.$touched && rentaForm.metrosFrente.$invalid,
+                                                  'has-success': rentaForm.metrosFrente.$touched && !rentaForm.metrosFrente.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="metrosFrente">
+                                            Metros de frente
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="metrosFrente" name="metrosFrente" type="number" aria-describedby="inputSuccess5Status" placeholder="Metros de frente" ng-model="metrosFrente" required />
+                                    </div>
+                                </div>
+                                <!-- Metros fondo -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.metrosFondo.$touched && rentaForm.metrosFondo.$invalid,
+                                                  'has-success': rentaForm.metrosFondo.$touched && !rentaForm.metrosFondo.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="metrosFondo">
+                                            Metros de fondo
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="metrosFondo" name="metrosFondo" type="number" aria-describedby="inputSuccess5Status" placeholder="Metros de fondo" ng-model="metrosFondo" required />
+                                    </div>
+                                </div>
+                                <!-- Importe de renta -->
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="padding-left: 20px; padding-right: 20px;">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.importeRenta.$touched && rentaForm.importeRenta.$invalid,
+                                                  'has-success': rentaForm.importeRenta.$touched && !rentaForm.importeRenta.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="importeRenta">
+                                            Importe de renta
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">$</div>
+                                            <input class="form-control" id="importeRenta" name="importeRenta" type="number" aria-describedby="inputSuccess5Status" placeholder="Cantidad" ng-model="importeRenta" required>
+                                            <div class="input-group-addon">.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Notas -->
+                                <div class="col-md-12 col-sm-12 col-xs-12 contactoMessage">
+                                    <div class="form-group" ng-class="{ 
+                                                'has-error': rentaForm.notas.$touched && rentaForm.notas.$invalid,
+                                                'has-success': rentaForm.notas.$touched && !rentaForm.notas.$invalid
+                                              }">
+                                        <label class="control-label requiredField" for="notas">
+                                            Notas adicionales
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <textarea class="form-control" cols="40" id="notas" name="notas" rows="10" ng-model="notas" ng-minlength="20" ng-maxlength="1000" required></textarea>
+                                    </div>
+                                </div>
+                                <!-- Privacidad -->
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="privacidad" name="privacidad" aria-describedby="inputSuccess5Status" ng-model="privacidad" required> Acepto las politicas de privacidad
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <p>
+                                        <button class="btn btn-primary form-control" name="submit" ng-disabled="rentaForm.$invalid" ng-click="postRentaInfo()">
+                                            Enviar
+                                        </button>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div ng-include="'views/promosSide.html'"></div>
+    </div>
+</div>
+<!-- Mensajes de error -->
+<div class="row" ng-if="rentaForm.name.$error">
+    <div class="col-md-12">
+        <div class="formAlert" ng-messages="rentaForm.name.$error" ng-if="rentaForm.name.$touched">
+            <p class="text-center" ng-message="minlength">Tu nombre es muy corto (Mínimo 3 letras).</p>
+            <p class="text-center" ng-message="maxlength">Tu nombre es muy largo (Máximo 150 letras).</p>
+            <p class="text-center" ng-message="required">Tu nombres es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.email.$error" ng-if="rentaForm.email.$touched">
+            <p class="text-center" ng-message="required">Tu email es requerido.</p>
+            <p class="text-center" ng-message="email">Parece que escribiste mal tu email.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.tel.$error" ng-if="rentaForm.tel.$touched">
+            <p class="text-center" ng-message="minlength">Número de teléfono fijo es muy corto (Mínimo 10 números).</p>
+            <p class="text-center" ng-message="maxlength">Número de teléfono fijo es muy largo (Máximo 10 números).</p>
+            <p class="text-center" ng-message="required">Tu número de teléfono fijo es requerido.</p>
+            <p class="text-center" ng-message="tel">Parece que escribiste mal tu número de teléfono fijo.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.telMov.$error" ng-if="rentaForm.telMov.$touched">
+            <p class="text-center" ng-message="minlength">Número de teléfono móvil es muy corto (Mínimo 10 números).</p>
+            <p class="text-center" ng-message="maxlength">Número de teléfono móvil es muy largo (Máximo 10 números).</p>
+            <p class="text-center" ng-message="required">Tu número de teléfono móvil es requerido.</p>
+            <p class="text-center" ng-message="tel">Parece que escribiste mal tu número de teléfono móvil.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.direccion.$error" ng-if="rentaForm.direccion.$touched">
+            <p class="text-center" ng-message="minlength">Tu dirección es muy corta (Mínimo 10 letras).</p>
+            <p class="text-center" ng-message="maxlength">Tu dirección es muy larga (Máximo 500 letras).</p>
+            <p class="text-center" ng-message="required">Tu dirección es requerida.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.localidad.$error" ng-if="rentaForm.localidad.$touched">
+            <p class="text-center" ng-message="minlength">Tu localidad es muy corta (Mínimo 3 letras).</p>
+            <p class="text-center" ng-message="maxlength">Tu localidad es muy larga (Máximo 100 letras).</p>
+            <p class="text-center" ng-message="required">Tu localidad es requerida.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.numExt.$error" ng-if="rentaForm.numExt.$touched">
+            <p class="text-center" ng-message="minlength">Tu número exterior es muy corto (Mínimo 1 letras).</p>
+            <p class="text-center" ng-message="maxlength">Tu número exterior es muy largo (Máximo 5 letras).</p>
+            <p class="text-center" ng-message="required">Tu número exterior es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.numInt.$error" ng-if="rentaForm.numInt.$touched">
+            <p class="text-center" ng-message="minlength">Tu número interior es muy corto (Mínimo 1 letras).</p>
+            <p class="text-center" ng-message="maxlength">Tu número interior es muy largo (Máximo 5 letras).</p>
+            <p class="text-center" ng-message="required">Tu número interior es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.colonia.$error" ng-if="rentaForm.colonia.$touched">
+            <p class="text-center" ng-message="minlength">El nombre de tu colonia es muy corto (Mínimo 5 letras).</p>
+            <p class="text-center" ng-message="maxlength">El nombre de tu colonia es muy largo (Máximo 500 letras).</p>
+            <p class="text-center" ng-message="required">El nombre de tu colonia es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.municipio.$error" ng-if="rentaForm.municipio.$touched">
+            <p class="text-center" ng-message="minlength">El nombre de tu delegación o municipio es muy corto (Mínimo 5 letras).</p>
+            <p class="text-center" ng-message="maxlength">El nombre de tu delegación o municipio es muy largo (Máximo 500 letras).</p>
+            <p class="text-center" ng-message="required">El nombre de tu delegación o municipio es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.metrosFrente.$error" ng-if="rentaForm.metrosFrente.$touched">
+            <p class="text-center" ng-message="required">El número de metros de frente es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.metrosFondo.$error" ng-if="rentaForm.metrosFondo.$touched">
+            <p class="text-center" ng-message="required">El número de metros de fondo es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.importeRenta.$error" ng-if="rentaForm.importeRenta.$touched">
+            <p class="text-center" ng-message="required">El importe de la renta es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.notas.$error" ng-if="rentaForm.notas.$touched">
+            <p class="text-center" ng-message="minlength">Tu mensaje es muy corto (Mínimo 20 caracteres).</p>
+            <p class="text-center" ng-message="maxlength">Tu mensaje es muy largo (Máximo 1000 caracteres).</p>
+            <p class="text-center" ng-message="required">Tu mensaje es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.privacidad.$error" ng-if="rentaForm.privacidad.$touched">
+            <p class="text-center" ng-message="required">Debes aceptar las políticas de privacidad.</p>
+        </div>
+    </div>
+</div>

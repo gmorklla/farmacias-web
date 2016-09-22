@@ -10,9 +10,9 @@
                     <div class="panel-body ofertaViewPanel">
                         <div ng-show="item.nombre2" class="col-md-12 col-sm-12 col-xs-12 ofertaViewPic">
                             <p class="well">
-                                <a ui-sref="{{familia}}.detalle({ idProducto:(item.id.trim()), medicamentoId: transUrl(item.nombre) })"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.id.trim()}}.jpg" alt="{{item.nombre}}" data-toggle="tooltip" data-placement="bottom" title="{{item.nombre}}" class="imgPromo"></a>
+                                <a ui-sref="{{familia}}.detalle({ idProducto:(item.id.trim()), medicamentoId: transUrl(item.nombre) })"><img ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.id.trim()}}.jpg" alt="{{item.nombre}}" data-toggle="tooltip" data-placement="bottom" title="{{item.nombre}}" class="imgPromo"></a>
                                 <span ng-show="item.id2"> + </span>
-                                <a ng-if="item.id2" ui-sref="{{familia}}.detalle({ idProducto:(item.id2.trim()), medicamentoId: transUrl(item.nombre2) })"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.id2.trim()}}.jpg" alt="{{item.nombre2}}" data-toggle="tooltip" data-placement="bottom" title="{{item.nombre2}}" class="imgPromo"></a>
+                                <a ng-if="item.id2" ui-sref="{{familia}}.detalle({ idProducto:(item.id2.trim()), medicamentoId: transUrl(item.nombre2) })"><img ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.id2.trim()}}.jpg" alt="{{item.nombre2}}" data-toggle="tooltip" data-placement="bottom" title="{{item.nombre2}}" class="imgPromo"></a>
                             </p>                           
                         </div>                         
                         <div ng-hide="item.nombre2" class="col-md-12 col-sm-12 col-xs-12 col-sm-offset-1 label label-default ofertaContainer">

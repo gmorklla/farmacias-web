@@ -80,8 +80,8 @@ angular.module('farmaciasWebApp')
         			$rootScope.pageTitulo = 'Lo nuevo';
                     $rootScope.pageDescription = 'Conoce las nuevas promociones que tenemos en Farmacias Similares para ti.';
         		break;
-        		case 'bienestar':
-        			$rootScope.pageTitulo = 'Bienestar';
+        		case 'vivir-mejor':
+        			$rootScope.pageTitulo = 'Vivir Mejor';
         		break;
         		case 'nuevos':
         			$rootScope.pageTitulo = 'Productos nuevos';

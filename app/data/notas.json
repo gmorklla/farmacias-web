@@ -91,7 +91,7 @@
     "hashtag": "doloresMusculares",
     "htmlPath": "views/siminotas/dolores-musculares-por-ejercicio",
     "intro": "<p>La actividad física se puede realizar prácticamente en cualquier sitio y en algunos casos no requiere equipo necesariamente.</p><p>Para mejorar y mantener su salud bastan 30 minutos de actividad física de intensidad moderada 5 días por semana, ya sea que practiques algún deporte, caminata, natación o andar en bicicleta por mencionar algunos ejemplos.</p>",
-    "key": 10,
+    "key": 9,
     "shareText": "La actividad física se puede realizar prácticamente en cualquier sitio y en algunos casos no requiere equipo necesariamente.",
     "subtitulo": "por ejercicio",
     "timestamp": 1460988352372,
@@ -102,7 +102,7 @@
     "hashtag": "enfermedadesGastrointestinales",
     "htmlPath": "views/siminotas/enfermedades-gastrointestinales",
     "intro": "<p>Las enfermedades gastrointestinales ocupan una de las primeras causas de consulta médica, y también de muerte en México y resto del mundo.</p>\n<p>Este tipo de males afectan diversos órganos del tubo digestivo: esófago, estómago, duodeno, ano, recto, páncreas e intestinos delgado y grueso. Se manifiestan en nuestro cuerpo como agruras, náuseas, vómito, dolor abdominal, inflamación, diarrea (heces sueltas, deposiciones frecuentes), además de otros síntomas.</p>",
-    "key": 11,
+    "key": 10,
     "shareText": "Las enfermedades gastrointestinales ocupan una de las primeras causas de consulta médica, y también de muerte en México y resto del mundo.",
     "subtitulo": "Gastrointestinales",
     "timestamp": 1462199025796,
@@ -113,7 +113,7 @@
     "hashtag": "serMasSaludable",
     "htmlPath": "views/siminotas/consejos-para-ser-mas-saludable",
     "intro": "<p>Para mantenerte saludable basta con seguir algunos consejos que, según Mayo Clinic Health Letter, pueden ayudarte a tener una mejor salud física y lograr bienestar emocional:</p><p>Come frutas y verduras diariamente. Las frutas y las verduras son fuente de antioxidantes, componentes que, se ha comprobado, ayudan a prevenir enfermedades como el cáncer, el Alzheimer y algunos trastornos del corazón.</p>",
-    "key": 12,
+    "key": 11,
     "shareText": "Para mantenerte saludable basta con seguir algunos consejos que, según Mayo Clinic Health Letter, pueden ayudarte a tener una mejor salud física",
     "subtitulo": "más saludable",
     "timestamp": 1462199025796,
@@ -121,7 +121,7 @@
     "url": "consejos para ser mas saludable"
 }, {
     "autor": "Alejandro Rv",
-    "hashtag": "Gastritis10Mitos",
+    "hashtag": "gastritis10Mitos",
     "htmlPath": "views/siminotas/10-mitos-sobre-la-gastritis",
     "intro": "<p>La gastritis se presenta cuando el revestimiento del estómago se inflama. Puede ocasionarse después de la ingesta de alcohol o algunos condimentos; aunque en ocasiones algunas personas podrían no indicar ningún malestar, es importante estar al pendiente de cualquiera de los siguientes síntomas y, en caso de presentar alguno, acudir con el Médico.</p>",
     "key": 12,
@@ -130,4 +130,81 @@
     "timestamp": 1462199025796,
     "titulo": "10 mitos",
     "url": "10 mitos sobre la gastritis"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "cuidaTuPanchita",
+    "htmlPath": "views/siminotas/tips-para-cuidar-tu-panchita",
+    "intro": "<ul class='siminotasUl'><li>Lávate bien las manos con agua y jabón; eso ayuda a eliminar toda la suciedad y la mayoría de los microbios que pudieran contaminar, ya sea los alimentos que prepares o los que consumes. </li> <li>Mastica despacio y date unos segundos entre un bocado y otro. Mantendrás así una mejor digestión, y evitarás la pesadez y somnolencia (comúnmente llamado “mal del puerco”)...</li></ul>",
+    "key": 13,
+    "shareText": "Algunos tips para que cuides tu panchita.",
+    "subtitulo": "tu panchita",
+    "timestamp": 1462199025796,
+    "titulo": "Tips para cuidar",
+    "url": "tips para cuidar tu panchita"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "diarreaVsParasitos",
+    "htmlPath": "views/siminotas/diarrea-vs-parasitos",
+    "intro": "<p>La diarrea se define como un aumento de las evacuaciones, esto es más de tres al día, presentando estas una disminución de las consistencias normales (líquidas o semisólidas), esta puede ser causadas por bacterias, parásitos, virus, estrés, trastornos funcionales o de absorción a nivel intestinal...</p>",
+    "key": 14,
+    "shareText": "El principal mecanismo de infección gastrointestinal es por contaminación de las manos después de ir al baño.",
+    "subtitulo": "",
+    "timestamp": 1462199025796,
+    "titulo": "Diarrea vs Parásitos",
+    "url": "diarrea vs parasitos"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "osteoporosis",
+    "htmlPath": "views/siminotas/osteoporosis-una-fragil-enfermedad",
+    "intro": "<p>La osteoporosis es una enfermedad en la que <b>los huesos se debilitan a causa de la pérdida de masa ósea:</b> la parte interna de los huesos asimila calcio hasta los 35 años de edad, aproximadamente. Después de este periodo, esta masa ósea pierde calcio y comienza a volverse porosa, <b>poco a poco el hueso se debilita y aumentan las probabilidades de que se rompa.</p>",
+    "key": 15,
+    "shareText": "En México, una de cada tres mujeres tiene osteoporosis, la cual se complica si existe Diabetes.",
+    "subtitulo": "",
+    "timestamp": 1462199025796,
+    "titulo": "Osteoporosis una frágil enfermedad",
+    "url": "osteoporosis una fragil enfermedad"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "cafeBuenoMalo",
+    "htmlPath": "views/siminotas/el-cafe-bueno-o-malo",
+    "intro": "<p>El café es una de las bebidas de consumo más difundido en el mundo. Prácticamente no hay región del mundo en donde no se prepare. Existe una gran variedad de tipos da café y aunque a algunos no les resulta atractivo su sabor, podríamos afirmar que muchas personas no podrían vivir sin él.</p>",
+    "key": 16,
+    "shareText": "Se trata de una de las bebidas más castigadas por su alto contenido de cafeína, pero ¿será real todo lo que se dice?",
+    "subtitulo": "",
+    "timestamp": 1462199025796,
+    "titulo": "El café: ¿bueno o malo?",
+    "url": "el cafe bueno o malo"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "bbCream",
+    "htmlPath": "views/siminotas/que-son-las-bb-cream",
+    "intro": "<p>Son cosméticos <span>'todo en uno'</span> que hidratan, protegen, dan uniformidad al tono de la piel, matizan y pueden ocultar ciertas imperfecciones. Su formulación, aunque es lo último en avances de la cosmética, tiene su origen años atrás; fue ideada por dermatólogos alemanes que buscaban calmar la piel después de sus tratamientos faciales, ya que disminuía las rojeces además de proteger la piel del sol.</p>",
+    "key": 17,
+    "shareText": "¿Has escuchado hablar de las BB Cream?",
+    "subtitulo": "",
+    "timestamp": 1462199025796,
+    "titulo": "¿Qué son las BB Cream?",
+    "url": "que son las bb cream"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "limpiezaDeLaPiel",
+    "htmlPath": "views/siminotas/importancia-de-la-limpieza-de-la-piel",
+    "intro": "<p>El uso de desmaquillantes, jabones, lociones y exfoliantes, es básico para lograr una piel perfectamente limpia, con un aspecto más suave, fresco, sedoso y luminoso. Es por eso que te explicaremos a continuación cada producto, cuál es su función y cómo te lo debes aplicar.</p>",
+    "key": 18,
+    "shareText": "¿Alguna vez te has preguntado por qué es tan importante limpiar tu rostro de forma adecuada? Si tu respuesta es NO, te decimos por qué SÍ.",
+    "subtitulo": "",
+    "timestamp": 1462199025796,
+    "titulo": "Importancia de la limpieza de la piel",
+    "url": "importancia de la limpieza de la piel"
+}, {
+    "autor": "Alejandro Rv",
+    "hashtag": "antioxidantes",
+    "htmlPath": "views/siminotas/antioxidantes-que-mejoran-la-piel",
+    "intro": "<p>Por todos lados se habla sobre los <span>antioxidantes</span> y los <span>radicales libres</span>, pero pocos saben realmente qué son, por qué dañan nuestro cuerpo, y por qué envejecen la piel.</p>",
+    "key": 19,
+    "shareText": "¿Qué son los radicales libres y por qué nos afectan?",
+    "subtitulo": "",
+    "timestamp": 1462199025796,
+    "titulo": "Antioxidantes que mejoran la piel",
+    "url": "antioxidantes que mejoran la piel"
 }]

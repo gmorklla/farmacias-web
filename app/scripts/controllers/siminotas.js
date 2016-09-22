@@ -50,7 +50,7 @@ angular.module('farmaciasWebApp')
             return prettyUrlSpc.prettyUrl(args);
         };
         // Usa servicio 'youTubeList.getVids' para obtener lista de videos
-        if(!$rootScope.theBestVideo) {
+        /*if(!$rootScope.theBestVideo) {
             console.info('No hay video');
             var videos = youTubeList.getVids();
             videos.then(function(datos) {
@@ -60,7 +60,7 @@ angular.module('farmaciasWebApp')
             }, function(e) {
                 console.log(e);
             });            
-        }
+        }*/
 
         // Cambia el video que se ve
         $scope.cambiaVid = function(id) {

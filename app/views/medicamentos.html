@@ -113,8 +113,8 @@
                             <div class="col-md-12 well hvr-shadow">
                                 <a ui-sref="{{familia}}.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
                                     <p>
-                                        <img ng-if="item.urlImagen.length == 0 || item.urlImagen.length == 1" propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
-                                        <img ng-if="item.urlImagen.length > 1" propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg">
+                                        <img ng-if="item.urlImagen.length == 0 || item.urlImagen.length == 1" propertyu="image" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg">
+                                        <img ng-if="item.urlImagen.length > 1" propertyu="image" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg">
                                     </p>
                                 </a>
                                 <!--                                 <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
@@ -131,6 +131,7 @@
                             </div>
                             <div class="col-md-12" ng-if="calificable == 0">
                                 <p>
+                                    <span ng-show="{{item.Calificacion == 0}}" class="star"><img src="images/star-empty.png" alt=""></span>
                                     <span ng-show="{{item.Calificacion > 0}}" class="star"><img src="images/star.png" alt=""></span>
                                     <span ng-show="{{item.Calificacion > 1}}" class="star"><img src="images/star.png" alt=""></span>
                                     <span ng-show="{{item.Calificacion > 2}}" class="star"><img src="images/star.png" alt=""></span>
@@ -184,8 +185,9 @@
         </div>
     </div>
     <div class="col-md-4">
-        <div ng-include="'views/promosSide.html'"></div>
-    </div>
+        <div ng-include="'views/nuevosSide.html'" ng-show="notShowPromos == 1"></div>
+        <div ng-include="'views/promosSide.html'" ng-show="showPromos == 1"></div>
+    </div> 
     <div id="carritoPreview" ng-if="$storage.array.length && muestraCarrito" class="row detalleF mensajesFrame" bs-popover>
         <div class="col-md-12 col-xs-12 mensajes" id="carritoShow">
             <div class="alert alert-info row">
@@ -201,7 +203,7 @@
                 </div>
                 <div class="col-md-12 col-xs-12 listaProductosAgregados">
                     <div>
-                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg">
+                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{producto.id.trim()}}.jpg">
                     </div>
                 </div>
             </div>

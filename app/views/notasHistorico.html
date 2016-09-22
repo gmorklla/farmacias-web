@@ -2,13 +2,12 @@
 <div class="historico" ng-controller="SiminotasCtrl">
     <h1 class="popDisplayTitle notasTitle">SIMINOTAS</h1>
     <dir-pagination-controls class="paginacion col-md-12 col-sm-12 col-xs-12" style="margin-left:15px;" pagination-id="siminotasPag" max-size="5"></dir-pagination-controls>
-    <div class="col-md-12 col-sm-12 col-xs-12 panel panel-default historicoPanel" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 1" pagination-id="siminotasPag">
-        <div class="panel-body">
-            <h3><a ui-sref="nota({ notaId: prettyFn(item.url) })">{{::item.url}}</a></h3>
-            <hr><br>
-            <p ng-bind-html="item.intro" class="text-justify"></p>
+    <div class="col-md-12 col-sm-12 col-xs-12 panel panel-default historicoPanel" dir-paginate="(key, item) in siminotas | orderBy:'key':'true' | itemsPerPage: 5" pagination-id="siminotasPag"  style="margin-bottom:0px;">
+        <div class="panel-body" ui-sref="nota({ notaId: prettyFn(item.url) })" style="cursor:pointer; padding-bottom:0px;">
+            <h3><a style="text-transform: initial;" ui-sref="nota({ notaId: prettyFn(item.url) })">{{::item.titulo}}</a></h3>
+            <p class="text-left" style="text-align:left;">{{item.shareText}}</p>
+            <hr>
             <!-- <p>{{::item.entrada}}</p> -->
         </div>
-        <a ui-sref="nota({ notaId: prettyFn(item.url) })" type="button" class="btn btn-sm btn-primary hvr-shutter-in-horizontal">Ir a la nota</a>
     </div>
 </div>

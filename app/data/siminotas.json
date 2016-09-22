@@ -108,6 +108,17 @@
 			"shareTxt": "La actividad física se puede realizar prácticamente en cualquier sitio y en algunos casos no requiere equipo necesariamente.",
 			"hashtag" : ["doloresMusculares", "simiNotas"],
 			"key" : 10
+		},
+		{
+			"url" : "osteoporosis una fragil enfermedad",
+			"titulo" : "Osteoporosis",
+			"subtitulo" : "una fragil enfermedad",
+			"entrada" : "<p>La actividad física se puede realizar prácticamente en cualquier sitio y en algunos casos no requiere equipo necesariamente.</p><p>Para mejorar y mantener su salud bastan 30 minutos de actividad física de intensidad moderada 5 días por semana, ya sea que practiques algún deporte, caminata, natación o andar en bicicleta por mencionar algunos ejemplos.</p>",
+			"cuerpo" : "views/siminotas/osteoporosis-una-fragil-enfermedad.html",
+			"img" : "osteoporosis-una-fragil-enfermedad",
+			"shareTxt": "La actividad física se puede realizar prácticamente en cualquier sitio y en algunos casos no requiere equipo necesariamente.",
+			"hashtag" : ["osteoporosis", "simiNotas"],
+			"key" : 11
 		}
 	]
 }

@@ -5,20 +5,20 @@
     <div class="col-md-12 banner hidden-xs">
         <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
     </div>
-    <div class="row detalleF" vocab="http://schema.org/" typeof="Product">
+    <div class="row detalleF" vocab="https://schema.org/" typeof="Product">
         <div class="col-md-8 col-xs-12 detalle detalleD">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 0 || medActual.urlImagen.length == 1">
                         <p class="well">
-                            <a ng-click="version()" data-toggle="modal" data-target="#productoBG"><img propertyu="image" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg"></a>
+                            <a ng-click="version()" data-toggle="modal" data-target="#productoBG"><img propertyu="image" ng-src="https://farmaciasdesimilares.com/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/me/noImage_M.jpg"></a>
                         </p>
                     </div>
                     <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length > 1 ">
                         <div ng-repeat="item in medActual.urlImagen">
                             <p class="well">
                                 <a ng-click="version($index + 1)" data-toggle="modal" data-target="#productoBG">                                    
-                                    <img ng-src="https://fsappmovilstorage.blob.core.windows.net/imagenes/M_{{medActual.IdProducto.trim()}}_{{$index + 1}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/me/noImage_M.jpg">
+                                    <img ng-src="https://fsappmovilstorage.blob.core.windows.net/imagenes/M_{{medActual.IdProducto.trim()}}_{{$index + 1}}.jpg" alt="{{medActual.NombreProducto}}" data-toggle="tooltip" data-placement="bottom" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/me/noImage_M.jpg">
                                 </a>
                             </p>
                             <br>
@@ -91,7 +91,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12" ng-if="calificable == 0">
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#estrellas" ng-if="calificable == 0"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
-                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="{{shareCaption}}" socialshare-text="{{medActual.NombreProducto || medActual.DESCRIPCION}} a sólo {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}" socialshare-media="http://farmaciasdesimilares.com.mx/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" socialshare-type="feed" socialshare-redirect-uri="http://www.farmaciasdesimilares.com.mx/propuesta/gracias.html" socialshare-description="Tenemos más de 100 nuevos genéricos. ¡Pregunta por el tuyo!" socialshare-popup-height="350" socialshare-popup-width="540">
+                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="{{shareCaption}}" socialshare-text="{{medActual.NombreProducto || medActual.DESCRIPCION}} a sólo {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}" socialshare-media="https://farmaciasdesimilares.com/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" socialshare-type="feed" socialshare-redirect-uri="https://farmaciasdesimilares.com/propuesta/gracias.html" socialshare-description="Tenemos más de 100 nuevos genéricos. ¡Pregunta por el tuyo!" socialshare-popup-height="350" socialshare-popup-width="540">
                                         <div class="resp-sharing-button__icon">
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32">
                                                 <path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path>
@@ -113,13 +113,13 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <p class="acotacion" ng-if="medActual.NombreSeccion == 'VITAMINAS Y SUPLEMENTOS'">*IVA INCLUIDO</p>
                     <p class="acotacion" ng-if="medActual.NombreSeccion == 'VITAMINAS Y SUPLEMENTOS'">*De acuerdo a lo publicado en el diario oficial de la federación con fecha 26 de marzo 2015</p>
-                    <p class="acotacion">Recuerde, no a la automedicación. Consulte a su médico. La imagen y el precio pueden variar con respecto al producto final y zona geográfica. El consumo de este producto es responsabilidad de quien lo recomienda y quien lo usa.</p>
+                    <p class="acotacion">Recuerde, no a la automedicación. Consulte a su médico. La imagen puede variar con respecto al producto final y zona geográfica. El consumo de este producto es responsabilidad de quien lo recomienda y quien lo usa.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-xs-12">
             <div class="ofertaDetalle" ng-if="ofertas.length > 0" ng-include="'views/promocion.html'"></div>
-            <div class="ofertaDetalle" ng-if="ofertas.length == 0" ng-include="'views/promosSide.html'"></div>
+            <div class="ofertaDetalle" ng-if="ofertas.length == 0" ng-include="'views/nuevosSide.html'"></div>
         </div>
         <div class="col-md-4 col-xs-12 hidden-lg hidden-md hidden-sm visible-xs">
             <div class="banner">
@@ -142,7 +142,7 @@
                 </div>
                 <div class="col-md-12 col-xs-12 listaProductosAgregados">
                     <div>
-                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg">
+                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{producto.id.trim()}}.jpg">
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
                         <h4 class="modal-title" id="exampleModalLabel">{{medActual.NombreProducto || medActual.DESCRIPCION}}</h4>
                     </div>
                     <div class="modal-body">
-                        <p class="well"><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/G_{{medActual.IdProducto.trim()}}{{versionN}}.jpg" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/gr/noImage_G.jpg"></p>
+                        <p class="well"><img ng-src="https://farmaciasdesimilares.com/ui/productos/gr/G_{{medActual.IdProducto.trim()}}{{versionN}}.jpg" title="{{medActual.NombreProducto || medActual.DESCRIPCION}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/gr/noImage_G.jpg"></p>
                     </div>
                     <div class="modal-footer">
                         <div class="col-md-4 col-sm-5 col-xs-12 label label-warning">

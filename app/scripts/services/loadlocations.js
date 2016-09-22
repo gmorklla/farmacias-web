@@ -11,10 +11,10 @@ angular.module('farmaciasWebApp')
     .service('loadLocations', ['$http', function($http) {
         return {
             locations: function(type) {
-                return $http.post('http://www.farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/Localizacion', "{'tipo':'" + type + "'}");
+                return $http.post('https://farmaciasdesimilares.com/WSAjaxHttps/MXFSWEBAJAXService.asmx/Localizacion', "{'tipo':'" + type + "'}");
             },
             idLocation: function(idunidad) {
-                return $http.post('http://www.farmaciasdesimilares.com.mx/WSAjax/MXFSWEBAJAXService.asmx/LocalizacionDetalle', "{'idunidad':'" + idunidad + "'}");
+                return $http.post('https://farmaciasdesimilares.com/WSAjaxHttps/MXFSWEBAJAXService.asmx/LocalizacionDetalle', "{'idunidad':'" + idunidad + "'}");
             }            
         };
     }]);

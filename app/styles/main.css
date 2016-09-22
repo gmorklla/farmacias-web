@@ -120,13 +120,13 @@ hr {
 }
 
 .list-unstyled {
-  font-size: 11px;
+  font-size: 12px;
   list-style: disc;
   float:right;
 }
 
 .list-unstyled a {
-  color:#B3B3B3;
+  color:#6a6a6a;
 }
 
 .toolsR {
@@ -587,7 +587,7 @@ hr {
   background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(191,191,191,1) 100%); /* IE10+ */
   background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(191,191,191,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#bfbfbf',GradientType=0 ); /* IE6-8 */
-  min-height: 1150px;
+  min-height: 805px;
   overflow:hidden;
 }
 
@@ -1476,14 +1476,17 @@ footer ol li:first-child, footer ol li:nth-child(2), footer ol li:nth-child(3) {
 }
 
 .mapControles {
-  width:100%;
-  bottom:0 !important;
-  z-index: 9999999 !important;
-  padding: 8px 15px;
-  background-color: rgba(255,255,255,0.8);
-  border-radius: 4px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.6em;
+    width: auto;
+    top: 0 !important;
+    left:0;
+    z-index: 9999999 !important;
+    padding: 8px 15px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6em;
+    height: 55px;
+    position: absolute;
 }
 
   .controls {
@@ -2664,7 +2667,7 @@ label span {
   width:100%;
 }
 
-.localizaOps .col-md-3 button {
+.localizaOps .col-md-3 button, .localizaOps .col-md-5 button {
   font-size: 1em;
   margin-bottom: 10px;
 }
@@ -2703,6 +2706,11 @@ label span {
     -ms-animation: cssload-spin 575ms infinite linear;
     -webkit-animation: cssload-spin 575ms infinite linear;
     -moz-animation: cssload-spin 575ms infinite linear;
+}
+
+.siminotasUl {
+  margin-right: 15px;
+  text-align: left;
 }
 
 
@@ -2748,6 +2756,73 @@ label span {
 .bannerHref {
   width: 100%;
   height: 100%;
+}
+#zonaLoader {
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 0%;
+}
+
+.formAlert {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  color: white;
+  font-size: 1.2em;
+  background-color: #a94442;
+}
+
+.formAlert p {
+  margin-top: 10px;
+}
+
+.has-success .form-control {
+  color: #3c763d;
+  background-color: honeydew;
+}
+
+.has-error .form-control {
+  background-color: antiquewhite;
+}
+
+.chat {
+  width: 170px;
+  height: 45px;
+  position: fixed;
+  top: 20%;
+  right: -128px;
+  z-index: 9999999;
+  overflow: hidden;
+  background-color: orange;
+  background-image: url("../images/chat_icono_s.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.chat .medico {
+  margin-left: 50px;
+  width: auto;
+  float: left;
+  padding-right: 5px;
+  border-right: 1px solid white;
+  margin-top: 12px;
+}
+
+.chat .medico a, .chat .nutriologo a {
+  color: white;
+}
+
+.chat .nutriologo {
+  float: left;
+  margin-left: 5px;
+  margin-top: 12px;
 }
 
 @media (max-width: 767px) {

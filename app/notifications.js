@@ -69,12 +69,17 @@ function generateUserChannel(){
   return userChannel;
 }
 
-// send a message to the user private channel to trigger a push notification
-function send(){
-  if (client) {
-    client.send(channel, "This will trigger a push notification");
-  }
-}
+// send a message to the user private channel to trigger a push notification for angular
+var sendingPushNot = (function () {
+  "use strict";
+   return {
+      test: (function () {
+        if (client) {
+          client.send(channel, 'Farmacias de Similares tiene algo nuevo para ti');
+        }
+      })
+   };
+}());
 
 function notificacion(msg) {
   var mensaje = "Tenemos noticias para ti:" + msg;

@@ -33,7 +33,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6 divisionPro">
                             <div class="col-md-12 well hvr-shadow">
                                 <a ui-sref="nuevos.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: transUrl(item.NombreProducto) })" title="{{item.NombreProducto}}" ng-click="sendProduct(item)">
-                                    <p><img ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/noImage_C.jpg"></p>
+                                    <p><img ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg"></p>
                                 </a>
 <!--                                 <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-md-12 col-xs-12 listaProductosAgregados">
                     <div>
-                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="http://farmaciasdesimilares.com.mx/ui/productos/ch/C_{{producto.id.trim()}}.jpg">
+                        <img class="productosAgregados" ng-repeat="producto in $storage.array" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{producto.id.trim()}}.jpg">
                     </div>
                 </div>
             </div>

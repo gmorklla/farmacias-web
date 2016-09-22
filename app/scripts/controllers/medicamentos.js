@@ -22,53 +22,58 @@ angular.module('farmaciasWebApp')
         $scope.sortReverse = false; // set the default sort order
 
         // Número de links en paginador de acuerdo a si es mobile o no
-        $scope.numeroLinksPaginacion = function () {
-            if(deviceDetector.isMobile()){
-                return 5;
-            } else {
-                return 7;
+        $scope.numeroLinksPaginacion = function() {
+                if (deviceDetector.isMobile()) {
+                    return 5;
+                } else {
+                    return 7;
+                }
             }
-        }
-
-        //console.log(LoadMedsSrv.httpReq());
+            //console.log(LoadMedsSrv.httpReq());
         $scope.meds = [];
         $scope.cuantos = 9;
         // Define la familia a la que pertenecen los productos de acuerdo al estado en el que nos encontramos
         $scope.familia = $state.$current.name;
 
         var familia = '';
+        console.log($state.$current.name);
         // Establece datos de acuerdo a la familia
         switch ($state.$current.name) {
             case 'medicamentos':
                 familia = 'MEDICAMENTOS'
                 $rootScope.familiaId = 'medicamentos.detalle';
                 $scope.calificable = 1;
+                $scope.notShowPromos = 1;
                 break;
             case 'vitaminas':
                 familia = 'VITAMINAS Y SUPLEMENTOS'
                 $rootScope.familiaId = 'vitaminas.detalle';
                 $scope.calificable = 0;
+                $scope.notShowPromos = 1;
                 break;
             case 'higiene':
                 familia = 'HIGIENE Y PERFUMERIA'
                 $rootScope.familiaId = 'higiene.detalle';
                 $scope.calificable = 0;
+                $scope.notShowPromos = 1;
                 break;
             case 'curacion':
                 familia = 'MATERIAL DE CURACION'
                 $rootScope.familiaId = 'curacion.detalle';
                 $scope.calificable = 1;
+                $scope.notShowPromos = 1;
                 break;
             case 'nuevos':
                 familia = 'MEDICAMENTOS'
                 $rootScope.familiaId = 'nuevos.detalle';
                 $scope.calificable = 1;
-                break; 
+                break;
             case 'sitemap':
                 familia = 'VITAMINAS Y SUPLEMENTOS'
                 $rootScope.familiaId = 'vitaminas.detalle';
                 $scope.calificable = 1;
-                break;                
+                $scope.notShowPromos = 1;
+                break;
         }
         // Función que usa servicio 'LoadMedsSrv.httpReq' para buscar productos de la familia deseada
         $scope.getMeds = function() {
@@ -101,7 +106,7 @@ angular.module('farmaciasWebApp')
                 if ($scope.familia == 'sitemap') {
                     //console.info(typeof $scope.meds);
                     for (var i = $scope.meds.length - 1; i >= 0; i--) {
-                        var concatenado = '<url><loc>http://farmaciasdesimilares.com.mx/#/medicamentos/' + $scope.meds[i].IdProducto + '/' + $scope.transUrl($scope.meds[i].NombreProducto) + '</loc></url>';
+                        var concatenado = '<url><loc>https://farmaciasdesimilares.com/#/medicamentos/' + $scope.meds[i].IdProducto + '/' + $scope.transUrl($scope.meds[i].NombreProducto) + '</loc></url>';
                         sitemap += concatenado;
                     }
                     $('#jsonHere').html(sitemap.toString());
@@ -128,7 +133,7 @@ angular.module('farmaciasWebApp')
         $scope.sendProduct = function(pro) {
             $scope.hidePromo();
             $rootScope.general = false;
-            if(pro.Oferta.length === 0) {
+            if (pro.Oferta.length === 0) {
                 productoSrv.addProduct(pro);
             }
         };
@@ -146,7 +151,7 @@ angular.module('farmaciasWebApp')
         var timer;
         // Si el producto tiene alguna promoción, esta función se encarga de presentar los datos de dicha promoción
         $scope.getPromo = function(item) {
-            if(!deviceDetector.isMobile()){
+            if (!deviceDetector.isMobile()) {
                 var medDetalle = LoadMedByIdSrv.httpReq(item.IdProducto.trim());
                 medDetalle.then(function(info) {
                     var datosOfertas = (JSON.parse(info.data.d))[0];
@@ -155,11 +160,11 @@ angular.module('farmaciasWebApp')
                     var ofertaTxtF = {
                         "ofertas": []
                     };
-                    console.info( datosOfertas );
+                    // console.info( datosOfertas );
                     for (var i = 0; i < datosOfertas.Oferta.length; i++) {
                         var idDelCombo = datosOfertas.Oferta[i].idCombo;
-                        var existeONo = _.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo});
-                        if(!existeONo) {
+                        console.log(datosOfertas);
+                        if (datosOfertas.Oferta[i].Tipo == 1) {
                             ofertaTxtF.ofertas.push({
                                 id: datosOfertas.Oferta[i].idproducto.trim(),
                                 nombre: datosOfertas.Oferta[i].Nombre,
@@ -169,18 +174,61 @@ angular.module('farmaciasWebApp')
                                 tipo: datosOfertas.Oferta[i].TipoOferta,
                                 idCombo: datosOfertas.Oferta[i].idCombo
                             });
-                        } else {
-                            _.extend(_.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo}),
-                                {
+                        } else if (datosOfertas.Oferta[i].Tipo == 2) {
+                            if (added === 0) {
+                                ofertaTxtF.ofertas.push({
+                                    id: datosOfertas.Oferta[i].idproducto.trim(),
+                                    nombre: datosOfertas.Oferta[i].Nombre,
+                                    cantidad: datosOfertas.Oferta[i].Cantidad,
+                                    precio: datosOfertas.Oferta[i].PrecioOferta,
+                                    ahorro: datosOfertas.Oferta[i].Mensaje,
+                                    tipo: datosOfertas.Oferta[i].TipoOferta,
+                                    idCombo: datosOfertas.Oferta[i].idCombo
+                                });
+                                added++;
+                            } else {
+                                _.extend(_.findWhere(ofertaTxtF.ofertas, { idCombo: idDelCombo }), {
                                     id2: datosOfertas.Oferta[i].idproducto.trim(),
                                     nombre2: datosOfertas.Oferta[i].Nombre
                                 });
+                            }
                         }
+                        /*                        var idDelCombo = datosOfertas.Oferta[i].idCombo;
+                                                var existeONo = _.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo});
+                                                if(!existeONo) {
+                                                    ofertaTxtF.ofertas.push({
+                                                        id: datosOfertas.Oferta[i].idproducto.trim(),
+                                                        nombre: datosOfertas.Oferta[i].Nombre,
+                                                        cantidad: datosOfertas.Oferta[i].Cantidad,
+                                                        precio: datosOfertas.Oferta[i].PrecioOferta,
+                                                        ahorro: datosOfertas.Oferta[i].Mensaje,
+                                                        tipo: datosOfertas.Oferta[i].TipoOferta,
+                                                        idCombo: datosOfertas.Oferta[i].idCombo
+                                                    });
+                                                } else {
+                                                    _.extend(_.findWhere(ofertaTxtF.ofertas, {idCombo: idDelCombo}),
+                                                        {
+                                                            id2: datosOfertas.Oferta[i].idproducto.trim(),
+                                                            nombre2: datosOfertas.Oferta[i].Nombre
+                                                        });
+                                                }*/
                     }
                     $rootScope.ofertas = ofertaTxtF.ofertas;
-                    //console.info($rootScope.ofertas);
-                    colocaPromoView();
-                    $('.promoView').fadeIn("slow");
+                    // Checa si el combo está completo (hay combos que se hacen con productos que ya no están en catálogo, para que se acaben, en esos casos no se debe mostrar el combo)
+                    if ($rootScope.ofertas[0].tipo === 'Combo') {
+                        // Combo incompleto
+                        if (!$rootScope.ofertas[0].id2) {
+                            $rootScope.ofertas = '';
+                            // Combo completo, muestra preview
+                        } else {
+                            colocaPromoView();
+                            $('.promoView').fadeIn("slow");
+                        }
+                        // Combo completo, muestra preview                        
+                    } else {
+                        colocaPromoView();
+                        $('.promoView').fadeIn("slow");
+                    }
 
                 }, function(e) {
                     for (var key in e) {
@@ -201,7 +249,7 @@ angular.module('farmaciasWebApp')
                     $log.error(key + ' ', e[key]);
                 }
             });
-        }         
+        }
         // Oculta la información de la promo con un fadeOut
         $scope.hidePromo = function() {
             $rootScope.viewData = '';
@@ -269,16 +317,23 @@ angular.module('farmaciasWebApp')
             }
         };
         // Cierra Modal y resetea campos
-        $scope.closeModal = function () {
+        $scope.closeModal = function() {
             $('.modal').modal('hide');
         };
 
-        $( window ).scroll(function() {
-            $scope.hidePromo();        
-        });               
+        $(window).scroll(function() {
+            $scope.hidePromo();
+        });
 
         decide();
 
         banner.random();
+
+        // Procesa datos que angular todavía no ha digerido
+        function digiere() {
+            if (!$scope.$$phase) {
+                $scope.$digest();
+            }
+        }
 
     }]);

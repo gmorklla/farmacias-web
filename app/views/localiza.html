@@ -15,14 +15,7 @@
         <div class="col-md-3 col-sm-12 col-xs-12 mapOptions dentalesOp" ng-click="cambiaBusqueda(4)" ng-class="{ 'activoOp': tipoDeBusqueda == 4 }">
             <p><span class="glyphicon glyphicon-ok" aria-hidden="true" ng-if="tipoDeBusqueda == 4">&nbsp;</span> Consultorios Dentales</p>
         </div>
-    </div>
-    <div class="row localizaOps" ng-if="tipoDeBusqueda == 1 && !sencillo">
-        <div class="col-md-3">
-            <button type="button" ng-click="checkToogle()" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" ng-class="{ 'btn-danger': horas.value1 == false, 'btn-success': horas.value1 == true }">
-                <span class="glyphicon" aria-hidden="true" ng-class="{ 'glyphicon-time': horas.value1 == false, 'glyphicon-refresh': horas.value1 == true }"></span> <span ng-if="horas.value1 == false"> Mostrar unidades 24 hrs.</span> <span ng-if="horas.value1 == true"> Mostrar todas las unidades</span>
-            </button>
-        </div>
-    </div>
+    </div>    
     <div class="col-md-12 unidadesTitle" ng-if="datosLocaliza">
         <div class="col-md-12">
             <div class="instruccionesLabel" style="text-align:left;"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> UNIDAD {{datosLocaliza[0].unidad}}</div>
@@ -45,6 +38,9 @@
                 <button class="btn btn-success" type="button">
                     Teléfono: <span class="badge">{{datosLocaliza[0].telefono}}</span>
                 </button>
+                <button class="btn btn-success" type="button">
+                    Entre: <span class="badge">{{datosLocaliza[0].entreCalles}}</span>
+                </button>
                 <div class="alert alert-info col-md-12" role="alert" ng-if="datosLocaliza[0].tipoEstudio.length > 0">
                     <div class="instruccionesLabel" style="text-align:left;">{{datosLocaliza[0].tipoEstudio.length}} ESTUDIOS</div>
                     <hr style="margin-top:2px; margin-bottom:2px;">
@@ -55,6 +51,13 @@
                 </div>
             </p>
         </div>
+    </div>
+    <div class="row localizaOps">
+        <div class="col-md-3" ng-if="tipoDeBusqueda == 1 && !sencillo">
+            <button type="button" ng-click="checkToogle()" class="btn" data-toggle="button" aria-pressed="false" autocomplete="off" ng-class="{ 'btn-danger': horas.value1 == false, 'btn-success': horas.value1 == true }">
+                <span class="glyphicon" aria-hidden="true" ng-class="{ 'glyphicon-time': horas.value1 == false, 'glyphicon-refresh': horas.value1 == true }"></span> <span ng-if="horas.value1 == false"> Mostrar unidades 24 hrs.</span> <span ng-if="horas.value1 == true"> Mostrar todas las unidades</span>
+            </button>
+        </div>        
     </div>
     <div class="col-md-12 hidden-md hidden-lg" style="margin-bottom:15px;">
         <select class="select form-control" ng-options="item as item.label for item in items track by item.id" ng-model="selected" ng-change="cambiaBusqueda()"></select>
@@ -69,26 +72,35 @@
             <b>API Error : </b>
             <span>{{ apiStatus }}</span>
         </div>
-        <div class="hidden-sm hidden-xs visible-md visible-lg" id="right-panel">
+        <div id="map"></div>
+        <input id="searchId" name="place" placeholder="Busca tu farmacia" type="text" class="controls col-xs-12" ng-show="!sencillo" />
+        <div class="hidden-sm hidden-xs visible-md visible-lg col-md-12" id="right-panel">
             <div class="col-md-12 unidadesTitle" style="background-color:#fff;">
                 <div class="instruccionesLabel"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> CÓMO LLEGAR</div>
             </div>
+        </div>        
+        <div class="col-md-5 mapControles" ng-if="quieresBuscarZona == 1">
+            <button type="button" ng-click="dragOn()" ng-dblclick="return false" ng-disabled="flag" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" ng-class="{ 'btn-danger': draggable == false, 'btn-success': draggable == true }" alt="Cambia la posición del marcador en el mapa con el arrastre">
+                <span ng-if="draggable == true">Quitar búsqueda por zona</span>
+                <span ng-if="draggable == false">Actualizar búsqueda por zona</span>
+            </button>
+            <div id="zonaLoader" class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
+            </div>
         </div>
-        <div id="map"></div>
-        <input id="searchId" name="place" placeholder="Busca tu farmacia" type="text" class="controls col-xs-12" ng-show="!sencillo" />
-        <div class="mapControles" id="opcionesMapa">
+        <!-- <div class="mapControles" id="opcionesMapa">
             <form class="form-inline row">
                 <div class="form-group col-md-12 col-sm-12 col-xs-12 hidden-xs" ng-if="!sencillo">
                     <label class="uni" for="inputAmount">UNIDADES MOSTRADAS</label>
                     <input type="number" class="form-control localizaInput" min="10" max="50" step="5" name="numUnidades" ng-model="inputUnidades" id="inputAmount">
-                    <!-- <select id="mode" ng-model="selectedMode" ng-change="ruta(puntoDeInteres)">
+                    <select id="mode" ng-model="selectedMode" ng-change="ruta(puntoDeInteres)">
                         <option value="DRIVING">Manejando</option>
                         <option value="WALKING">Caminando</option>
                         <option value="TRANSIT">En transporte público</option>
-                    </select> -->
+                    </select>
                 </div>
             </form>
-        </div>
+        </div> -->
     </div>
     <div class="col-xs-12 visible-xs unidadesTitle">
         <div class="instruccionesLabel"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> UNIDADES CERCANAS</div>

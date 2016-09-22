@@ -33,8 +33,8 @@ angular.module('farmaciasWebApp')
             }(document, 'script', 'facebook-jssdk'));            
         };
         this.compartir = function (datos) {
-            var url = 'http://farmaciasdesimilares.com.mx/#!/siminotas/' + prettyUrlSpc.prettyUrl(datos.url);
-            var img = 'http://farmaciasdesimilares.com.mx/images/siminotas/' + prettyUrlSpc.prettyUrl(datos.url) + '.jpg';
+            var url = 'https://farmaciasdesimilares.com/#!/siminotas/' + prettyUrlSpc.prettyUrl(datos.url);
+            var img = 'https://farmaciasdesimilares.com/images/siminotas/' + prettyUrlSpc.prettyUrl(datos.url) + '.jpg';
             FB.ui({
                 method: 'feed',
                 name: datos.titulo + ' ' + datos.subtitulo,

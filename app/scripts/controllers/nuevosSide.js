@@ -10,7 +10,7 @@
 angular.module('farmaciasWebApp')
     .controller('NuevosSideCtrl', ['$scope', '$filter', 'busqueda', 'prettyUrlSpc', 'LoadMedsSrv', function($scope, $filter, busqueda, prettyUrlSpc, LoadMedsSrv) {
 
-            var medicamentos = LoadMedsSrv.httpReq('MEDICAMENTOS');
+            var medicamentos = busqueda.buscaPredictiva(prettyUrlSpc.deconfig('nuevo'));;
 
             medicamentos.then(function(datos) {
                 //$scope.searchResult = JSON.parse(datos.data.d);
