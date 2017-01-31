@@ -8,7 +8,7 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', 'deviceDetector', 'LoadMedByIdSrv', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, deviceDetector, LoadMedByIdSrv, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
+    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', 'deviceDetector', 'LoadMedByIdSrv', 'loadData', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, deviceDetector, LoadMedByIdSrv, loadData, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
 
         $rootScope.general = true;
         $rootScope.muestraCarrito = true;
@@ -34,9 +34,10 @@ angular.module('farmaciasWebApp')
         $scope.cuantos = 9;
         // Define la familia a la que pertenecen los productos de acuerdo al estado en el que nos encontramos
         $scope.familia = $state.$current.name;
+        console.log($scope.familia);
 
         var familia = '';
-        console.log($state.$current.name);
+        //console.log($state.$current.name);
         // Establece datos de acuerdo a la familia
         switch ($state.$current.name) {
             case 'medicamentos':
@@ -63,6 +64,18 @@ angular.module('farmaciasWebApp')
                 $scope.calificable = 1;
                 $scope.notShowPromos = 1;
                 break;
+            case 'deportistas':
+                familia = 'DEPORTISTAS'
+                $rootScope.familiaId = 'deportistas.detalle';
+                $scope.calificable = 0;
+                $scope.notShowPromos = 1;
+                break;
+            case 'capital-social':
+                familia = 'CAPITAL'
+                $rootScope.familiaId = 'capital-social.detalle';
+                $scope.calificable = 0;
+                $scope.notShowPromos = 1;
+                break;                
             case 'nuevos':
                 familia = 'MEDICAMENTOS'
                 $rootScope.familiaId = 'nuevos.detalle';
@@ -84,40 +97,78 @@ angular.module('farmaciasWebApp')
             $('html, body').animate({
                 scrollTop: $("html").offset().top
             }, 1000);
-            // Llamada http get mediante servicio LoadMedsSrv
-            var medicamentos = LoadMedsSrv.httpReq(familia);
-            var sitemap = '';
-            // Una vez obtenida las respuesta del http get se manejan los datos
-            medicamentos.then(function(datos) {
-                // Si no hay indice de paginación, se manda al número 1
-                if (!$scope.pagina) {
-                    $scope.pagina = 1;
-                }
-                // Como ya se obtuvieron los resultados del get se quita el loager gif superior
-                $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
-                //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
-                $scope.meds = JSON.parse(datos.data.d);
-                //console.log($scope.meds);
-                // Si esta es sección nuevos se aplica un filtro que coloca los productos más recientes
-                if ($scope.familia == 'nuevos') {
-                    $scope.meds = $filter('filter')($scope.meds, true);
-                }
-                // Si se quiere hacer sitemap con todas las url que se crean a partir de los medicamentos se usan estas sentencias
-                if ($scope.familia == 'sitemap') {
-                    //console.info(typeof $scope.meds);
-                    for (var i = $scope.meds.length - 1; i >= 0; i--) {
-                        var concatenado = '<url><loc>https://farmaciasdesimilares.com/#/medicamentos/' + $scope.meds[i].IdProducto + '/' + $scope.transUrl($scope.meds[i].NombreProducto) + '</loc></url>';
-                        sitemap += concatenado;
+            if (familia === 'DEPORTISTAS') {
+                //console.log('Deportistas');
+                // Usa servicio 'loadData.httpReq' para obtener datos de las notas de manera local si Firebase no carga
+                var medicamentos = loadData.httpReq('data/deportistas.json');
+
+                medicamentos.then(function(datos) {
+                    // Si no hay indice de paginación, se manda al número 1
+                    if (!$scope.pagina) {
+                        $scope.pagina = 1;
                     }
-                    $('#jsonHere').html(sitemap.toString());
-                }
-                $scope.muestraAlerta = true;
-            }, function(e) {
-                $scope.muestraAlerta = true;
-                for (var key in e) {
-                    console.log(key + ' ', e[key]);
-                }
-            });
+                    // Como ya se obtuvieron los resultados del get se quita el loager gif superior
+                    $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
+                    //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
+                    $scope.meds = datos.data.productos;
+                    console.log($scope.meds);
+                }, function(e) {
+                    console.log(e);
+                });
+            } else if (familia === 'CAPITAL') {
+                //console.log('Deportistas');
+                // Usa servicio 'loadData.httpReq' para obtener datos de las notas de manera local si Firebase no carga
+                var medicamentos = loadData.httpReq('data/capital-social.json');
+
+                medicamentos.then(function(datos) {
+                    // Si no hay indice de paginación, se manda al número 1
+                    if (!$scope.pagina) {
+                        $scope.pagina = 1;
+                    }
+                    // Como ya se obtuvieron los resultados del get se quita el loager gif superior
+                    $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
+                    //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
+                    $scope.meds = datos.data.productos;
+                    // console.log($scope.meds);
+                }, function(e) {
+                    console.log(e);
+                });
+            } else {
+                // Llamada http get mediante servicio LoadMedsSrv
+                var medicamentos = LoadMedsSrv.httpReq(familia);
+                var sitemap = '';
+                // Una vez obtenida las respuesta del http get se manejan los datos
+                medicamentos.then(function(datos) {
+                    // Si no hay indice de paginación, se manda al número 1
+                    if (!$scope.pagina) {
+                        $scope.pagina = 1;
+                    }
+                    // Como ya se obtuvieron los resultados del get se quita el loager gif superior
+                    $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
+                    //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
+                    $scope.meds = JSON.parse(datos.data.d);
+                    //console.log($scope.meds);
+                    // Si esta es sección nuevos se aplica un filtro que coloca los productos más recientes
+                    if ($scope.familia == 'nuevos') {
+                        $scope.meds = $filter('filter')($scope.meds, true);
+                    }
+                    // Si se quiere hacer sitemap con todas las url que se crean a partir de los medicamentos se usan estas sentencias
+                    if ($scope.familia == 'sitemap') {
+                        //console.info(typeof $scope.meds);
+                        for (var i = $scope.meds.length - 1; i >= 0; i--) {
+                            var concatenado = '<url><loc>https://farmaciasdesimilares.com/#/medicamentos/' + $scope.meds[i].IdProducto + '/' + $scope.transUrl($scope.meds[i].NombreProducto) + '</loc></url>';
+                            sitemap += concatenado;
+                        }
+                        $('#jsonHere').html(sitemap.toString());
+                    }
+                    $scope.muestraAlerta = true;
+                }, function(e) {
+                    $scope.muestraAlerta = true;
+                    for (var key in e) {
+                        console.log(key + ' ', e[key]);
+                    }
+                });
+            }
 
         };
         // Si regresa de ver el detalle de un producto, guarda el número de página en el que iba el usuario, de otra manera empieza en la primer página

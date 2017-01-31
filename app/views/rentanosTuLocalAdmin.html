@@ -1,0 +1,83 @@
+<div class="row show-grid productos">
+    <div class="col-md-12 bread">
+        <ui-breadcrumbs displayname-property="ncyBreadcrumb.label" abstract-proxy-property="data.proxy" template-url="uiBreadcrumbs.tpl.html"></ui-breadcrumbs>
+    </div>
+    <div class="col-md-12 banner hidden-xs">
+        <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
+    </div>
+    <div class="col-md-12 col-xs-12 detalle">
+        <div class="row nota">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12">
+                    <h1 class="popDisplayTitle notaTitulo">Administrador</h1>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 col-xs-12 panel panel-default">
+                    <div class="panel-body">
+                        <div class="row filtros" style="width: 100%;">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <dir-pagination-controls class="paginacion col-md-5" max-size="6" boundary-links="false" style="text-align:left;"></dir-pagination-controls>
+                                <div class="col-xs-12 col-md-2" style="text-align: left;">
+                                    <span class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default leyendas" aria-label="Ordenar por fecha" ng-click="sortType = 'timestamp'; sortReverse = false" data-toggle="tooltip" data-placement="top" title="Antiguos primero">
+                                        <span class="glyphicon glyphicon-sort-by-order" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default leyendas" aria-label="Ordenar por fecha" ng-click="sortType = 'timestamp'; sortReverse = true" data-toggle="tooltip" data-placement="top" title="Recientes primero">
+                                        <span class="glyphicon glyphicon-sort-by-order-alt" aria-hidden="true"></span>
+                                    </button>
+                                    </span>
+                                </div>
+                                <div class="col-xs-12 col-md-5">
+                                    <input type="text" ng-model="termino" placeholder="Buscar">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="jumbotron" dir-paginate="item in data | orderBy:sortType:sortReverse | filter: termino | itemsPerPage: 1" style="background-color: whitesmoke; margin-bottom: 0; border-radius: 0; padding-top: 15px; padding-bottom: 15px; border-bottom: 5px solid white;">
+                                <div class="row rentaAdmin">
+                                    <div class="col-md-3 rubro">Nombre</div>
+                                    <div class="col-md-3"><i>{{item.Nombre}}</i></div>
+                                    <div class="col-md-3 rubro">Email</div>
+                                    <div class="col-md-3"><i>{{item.Email}}</i></div>
+                                    <div class="col-md-3 rubro">Teléfono Fijo</div>
+                                    <div class="col-md-3"><i>{{item.telF}}</i></div>
+                                    <div class="col-md-3 rubro">Teléfono Móvil</div>
+                                    <div class="col-md-3"><i>{{item.telM}}</i></div>
+                                    <div class="col-md-3 rubro">Dirección</div>
+                                    <div class="col-md-9"><i>{{item.Direccion}}</i></div>
+                                    <div class="col-md-3 rubro">Localidad</div>
+                                    <div class="col-md-3"><i>{{item.Localidad}}</i></div>
+                                    <div class="col-md-3 rubro">Número Exterior</div>
+                                    <div class="col-md-3"><i>{{item.numExt}}</i></div>
+                                    <div class="col-md-3 rubro">Número Interior</div>
+                                    <div class="col-md-3"><i>{{item.numInt}}</i></div>
+                                    <div class="col-md-3 rubro">Colonia</div>
+                                    <div class="col-md-3"><i>{{item.col}}</i></div>
+                                    <div class="col-md-3 rubro">Delegación</div>
+                                    <div class="col-md-3"><i>{{item.del}}</i></div>
+                                    <div class="col-md-3 rubro">Metros de frente</div>
+                                    <div class="col-md-3"><i>{{item.mFrente}}</i></div>
+                                    <div class="col-md-3 rubro">Metros de fondo</div>
+                                    <div class="col-md-3"><i>{{item.mFondo}}</i></div>
+                                    <div class="col-md-3 rubro">Importe</div>
+                                    <div class="col-md-3"><i>{{item.Importe | currency}}</i></div>
+                                    <div class="col-md-3 rubro">Notas adicionales</div>
+                                    <div class="col-md-9"><i>{{item.Notas}}</i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover'
+    });
+    $('[data-toggle="popover"]').popover();
+})
+</script>

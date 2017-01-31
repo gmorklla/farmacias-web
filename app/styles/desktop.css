@@ -899,7 +899,7 @@
 .view-first:hover p,
 .view-first:hover a.info {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(50%);
 }
 .view-first:hover p {
     transition-delay: 0.1s;
@@ -933,7 +933,7 @@
 
 @media (min-width: 1200px) and (max-width: 1300px) {
 	.chat {
-	  top: 8%;
+	  top: 10%;
 	}	
 	.navbar-nav>li {
 		width:95px;
@@ -945,7 +945,7 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1301px) {
 	.chat {
-	  top: 8%;
+	  top: 10%;
 	}		
 	.navbar-nav>li {
 		width:96px;

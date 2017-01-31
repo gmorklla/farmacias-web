@@ -39,20 +39,20 @@
                             </div>
                             <div class="notaFrame">
                                 <p class="contenido">
-                                    Cliente EXTRANJERO, podrá solicitar su factura al correo <a href="mailto:facturaelectronica@farmaciasdesimilares.com.mx" style="color: 07CAEA;">facturaelectronica@farmaciasdesimilares.com.mx</a> (información: clave fiscal extranjera, razón social y domicilio fiscal).
+                                    Cliente EXTRANJERO, podrá solicitar su factura al correo <a href="mailto:facturaelectronica@fsimilares.com" style="color: 07CAEA;">facturaelectronica@fsimilares.com</a> (información: clave fiscal extranjera, razón social y domicilio fiscal).
                                     <br>
                                 </p>
                             </div>
                             <div class="notaFrame">
                                 <p class="contenido">
-                                    Para poder generar su factura, es necesario contar con la versión 7.0 o superior Acrobat Reader. En caso de tener alguna duda o comentario, llámenos sin costo al teléfono 01-800-911-6666 (SIMITEL) o mande un correo a <a href="mailto:facturaelectronica@farmaciasdesimilares.com.mx" style="color: 07CAEA;">facturaelectronica@farmaciasdesimilares.com.mx.</a>
+                                    Para poder generar su factura, es necesario contar con la versión 7.0 o superior Acrobat Reader. En caso de tener alguna duda o comentario, llámenos sin costo al teléfono 01-800-911-6666 (SIMITEL) o mande un correo a <a href="mailto:facturaelectronica@fsimilares.com" style="color: 07CAEA;">facturaelectronica@fsimilares.com.</a>
                                     <br>
                                     <br>
                                 </p>
                                 <p>Si tu ticket tiene <a data-toggle="modal" data-target="#refencia">REFERENCIA DE FACTURACIÓN</a> ingresa a la siguiente opción:</p>
                                 <br>
                                 <p>
-                                    <a href="https://facturacion.gpupm.com/eFActuraPos/Consumidor/Facturacion/Similares" target="_blank" type="button" class="btn btn-info"><span class="glyphicon glyphicon-save-file"></span>  Generar factura</a>
+                                    <a href="https://facturacion.gpupm.com/eFActuraPos/Consumidor/Facturacion/Similares" target="_blank" type="button" class="btn btn-info" ng-class="{'disabled': mantenimiento == true}"><span class="glyphicon glyphicon-save-file"></span>  Generar factura</a>
                                     <a ui-sref="facturacion.faqs" hreflang="es" type="button" class="btn btn-warning" data-toggle="button" aria-pressed="false" autocomplete="off"><span class="glyphicon glyphicon-question-sign"></span>  Preguntas Frecuentes</a>
                                 </p>
                             </div>
@@ -60,7 +60,7 @@
                             <br>
                             <div class="notaFrame">
                                 <p class="contenido">Si tu ticket NO CONTIENE referencia de facturación solicita la factura en la farmacia en donde realizaste la compra.</p>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,6 +70,9 @@
     <div class="col-md-4 col-xs-12">
         <div ng-include="'views/promosSide.html'"></div>
     </div>
+</div>
+<div class="formAlert" style="background-color: #f0ad4e;" ng-if="mantenimiento">
+    <p class="text-center"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Temporalmente en mantenimiento</p>
 </div>
 <div class="modal fade" id="refencia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">
@@ -81,6 +84,25 @@
                 </div>
                 <div class="modal-body">
                     <p class="well" style="text-align:center;"><img src="images/ticket-referencia-facturacion.jpg" alt=""></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel" style="text-transform: inherit;"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Temporalmente en mantenimiento</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="well" style="text-align:center;">Debido a un mantenimiento, nuestro servicio de facturación no se encuentra disponible, por favor, inténtelo más tarde. Gracias por su comprensión.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

@@ -5,8 +5,14 @@
     <div class="col-md-12 banner hidden-xs">
         <a id="bannerLink" href=""><img id="banner" src="images/nuevos_genericos.jpg" alt=""></a>
     </div>
+    <div id="loadingMeds" class="loadingMeds col-md-4 col-sm-4">
+        <div class='aCssSpinner2'>
+            <p><img src="images/loader.gif" alt=""></p>
+        </div>
+    </div>    
     <div class="row detalleF" vocab="https://schema.org/" typeof="Product">
         <div class="col-md-8 col-xs-12 detalle detalleD">
+            <div class="row filtros loadScreen"></div>
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="col-md-12 col-xs-12" ng-if="medActual.urlImagen.length == 0 || medActual.urlImagen.length == 1">
@@ -91,7 +97,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12" ng-if="calificable == 0">
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#estrellas" ng-if="calificable == 0"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button>
-                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="{{shareCaption}}" socialshare-text="{{medActual.NombreProducto || medActual.DESCRIPCION}} a sólo {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}" socialshare-media="https://farmaciasdesimilares.com/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" socialshare-type="feed" socialshare-redirect-uri="https://farmaciasdesimilares.com/propuesta/gracias.html" socialshare-description="Tenemos más de 100 nuevos genéricos. ¡Pregunta por el tuyo!" socialshare-popup-height="350" socialshare-popup-width="540">
+                                    <button class="btn btn-medium center-content radius3 bg-white btn-primary share" socialshare="" socialshare-provider="facebook" socialshare-via="398798393664417" socialshare-url="{{urlShare}}" socialshare-caption="{{shareCaption}}" socialshare-text="{{medActual.NombreProducto || medActual.DESCRIPCION}} a sólo {{medActual.PrecioVenta || medActual.PRECIO_VENTA | currency}}" socialshare-media="https://farmaciasdesimilares.com/ui/productos/me/M_{{medActual.IdProducto.trim()}}.jpg" socialshare-type="feed" socialshare-redirect-uri="https://farmaciasdesimilares.com/propuesta/gracias.html" socialshare-description="Tenemos más de 150 nuevos genéricos. ¡Pregunta por el tuyo!" socialshare-popup-height="350" socialshare-popup-width="540">
                                         <div class="resp-sharing-button__icon">
                                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 32 32">
                                                 <path d="M21 6c-2.761 0-5 2.239-5 5v3h-4v4h4v14h4v-14h4.5l1-4h-5.5v-3c0-0.552 0.448-1 1-1h5v-4h-5z"></path>

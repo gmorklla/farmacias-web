@@ -1,7 +1,7 @@
 <div class="historico" ng-controller="PromosCtrl">
     <h1 class="popDisplayTitle adsTitle">¡Lo nuevo!</h1>
     <div class="col-md-12 col-sm-12 col-xs-12 panel panel-default ads">
-        <div class="panel-body col-md-12 col-sm-6 col-xs-12" dir-paginate="(key, item) in ads | orderBy:'key':'true' | itemsPerPage: 2" pagination-id="siminotasPag">
+        <div class="panel-body col-md-12 col-sm-6 col-xs-12" dir-paginate="item in ads | itemsPerPage: 2" pagination-id="siminotasPag">
             <p>
                 <a ui-sref="promociones"><img ng-src="images/ads/{{::item.img}}.jpg" alt=""></a>
             </p>

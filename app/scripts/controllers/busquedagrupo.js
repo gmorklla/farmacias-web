@@ -40,6 +40,7 @@ angular.module('farmaciasWebApp')
                 $scope.showPromos = 1;
                 search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig('nuevo'));
             } else {
+                $scope.showPromos = 1;
                 if($stateParams.termino){
                     search = busqueda.buscaPredictiva(prettyUrlSpc.deconfig($stateParams.termino));
                 } else {

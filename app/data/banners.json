@@ -1,7 +1,11 @@
 {
     "banners": [{
+        "banner": "banner-frio",
+        "url": "#!/lo-nuevo",
+        "target": "_self"
+    },{
         "banner": "banner-buen-lunes",
-        "url": "#/lo-nuevo",
+        "url": "#!/lo-nuevo",
         "target": "_self"
     }, {
         "banner": "banner-cndee",
@@ -17,7 +21,11 @@
         "target": "_blank"
     }, {
         "banner": "nuevos_genericos",
-        "url": "#/lo-nuevo",
+        "url": "#!/lo-nuevo",
+        "target": "_self"
+    }, {
+        "banner": "banner-orlistat",
+        "url": "https://farmaciasdesimilares.com/#!/busqueda/2676/orlistat-tabletas",
         "target": "_self"
     }]
 }

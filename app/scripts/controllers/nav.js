@@ -58,6 +58,7 @@ angular.module('farmaciasWebApp')
                     
                     cuantos.then(function(datos) {
                         $scope.searchResult = JSON.parse(datos.data.d);
+                        //console.log($scope.searchResult);
                         $scope.searchLoader = false;
                         $scope.terminoBuscado = $scope.termino;
                         $scope.listo = true;

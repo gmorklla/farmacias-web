@@ -1,0 +1,122 @@
+{
+    "productos": [{
+        "NombreProducto": "BROMURO DE PINAVERIO / DIMETICONA CAPSULAS GELATINA BLANDA",
+        "IdProducto": "2342",
+        "PrecioVenta": "188",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2342.jpg"]
+    },
+    {
+        "NombreProducto": "TELMISARTAN / HIDROCLOROTIAZIDA BOEHRINGER TABLETAS",
+        "IdProducto": "2232",
+        "PrecioVenta": "244",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2232.jpg"]
+    },
+    {
+        "NombreProducto": "PARACETAMOL / TRAMADOL TAB",
+        "IdProducto": "2189",
+        "PrecioVenta": "199",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2189.jpg"]
+    },
+    {
+        "NombreProducto": "MAGALDRATO / DIMETICONA GEL ORAL SOBRES",
+        "IdProducto": "2276",
+        "PrecioVenta": "49",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2276.jpg"]
+    },
+    {
+        "NombreProducto": "DIOSMINA / HESPERIDINA  TAB",
+        "IdProducto": "2518",
+        "PrecioVenta": "188",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2518.jpg"]
+    },
+    {
+        "NombreProducto": "NEOMICINA / CAOLIN / PECTINA TAB",
+        "IdProducto": "2200",
+        "PrecioVenta": "53",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2200.jpg"]
+    },
+    {
+        "NombreProducto": "LEVOTIROXINA SODICA / LIOTIRONINA",
+        "IdProducto": "2465",
+        "PrecioVenta": "178",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2465.jpg"]
+    },
+    {
+        "NombreProducto": "BETAHISTINA TAB",
+        "IdProducto": "2227",
+        "PrecioVenta": "269",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2227.jpg"]
+    },
+    {
+        "NombreProducto": "ATORVASTATINA TAB",
+        "IdProducto": "1803",
+        "PrecioVenta": "85",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_1803.jpg"]
+    },
+    {
+        "NombreProducto": "MONTELUKAST COMP",
+        "IdProducto": "1865",
+        "PrecioVenta": "199",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_1865.jpg"]
+    },
+    {
+        "NombreProducto": "IPRATROPIO / SALBUTAMOL AMP",
+        "IdProducto": "1917",
+        "PrecioVenta": "148",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_1917.jpg"]
+    },
+    {
+        "NombreProducto": "BUDESONIDA SUSP PARA NEBULIZACION",
+        "IdProducto": "1916",
+        "PrecioVenta": "159",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_1916.jpg"]
+    },
+    {
+        "NombreProducto": "BUDESONIDA SUSP PARA NEBULIZACION",
+        "IdProducto": "2253",
+        "PrecioVenta": "122",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2253.jpg"]
+    },
+    {
+        "NombreProducto": "IRBESARTAN / HIDROCLOROTIAZIDA TAB",
+        "IdProducto": "2369",
+        "PrecioVenta": "159",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2369.jpg"]
+    },
+    {
+        "NombreProducto": "ROSUVASTATINA TAB",
+        "IdProducto": "2155",
+        "PrecioVenta": "132",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2155.jpg"]
+    },
+    {
+        "NombreProducto": "ESPIRONOLACTONA / FUROSEMIDA CAP",
+        "IdProducto": "2068",
+        "PrecioVenta": "149",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2068.jpg"]
+    },
+    {
+        "NombreProducto": "TAMSULOSINA CAP",
+        "IdProducto": "778",
+        "PrecioVenta": "132",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_778.jpg"]
+    },
+    {
+        "NombreProducto": "ROSUVASTATINA TAB",
+        "IdProducto": "1930",
+        "PrecioVenta": "132",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_1930.jpg"]
+    },
+    {
+        "NombreProducto": "PAROXETINA TAB",
+        "IdProducto": "882",
+        "PrecioVenta": "60",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_882.jpg"]
+    },
+    {
+        "NombreProducto": "CANDESARTAN / HIDROCLOROTIAZIDA",
+        "IdProducto": "2248",
+        "PrecioVenta": "199",
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2248.jpg"]
+    }]
+}

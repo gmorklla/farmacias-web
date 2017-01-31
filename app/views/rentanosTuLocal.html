@@ -13,8 +13,10 @@
                 </div>
             </div>
             <div class="col-md-12 col-xs-12 img">
-                <p><img ng-src="images/siminotas/entidad_certificadora.jpg" alt=""></p>
+                <p><img ng-src="images/farmacia-similares.jpg" alt=""></p>
             </div>
+
+
             <div class="contacto col-md-12 col-sm-12 col-xs-12" ng-hide="enviado == 0">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <h1 class="popDisplayTitle notaTitulo" style="background-color: lightgreen !important;">¡Gracias!</h1>
@@ -22,7 +24,24 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <p>Nos pondremos en contacto contigo a la brevedad.</p>
                 </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <hr>
+                </div>
             </div>
+
+            <div class="contacto col-md-12 col-sm-12 col-xs-12" ng-hide="recibido == true">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h1 class="popDisplayTitle notaTitulo" style="background-color: coral !important;">Error</h1>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p style="color: coral">{{mensajeError}}</p>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <hr>
+                </div>
+            </div>
+
+
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-12 col-xs-12 panel panel-default">
                     <div class="panel-heading" style="text-transform: initial;">¿Tienes un local comercial disponible?</div>
@@ -30,17 +49,18 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="notaFrame">
                                 <p class="contenido">
-                                    Nos gustaría tener presencia en tu localidad, si cuenta con buena ubicación, fácil acceso, superficie minima de: 80m2, preferentemente esquina o sobre Av. principal, rodeado de comercios con alto flujo peatonal y vehicular.
+                                    Nos gustaría tener presencia en tu localidad, si cuenta con buena ubicación, fácil acceso, superficie minima de 80 m2, 8 m de frente, esté en planta baja, preferentemente esquina o sobre Av. principal, rodeado de comercios con alto flujo peatonal y vehicular.
                                     <br>
                                     <br> Para que tu local sea seleccionado deberá cumplir con lo siguiente:
                                     <br>
                                     <br>
                                     <ul class="faq">
                                         <li>Contar con uso de suelo comercial.</li>
-                                        <li>Tener al corriente el pago de (predial, agua y luz).</li>
+                                        <li>Tener al corriente el pago de predial, agua y luz.</li>
                                         <li>Expedir CFDI (comprobante fiscal digital).</li>
-                                        <li>Contar titulo de propiedad.</li>
+                                        <li>Contar título de propiedad.</li>
                                         <li>Contar con cuenta bancaria y clabe interbancaria para transferencias.</li>
+                                        <li>Estar en planta baja.</li>
                                     </ul>
                                 </p>
                             </div>
@@ -70,36 +90,28 @@
                                 </button>
                                 <br>
                                 <br>
-                                <p class="contenido">
+                                <!--<p class="contenido">
                                     Fax:
                                 </p>
                                 <div class="btn-group" role="group" aria-label="...">
                                     <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>&nbsp;&nbsp; (01 55) 5422 4500</button>
                                     <button type="button" class="btn btn-primary">ext. 7152</button>
-                                </div>
+                                </div> -->
                                 <br>
                                 <br>
                             </div>
-                            <div class="subtitulo" ng-hide="enviado == 0">Mandanos tu información:</div>
                         </div>
                         <div class="row">
+                            <!-- <button ng-click="llenaCampos()">Prueba registro</button> -->
                             <form name="rentaForm" class="contacto" novalidate ng-hide="enviado == 1">
                                 <div class="col-md-12 col-xs-12">
-                                    <h1 class="popDisplayTitle notaTitulo">Datos personales</h1>
+                                    <h1 class="popDisplayTitle notaTitulo" style="text-transform: inherit;">Datos personales</h1>
                                 </div>
-                                <!-- Nombre -->
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group has-feedback" ng-class="{
-                                                  'has-error': rentaForm.name.$touched && rentaForm.name.$invalid,
-                                                  'has-success': rentaForm.name.$touched && !rentaForm.name.$invalid
-                                                }">
-                                        <label class="control-label requiredField" for="name">
-                                            Nombre
-                                            <span class="asteriskField">*</span>
-                                        </label>
-                                        <input class="form-control" id="name" name="name" type="text" aria-describedby="inputSuccess5Status" placeholder="Nombre" ng-model="username" ng-minlength="3" ng-maxlength="150" required />
+                                <div class="loadingMeds col-md-4 col-sm-4" style="display: block;" ng-show="buscaCorreo">
+                                    <div class='aCssSpinner2'>
+                                        <p><img src="images/loader.gif" alt="" style="border:none;"></p>
                                     </div>
-                                </div>
+                                </div>  
                                 <!-- Email -->
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group" ng-class="{ 
@@ -110,65 +122,164 @@
                                             Email
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <input class="form-control" id="email" name="email" type="email" placeholder="Email" ng-model="email" required />
+                                        <input class="form-control" id="email" name="email" type="email" placeholder="Email" ng-model="email" ng-maxlength="60" required />
                                     </div>
                                 </div>
-                                <!-- Teléfono Fijo -->
+                                <!-- Btn buscar -->
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group" ng-class="{ 
-                                                'has-error': rentaForm.tel.$touched && rentaForm.tel.$invalid,
-                                                'has-success': rentaForm.tel.$touched && !rentaForm.tel.$invalid
-                                              }">
-                                        <label class="control-label requiredField" for="tel">
-                                            Teléfono fijo
-                                            <span class="asteriskField">*</span>
-                                        </label>
-                                        <input class="form-control" id="tel" name="tel" type="tel" placeholder="Teléfono fijo" ng-model="tel" ng-minlength="10" ng-maxlength="10" required/>
+                                    <div style="margin-top: 45px;">
+                                        <button type="button" class="btn btn-primary" ng-click="verificaEmailFn()" data-toggle="tooltip" data-placement="top" title="Busca tu correo si ya te has registrado antes">
+                                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;&nbsp; Buscar correo electrónico
+                                        </button>
                                     </div>
                                 </div>
-                                <!-- Teléfono Móvil -->
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group" ng-class="{ 
-                                                'has-error': rentaForm.telMov.$touched && rentaForm.telMov.$invalid,
-                                                'has-success': rentaForm.telMov.$touched && !rentaForm.telMov.$invalid
-                                              }">
-                                        <label class="control-label requiredField" for="telMov">
-                                            Teléfono móvil
-                                            <span class="asteriskField">*</span>
-                                        </label>
-                                        <input class="form-control" id="telMov" name="telMov" type="telMov" placeholder="Teléfono móvil" ng-model="telMov" ng-minlength="10" ng-maxlength="10" required/>
+                                <div class="col-md-12 col-sm-12 col-xs-12" ng-show="previoRegistro == false && realizaBusqueda == true">
+                                    <div>
+                                        <p>No existe registro previo</p>
                                     </div>
                                 </div>
-                                <!-- Dirección -->
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group has-feedback" ng-class="{
-                                                  'has-error': rentaForm.direccion.$touched && rentaForm.direccion.$invalid,
-                                                  'has-success': rentaForm.direccion.$touched && !rentaForm.direccion.$invalid
-                                                }">
-                                        <label class="control-label requiredField" for="direccion">
-                                            Dirección
-                                            <span class="asteriskField">*</span>
-                                        </label>
-                                        <input class="form-control" id="direccion" name="direccion" type="text" aria-describedby="inputSuccess5Status" placeholder="Dirección" ng-model="direccion" ng-minlength="10" ng-maxlength="500" required />
+                                <!-- Muestra oculta inputs -->
+                                <div ng-show="previoRegistro == false">
+                                    <!-- Nombre -->
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group has-feedback" ng-class="{
+                                                      'has-error': rentaForm.name.$touched && rentaForm.name.$invalid,
+                                                      'has-success': rentaForm.name.$touched && !rentaForm.name.$invalid
+                                                    }">
+                                            <label class="control-label requiredField" for="name">
+                                                Nombre
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <input style="width: 98%;" class="form-control" id="name" name="name" type="text" aria-describedby="inputSuccess5Status" placeholder="Nombre" ng-model="username" ng-minlength="3" ng-maxlength="150" required />
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- Localidad -->
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group has-feedback" ng-class="{
-                                                  'has-error': rentaForm.localidad.$touched && rentaForm.localidad.$invalid,
-                                                  'has-success': rentaForm.localidad.$touched && !rentaForm.localidad.$invalid
-                                                }">
-                                        <label class="control-label requiredField" for="localidad">
-                                            Localidad
-                                            <span class="asteriskField">*</span>
-                                        </label>
-                                        <input class="form-control" id="localidad" name="localidad" type="text" aria-describedby="inputSuccess5Status" placeholder="Localidad" ng-model="localidad" ng-minlength="3" ng-maxlength="100" required />
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <p class="bg-info text-primary" style="border-radius: 4px;">* Tanto el teléfono fijo como el teléfono móvil deben contener 10 dígitos (incluyendo clave LADA)</p>
+                                    </div>
+                                    <!-- Teléfono Fijo -->
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group" ng-class="{ 
+                                                    'has-error': rentaForm.tel.$touched && rentaForm.tel.$invalid,
+                                                    'has-success': rentaForm.tel.$touched && !rentaForm.tel.$invalid
+                                                  }">
+                                            <label class="control-label requiredField" for="tel">
+                                                Teléfono fijo
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <input class="form-control" id="tel" name="tel" type="tel" placeholder="Teléfono fijo" ng-model="tel" ng-minlength="10" ng-maxlength="10" required/>
+                                        </div>
+                                    </div>
+                                    <!-- Teléfono Móvil -->
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group" ng-class="{ 
+                                                    'has-error': rentaForm.telMov.$touched && rentaForm.telMov.$invalid,
+                                                    'has-success': rentaForm.telMov.$touched && !rentaForm.telMov.$invalid
+                                                  }">
+                                            <label class="control-label requiredField" for="telMov">
+                                                Teléfono móvil
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <input class="form-control" id="telMov" name="telMov" type="telMov" placeholder="Teléfono móvil" ng-model="telMov" ng-minlength="10" ng-maxlength="10" required/>
+                                        </div>
+                                    </div>
+                                    <!-- Dirección -->
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group has-feedback" ng-class="{
+                                                      'has-error': rentaForm.direccion.$touched && rentaForm.direccion.$invalid,
+                                                      'has-success': rentaForm.direccion.$touched && !rentaForm.direccion.$invalid
+                                                    }">
+                                            <label class="control-label requiredField" for="direccion">
+                                                Dirección
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <input style="width: 98%;" class="form-control" id="direccion" name="direccion" type="text" aria-describedby="inputSuccess5Status" placeholder="Dirección" ng-model="direccion" ng-minlength="10" ng-maxlength="200" required />
+                                        </div>
+                                    </div>
+                                    <div class="loadingMeds col-md-4 col-sm-4" style="display: block;" ng-show="userMun">
+                                        <div class='aCssSpinner2'>
+                                            <p><img src="images/loader.gif" alt="" style="border:none;"></p>
+                                        </div>
+                                    </div>                                    
+                                    <!-- Estado -->
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group has-feedback" ng-class="{
+                                                      'has-error': rentaForm.estadoP.$touched && rentaForm.estadoP.$invalid,
+                                                      'has-success': rentaForm.estadoP.$touched && !rentaForm.estadoP.$invalid
+                                                    }">
+                                            <label class="control-label requiredField" for="estadoP">
+                                                Estado
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <select class="select form-control" id="estadoP" name="estadoP" ng-model="estadoP" required ng-change="estadoPSeleccionado()">
+                                                <option value="">Escoge una opción</option>
+                                                <option value="1">Aguascalientes</option>
+                                                <option value="2">Baja California</option>
+                                                <option value="3">Baja California Sur</option>
+                                                <option value="4">Campeche</option>
+                                                <option value="5">Coahuila de Zaragoza</option>
+                                                <option value="6">Colima</option>
+                                                <option value="7">Chiapas</option>
+                                                <option value="8">Chihuahua</option>
+                                                <option value="9">Distrito Federal</option>
+                                                <option value="10">Durango</option>
+                                                <option value="11">Guanajuato</option>
+                                                <option value="12">Guerrero</option>
+                                                <option value="13">Hidalgo</option>
+                                                <option value="14">Jalisco</option>
+                                                <option value="15">México</option>
+                                                <option value="16">Michoacán de Ocampo</option>
+                                                <option value="17">Morelos</option>
+                                                <option value="18">Nayarit</option>
+                                                <option value="19">Nuevo León</option>
+                                                <option value="20">Oaxaca</option>
+                                                <option value="21">Puebla</option>
+                                                <option value="22">Querétaro</option>
+                                                <option value="23">Quintana Roo</option>
+                                                <option value="24">San Luis Potosí</option>
+                                                <option value="25">Sinaloa</option>
+                                                <option value="26">Sonora</option>
+                                                <option value="27">Tabasco</option>
+                                                <option value="28">Tamaulipas</option>
+                                                <option value="29">Tlaxcala</option>
+                                                <option value="30">Veracruz de Ignacio de la Llave</option>
+                                                <option value="31">Yucatán</option>
+                                                <option value="32">Zacatecas</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Mun -->
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group has-feedback" ng-class="{
+                                                      'has-error': rentaForm.municipioP.$touched && rentaForm.municipioP.$invalid,
+                                                      'has-success': rentaForm.municipioP.$touched && !rentaForm.municipioP.$invalid
+                                                    }">
+                                            <label class="control-label requiredField" for="municipioP">
+                                                Municipio
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <select class="select form-control" id="municipioP" name="municipioP" ng-model="municipioP" required ng-options="itemForMunicipioP.Nombre for itemForMunicipioP in itemsForMunicipioP track by itemForMunicipioP.Id_Municipio">
+                                                <option value="">Escoge una opción</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <h1 class="popDisplayTitle notaTitulo">Datos del local</h1>
+                                    <h1 class="popDisplayTitle notaTitulo" style="text-transform: inherit;">Datos del local</h1>
                                     <br>
                                     <div class="subtitulo">Dirección</div>
+                                </div>
+                                <!-- Calle -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.calle.$touched && rentaForm.calle.$invalid,
+                                                  'has-success': rentaForm.calle.$touched && !rentaForm.calle.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="calle">
+                                            Calle
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="calle" name="calle" type="text" aria-describedby="inputSuccess5Status" placeholder="Calle" ng-model="calle" ng-minlength="3" ng-maxlength="100" required />
+                                    </div>
                                 </div>
                                 <!-- Num ext -->
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -180,7 +291,7 @@
                                             Número exterior
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <input class="form-control" id="numExt" name="numExt" type="number" aria-describedby="inputSuccess5Status" placeholder="Número exterior" ng-model="numExt" ng-minlength="1" ng-maxlength="5" required />
+                                        <input class="form-control" id="numExt" name="numExt" type="text" aria-describedby="inputSuccess5Status" placeholder="Número exterior" ng-model="numExt" ng-minlength="1" ng-maxlength="10" required />
                                     </div>
                                 </div>
                                 <!-- Num int -->
@@ -191,9 +302,104 @@
                                                 }">
                                         <label class="control-label requiredField" for="numInt">
                                             Número interior
+                                        </label>
+                                        <input class="form-control" id="numInt" name="numInt" type="text" aria-describedby="inputSuccess5Status" placeholder="Número interior" ng-model="numInt" ng-minlength="1" ng-maxlength="60" />
+                                    </div>
+                                </div>
+                                <!-- Entre calle y calle -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.entre1.$touched && rentaForm.entre1.$invalid,
+                                                  'has-success': rentaForm.entre1.$touched && !rentaForm.entre1.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="entre1">
+                                            Entre qué calles
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <input class="form-control" id="numInt" name="numInt" type="number" aria-describedby="inputSuccess5Status" placeholder="Número interior" ng-model="numInt" ng-minlength="1" ng-maxlength="5" required />
+                                        <input class="form-control" id="entre1" name="entre1" type="text" aria-describedby="inputSuccess5Status" placeholder="Calle 1" ng-model="entre1" ng-maxlength="60" required style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" />
+                                        <input class="form-control" id="entre2" name="entre2" type="text" aria-describedby="inputSuccess5Status" placeholder="Calle 2" ng-model="entre2" ng-maxlength="60" required style="border-top-left-radius: 0; border-top-right-radius: 0;" />
+                                    </div>
+                                </div>
+                                <div class="loadingMeds col-md-4 col-sm-4" style="display: block;" ng-show="localMun">
+                                    <div class='aCssSpinner2'>
+                                        <p><img src="images/loader.gif" alt="" style="border:none;"></p>
+                                    </div>
+                                </div>
+                                <!-- Estado -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.estado.$touched && rentaForm.estado.$invalid,
+                                                  'has-success': rentaForm.estado.$touched && !rentaForm.estado.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="estado">
+                                            Estado
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <select class="select form-control" id="estado" name="estado" ng-model="estado" required ng-change="estadoSeleccionado()">
+                                            <option value="">Escoge una opción</option>
+                                            <option value="1">Aguascalientes</option>
+                                            <option value="2">Baja California</option>
+                                            <option value="3">Baja California Sur</option>
+                                            <option value="4">Campeche</option>
+                                            <option value="5">Coahuila de Zaragoza</option>
+                                            <option value="6">Colima</option>
+                                            <option value="7">Chiapas</option>
+                                            <option value="8">Chihuahua</option>
+                                            <option value="9">Distrito Federal</option>
+                                            <option value="10">Durango</option>
+                                            <option value="11">Guanajuato</option>
+                                            <option value="12">Guerrero</option>
+                                            <option value="13">Hidalgo</option>
+                                            <option value="14">Jalisco</option>
+                                            <option value="15">México</option>
+                                            <option value="16">Michoacán de Ocampo</option>
+                                            <option value="17">Morelos</option>
+                                            <option value="18">Nayarit</option>
+                                            <option value="19">Nuevo León</option>
+                                            <option value="20">Oaxaca</option>
+                                            <option value="21">Puebla</option>
+                                            <option value="22">Querétaro</option>
+                                            <option value="23">Quintana Roo</option>
+                                            <option value="24">San Luis Potosí</option>
+                                            <option value="25">Sinaloa</option>
+                                            <option value="26">Sonora</option>
+                                            <option value="27">Tabasco</option>
+                                            <option value="28">Tamaulipas</option>
+                                            <option value="29">Tlaxcala</option>
+                                            <option value="30">Veracruz de Ignacio de la Llave</option>
+                                            <option value="31">Yucatán</option>
+                                            <option value="32">Zacatecas</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Mun -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.municipioL.$touched && rentaForm.municipioL.$invalid,
+                                                  'has-success': rentaForm.municipioL.$touched && !rentaForm.municipioL.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="municipioL">
+                                            Municipio
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <select class="select form-control" id="municipioL" name="municipioL" ng-model="municipioL" required ng-options="itemForMunicipio as itemForMunicipio.Nombre for itemForMunicipio in itemsForMunicipio track by itemForMunicipio.Id_Municipio" ng-change="municipioSeleccionado()">
+                                            <option value="">{{municipioL.Nombre || 'Escoge una opción'}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- CP -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.codPos.$touched && rentaForm.codPos.$invalid,
+                                                  'has-success': rentaForm.codPos.$touched && !rentaForm.codPos.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="codPos">
+                                            Código Postal
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <select class="select form-control" id="codPos" name="codPos" ng-model="codPos" required ng-options="itemForCodPos.CodigoPostal for itemForCodPos in itemsForCodPos track by itemForCodPos.CodigoPostal" ng-change="codPosSeleccionado()">
+                                            <option value="">Escoge una opción</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- Colonia -->
@@ -206,20 +412,9 @@
                                             Colonia
                                             <span class="asteriskField">*</span>
                                         </label>
-                                        <input class="form-control" id="colonia" name="colonia" type="text" aria-describedby="inputSuccess5Status" placeholder="Colonia" ng-model="colonia" ng-minlength="5" ng-maxlength="500" required />
-                                    </div>
-                                </div>
-                                <!-- Del / Mun -->
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group has-feedback" ng-class="{
-                                                  'has-error': rentaForm.municipio.$touched && rentaForm.municipio.$invalid,
-                                                  'has-success': rentaForm.municipio.$touched && !rentaForm.municipio.$invalid
-                                                }">
-                                        <label class="control-label requiredField" for="municipio">
-                                            Delegación / Municipio
-                                            <span class="asteriskField">*</span>
-                                        </label>
-                                        <input class="form-control" id="municipio" name="municipio" type="text" aria-describedby="inputSuccess5Status" placeholder="Delegación / Municipio" ng-model="municipio" ng-minlength="5" ng-maxlength="500" required />
+                                        <select class="select form-control" id="colonia" name="colonia" ng-model="colonia" required ng-options="itemForColonia.Asentamiento for itemForColonia in itemsForColonia track by itemForColonia.Asentamiento" ng-change="codPosSeleccionado()">
+                                            <option value="">Escoge una opción</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
@@ -251,6 +446,19 @@
                                         <input class="form-control" id="metrosFondo" name="metrosFondo" type="number" aria-describedby="inputSuccess5Status" placeholder="Metros de fondo" ng-model="metrosFondo" required />
                                     </div>
                                 </div>
+                                <!-- Superficie total -->
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group has-feedback" ng-class="{
+                                                  'has-error': rentaForm.superficie.$touched && rentaForm.superficie.$invalid,
+                                                  'has-success': rentaForm.superficie.$touched && !rentaForm.superficie.$invalid
+                                                }">
+                                        <label class="control-label requiredField" for="superficie">
+                                            Superficie total
+                                            <span class="asteriskField">*</span>
+                                        </label>
+                                        <input class="form-control" id="superficie" name="superficie" type="number" aria-describedby="inputSuccess5Status" placeholder="Superficie total" ng-model="superficie" required />
+                                    </div>
+                                </div>
                                 <!-- Importe de renta -->
                                 <div class="col-md-12 col-sm-12 col-xs-12" style="padding-left: 20px; padding-right: 20px;">
                                     <div class="form-group has-feedback" ng-class="{
@@ -258,12 +466,12 @@
                                                   'has-success': rentaForm.importeRenta.$touched && !rentaForm.importeRenta.$invalid
                                                 }">
                                         <label class="control-label requiredField" for="importeRenta">
-                                            Importe de renta
+                                            Importe de renta (pesos MX)
                                             <span class="asteriskField">*</span>
                                         </label>
                                         <div class="input-group">
                                             <div class="input-group-addon">$</div>
-                                            <input class="form-control" id="importeRenta" name="importeRenta" type="number" aria-describedby="inputSuccess5Status" placeholder="Cantidad" ng-model="importeRenta" required>
+                                            <input class="form-control" id="importeRenta" name="importeRenta" type="number" aria-describedby="inputSuccess5Status" placeholder="Cantidad en pesos (MX)" ng-model="importeRenta" required>
                                             <div class="input-group-addon">.00</div>
                                         </div>
                                     </div>
@@ -276,16 +484,15 @@
                                               }">
                                         <label class="control-label requiredField" for="notas">
                                             Notas adicionales
-                                            <span class="asteriskField">*</span>
                                         </label>
-                                        <textarea class="form-control" cols="40" id="notas" name="notas" rows="10" ng-model="notas" ng-minlength="20" ng-maxlength="1000" required></textarea>
+                                        <textarea class="form-control" cols="40" id="notas" name="notas" rows="10" ng-model="notas" ng-maxlength="100"></textarea>
                                     </div>
                                 </div>
                                 <!-- Privacidad -->
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" id="privacidad" name="privacidad" aria-describedby="inputSuccess5Status" ng-model="privacidad" required> Acepto las politicas de privacidad
+                                            <input type="checkbox" id="privacidad" name="privacidad" aria-describedby="inputSuccess5Status" ng-model="privacidad" required ng-change="comprueba();"> <a data-toggle="modal" data-target="#avisoPrivacidad">Acepto las politicas de privacidad</a>
                                         </label>
                                     </div>
                                 </div>
@@ -315,8 +522,17 @@
             <p class="text-center" ng-message="maxlength">Tu nombre es muy largo (Máximo 150 letras).</p>
             <p class="text-center" ng-message="required">Tu nombres es requerido.</p>
         </div>
+        <div class="formAlert" ng-messages="rentaForm.entre1.$error" ng-if="rentaForm.entre1.$touched">
+            <p class="text-center" ng-message="maxlength">El nombre de la calle entre la que se encuentra el local es muy largo (Máximo 60 letras).</p>
+            <p class="text-center" ng-message="required">El nombre de la calle entre la que se encuentra el local es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.entre2.$error" ng-if="rentaForm.entre2.$touched">
+            <p class="text-center" ng-message="maxlength">El nombre de la calle entre la que se encuentra el local es muy largo (Máximo 60 letras).</p>
+            <p class="text-center" ng-message="required">El nombre de la calle entre la que se encuentra el local es requerido.</p>
+        </div>
         <div class="formAlert" ng-messages="rentaForm.email.$error" ng-if="rentaForm.email.$touched">
             <p class="text-center" ng-message="required">Tu email es requerido.</p>
+            <p class="text-center" ng-message="maxlength">Tu email es muy largo (Máximo 60 letras).</p>
             <p class="text-center" ng-message="email">Parece que escribiste mal tu email.</p>
         </div>
         <div class="formAlert" ng-messages="rentaForm.tel.$error" ng-if="rentaForm.tel.$touched">
@@ -336,10 +552,8 @@
             <p class="text-center" ng-message="maxlength">Tu dirección es muy larga (Máximo 500 letras).</p>
             <p class="text-center" ng-message="required">Tu dirección es requerida.</p>
         </div>
-        <div class="formAlert" ng-messages="rentaForm.localidad.$error" ng-if="rentaForm.localidad.$touched">
-            <p class="text-center" ng-message="minlength">Tu localidad es muy corta (Mínimo 3 letras).</p>
-            <p class="text-center" ng-message="maxlength">Tu localidad es muy larga (Máximo 100 letras).</p>
-            <p class="text-center" ng-message="required">Tu localidad es requerida.</p>
+        <div class="formAlert" ng-messages="rentaForm.estadoP.$error" ng-if="rentaForm.estadoP.$touched">
+            <p class="text-center" ng-message="required">Tu estado es requerido.</p>
         </div>
         <div class="formAlert" ng-messages="rentaForm.numExt.$error" ng-if="rentaForm.numExt.$touched">
             <p class="text-center" ng-message="minlength">Tu número exterior es muy corto (Mínimo 1 letras).</p>
@@ -351,15 +565,31 @@
             <p class="text-center" ng-message="maxlength">Tu número interior es muy largo (Máximo 5 letras).</p>
             <p class="text-center" ng-message="required">Tu número interior es requerido.</p>
         </div>
+        <div class="formAlert" ng-messages="rentaForm.codPos.$error" ng-if="rentaForm.codPos.$touched">
+            <p class="text-center" ng-message="required">El código postal es requerido.</p>
+        </div>        
         <div class="formAlert" ng-messages="rentaForm.colonia.$error" ng-if="rentaForm.colonia.$touched">
             <p class="text-center" ng-message="minlength">El nombre de tu colonia es muy corto (Mínimo 5 letras).</p>
             <p class="text-center" ng-message="maxlength">El nombre de tu colonia es muy largo (Máximo 500 letras).</p>
             <p class="text-center" ng-message="required">El nombre de tu colonia es requerido.</p>
         </div>
-        <div class="formAlert" ng-messages="rentaForm.municipio.$error" ng-if="rentaForm.municipio.$touched">
-            <p class="text-center" ng-message="minlength">El nombre de tu delegación o municipio es muy corto (Mínimo 5 letras).</p>
-            <p class="text-center" ng-message="maxlength">El nombre de tu delegación o municipio es muy largo (Máximo 500 letras).</p>
-            <p class="text-center" ng-message="required">El nombre de tu delegación o municipio es requerido.</p>
+        <div class="formAlert" ng-messages="rentaForm.calle.$error" ng-if="rentaForm.calle.$touched">
+            <p class="text-center" ng-message="minlength">El nombre de tu calle es muy corto (Mínimo 5 letras).</p>
+            <p class="text-center" ng-message="maxlength">El nombre de tu calle es muy largo (Máximo 500 letras).</p>
+            <p class="text-center" ng-message="required">El nombre de tu calle es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.entre.$error" ng-if="rentaForm.entre.$touched">
+            <p class="text-center" ng-message="required">Por favor, menciona entre qué calles se encuentra el local.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.municipioL.$error" ng-if="rentaForm.municipioL.$touched">
+            <p class="text-center" ng-message="minlength">El nombre de tu municipio es muy corto (Mínimo 5 letras).</p>
+            <p class="text-center" ng-message="maxlength">El nombre de tu municipio es muy largo (Máximo 500 letras).</p>
+            <p class="text-center" ng-message="required">El nombre de tu municipio es requerido.</p>
+        </div>
+        <div class="formAlert" ng-messages="rentaForm.municipioP.$error" ng-if="rentaForm.municipioP.$touched">
+            <p class="text-center" ng-message="minlength">El nombre de tu municipio es muy corto (Mínimo 5 letras).</p>
+            <p class="text-center" ng-message="maxlength">El nombre de tu municipio es muy largo (Máximo 500 letras).</p>
+            <p class="text-center" ng-message="required">El nombre de tu municipio es requerido.</p>
         </div>
         <div class="formAlert" ng-messages="rentaForm.metrosFrente.$error" ng-if="rentaForm.metrosFrente.$touched">
             <p class="text-center" ng-message="required">El número de metros de frente es requerido.</p>
@@ -367,16 +597,20 @@
         <div class="formAlert" ng-messages="rentaForm.metrosFondo.$error" ng-if="rentaForm.metrosFondo.$touched">
             <p class="text-center" ng-message="required">El número de metros de fondo es requerido.</p>
         </div>
+        <div class="formAlert" ng-messages="rentaForm.superficie.$error" ng-if="rentaForm.superficie.$touched">
+            <p class="text-center" ng-message="required">La superficie total es requerida.</p>
+        </div>        
         <div class="formAlert" ng-messages="rentaForm.importeRenta.$error" ng-if="rentaForm.importeRenta.$touched">
             <p class="text-center" ng-message="required">El importe de la renta es requerido.</p>
         </div>
         <div class="formAlert" ng-messages="rentaForm.notas.$error" ng-if="rentaForm.notas.$touched">
-            <p class="text-center" ng-message="minlength">Tu mensaje es muy corto (Mínimo 20 caracteres).</p>
-            <p class="text-center" ng-message="maxlength">Tu mensaje es muy largo (Máximo 1000 caracteres).</p>
-            <p class="text-center" ng-message="required">Tu mensaje es requerido.</p>
+            <p class="text-center" ng-message="maxlength">Tu mensaje es muy largo (Máximo 100 caracteres).</p>
         </div>
         <div class="formAlert" ng-messages="rentaForm.privacidad.$error" ng-if="rentaForm.privacidad.$touched">
             <p class="text-center" ng-message="required">Debes aceptar las políticas de privacidad.</p>
         </div>
+        <div class="formAlert" ng-messages="rentaForm.estado.$error" ng-if="rentaForm.estado.$touched">
+            <p class="text-center" ng-message="required">Debes seleccionar un estado.</p>
+        </div>        
     </div>
 </div>

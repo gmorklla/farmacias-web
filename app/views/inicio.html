@@ -2,22 +2,21 @@
     <div class="col-xs-12 col-sm-6 col-md-4 mainLeft">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <div class="view view-first" onclick="window.open('https://www.farmaciasdesimilares.com/cuadernillo/index.html', '_blank')">
+                <div class="view view-first" ui-sref="busquedaInterna({ termino: 'frio' })">
                     <img src="images/banner-main-catalogo.jpg" />
                     <div class="mask hidden-sm hidden-xs">
-                        <h2>Catálogo</h2>
-                        <p>Ve todo lo que tenemos para ti</p>
-                        <a href="#" class="info">Ver catálogo</a>
+                        <!-- <h2>Para este frío, en Dr. Simi confío</h2>
+                        <p></p>
+                        <a ui-sref="promociones" class="info">Ver</a> -->
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 descargaApp">
-                <div class="view view-first" onclick="window.open('https://play.google.com/store/apps/details?id=com.farmaciassimilares.simiaventuras', '_blank')">
+                <div class="view view-first" ui-sref="facturacion">
                     <img src="images/banner-main-2.jpg" />
                     <div class="mask hidden-sm hidden-xs">
-                        <h2>Simi Aventuras</h2>
-                        <p style="padding: 10px 20px 0px;">Las aventuras del Dr. simi llegaron a tu móvil</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.farmaciassimilares.simiaventuras" class="info">Descargar juego</a>
+                        <!-- <h2>Facturación Electrónica</h2>
+                        <p></p> -->
                     </div>
                 </div>
             </div>
@@ -27,5 +26,27 @@
         <blockquote>
             <p>En <span>Farmacias Similares</span> el cliente es lo primero</p>
         </blockquote>
+    </div>
+</div>
+
+<div class="modal fade" id="aviso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title fraude" id="exampleModalLabel" style="text-transform: inherit; color: maroon;"></h4>
+                </div>
+                <div class="modal-body">
+                    <p class="well" style="text-align:justify;">Farmacias de Similares, S.A. de C.V., es una empresa dedicada únicamente a la comercialización de medicamentos genéricos e insumos para la salud. <br><br>
+                    <b>No se deje sorprender por publicaciones apócrifas y fraudulentas, en las que, utilizando indebidamente nuestro nombre, se ofrece la venta de automóviles y/o flotillas.</b> <br><br>
+                    Invitamos a nuestros clientes y público en general a permanecer atentos y a hacer caso omiso de dichas publicaciones.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

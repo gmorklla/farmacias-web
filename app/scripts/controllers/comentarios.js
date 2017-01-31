@@ -11,11 +11,12 @@ angular.module('farmaciasWebApp')
 	.controller('CommentCtrl', ['LoadCommentsSrv', '$scope', '$log', '$stateParams', 'jQuery', function(LoadCommentsSrv, $scope, $log, $stateParams, $) {
 		// Usa servicio 'LoadCommentsSrv.httpReq' para cargar los comentarios correpondientes
 		$scope.getComments = function(url, inicio, cuantos) {
+			console.log('url: ' + url + ' - inicio: ' + inicio + ' - cuantos:' + cuantos);
 			var comentarios = LoadCommentsSrv.httpReq(url, inicio, cuantos);
 
 			comentarios.then(function(datos) {
 				$scope.comentarios = JSON.parse(datos.data.d);
-				//console.log($scope.comentarios);
+				console.log($scope.comentarios);
 			}, function(e) {
 				console.log(e);
 			});
@@ -43,6 +44,12 @@ angular.module('farmaciasWebApp')
 			case 'suero-colageno-hidrolizado-eternal-secret':
 				url = '/temas/Suero Colageno';
 				break;
+			case 'dolores-musculares-por-ejercicio':
+				url = '/temas/Dolores Musculares Por Ejercicio';
+				break;				
+			case 'serum-dermo-renovador-por-que-es-indispensable-para-cuidar-tu-piel':
+				url = '/temas/serum dermo renovador por que es indispensable para cuidar tu piel';
+				break;				
 			default:
 				url = notaAct;
 		}
@@ -105,6 +112,7 @@ angular.module('farmaciasWebApp')
 			var comentarios = LoadCommentsSrv.httpComment($scope.commentName, $scope.commentText, url, $scope.claveComentarioPadre);
 
 			comentarios.then(function(datos) {
+				console.log(datos);
 				$scope.likes = JSON.parse(datos.data.d);
 			}, function(e) {
 				console.log(e);

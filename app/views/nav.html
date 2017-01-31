@@ -17,21 +17,10 @@
                     <div class="col-md-4">
                         <ol class="list-unstyled">
                             <li><a href="https://portalfranq.com.mx/" hreflang="es" target="_blank">Acceso a franquiciatarios</a></li>
-                            <li><a ng-click="localizaType(1)" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>
-                            <li><a ui-sref="facturacion" hreflang="es">Facturación electrónica</a></li>
+                            <li><a href="https://www.farmaciasdesimilares.com/cuadernillo/index.html" target="blank" hreflang="es">Catálogo bimestral</a></li>
+                            <li><a ui-sref="renta" hreflang="es">Réntanos tu local</a></li>
                         </ol>
-                    </div>                                           
-<!--                     <div class="col-md-5">
-    <ol class="list-unstyled pull-left">
-        <li class="shopping-car-icon">
-            <a ui-sref="carrito" hreflang="es">
-                <button class="btn btn-info btn-sm" type="button">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Carrito &nbsp;<span class="badge">{{$storage.array.length}}</span>
-                </button>
-            </a>
-        </li>
-    </ol>
-</div> -->
+                    </div>
                 </div>
                 <!-- Header Top Right | Lista tools -->
             </div>
@@ -61,6 +50,7 @@
                             <div class="col-sm-12 col-xs-12">
                                 <a ng-click="noInput()" ui-sref="busquedaGrupo.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
                                     <p class="searchResults">{{item.NombreProducto}}</p>
+                                    <p style="color:grey; margin-bottom:0; font-size: 0.8em;">{{item.Presentacion}}</p>
                                 </a>
                             </div>
                         </div>
@@ -68,7 +58,7 @@
                             <div class="col-sm-12 col-xs-12 bg-danger">
                                 <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
                             </div>
-                            <div class="col-sm-12 col-xs-12 bg-info" style="padding-bottom:0;">
+                            <!-- <div class="col-sm-12 col-xs-12 bg-info" style="padding-bottom:0;">
                                 <p class="searchResults" style="text-align:center; color:darkcyan;">¿Tienes alguna duda?</p>
                                 <h3>Chatea con nosotros</h3>
                                 <hr style="border-top: 1px solid white;">
@@ -87,24 +77,24 @@
                                 <p style="text-align:center;">
                                     <a onclick="openChat(3)" style="cursor: pointer; color:darkcyan;" ng-click="cierraBusqueda()"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Atención a clientes</a>
                                 </p>
-                            </div>  
+                            </div>   -->
                             <hr style="border-top: 1px solid white;">
                             <div class="col-sm-12 col-xs-12 bg-info" style="padding-top:0;">
                                 <hr style="border-top: 1px solid white; margin-top: 0; margin-bottom: 10px;">
                                 <p class="searchResults"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> También puedes llamarnos sin costo a Simitel</p>
                                 <h3>01 800 911 6666</h3>
                                 <hr style="border-top: 1px solid white;">
-                            </div>                            
+                            </div>
                             <div class="col-sm-6 col-xs-6 bg-info">
                                 <p>
-                                    <b>Opción 4:</b><br>
-                                    Asesoría nutricional
+                                    <b>Opción 4:</b>
+                                    <br> Asesoría nutricional
                                 </p>
                             </div>
                             <div class="col-sm-6 col-xs-6 bg-info">
                                 <p>
-                                    <b>Opción 5:</b><br>
-                                    Asesoría médica
+                                    <b>Opción 5:</b>
+                                    <br> Asesoría médica
                                 </p>
                             </div>
                         </div>
@@ -112,7 +102,7 @@
                             <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
                                                   'disabled': searchLoader === true
                                                 }">Ver todos los resultados</a></p>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,7 +128,9 @@
                             <a class="cierraBusqueda" ng-click="noInput()" ng-show="viewSearch"><span style="font-size:2em; float:right; cursor:pointer; color:#BE2126" class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                             <div class="table-responsive" ng-show="viewSearch" style="overflow:hidden;">
                                 <div class="row bPag">
-                                    <p style="text-align:center"><dir-pagination-controls pagination-id="buscaPag" max-size="5"></dir-pagination-controls></p>
+                                    <p style="text-align:center">
+                                        <dir-pagination-controls pagination-id="buscaPag" max-size="5"></dir-pagination-controls>
+                                    </p>
                                     <p class="palabraBuscada">Palabra buscada: {{terminoBuscado}}</p>
                                 </div>
                                 <div class="row">
@@ -153,14 +145,15 @@
                                     <div class="col-sm-12 col-xs-12">
                                         <a ng-click="noInput()" ui-sref="busquedaGrupo.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
                                             <p class="searchResults">{{item.NombreProducto}}</p>
+                                            <p style="color:grey; margin-bottom:0; font-size: 0.8em;">{{item.Presentacion}}</p>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="row" ng-if="searchResult.length == 0">
-                            <div class="col-sm-12 col-xs-12 bg-danger">
-                                <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
-                            </div>
-                            <div class="col-sm-12 col-xs-12 bg-info" style="padding-bottom:0;">
+                                    <div class="col-sm-12 col-xs-12 bg-danger">
+                                        <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
+                                    </div>
+                                    <!--  <div class="col-sm-12 col-xs-12 bg-info" style="padding-bottom:0;">
                                 <p class="searchResults" style="text-align:center; color:darkcyan;">¿Tienes alguna duda?</p>
                                 <h3>Chatea con nosotros</h3>
                                 <hr style="border-top: 1px solid white;">
@@ -179,32 +172,32 @@
                                 <p style="text-align:center;">
                                     <a onclick="openChat(3)" style="cursor: pointer; color:darkcyan;"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Atención a clientes</a>
                                 </p>
-                            </div>  
-                            <hr style="border-top: 1px solid white;">
-                            <div class="col-sm-12 col-xs-12 bg-info" style="padding-top:0;">
-                                <hr style="border-top: 1px solid white; margin-top: 0; margin-bottom: 10px;">
-                                <p class="searchResults"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> También puedes llamarnos sin costo a Simitel</p>
-                                <h3>01 800 911 6666</h3>
-                                <hr style="border-top: 1px solid white;">
-                            </div>                            
-                            <div class="col-sm-6 col-xs-6 bg-info">
-                                <p>
-                                    <b>Opción 4:</b><br>
-                                    Asesoría nutricional
-                                </p>
-                            </div>
-                            <div class="col-sm-6 col-xs-6 bg-info">
-                                <p>
-                                    <b>Opción 5:</b><br>
-                                    Asesoría médica
-                                </p>
-                            </div>
-                        </div>                                
+                            </div>  -->
+                                    <hr style="border-top: 1px solid white;">
+                                    <div class="col-sm-12 col-xs-12 bg-info" style="padding-top:0;">
+                                        <hr style="border-top: 1px solid white; margin-top: 0; margin-bottom: 10px;">
+                                        <p class="searchResults"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> También puedes llamarnos sin costo a Simitel</p>
+                                        <h3>01 800 911 6666</h3>
+                                        <hr style="border-top: 1px solid white;">
+                                    </div>
+                                    <div class="col-sm-6 col-xs-6 bg-info">
+                                        <p>
+                                            <b>Opción 4:</b>
+                                            <br> Asesoría nutricional
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-6 bg-info">
+                                        <p>
+                                            <b>Opción 5:</b>
+                                            <br> Asesoría médica
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="row bPag" ng-if="searchResult.length > 0">
                                     <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
                                                           'disabled': searchLoader === true
                                                         }">Ver todos los resultados</a></p>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -239,7 +232,7 @@
                     <a class="dropdown-toggle navUnaLinea" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
                     <ul class="dropdown-menu dropSmallDevs">
                         <li class="hidden-xs hidden-sm">Productos</li>
-                        <li role="separator" class="divider hidden-xs hidden-sm"></li>                        
+                        <li role="separator" class="divider hidden-xs hidden-sm"></li>
                         <li ui-sref-active="activo" class="hvr-underline-from-center medIcon"><a class="navUnaLinea subMenu2" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
                         <li role="separator" class="divider"></li>
                         <li class="hvr-underline-from-center higieneIcon"><a class="navUnaLinea subMenu2" ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
@@ -248,19 +241,19 @@
                         <li role="separator" class="divider"></li>
                         <li class="hvr-underline-from-center vitaminasIcon"><a class="subMenu2" ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
                     </ul>
-                </li>                
+                </li>
                 <li ui-sref-active="activo" class="hvr-underline-from-center hidden-xs hidden-sm"><a class="navUnaLinea" ui-sref="medicamentos" hreflang="es">Medicamentos</a></li>
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="higiene" hreflang="es">Higiene y Perfumería</a></li>
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="curacion" hreflang="es">Material de Curación</a></li>
                 <li class="hvr-underline-from-center hidden-xs hidden-sm"><a ui-sref="vitaminas" hreflang="es">Vitaminas y Suplementos</a></li>
                 <li class="hvr-underline-from-center"><a ui-sref="nuevos" hreflang="es">Nuevos <br class="hidden-sm hidden-xs">Productos</a></li>
-                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="promociones" hreflang="es">Lo nuevo</a></li>
-                <li class="hvr-underline-from-center"><a ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li>                
-                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nota({ notaId: notaFinal })" hreflang="es">Siminotas</a></li>
+                <li id="herbolarioLink" class="hvr-underline-from-center hidden-xs hidden-sm"><a href="https://farmaciasdesimilares.com/herbolario/" target="blank">Rincón<br> Herbolario</a></li>
+                <li class="hvr-underline-from-center hidden-md hidden-lg"><a href="https://farmaciasdesimilares.com/herbolario/" target="blank">Rincón Herbolario</a></li>
+                <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="promociones" hreflang="es">Novedades</a></li><li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="nota({ notaId: notaFinal })" hreflang="es">Siminotas</a></li>
                 <li class="hvr-underline-from-center"><a class="navUnaLinea" ui-sref="contacto" hreflang="es">Contáctanos</a></li>
                 <!-- <li class="hvr-underline-from-center visible-sm visible-xs"><a class="navUnaLinea" ui-sref="localiza" hreflang="es">Localiza tu farmacia</a></li> -->
                 <li class="hvr-underline-from-center visible-sm visible-xs"><a href="https://reem.farmaciasdesimilares.com.mx/" hreflang="es" target="_blank">Reembolsos</a></li>
-                <li class="hvr-underline-from-center visible-sm visible-xs"><a ui-sref="facturacion" hreflang="es">Facturación electrónica</a></li>
+                <li class="hvr-underline-from-center visible-sm visible-xs"><a ui-sref="renta" hreflang="es">Réntanos tu local</a></li>
                 <li class="hvr-underline-from-center carritoNav hidden-sm hidden-xs"><a id="carritoNav" class="navUnaLinea" data-toggle="modal" data-target="#buscaModal" hreflang="es"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
             </ul>
         </div>
@@ -268,6 +261,30 @@
     </div>
     <!--/.container-fluid -->
 </nav>
+<style>
+    #newLabel {
+        position: absolute; 
+        z-index: 9999;
+        border-radius: 15px;
+        border-top-left-radius: 0;
+    }
+    #newLabel p {
+        padding: 5px;
+        margin-bottom: 0;
+        color: teal;
+        font-weight: 900;
+    }
+</style>
+<div id="newLabel" class="hidden-sm hidden-xs"><img src="images/newLabel.png" alt="Nuevo"></div>
+<script>
+    var offset = $("#herbolarioLink").offset();
+    var posY = offset.top - $(window).scrollTop();
+    var posX = offset.left - $(window).scrollLeft();
+    $('#newLabel').css({
+        left: posX + 20,
+        top: posY + 40
+    });
+</script>
 <div data-backdrop="true" class="modal fade" id="buscaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="vertical-alignment-helper">
         <div class="modal-dialog vertical-align-center">
@@ -296,6 +313,7 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <a ng-click="noInput()" ui-sref="busquedaGrupo.detalle({ idProducto:(item.IdProducto.trim()), medicamentoId: prettyFn(item.NombreProducto) })" hreflang="es">
                                     <p class="searchResults">{{item.NombreProducto}}</p>
+                                    <p style="color:grey; margin-bottom:0; font-size: 0.8em;">{{item.Presentacion}}</p>
                                 </a>
                             </div>
                         </div>
@@ -303,7 +321,7 @@
                             <div class="col-sm-12 col-xs-12 bg-danger">
                                 <p class="searchResults"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Su búsqueda no generó resultados</p>
                             </div>
-                            <div class="col-sm-12 col-xs-12 bg-info" style="padding-bottom:0;">
+                            <!--<div class="col-sm-12 col-xs-12 bg-info" style="padding-bottom:0;">
                                 <p class="searchResults" style="text-align:center; color:darkcyan;">¿Tienes alguna duda?</p>
                                 <h3>Chatea con nosotros</h3>
                                 <hr style="border-top: 1px solid white;">
@@ -322,32 +340,32 @@
                                 <p style="text-align:center;">
                                     <a onclick="openChat(3)" style="cursor: pointer; color:darkcyan;" ng-click="cierraBusqueda()"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Atención a<br> clientes</a>
                                 </p>
-                            </div>  
+                            </div> -->
                             <hr style="border-top: 1px solid white;">
                             <div class="col-sm-12 col-xs-12 bg-info" style="padding-top:0;">
                                 <hr style="border-top: 1px solid white; margin-top: 0; margin-bottom: 10px;">
                                 <p class="searchResults"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> También puedes llamarnos sin costo a Simitel</p>
                                 <h3>01 800 911 6666</h3>
                                 <hr style="border-top: 1px solid white;">
-                            </div>                            
+                            </div>
                             <div class="col-sm-6 col-xs-6 bg-info">
                                 <p>
-                                    <b>Opción 4:</b><br>
-                                    Asesoría nutricional
+                                    <b>Opción 4:</b>
+                                    <br> Asesoría nutricional
                                 </p>
                             </div>
                             <div class="col-sm-6 col-xs-6 bg-info">
                                 <p>
-                                    <b>Opción 5:</b><br>
-                                    Asesoría médica
+                                    <b>Opción 5:</b>
+                                    <br> Asesoría médica
                                 </p>
                             </div>
-                        </div>                        
+                        </div>
                         <div class="row bPag" ng-if="searchResult.length > 0">
                             <p class="verSearch"><a ng-click="enterF()" class="btn btn-md btn-primary" role="button" ng-class="{
                                                   'disabled': searchLoader === true
                                                 }">Ver todos los resultados</a></p>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -355,42 +373,39 @@
     </div>
 </div>
 <div class="chat visible-md visible-lg" data-toggle="modal" data-target="#chatOpts"></div>
-
 <div class="chat chat-s visible-xs visible-sm" data-toggle="modal" data-target="#chatOpts"></div>
-
 <!-- Modal -->
 <div class="modal fade" id="chatOpts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel" style="text-transform: inherit;">¿Qué tipo de asesoría requieres?</h4>
-      </div>
-      <div class="modal-body">
-        <div ng-include="'views/chatOpts.html'"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="text-transform: inherit;">¿Qué tipo de asesoría requieres?</h4>
+            </div>
+            <div class="modal-body">
+                <div ng-include="'views/chatOpts.html'"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
 <script>
-    function openChat(args) {
-        switch(args) {
-            case 1:
-                var myWindow = window.open("https://farmaciasdesimilares.com/scam/", "", "width=300,height=500");
-                $('#chatOpts').modal('hide');
+function openChat(args) {
+    switch (args) {
+        case 1:
+            var myWindow = window.open("https://farmaciasdesimilares.com/scam/", "", "width=300,height=500");
+            $('#chatOpts').modal('hide');
             break;
-            case 2:
-                var myWindow = window.open("https://farmaciasdesimilares.com/scan/", "", "width=300,height=500");
-                $('#chatOpts').modal('hide');
+        case 2:
+            var myWindow = window.open("https://farmaciasdesimilares.com/scan/", "", "width=300,height=500");
+            $('#chatOpts').modal('hide');
             break;
-            case 3:
-                var myWindow = window.open("https://farmaciasdesimilares.com/scac/", "", "width=300,height=500");
-                $('#chatOpts').modal('hide');
+        case 3:
+            var myWindow = window.open("https://farmaciasdesimilares.com/scac/", "", "width=300,height=500");
+            $('#chatOpts').modal('hide');
             break;
-        }
     }
+}
 </script>

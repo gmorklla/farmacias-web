@@ -1,27 +1,34 @@
 {"ads" : [	
 		{
+			"titulo" : "¡Quítate un peso de encima!",
+			"img" : "quitate_un_peso_de_encima",
+			"btn": "Ver producto",
+			"url": "busquedaGrupo.detalle",
+			"id": "2676",
+			"med": "orlistat-tabletas"
+		},{
+			"titulo" : "Aceptamos tarjetas de descuento Capital Social",
+			"img" : "capital_social",
+			"btn": "Ver productos participantes",
+			"url": "capital-social"
+		},
+		{
+			"titulo" : "Tarjeta nueva vida a los 68 y Guerrero cumple",
+			"img" : "tarjetas_de_gobierno",
+			"btn": "Ver sucursales participantes",
+			"url": "tarjetas-gobierno"
+		},
+		{
+			"titulo" : "Para este frío, en Dr. Simi confío",
+			"img" : "para_este_frio_en_dr_simi_confio"
+		},
+		{
 			"titulo" : "El Buen Lunes",
 			"img" : "el_buen_lunes"
 		},
 		{
 			"titulo" : "Farmacias Similares® desde tu celular",
 			"img" : "farmacias_similares_desde_tu_celular"
-		},
-		{
-			"titulo" : "Crema antiarruga de Eternal Secret",
-			"img" : "crema_antiarrugas_eternal_secret"
-		},
-		{
-			"titulo" : "Crema blanqueadora de Eternal Secret",
-			"img" : "crema_blanqueadora_eternal_secret"
-		},
-		{
-			"titulo" : "Dermo reparador antioxidante de Eternal Secret",
-			"img" : "dermo_reparador_antioxidante_eternal_secret"
-		},
-		{
-			"titulo" : "Serum de Eternal Secret",
-			"img" : "serum_eternal_secret"
-		}		
+		}	
 	]
 }

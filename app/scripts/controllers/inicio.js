@@ -9,6 +9,8 @@
  */
 angular.module('farmaciasWebApp')
 	.controller('InicioCtrl', ['loadImg', 'deviceDetector', '$scope', '$window', function(loadImg, deviceDetector, $scope, $window) {
+		
+		$('#aviso').modal();
 
 		var imagenesInicio = ['banner-main-catalogo.jpg', 'banner-main-2.jpg'];
 		loadImg.loadImgs($('.loadImg'), imagenesInicio);

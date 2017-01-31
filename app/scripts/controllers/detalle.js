@@ -10,6 +10,8 @@
 angular.module('farmaciasWebApp')
     .controller('DetalleCtrl', ['loadData', '_', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'LoadMedByIdSrv', 'LoadPromoSrv', 'PromoOrComboSrv', 'Califica', 'loadLocations', 'banner', 'jQuery', '$state', '$stateParams', '$scope', '$rootScope', '$log', '$location', function(loadData, _, prettyUrlSpc, productoSrv, CarritoSrv, LoadMedByIdSrv, LoadPromoSrv, PromoOrComboSrv, Califica, loadLocations, banner, jQuery, $state, $stateParams, $scope, $rootScope, $log, $location) {
 
+        $("#loadingMeds, #loadingMeds2, .loadScreen").fadeIn("slow");
+        
         // Establece el parámetro de estado 'termino' si es que no se encuentra especificado (cuando dan click en el producto y no en 'Ver todos los resultados' dentro de las búsquedas)
         if ($state.$current.toString() == 'busquedaGrupo.detalle') {
             if ($stateParams.termino == '') {
@@ -94,6 +96,7 @@ angular.module('farmaciasWebApp')
         function getProductById() {
             var medDetalle = LoadMedByIdSrv.httpReq(idProductoParam);
             medDetalle.then(function(info) {
+                $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
                 $scope.medActual = (JSON.parse(info.data.d))[0];
                 //console.info($scope.medActual);
                 productoSrv.addProduct($scope.medActual);
@@ -164,7 +167,7 @@ angular.module('farmaciasWebApp')
             //console.info( $scope.medActual);
             for (var i = 0; i < $scope.medActual.Oferta.length; i++) {
                 var idDelCombo = $scope.medActual.Oferta[i].idCombo;
-                console.log($scope.medActual);
+                //console.log($scope.medActual);
                 // Checa si el tipo es 1 (oferta)
                 if ($scope.medActual.Oferta[i].Tipo == 1) {
                     // Integra la oferta en el array que se lee para presentar las ofertas

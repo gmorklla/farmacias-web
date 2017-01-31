@@ -15,6 +15,11 @@
                 </div>
                 <div class="col-md-12 col-xs-12 img">
                     <p><img ng-src="images/siminotas/{{prettyFn(notaActual.url)}}.jpg" alt=""></p>
+                    <p>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#lavarManos" aria-pressed="false" ng-if="notaActual.key == 22">
+                            Ver imagen completa
+                        </button>                        
+                    </p>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-12 col-xs-12 panel panel-default">
@@ -57,6 +62,25 @@
     <div class="row detalleF">
         <div class="col-md-8 col-xs-12 ">
             <div ng-include="'views/comentarios.html'"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lavarManos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel" style="text-transform: inherit;">Pasos para lavar tus manos correctamente</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="well imgPromo"><img ng-src="images/{{prettyFn(notaActual.url)}}.jpg" alt=""></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

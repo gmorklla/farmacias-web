@@ -59,7 +59,16 @@ angular.module('farmaciasWebApp')
         			var dato = prettyUrlSpc.deconfig(toParams.medicamentoId);
                     $rootScope.pageTitulo = dato.toUpperCase() + ' | Vitaminas y suplementos';
                     $rootScope.pageDescription = 'En Farmacias Similares contamos con ' + dato + ' y muchas más vitaminas y suplementos. Ven a Farmacias Similares y ¡vitamina tu vida!'; 
-        		break;        		
+        		break;
+                case 'herbolario':
+                    $rootScope.pageTitulo = 'Rincón herbolario';
+                    $rootScope.pageDescription = 'Nuestra cultura no es ajena a la herbolaria. La medicina tradicional mexicana tiene sus orígenes en el uso de plantas para tratar diversos padecimientos, algo que ha perdurado desde las civilizaciones prehispánicas, hasta la actualidad.';
+                break;
+                case 'herbolario.detalle':
+                    var dato = prettyUrlSpc.deconfig(toParams.medicamentoId);
+                    $rootScope.pageTitulo = dato.toUpperCase() + ' | Rincón herbolario';
+                    $rootScope.pageDescription = 'En Farmacias Similares contamos con ' + dato + ' y muchos más productos. Ven a Farmacias Similares y ¡vitamina tu vida!'; 
+                break;        		
         		case 'calidad':
         			$rootScope.pageTitulo = 'Control de calidad';
                     $rootScope.pageDescription = 'Los Genéricos que se ofrecen en Farmacias Similares cuentan con las condiciones de calidad que la ley señala a un precio más bajo, siempre en beneficio de la economía familiar.';

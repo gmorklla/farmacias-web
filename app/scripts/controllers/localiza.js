@@ -139,7 +139,7 @@ angular.module('farmaciasWebApp')
 
             loc.then(function(datos) {
                 var farmacias = JSON.parse(datos.data.d);
-                console.log(farmacias);
+                //console.log(farmacias);
                 locationSrv.addLocationData(farmacias, $scope.tipoDeBusqueda);
                 //console.log(farmacias);
                 /*for (var key in farmacias[0]) {

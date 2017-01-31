@@ -279,6 +279,118 @@ angular
                     label: '{{$stateParams.notaId}}'
                 }
             })
+            .state('tarjetas-gobierno', {
+                url: "/tarjetas-gobierno",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/tarjeta-gobierno.html'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Tarjetas de Gobierno'
+                }
+            })
+            .state('capital-social', {
+                url: "/capital-social",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/medicamentos.html',
+                        controller: 'MedicamentosCtrl',
+                        controllerAs: 'deportistas'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Capital Social'
+                }
+            })
+            .state('capital-social.detalle', {
+                url: "/:idProducto/:medicamentoId",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{$stateParams.medicamentoId}}'
+                }
+            })
+            .state('capital-social.map', {
+                url: "/mapa",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/capital-social.html'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Tarjetas de Gobierno'
+                }
+            })            
             .state('calidad', {
                 url: "/control-de-calidad",
                 'views': {
@@ -681,6 +793,64 @@ angular
                     label: '{{$stateParams.medicamentoId}}'
                 }
             })
+            .state('deportistas', {
+                url: "/deportistas",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/medicamentos.html',
+                        controller: 'MedicamentosCtrl',
+                        controllerAs: 'deportistas'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Deportistas'
+                }
+            })
+            .state('deportistas.detalle', {
+                url: "/:idProducto/:medicamentoId",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/detalle.html',
+                        controller: 'DetalleCtrl',
+                        controllerAs: 'detalle'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: '{{$stateParams.medicamentoId}}'
+                }
+            })            
             .state('promociones', {
                 url: "/lo-nuevo",
                 'views': {
@@ -1001,6 +1171,35 @@ angular
                     label: 'Réntanos tu local'
                 }
             })
+            .state('renta.detalle', {
+                url: "/admin",
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'home@': {
+                        templateUrl: 'views/rentanosTuLocalAdmin.html',
+                        controller: 'RentaCtrl',
+                        controllerAs: 'renta'
+                    },
+                    'barra@': {
+                        template: '',
+                        controller: 'BarraCtrl',
+                        controllerAs: 'barra'
+                    },
+                    'siminotas@': {
+                        template: ''
+                    },
+                    'footer': {
+                        templateUrl: 'views/footer.html'
+                    }
+                },
+                ncyBreadcrumb: {
+                    label: 'Administrador'
+                }
+            })
             .state('administrador', {
                 url: "/administrador",
                 'views': {
@@ -1210,6 +1409,7 @@ angular
     .run(['$rootScope', '$window', '$state', '$location', 'prettyUrlSpc', 'youTubeList', 'runstatechange', 'angularSeo', 'jQuery', function($rootScope, $window, $state, $location, prettyUrlSpc, youTubeList, runstatechange, angularSeo, $) {
         // Crea elemento para google analytics
         $window.ga('create', 'UA-8531338-13', 'auto');
+        $window.ga('create', 'UA-90094705-1', 'auto', {'name': 'Enero2017Campaign'});
 
         //console.info($state.get());
 
@@ -1244,6 +1444,15 @@ angular
                     'page': $location.url(),
                     'title': $rootScope.pageTitulo
                 });
+                $window.ga('Enero2017Campaign.send', 'pageview', { 
+                    'page': $location.url(),
+                    'title': $rootScope.pageTitulo
+                });
+                $window.google_trackConversion({
+                  google_conversion_id: 863463679, 
+                  google_custom_params: $window.google_tag_params,
+                  google_remarketing_only: true
+                });                
             });
         // Dependiendo del scroll y el estado, coloca o quita elementos de la interfaz de usuario
         $(window).scroll(function() {
