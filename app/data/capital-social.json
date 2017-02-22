@@ -33,7 +33,7 @@
         "NombreProducto": "NEOMICINA / CAOLIN / PECTINA TAB",
         "IdProducto": "2200",
         "PrecioVenta": "53",
-        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2200.jpg"]
+        "urlImagen": ["https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2200_1.jpg", "https://fsappmovilstorage.blob.core.windows.net/imagenes/M_2200_2.jpg"]
     },
     {
         "NombreProducto": "LEVOTIROXINA SODICA / LIOTIRONINA",

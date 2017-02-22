@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-6 col-md-4 mainLeft">
         <div class="row">
             <div class="col-xs-12 col-md-12">
-                <div class="view view-first" ui-sref="busquedaInterna({ termino: 'frio' })">
+                <div class="view view-first" data-toggle="modal" data-target="#productoBasico">
                     <img src="images/banner-main-catalogo.jpg" />
                     <div class="mask hidden-sm hidden-xs">
                         <!-- <h2>Para este frío, en Dr. Simi confío</h2>
@@ -42,6 +42,21 @@
                     <b>No se deje sorprender por publicaciones apócrifas y fraudulentas, en las que, utilizando indebidamente nuestro nombre, se ofrece la venta de automóviles y/o flotillas.</b> <br><br>
                     Invitamos a nuestros clientes y público en general a permanecer atentos y a hacer caso omiso de dichas publicaciones.
                     </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="productoBasico" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="images/infografia-producto-basico.jpg" alt="">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

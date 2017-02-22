@@ -1344,8 +1344,8 @@ angular
                 ncyBreadcrumb: {
                     label: 'Localiza tu unidad'
                 }
-            });
-            /*.state('imagesCheck', {
+            })
+            .state('imagesCheck', {
                 url: "/imagesCheck",
                 'views': {
                     'nav': {
@@ -1373,7 +1373,7 @@ angular
                 ncyBreadcrumb: {
                     label: 'Localiza tu unidad'
                 }
-            });*/
+            });
             /*.state('sitemap', {
                 url: "/sitemap",
                 'views': {

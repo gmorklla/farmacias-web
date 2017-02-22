@@ -123,6 +123,7 @@
                                         <img ng-if="item.urlImagen.length == 0 || item.urlImagen.length == 1" propertyu="image" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg">
                                         <img ng-if="item.urlImagen.length > 1" propertyu="image" ng-src="https://farmaciasdesimilares.com/ui/productos/ch/C_{{item.IdProducto.trim()}}_1.jpg" alt="{{item.NombreProducto}}" fallback-src="https://farmaciasdesimilares.com/ui/productos/ch/noImage_C.jpg">
                                     </p>
+                                    <p>{{item.urlImagen.length}}</p>
                                 </a>
                                 <!--                                 <button class="btn btn-info btn-sm btn-carrito" type="button" style="text-transform:none;" ng-click="guardaEnCarrito(item.IdProducto.trim());" ng-model="agregaAlert">
     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; <span class="hidden-xs">Agregar a carrito</span>

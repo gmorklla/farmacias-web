@@ -8,11 +8,11 @@
  * Controller of the farmaciasWebApp
  */
 angular.module('farmaciasWebApp')
-    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', 'deviceDetector', 'LoadMedByIdSrv', 'loadData', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, deviceDetector, LoadMedByIdSrv, loadData, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter) {
+    .controller('MedicamentosCtrl', ['LoadMedsSrv', 'prettyUrlSpc', 'productoSrv', 'CarritoSrv', 'banner', 'deviceDetector', 'LoadMedByIdSrv', 'loadData', '$scope', '$rootScope', '$stateParams', '$log', '$timeout', '$window', '$state', '$filter', '_', function(LoadMedsSrv, prettyUrlSpc, productoSrv, CarritoSrv, banner, deviceDetector, LoadMedByIdSrv, loadData, $scope, $rootScope, $stateParams, $log, $timeout, $window, $state, $filter, _) {
 
         $rootScope.general = true;
         $rootScope.muestraCarrito = true;
-        // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url 
+        // Usa servicio 'prettyUrlSpc' para dar formato a un texto, adecuado para su uso en un url
         $scope.transUrl = function(args) {
             return prettyUrlSpc.prettyUrl(args);
         };
@@ -34,7 +34,7 @@ angular.module('farmaciasWebApp')
         $scope.cuantos = 9;
         // Define la familia a la que pertenecen los productos de acuerdo al estado en el que nos encontramos
         $scope.familia = $state.$current.name;
-        console.log($scope.familia);
+        console.info($scope.familia);
 
         var familia = '';
         //console.log($state.$current.name);
@@ -75,7 +75,7 @@ angular.module('farmaciasWebApp')
                 $rootScope.familiaId = 'capital-social.detalle';
                 $scope.calificable = 0;
                 $scope.notShowPromos = 1;
-                break;                
+                break;
             case 'nuevos':
                 familia = 'MEDICAMENTOS'
                 $rootScope.familiaId = 'nuevos.detalle';
@@ -90,7 +90,7 @@ angular.module('farmaciasWebApp')
         }
         // Función que usa servicio 'LoadMedsSrv.httpReq' para buscar productos de la familia deseada
         $scope.getMeds = function() {
-            // Se muestra el loader gif superior 
+            // Se muestra el loader gif superior
             $("#loadingMeds, #loadingMeds2, .loadScreen").fadeIn("slow");
             $scope.muestraAlerta = false;
 
@@ -111,7 +111,6 @@ angular.module('farmaciasWebApp')
                     $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
                     //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
                     $scope.meds = datos.data.productos;
-                    console.log($scope.meds);
                 }, function(e) {
                     console.log(e);
                 });
@@ -145,9 +144,28 @@ angular.module('farmaciasWebApp')
                     }
                     // Como ya se obtuvieron los resultados del get se quita el loager gif superior
                     $("#loadingMeds, #loadingMeds2, .loadScreen").fadeOut("slow");
-                    //$scope.meds = $filter('filter')(JSON.parse(datos.data.d), {$:"https://fsappmovilstorage.blob.core.windows.net/imagenes/"});
-                    $scope.meds = JSON.parse(datos.data.d);
-                    //console.log($scope.meds);
+
+                    // $scope.meds = JSON.parse(datos.data.d);
+
+                    console.log(datos);
+
+                    //var mapping = _.map(JSON.parse(datos.data.d), function(num){ return {id: num.IdProducto, url: num.urlImagen} });
+                    //console.save(mapping);
+
+                    // Filtra productos sin imagen en array urlImagen
+                    $scope.meds = _.reject(JSON.parse(datos.data.d), function(obj){
+                        if(obj.urlImagen == 0) {
+                           return obj;
+                        }
+                    });
+
+                    console.log($scope.meds);
+
+                    var faltan = JSON.parse(datos.data.d).length - $scope.meds.length;
+
+                    console.log("Total = " + JSON.parse(datos.data.d).length);
+                    console.log("Sin imagen = " + faltan);
+
                     // Si esta es sección nuevos se aplica un filtro que coloca los productos más recientes
                     if ($scope.familia == 'nuevos') {
                         $scope.meds = $filter('filter')($scope.meds, true);
@@ -275,7 +293,7 @@ angular.module('farmaciasWebApp')
                             colocaPromoView();
                             $('.promoView').fadeIn("slow");
                         }
-                        // Combo completo, muestra preview                        
+                        // Combo completo, muestra preview
                     } else {
                         colocaPromoView();
                         $('.promoView').fadeIn("slow");
@@ -286,7 +304,7 @@ angular.module('farmaciasWebApp')
                         $log.error(key + ' ', e[key]);
                     }
                 });
-                // -------------------------------------             
+                // -------------------------------------
             }
         };
         // Función que usa el servicio 'LoadMedByIdSrv.httpReq' para buscar la información del producto con base en su id
@@ -386,5 +404,32 @@ angular.module('farmaciasWebApp')
                 $scope.$digest();
             }
         }
+
+        (function(console){
+
+        console.save = function(data, filename){
+
+            if(!data) {
+                console.error('Console.save: No data')
+                return;
+            }
+
+            if(!filename) filename = 'console.json'
+
+            if(typeof data === "object"){
+                data = JSON.stringify(data, undefined, 4)
+            }
+
+            var blob = new Blob([data], {type: 'text/json'}),
+                e    = document.createEvent('MouseEvents'),
+                a    = document.createElement('a')
+
+            a.download = filename
+            a.href = window.URL.createObjectURL(blob)
+            a.dataset.downloadurl =  ['text/json', a.download, a.href].join(':')
+            e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+            a.dispatchEvent(e)
+         }
+        })(console)
 
     }]);

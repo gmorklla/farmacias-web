@@ -152,11 +152,11 @@
                                 Mensaje
                                 <span class="asteriskField">*</span>
                             </label>
-                            <textarea class="form-control" cols="40" id="mensaje" name="mensaje" rows="10" ng-model="mensaje" ng-minlength="20" ng-maxlength="1000" required></textarea>
+                            <textarea class="form-control" cols="40" id="mensaje" name="mensaje" rows="10" ng-model="mensaje" ng-minlength="20" ng-maxlength="2500" required></textarea>
                         </div>
                         <div ng-messages="contactForm.mensaje.$error" ng-if="contactForm.mensaje.$touched">
                             <p ng-message="minlength">Tu mensaje es muy corto (Mínimo 20 caracteres).</p>
-                            <p ng-message="maxlength">Tu mensaje es muy largo (Máximo 1000 caracteres).</p>
+                            <p ng-message="maxlength">Tu mensaje es muy largo (Máximo 2500 caracteres).</p>
                             <p ng-message="required">Tu mensaje es requerido.</p>
                         </div>
                     </div>

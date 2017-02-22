@@ -1,9 +1,13 @@
 {
     "banners": [{
+        "banner": "banner-simicarreras",
+        "url": "http://www.simicarreras.com.mx/",
+        "target": "_blank"
+    }, {
         "banner": "banner-frio",
         "url": "#!/lo-nuevo",
         "target": "_self"
-    },{
+    }, {
         "banner": "banner-buen-lunes",
         "url": "#!/lo-nuevo",
         "target": "_self"

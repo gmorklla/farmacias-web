@@ -10,7 +10,7 @@
 angular.module('farmaciasWebApp')
     .controller('imageCheckCtrl', ['$scope', 'LoadMedsSrv', function($scope, LoadMedsSrv) {
         // Llamada http get mediante servicio LoadMedsSrv
-        var medicamentos = LoadMedsSrv.httpReq('MEDICAMENTOS');
+        var medicamentos = LoadMedsSrv.httpReq('MATERIAL DE CURACION');
         // Una vez obtenida las respuesta del http get se manejan los datos
         medicamentos.then(function(datos) {
             
