@@ -355,6 +355,10 @@ hr {
     background: url("../images/facturacion_icon.png") no-repeat 20px 10px;
 }
 
+.navbar-default .navbar-nav>li:nth-child(15) {
+    background: url("../images/plus_icon.png") no-repeat 20px 10px;
+}
+
 .navbar-default .navbar-nav>li:last-child {
     margin-bottom: 0;
 }
